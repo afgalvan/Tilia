@@ -18,6 +18,8 @@
 <!--
 ## Download
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e0ca850deeab48fb9752365880cec35d)](https://app.codacy.com/gh/afgalvan/Tilia?utm_source=github.com&utm_medium=referral&utm_content=afgalvan/Tilia&utm_campaign=Badge_Grade_Settings)
+
 ## Features
 
 ## Building from source
