@@ -14,6 +14,9 @@
     <a href="https://github.com/afgalvan/Tilia/actions/workflows/dotnet.yml">
         <img src="https://github.com/afgalvan/Tilia/actions/workflows/dotnet.yml/badge.svg" alt=".NET workflow">
     </a>
+    <a href="https://www.codacy.com/gh/afgalvan/Tilia/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=afgalvan/Tilia&amp;utm_campaign=Badge_Grade">
+        <img src="https://app.codacy.com/project/badge/Grade/d2f6b17f95014c349feb01b552214be6"/>
+    </a>
     <a href="https://github.com/afgalvan/programmingII-finalProject/pulls/" title="Pull request">
         <img src="https://img.shields.io/github/issues-pr/afgalvan/Tilia?labelColor=22272E&logo=github&style=flat" 
     alt="Pull requests">
