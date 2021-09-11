@@ -11,7 +11,16 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/afgalvan/Tilia/actions/workflows/dotnet.yml"> <img src="https://github.com/afgalvan/Tilia/actions/workflows/dotnet.yml/badge.svg" alt=".NET workflow">
+    <a href="https://github.com/afgalvan/Tilia/actions/workflows/dotnet.yml">
+        <img src="https://github.com/afgalvan/Tilia/actions/workflows/dotnet.yml/badge.svg" alt=".NET workflow">
+    </a>
+    <a href="https://github.com/afgalvan/programmingII-finalProject/pulls/" title="Pull request">
+        <img src="https://img.shields.io/github/issues-pr/afgalvan/Tilia?labelColor=22272E&logo=github&style=flat" 
+    alt="Pull requests">
+    </a>
+    <a href="https://github.com/afgalvan/programmingII-finalProject/issues/" title="Issues">
+        <img src="https://img.shields.io/github/issues/afgalvan/Tilia?labelColor=22272E&logo=github&style=flat" 
+    alt="Issues">
     </a>
 </p>
 
