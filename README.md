@@ -1,7 +1,7 @@
 
 <h1 align="center">
     <a href="https://github.com/afgalvan/Tilia" target="_blank">
-        <img src="assets/tilia.png" alt="Tilia logo" width="20%" title="Tilia logo"/>
+        <img src="docs/assets/tilia.png" alt="Tilia logo" width="20%" title="Tilia logo"/>
     </a>
     <div>Tilia</div>
 </h1>
