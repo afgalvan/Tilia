@@ -1,7 +1,14 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using MapsterMapper;
+using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using SharedLib;
+using Microsoft.OpenApi.Models;
+using SharedLib.Auth;
+using SharedLib.Users;
 using SignalRSwaggerGen.Attributes;
 
 namespace Server.Hubs
@@ -9,10 +16,27 @@ namespace Server.Hubs
     [SignalRHub("/hubs/users")]
     public class UserHub : Hub
     {
-        [SignalRMethod("send")]
-        public async Task Send([SignalRArg] CreateUserRequest data, CancellationToken cancellationToken = default)
+        private readonly IMediator _mediator;
+        private readonly IMapper   _mapper;
+
+        public UserHub(IMediator mediator)
         {
-            await Clients.Others.SendAsync("send", data, cancellationToken);
+            _mediator = mediator;
+        }
+
+        [SignalRMethod("create")]
+        [return: SignalRReturn(typeof(AccessToken), StatusCodes.Status201Created)]
+        public async Task<ActionResult> Create([SignalRArg] CreateUserRequest createRequest, CancellationToken cancellation = default)
+        {
+            await Clients.Caller.SendAsync("create", createRequest, cancellation);
+            return new CreatedResult("", "token");
+        }
+
+        [SignalRMethod("getAll", OperationType.Get)]
+        [return: SignalRReturn(typeof(IEnumerable<UserResponse>))]
+        public async Task GetAll([SignalRArg] AccessToken getAllRequest, CancellationToken cancellation)
+        {
+            await Clients.Caller.SendAsync("getAll", getAllRequest, cancellation);
         }
     }
 }

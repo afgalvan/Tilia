@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SharedLib
+namespace SharedLib.Users
 {
     public class CreateUserRequest
     {
-        [Required]
-        public string Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 
