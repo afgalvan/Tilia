@@ -9,12 +9,12 @@ namespace Infrastructure.Persistence.Users
 {
     public class MySqlUserRepository : IUserRepository
     {
-        private readonly TiliaDbContext _context;
+        private readonly TiliaDbContext _dbContext;
 
-        public MySqlUserRepository(TiliaDbContext context)
+        public MySqlUserRepository(TiliaDbContext dbContext)
         {
-            context.Database.EnsureCreated();
-            _context = context;
+            dbContext.Database.EnsureCreated();
+            _dbContext = dbContext;
         }
 
         public Task<User> Save(User entity, CancellationToken cancellation)

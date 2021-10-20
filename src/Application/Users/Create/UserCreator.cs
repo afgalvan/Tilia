@@ -1,28 +1,27 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Application.Users.EncryptPassword;
 using Application.Users.GenerateJwt;
+using Encryptor = BCrypt.Net.BCrypt;
 using Domain.Users;
 
 namespace Application.Users.Create
 {
-    public class AccountCreator
+    public class UserCreator
     {
         private readonly JwtGenerator    _jwtGenerator;
-        private readonly Hasher          _hasher;
         private readonly IUserRepository _userRepository;
 
-        public AccountCreator(JwtGenerator jwtGenerator, IUserRepository userRepository,
-            Hasher hasher)
+        public UserCreator(JwtGenerator jwtGenerator, IUserRepository userRepository)
         {
             _jwtGenerator   = jwtGenerator;
             _userRepository = userRepository;
-            _hasher         = hasher;
         }
 
-        public async Task<string> Create(string username, string email, string password, CancellationToken cancellation)
+        public async Task<string> Create(string username, string email, string password,
+            CancellationToken cancellation)
         {
-            User user = new(username, email, _hasher.Hash(password));
+            string hashedPassword = Encryptor.EnhancedHashPassword(password);
+            User   user           = new(username, email, hashedPassword);
 
             User savedUser = await _userRepository.Save(user, cancellation);
             return _jwtGenerator.Generate(savedUser);

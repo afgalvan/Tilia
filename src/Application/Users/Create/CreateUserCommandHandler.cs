@@ -6,17 +6,17 @@ namespace Application.Users.Create
 {
     public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, string>
     {
-        private readonly AccountCreator _accountCreator;
+        private readonly UserCreator _userCreator;
 
-        public CreateUserCommandHandler(AccountCreator accountCreator)
+        public CreateUserCommandHandler(UserCreator userCreator)
         {
-            _accountCreator = accountCreator;
+            _userCreator = userCreator;
         }
 
         public async Task<string> Handle(CreateUserCommand request,
             CancellationToken cancellationToken)
         {
-            return await _accountCreator.Create(request.Username, request.Email,
+            return await _userCreator.Create(request.Username, request.Email,
                 request.Password, cancellationToken);
         }
     }
