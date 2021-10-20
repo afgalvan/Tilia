@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Text;
 using Domain.Users;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
@@ -38,7 +39,7 @@ namespace Application.Users.GenerateJwt
 
         private SecurityTokenDescriptor CreateTokenSpecification(IEnumerable<Claim> claims)
         {
-            var key = new SymmetricSecurityKey(_secret.Key);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret.Key));
             var signInCredentials =
                 new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
