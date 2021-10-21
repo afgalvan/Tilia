@@ -6,4 +6,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="tilia.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="tilia.png" />
+  </ItemGroup>
+
 </Project>

@@ -1,12 +1,153 @@
-﻿<Window x:Class="Presentation.MainWindow"
+<Window x:Class="Presentation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="1024" Width="1440" 
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
 
+    <Grid x:Name="MainGrid"
+          Background="#FFF4F7FE">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <Grid x:Name="HeaderGrid" Grid.ColumnSpan="2" Background="#FF6AB9B4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!-- Header left mini grid -->
+            <Grid x:Name="HeaderLeftGrid">
+                <Grid x:Name="IconLabelGrid" Width="164" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image x:Name="TiliaIcon"  Source="/tilia.png" Width="73" Height="70" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontFamily="DM Sans" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Normal">Tilia</Label>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!-- Right Panel -->
+        <Grid x:Name="RightPanelGrid" Grid.Row="2" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Dashboard button -->
+            <Grid x:Name="DashboardButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="DashboardButton" Height="45" Cursor="Hand" Background="#00000000" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="DashboardStackPanel" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="DashboardIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="0,0,10,0" Foreground="#FFA3AED0" />
+                        <TextBlock x:Name="DashboardTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="0,2,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Dashboard
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Medical Appointments button -->
+            <Grid Grid.Row="1" x:Name="MedicalAppointmentButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="MedicalAppointmentButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="MedicalAppointmentStackPanel" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="MedicalAppointmentIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
+                        <TextBlock x:Name="MedicalAppointmentTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Citas médicas
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Clinical histories button -->
+            <Grid Grid.Row="2" x:Name="ClinicalHistoriesButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="ClinicalHistoriesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="ClinicalHistoriesStackPanel" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon" Kind="FolderOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
+                        <TextBlock x:Name="ClinicalHistoriesTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Historias clínicas
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Medical notes button -->
+            <Grid Grid.Row="3" x:Name="MedicalNotesButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="MedicalNotesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="MedicalNotesStackPanel" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="MedicalNotesIcon" Kind="NoteOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
+                        <TextBlock x:Name="MedicalNotesTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Notas médicas
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Medical orders button -->
+            <Grid Grid.Row="4" x:Name="MedicalOrdersButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="MedicalOrdersButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="MedicalOrdersStackPanel" Orientation="Horizontal">
+                        <materialDesign:PackIcon x:Name="MedicalOrdersIcon" Kind="WalletOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
+                        <TextBlock x:Name="MedicalOrdersTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Ordenes médicas
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Users button -->
+            <Grid Grid.Row="5"  x:Name="UsersButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="UsersButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="UsersStackPanel" Orientation="Horizontal" Margin="0,0,30,0">
+                        <materialDesign:PackIcon x:Name="UsersIcon" Kind="ShieldAccountOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
+                        <TextBlock x:Name="UsersTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Usuarios
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Config button -->
+            <Grid Grid.Row="6 " x:Name="ConfigButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Button x:Name="ConfigButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="ConfigStackPanel" Orientation="Horizontal" Margin="0,0,30,0">
+                        <materialDesign:PackIcon x:Name="ConfigIcon" Kind="CogOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBlock x:Name="ConfigTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Configuración
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Log out button -->
+            <Grid Grid.Row="8" x:Name="LogoutButtonGrid" Width="214" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Button x:Name="LogoutButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                    <StackPanel x:Name="LogoutStackPanel" Orientation="Horizontal" Margin="0,0,30,0">
+                        <materialDesign:PackIcon x:Name="LogoutIcon" Kind="Logout" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <TextBlock x:Name="LogoutTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                            Cerrar sesión
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
