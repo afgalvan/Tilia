@@ -20,7 +20,7 @@ namespace Application.Users.Create
         public async Task<string> Create(string username, string email, string password,
             CancellationToken cancellation)
         {
-            await Task.Delay(1, cancellation);
+            await Task.Delay(1, cancellation).ConfigureAwait(false);
             string hashedPassword = Encryptor.EnhancedHashPassword(password);
             return hashedPassword;
         }
