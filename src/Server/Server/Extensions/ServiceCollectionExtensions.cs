@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using Domain.Users;
 using Infrastructure.Persistence.Users;
+using Mapster;
+using MapsterMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Server.Hubs;
 using Shared.Infrastructure.Persistence;
+using SharedLib.Users;
 
 namespace Server.Extensions
 {
@@ -35,10 +38,19 @@ namespace Server.Extensions
 
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
+            services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IUserRepository, MySqlUserRepository>();
+            services.AddScoped<IMapper, ServiceMapper>();
         }
 
-        public static void AddOAuth(this IServiceCollection services,
+        private static TypeAdapterConfig GetTypeAdapterConfig()
+        {
+            var configuration = new TypeAdapterConfig();
+            configuration.NewConfig<User, UserResponse>();
+            return configuration;
+        }
+
+        public static void AddJwtAuth(this IServiceCollection services,
             IConfiguration configuration)
         {
             string secretKey = configuration["SecretKey:Key"];

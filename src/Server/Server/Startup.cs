@@ -20,10 +20,10 @@ namespace Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR().AddMessagePackProtocol();
+            services.AddApplicationServices();
             services.ConfigureDbContext(Configuration);
             services.AddInfrastructureServices();
-            services.AddApplication();
-            services.AddOAuth(Configuration);
+            services.AddJwtAuth(Configuration);
             services.AddControllers();
             services.AddSwagger();
         }
