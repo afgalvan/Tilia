@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
   </ItemGroup>
@@ -28,7 +29,6 @@
     <Folder Include="Components\MedicalOrders\" />
     <Folder Include="Components\Configuration\" />
     <Folder Include="Components\Users\" />
-    <Folder Include="Extensions" />
     <Folder Include="Utils\" />
   </ItemGroup>
 

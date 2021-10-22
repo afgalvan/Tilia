@@ -1,6 +1,7 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components;
+using Presentation.Extensions;
 
 namespace Presentation
 {
@@ -13,13 +14,8 @@ namespace Presentation
         public App()
         {
             var services = new ServiceCollection();
-            ConfigureServices(services);
+            services.AddPresentationServices();
             _serviceProvider = services.BuildServiceProvider();
-        }
-
-        private static void ConfigureServices(IServiceCollection services)
-        {
-            services.AddSingleton<MainPanel>();
         }
 
         protected override void OnStartup(StartupEventArgs e)
