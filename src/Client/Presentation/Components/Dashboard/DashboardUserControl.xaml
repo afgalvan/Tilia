@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Graphic card -->
-        <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="2" Margin="40,40,0,0" >
+        <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="2" Margin="40,40,0,0" Background="White">
             <Grid x:Name="GraphicCardGrid" Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
