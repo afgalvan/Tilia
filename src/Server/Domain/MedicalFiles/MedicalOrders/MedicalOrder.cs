@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Domain.MedicalFiles.MedicalOrders
 {
@@ -6,11 +7,21 @@ namespace Domain.MedicalFiles.MedicalOrders
     {
         public AptitudeCertificate    AptitudeCertificate { get; set; }
         public IEnumerable<Referrals> Referrals           { get; set; }
-        public IEnumerable<Inability> Inability           { get; set; }
+        public IEnumerable<Inability> Inabilities         { get; set; }
 
         public MedicalOrder(AptitudeCertificate aptitudeCertificate)
         {
             AptitudeCertificate = aptitudeCertificate;
+        }
+
+        public IEnumerable<Referrals> AddReferrals(Referrals referral)
+        {
+            return Referrals.Append(referral);
+        }
+
+        public IEnumerable<Inability> AddInability(Inability inability)
+        {
+            return Inabilities.Append(inability);
         }
     }
 }
