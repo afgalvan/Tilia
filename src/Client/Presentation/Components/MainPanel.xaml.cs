@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Presentation.Components.Dashboard;
 using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
+using Presentation.Components.ClinicalHistories;
 using Presentation.Components.MedicalAppointment;
 
 namespace Presentation.Components
@@ -34,6 +35,7 @@ namespace Presentation.Components
         private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
+            ContentArea.Content = new ClinicalHistoryDataUserControl();
         }
 
         private void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
