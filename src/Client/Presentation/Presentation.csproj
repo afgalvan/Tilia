@@ -51,7 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\ClinicalHistories\" />
     <Folder Include="Components\MedicalNotes\" />
     <Folder Include="Components\MedicalOrders\" />
     <Folder Include="Components\Configuration\" />
