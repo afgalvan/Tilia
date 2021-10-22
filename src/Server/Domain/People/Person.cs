@@ -12,5 +12,13 @@ namespace Domain.People
         public DateTime   BirthDate { get; set; }
 
         public int Age => (BirthDate - DateTime.Now).Days;
+
+        public Person(PersonId id, PersonName names, Genre genre, Location location)
+        {
+            Id       = id;
+            Names    = names;
+            Genre    = genre;
+            Location = location;
+        }
     }
 }

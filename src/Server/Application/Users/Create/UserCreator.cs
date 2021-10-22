@@ -20,11 +20,9 @@ namespace Application.Users.Create
         public async Task<string> Create(string username, string email, string password,
             CancellationToken cancellation)
         {
+            await Task.Delay(1, cancellation);
             string hashedPassword = Encryptor.EnhancedHashPassword(password);
-            User   user           = new(username, email, hashedPassword);
-
-            User savedUser = await _userRepository.Save(user, cancellation);
-            return _jwtGenerator.Generate(savedUser);
+            return hashedPassword;
         }
     }
 }
