@@ -30,8 +30,8 @@
                 <Label x:Name="GraphicCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="31,0,0,0">
                     Atención
                 </Label>
-                <ComboBox
-                    materialDesign:HintAssist.Hint="Mensual" Width="86" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFA3AED0" Margin="0,0,30,0">
+                <ComboBox x:Name="GraphicCardComboBox"
+                    materialDesign:HintAssist.Hint="Mensual" Width="100.2" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFA3AED0" Margin="0,0,30,0" FontFamily="DM Sans">
                     <ComboBoxItem
                         Content="2" />
                 </ComboBox>
@@ -64,6 +64,21 @@
 
         <!-- Schedule card -->
         <materialDesign:Card x:Name="ScheduleCard" Grid.Column="2" Margin="40,40,40,0" Background="White">
+            <Grid x:Name="ScheduleCardGrid" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="ScheduleCardLabel" FontSize="20" FontFamily="DM Sans" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Center">15 de septiembre</Label>
+                <Grid Grid.Row="2" Width="102" Height="28" Margin="90,0,0,0">
+                    <Button x:Name="ScheduleCardButton" Background="{x:Null}" BorderBrush="{x:Null}"></Button>
+                    <TextBlock x:Name="ScheduleCardLabel1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="#FF6AB9B4">Ver más</TextBlock>
+                    <materialDesign:PackIcon Kind="ArrowRight" HorizontalAlignment="Right" VerticalAlignment="Center" Width="20" Height="20" Margin="0,3,0,0" Foreground="#FF6AB9B4" />
+                </Grid>
+
+            </Grid>
         </materialDesign:Card>
     </Grid>
 </UserControl>

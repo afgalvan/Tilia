@@ -15,6 +15,8 @@ namespace Presentation.Components
         public MainPanel()
         {
             InitializeComponent();
+            ChangeDashboardColors();
+            ContentArea.Content = new DashboardUserControl();
         }
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +50,13 @@ namespace Presentation.Components
             var defaultColor = (Brush)new BrushConverter().ConvertFrom("#FFA3AED0");
             _ = textBlocks.Zip(icons, (t, i) => i.Foreground = t.Foreground = defaultColor)
                 .ToList();
+        }
+
+        private void ChangeDashboardColors()
+        {
+            DashboardButton.Background = (Brush)new BrushConverter().ConvertFrom("#FF6AB9B4");
+            DashboardTextBlock.Foreground = Brushes.White;
+            DashboardIcon.Foreground = Brushes.White;
         }
     }
 }
