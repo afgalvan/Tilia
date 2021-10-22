@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Domain.Employees;
 
 namespace Domain.Users
 {
@@ -16,6 +17,9 @@ namespace Domain.Users
 
         [Required]
         public string Password { get; set; }
+
+        public AccessRole AccessRole { get; set; }
+        public Employee   Employee   { get; set; }
 
         public User(string name, string email, string password)
         {
