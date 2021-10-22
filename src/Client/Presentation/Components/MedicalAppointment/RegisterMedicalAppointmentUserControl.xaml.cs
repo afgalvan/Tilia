@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using System.Windows.Controls;
 
 namespace Presentation.Components.MedicalAppointment
 {
