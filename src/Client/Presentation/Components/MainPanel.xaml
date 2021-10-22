@@ -37,11 +37,30 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Header left mini grid -->
-                <Grid x:Name="HeaderLeftGrid">
+                <Grid x:Name="HeaderLeftGrid" Grid.Column="0">
                     <Grid x:Name="IconLabelGrid" Width="164" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Image x:Name="TiliaIcon"  Source="/Assets/Icons/tilia.png" Width="53" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,90,0"/>
                         <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,0,0,0">Tilia</Label>
                     </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0, 0, 50, 0">
+                        <mah:Badged Badge="{Binding Path=BadgeValue}" BadgePlacementMode="BottomRight" Margin="0, 0, 20, 0" Height="32" Width="32" Cursor="Hand">
+                            <Button>
+                                <materialDesign:PackIcon Kind="UserOutline" Foreground="#A3AED0" />
+                            </Button>
+                        </mah:Badged>
+                        <mah:Badged Badge="{Binding Path=BadgeValue}" BadgePlacementMode="BottomRight" Margin="0, 0, 20, 0" Height="32" Width="32" Cursor="Hand">
+                            <Button>
+                                <materialDesign:PackIcon Kind="Add" Foreground="#A3AED0" />
+                            </Button>
+                        </mah:Badged>
+                        <mah:Badged Badge="{Binding Path=BadgeValue}" BadgePlacementMode="BottomRight" Margin="0, 0, 20, 0" Height="32" Width="32" Cursor="Hand">
+                            <Button>
+                                <materialDesign:PackIcon Kind="BellOutline" Foreground="#A3AED0" />
+                            </Button>
+                        </mah:Badged>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </materialDesign:Card>
