@@ -26,11 +26,31 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="9*"/>
                 </Grid.RowDefinitions>
+
+                <Label x:Name="GraphicCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="31,0,0,0">
+                    Atención
+                </Label>
+                <ComboBox
+                    materialDesign:HintAssist.Hint="Mensual" Width="86" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFA3AED0" Margin="0,0,30,0">
+                    <ComboBoxItem
+                        Content="2" />
+                </ComboBox>
             </Grid>
         </materialDesign:Card>
 
         <!-- Satisfaction card -->
         <materialDesign:Card x:Name="SatisfactionCard" Grid.Row="1" Margin="40,40,0,40" Background="White">
+            <Grid x:Name="SatisfactionCardGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="SatisfactionCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Width="114" HorizontalAlignment="Left" Margin="28,0,0,0" Foreground="#FFA3AED0" Height="25">
+                    Satisfacción
+                </Label>
+            </Grid>
         </materialDesign:Card>
 
         <!-- Total patients card -->
