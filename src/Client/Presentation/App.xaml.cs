@@ -1,5 +1,6 @@
-﻿using System.Windows;
+using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Components;
 
 namespace Presentation
 {
@@ -18,14 +19,14 @@ namespace Presentation
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<MainWindow>();
+            services.AddSingleton<MainPanel>();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var mainWindow = _serviceProvider.GetService<MainWindow>();
-            mainWindow?.Show();
+            var mainPanel = _serviceProvider.GetService<MainPanel>();
+            mainPanel?.Show();
         }
     }
 }
