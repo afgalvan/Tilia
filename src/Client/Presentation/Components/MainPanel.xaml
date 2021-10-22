@@ -61,9 +61,20 @@
                             </Button>
                         </mah:Badged>
                     </StackPanel>
+
+                    <Grid x:Name="SearchBarGrid" Width="300" Height="30" HorizontalAlignment="Left" Margin="30,0,0,0">
+                        <materialDesign:Card x:Name="SearchBarCard" Background="#FFF4F7FE">
+                            <StackPanel x:Name="StackPanel" Orientation="Horizontal">
+                                <materialDesign:PackIcon x:Name="SearchBarIcon" Kind="Magnify" Foreground="#FF99A3C4" Width="18" Height="24" VerticalAlignment="Center" Margin="5,0,0,0" />
+                                <TextBox BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF99A3C4" Width="266" Margin="10,4,0,0" Height="25" CaretBrush="{x:Null}" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" FontFamily="DM Sans" VerticalAlignment="Center" MinHeight="0" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Grid>
                 </Grid>
             </Grid>
+            
         </materialDesign:Card>
+
 
         <!-- Right Panel -->
         <materialDesign:Card x:Name="ButtonsCard" Grid.Row="1" Background="White">
