@@ -10,7 +10,11 @@
         Icon="../Assets/Icons/tilia.png"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
-
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="DM Sans"/>
+        </Style>
+    </Window.Resources>
     <Grid x:Name="MainGrid"
           Background="#FFF4F7FE">
 
@@ -36,7 +40,7 @@
                 <Grid x:Name="HeaderLeftGrid">
                     <Grid x:Name="IconLabelGrid" Width="164" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Image x:Name="TiliaIcon"  Source="/Assets/Icons/tilia.png" Width="53" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,90,0"/>
-                        <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontFamily="DM Sans" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Normal" Margin="60,0,0,0">Tilia</Label>
+                        <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,0,0,0">Tilia</Label>
                     </Grid>
                 </Grid>
             </Grid>
