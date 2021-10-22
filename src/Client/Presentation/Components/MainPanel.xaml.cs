@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Presentation.Components.Dashboard;
 using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
+using Presentation.Components.MedicalAppointment;
 
 namespace Presentation.Components
 {
@@ -27,6 +28,7 @@ namespace Presentation.Components
         private void MedicalAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalAppointmentTextBlock, MedicalAppointmentIcon);
+            ContentArea.Content = new MedicalAppointmentUserControl();
         }
 
         private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)

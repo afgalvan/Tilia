@@ -52,7 +52,6 @@
 
   <ItemGroup>
     <Folder Include="Components\ClinicalHistories\" />
-    <Folder Include="Components\MedicalAppointment\" />
     <Folder Include="Components\MedicalNotes\" />
     <Folder Include="Components\MedicalOrders\" />
     <Folder Include="Components\Configuration\" />
