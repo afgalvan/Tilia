@@ -3,6 +3,7 @@
     // For you, bro @jwar28
     public class PhysicalExam
     {
-        public VitalSigns vitalSigns { get; set; }
+        public VitalSigns VitalSignsResults { get; set; }
+        public Segment SegmentResults { get; set; }
     }
 }
