@@ -7,9 +7,12 @@ namespace Domain.Employees
     {
         public SanitaryRole SanitaryRole { get; set; }
 
-        public SanitaryEmployee(PersonId id, PersonName names, Genre genre, Location location)
-            : base(id, names, genre, location)
+        public SanitaryEmployee(string code, string idType, string firstName, string lastName,
+            Genre genre, string locationId, string city, string department,
+            SanitaryRole sanitaryRole) : base(code, idType, firstName, lastName, genre,
+            locationId, city, department)
         {
+            SanitaryRole = sanitaryRole;
         }
     }
 }

@@ -5,23 +5,23 @@ namespace Domain.MedicalFiles.MedicalOrders
 {
     public class MedicalOrder
     {
-        public AptitudeCertificate    AptitudeCertificate { get; set; }
-        public IEnumerable<Referrals> Referrals           { get; set; }
-        public IEnumerable<Inability> Inabilities         { get; set; }
+        public AptitudeCertificate AptitudeCertificate { get; set; }
+        public IList<Referrals>    Referrals           { get; set; }
+        public IList<Inability>    Inabilities         { get; set; }
 
         public MedicalOrder(AptitudeCertificate aptitudeCertificate)
         {
             AptitudeCertificate = aptitudeCertificate;
         }
 
-        public IEnumerable<Referrals> AddReferrals(Referrals referral)
+        public void AddReferrals(Referrals referral)
         {
-            return Referrals.Append(referral);
+            Referrals.Add(referral);
         }
 
-        public IEnumerable<Inability> AddInability(Inability inability)
+        public void AddInability(Inability inability)
         {
-            return Inabilities.Append(inability);
+            Inabilities.Add(inability);
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using Domain.Locations;
-using Domain.People;
+﻿using Domain.People;
 
 namespace Domain.Employees
 {
     public class Employee : Person
     {
-        public Employee(PersonId id, PersonName names, Genre genre, Location location) : base(id, names, genre, location)
+        public Employee(string code, string idType, string firstName, string lastName,
+            Genre genre, string locationId, string city, string department) : base(code,
+            idType, firstName, lastName, genre, locationId, city, department)
         {
         }
     }

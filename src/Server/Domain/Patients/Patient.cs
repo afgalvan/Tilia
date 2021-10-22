@@ -12,8 +12,10 @@ namespace Domain.Patients
         public ContactData ContactData { get; set; }
         public MedicalFile MedicalFile { get; set; }
 
-        public Patient(PersonId id, PersonName names, Genre genre, Location location,
-            SportsData sportsData, ContactData contactData) : base(id, names, genre, location)
+        public Patient(string code, string idType, string firstName, string lastName,
+            Genre genre, string locationId, string city, string department,
+            SportsData sportsData, ContactData contactData) : base(code, idType, firstName,
+            lastName, genre, locationId, city, department)
         {
             SportsData  = sportsData;
             ContactData = contactData;
