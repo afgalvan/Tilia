@@ -57,8 +57,8 @@
         <materialDesign:Card x:Name="TotalPatientsCard" Grid.Row="1" Grid.Column="1" Margin="40,40,40,150" Background="White">
             <Grid>
                 <materialDesign:PackIcon Kind="AccountSupervisorCircle" Foreground="#FF6AB9B4" Width="56" Height="56" VerticalAlignment="Center" Margin="17,0,0,0" />
-                <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal" Width="60" Height="23" VerticalAlignment="Top" Margin="0,23,0,0">Pacientes</Label>
-                <TextBlock Width="50" Height="23" VerticalAlignment="Top" Margin="0,46,0,0">...</TextBlock>
+                <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal" Width="80" Height="30" VerticalAlignment="Top" Margin="78,23,53,0" FontSize="15">Pacientes</Label>
+                <TextBlock Width="50" Height="23" VerticalAlignment="Top" Margin="93,47,68,0">...</TextBlock>
             </Grid>
         </materialDesign:Card>
 
