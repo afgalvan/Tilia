@@ -14,8 +14,8 @@
           Background="#FFF4F7FE">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="12*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -34,8 +34,8 @@
                 <!-- Header left mini grid -->
                 <Grid x:Name="HeaderLeftGrid">
                     <Grid x:Name="IconLabelGrid" Width="164" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Image x:Name="TiliaIcon"  Source="/Assets/Icons/tilia.png" Width="73" Height="70" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontFamily="DM Sans" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Normal">Tilia</Label>
+                        <Image x:Name="TiliaIcon"  Source="/Assets/Icons/tilia.png" Width="53" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,90,0"/>
+                        <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontFamily="DM Sans" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Normal" Margin="60,0,0,0">Tilia</Label>
                     </Grid>
                 </Grid>
             </Grid>
@@ -49,7 +49,7 @@
                 <Button x:Name="DashboardButton" Height="45" Cursor="Hand" Background="#00000000" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="200" Margin="0,20,0,0">
                     <StackPanel x:Name="DashboardStackPanel" Orientation="Horizontal" Margin="7,0,0,0">
                         <materialDesign:PackIcon x:Name="DashboardIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="0,0,10,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="DashboardTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="0,2,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="DashboardTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="0,2,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Dashboard
                         </TextBlock>
                     </StackPanel>
@@ -59,7 +59,7 @@
                 <Button x:Name="MedicalAppointmentButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="MedicalAppointmentStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="MedicalAppointmentIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="MedicalAppointmentTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="MedicalAppointmentTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Citas médicas
                         </TextBlock>
                     </StackPanel>
@@ -69,7 +69,7 @@
                 <Button x:Name="ClinicalHistoriesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="ClinicalHistoriesStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon" Kind="FolderOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="ClinicalHistoriesTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="ClinicalHistoriesTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Historias clínicas
                         </TextBlock>
                     </StackPanel>
@@ -79,7 +79,7 @@
                 <Button x:Name="MedicalNotesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="MedicalNotesStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="MedicalNotesIcon" Kind="NoteOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="MedicalNotesTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="MedicalNotesTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Notas médicas
                         </TextBlock>
                     </StackPanel>
@@ -89,7 +89,7 @@
                 <Button x:Name="MedicalOrdersButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="MedicalOrdersStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="MedicalOrdersIcon" Kind="WalletOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="MedicalOrdersTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="MedicalOrdersTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Ordenes médicas
                         </TextBlock>
                     </StackPanel>
@@ -99,7 +99,7 @@
                 <Button x:Name="UsersButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="UsersStackPanel" Orientation="Horizontal" Margin="0,0,30,0">
                         <materialDesign:PackIcon x:Name="UsersIcon" Kind="ShieldAccountOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="UsersTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="UsersTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Usuarios
                         </TextBlock>
                     </StackPanel>
@@ -109,7 +109,7 @@
                 <Button x:Name="ConfigButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="ConfigStackPanel" Orientation="Horizontal" Margin="0,0,30,0">
                         <materialDesign:PackIcon x:Name="ConfigIcon" Kind="CogOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                        <TextBlock x:Name="ConfigTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="ConfigTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Configuración
                         </TextBlock>
                     </StackPanel>
@@ -119,7 +119,7 @@
                 <Button x:Name="LogoutButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,30,0,0">
                     <StackPanel x:Name="LogoutStackPanel" Orientation="Horizontal" Margin="0,0,30,0">
                         <materialDesign:PackIcon x:Name="LogoutIcon" Kind="Logout" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                        <TextBlock x:Name="LogoutTextBlock" FontSize="16" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <TextBlock x:Name="LogoutTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Cerrar sesión
                         </TextBlock>
                     </StackPanel>
