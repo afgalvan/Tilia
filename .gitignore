@@ -8,6 +8,8 @@
 *.sln.docstates
 node_modules
 
+!.gitkeep
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

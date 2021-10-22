@@ -1,4 +1,7 @@
-﻿using System.Windows;
+using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
+using Presentation.Components;
+using Presentation.Extensions;
 
 namespace Presentation
 {
@@ -7,5 +10,19 @@ namespace Presentation
     /// </summary>
     public partial class App : Application
     {
+        private ServiceProvider _serviceProvider;
+        public App()
+        {
+            var services = new ServiceCollection();
+            services.AddPresentationServices();
+            _serviceProvider = services.BuildServiceProvider();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var mainPanel = _serviceProvider.GetService<MainPanel>();
+            mainPanel?.Show();
+        }
     }
 }
