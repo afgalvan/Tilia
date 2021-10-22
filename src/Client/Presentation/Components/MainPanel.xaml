@@ -61,13 +61,13 @@
                     <StackPanel x:Name="MedicalAppointmentStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="MedicalAppointmentIcon" Kind="MedicalBag" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="MedicalAppointmentTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
-                            Citas médicas 
+                            Citas médicas
                         </TextBlock>
                     </StackPanel>
                 </Button>
 
                 <!-- Clinical histories button -->
-                <Button x:Name="ClinicalHistoriesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0" Click="ClinicalHistoriesButton_Click">
+                <Button x:Name="ClinicalHistoriesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="ClinicalHistoriesStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon" Kind="FolderOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="ClinicalHistoriesTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -127,7 +127,7 @@
                 </Button>
 
             </StackPanel>
-            
+
         </materialDesign:Card>
 
         <!-- Content Area -->
