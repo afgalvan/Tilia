@@ -5,7 +5,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="617" Width="1097" 
+        Title="MainWindow" Height="617" Width="1097"
+        Icon="Assets\Icons\tilia.png"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
 
@@ -33,7 +34,7 @@
                 <!-- Header left mini grid -->
                 <Grid x:Name="HeaderLeftGrid">
                     <Grid x:Name="IconLabelGrid" Width="164" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Image x:Name="TiliaIcon"  Source="/tilia.png" Width="73" Height="70" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Image x:Name="TiliaIcon"  Source="/Assets/Icons/tilia.png" Width="73" Height="70" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         <Label x:Name="TiliaLabel" Foreground="#DDFFFFFF" FontFamily="DM Sans" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Normal">Tilia</Label>
                     </Grid>
                 </Grid>

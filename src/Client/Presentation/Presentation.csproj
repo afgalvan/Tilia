@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="tilia.png" />
+    <None Remove="Assets\Icons\tilia.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="tilia.png" />
+    <Resource Include="Assets\Icons\tilia.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
