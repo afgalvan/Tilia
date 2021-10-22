@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Extensions" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 
 </Project>

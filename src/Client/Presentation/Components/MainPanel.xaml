@@ -43,10 +43,11 @@
 
         <!-- Right Panel -->
         <materialDesign:Card x:Name="ButtonsCard" Grid.Row="1">
-            <StackPanel Orientation="Vertical">
+            <StackPanel x:Name="ButtonStack" Orientation="Vertical">
+
 
                 <!-- Dashboard button -->
-                <Button x:Name="DashboardButton" Height="45" Cursor="Hand" Background="#00000000" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="200" Margin="0,20,0,0">
+                <Button x:Name="DashboardButton" Height="45" Cursor="Hand" Background="#00000000" Width="200" Margin="0,20,0,0" Click="DashboardButton_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
                     <StackPanel x:Name="DashboardStackPanel" Orientation="Horizontal" Margin="7,0,0,0">
                         <materialDesign:PackIcon x:Name="DashboardIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="0,0,10,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="DashboardTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="0,2,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -56,11 +57,11 @@
                 </Button>
 
                 <!-- Medical Appointments button -->
-                <Button x:Name="MedicalAppointmentButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
+                <Button x:Name="MedicalAppointmentButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0" Click="MedicalAppointmentButton_Click">
                     <StackPanel x:Name="MedicalAppointmentStackPanel" Orientation="Horizontal">
                         <materialDesign:PackIcon x:Name="MedicalAppointmentIcon" Kind="MedicalBag" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="MedicalAppointmentTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
-                            Citas médicas
+                            Citas médicas 
                         </TextBlock>
                     </StackPanel>
                 </Button>
