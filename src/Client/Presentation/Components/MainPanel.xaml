@@ -51,10 +51,10 @@
             <StackPanel x:Name="ButtonStack" Orientation="Vertical">
 
                 <!-- Dashboard button -->
-                <Button x:Name="DashboardButton" Height="45" Cursor="Hand" Background="#00000000" Width="200" Margin="0,20,0,0" Click="DashboardButton_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
+                <Button x:Name="DashboardButton" Height="45" Cursor="Hand" Background="#6AB9B4" Width="200" Margin="0,20,0,0" Click="DashboardButton_Click" Foreground="{x:Null}" BorderBrush="{x:Null}">
                     <StackPanel x:Name="DashboardStackPanel" Orientation="Horizontal" Margin="7,0,0,0" Width="180">
-                        <materialDesign:PackIcon x:Name="DashboardIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="7,0,10,0" Foreground="#FFA3AED0" />
-                        <TextBlock x:Name="DashboardTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="0,2,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
+                        <materialDesign:PackIcon x:Name="DashboardIcon" Kind="ViewDashboard" Width="24" Height="24" Margin="7,0,10,0" Foreground="White" />
+                        <TextBlock x:Name="DashboardTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="White" Margin="0,2,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
                             Dashboard
                         </TextBlock>
                     </StackPanel>
@@ -71,7 +71,7 @@
                 </Button>
 
                 <!-- Clinical histories button -->
-                <Button x:Name="ClinicalHistoriesButton" Height="45" Background="{x:Null}" Cursor="Hand" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
+                <Button x:Name="ClinicalHistoriesButton" Click="ClinicalHistoriesButton_Click" Height="45" Background="{x:Null}" Cursor="Hand" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="ClinicalHistoriesStackPanel" Orientation="Horizontal" Width="180">
                         <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon" Kind="FolderOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="ClinicalHistoriesTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -81,7 +81,7 @@
                 </Button>
 
                 <!-- Medical notes button -->
-                <Button Click="MedicalAppointmentButton_Click"  x:Name="MedicalNotesButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
+                <Button x:Name="MedicalNotesButton" Click="MedicalNotesButton_Click" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="MedicalNotesStackPanel" Orientation="Horizontal" Width="180">
                         <materialDesign:PackIcon x:Name="MedicalNotesIcon" Kind="NoteOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="MedicalNotesTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -91,7 +91,7 @@
                 </Button>
 
                 <!-- Medical orders button -->
-                <Button Click="MedicalAppointmentButton_Click"  x:Name="MedicalOrdersButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
+                <Button x:Name="MedicalOrdersButton" Click="MedicalOrdersButton_Click" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="MedicalOrdersStackPanel" Orientation="Horizontal" Width="180">
                         <materialDesign:PackIcon x:Name="MedicalOrdersIcon" Kind="WalletOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="MedicalOrdersTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -101,7 +101,7 @@
                 </Button>
 
                 <!-- Users button -->
-                <Button Click="MedicalAppointmentButton_Click"  x:Name="UsersButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
+                <Button x:Name="UsersButton" Click="UsersButton_Click" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="UsersStackPanel" Orientation="Horizontal" Margin="0,0,0,0" Width="180">
                         <materialDesign:PackIcon x:Name="UsersIcon" Kind="ShieldAccountOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" />
                         <TextBlock x:Name="UsersTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -111,7 +111,7 @@
                 </Button>
 
                 <!-- Config button -->
-                <Button Click="MedicalAppointmentButton_Click"  x:Name="ConfigButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
+                <Button x:Name="ConfigButton" Click="ConfigButton_Click" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,15,0,0">
                     <StackPanel x:Name="ConfigStackPanel" Orientation="Horizontal" Margin="0,0,0,0" Width="180">
                         <materialDesign:PackIcon x:Name="ConfigIcon" Kind="CogOutline" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <TextBlock x:Name="ConfigTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">
@@ -121,7 +121,7 @@
                 </Button>
 
                 <!-- Log out button -->
-                <Button Click="MedicalAppointmentButton_Click"  x:Name="LogoutButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,55,0,0">
+                <Button Click="LogoutButton_Click" x:Name="LogoutButton" Height="45" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Width="205" Margin="0,60,0,0" VerticalAlignment="Bottom">
                     <StackPanel x:Name="LogoutStackPanel" Orientation="Horizontal" Margin="0,0,0,0" Width="180">
                         <materialDesign:PackIcon x:Name="LogoutIcon" Kind="Logout" Width="24" Height="24" Margin="10,0,0,0" Foreground="#FFA3AED0" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <TextBlock x:Name="LogoutTextBlock" FontSize="15" FontFamily="DM Sans" Foreground="#A3AED0" Margin="10,3,48,0" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontWeight="Normal">

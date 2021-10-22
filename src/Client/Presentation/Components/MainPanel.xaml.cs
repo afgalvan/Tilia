@@ -15,7 +15,6 @@ namespace Presentation.Components
         public MainPanel()
         {
             InitializeComponent();
-            ChangeDashboardColors();
             ContentArea.Content = new DashboardUserControl();
         }
 
@@ -28,6 +27,36 @@ namespace Presentation.Components
         private void MedicalAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalAppointmentTextBlock, MedicalAppointmentIcon);
+        }
+
+        private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
+        }
+
+        private void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, MedicalNotesTextBlock, MedicalNotesIcon);
+        }
+
+        private void UsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, UsersTextBlock, UsersIcon);
+        }
+
+        private void ConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, ConfigTextBlock, ConfigIcon);
+        }
+
+        private void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, MedicalOrdersTextBlock, MedicalOrdersIcon);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, LogoutTextBlock, LogoutIcon);
         }
 
         private void ToggleButtonColor(object sender, TextBlock textBlock, PackIcon icon)
@@ -44,19 +73,16 @@ namespace Presentation.Components
             ButtonStack.Children.OfType<Button>()
                 .ToList().ForEach(button => button.Background = Brushes.White);
 
-            IEnumerable<TextBlock> textBlocks = new[] { DashboardTextBlock, MedicalAppointmentTextBlock };
-            IEnumerable<PackIcon> icons = new[] { DashboardIcon, MedicalAppointmentIcon };
+            IEnumerable<TextBlock> textBlocks = new[] { DashboardTextBlock, MedicalAppointmentTextBlock,
+                ClinicalHistoriesTextBlock, MedicalNotesTextBlock, UsersTextBlock, ConfigTextBlock,
+                MedicalOrdersTextBlock, LogoutTextBlock };
+            IEnumerable<PackIcon> icons = new[] { DashboardIcon, MedicalAppointmentIcon,
+                ClinicalHistoriesIcon, MedicalNotesIcon, UsersIcon, ConfigIcon, MedicalOrdersIcon, LogoutIcon
+            };
 
             var defaultColor = (Brush)new BrushConverter().ConvertFrom("#FFA3AED0");
             _ = textBlocks.Zip(icons, (t, i) => i.Foreground = t.Foreground = defaultColor)
                 .ToList();
-        }
-
-        private void ChangeDashboardColors()
-        {
-            DashboardButton.Background = (Brush)new BrushConverter().ConvertFrom("#FF6AB9B4");
-            DashboardTextBlock.Foreground = Brushes.White;
-            DashboardIcon.Foreground = Brushes.White;
         }
     }
 }
