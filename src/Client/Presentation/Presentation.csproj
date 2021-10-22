@@ -22,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components\MedicalAppointment\" />
+    <Folder Include="Components\ClinicalHistories\" />
+    <Folder Include="Components\MedicalNotes\" />
+    <Folder Include="Components\MedicalOrders\" />
+    <Folder Include="Components\Config\" />
+    <Folder Include="Components\Users\" />
     <Folder Include="Extensions" />
     <Folder Include="Utils\" />
   </ItemGroup>
