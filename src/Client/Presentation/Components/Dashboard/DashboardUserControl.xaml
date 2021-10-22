@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Presentation.Components.Dashboard"
              mc:Ignorable="d" 
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="5*"/>
@@ -19,16 +19,26 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <materialDesign:Card Grid.ColumnSpan="2" Margin="40,40,0,0" >
+        <!-- Graphic card -->
+        <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="2" Margin="40,40,0,0" >
+            <Grid x:Name="GraphicCardGrid" Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="9*"/>
+                </Grid.RowDefinitions>
+            </Grid>
         </materialDesign:Card>
 
-        <materialDesign:Card Grid.Row="1" Margin="40,40,0,40">
+        <!-- Satisfaction card -->
+        <materialDesign:Card x:Name="SatisfactionCard" Grid.Row="1" Margin="40,40,0,40" Background="White">
         </materialDesign:Card>
 
-        <materialDesign:Card Grid.Row="1" Grid.Column="1" Margin="40,40,40,150">
+        <!-- Total patients card -->
+        <materialDesign:Card x:Name="TotalPatientsCard" Grid.Row="1" Grid.Column="1" Margin="40,40,40,150" Background="White">
         </materialDesign:Card>
 
-        <materialDesign:Card Grid.Column="2" Margin="40,40,40,0">
+        <!-- Schedule card -->
+        <materialDesign:Card x:Name="ScheduleCard" Grid.Column="2" Margin="40,40,40,0" Background="White">
         </materialDesign:Card>
     </Grid>
 </UserControl>
