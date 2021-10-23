@@ -13,11 +13,8 @@ namespace Presentation.Components
 {
     public partial class MainPanel
     {
-        private readonly SelectionUtil _selectionUtil;
-
-        public MainPanel(SelectionUtil selectionUtil)
+        public MainPanel()
         {
-            _selectionUtil = selectionUtil;
             InitializeComponent();
             ContentArea.Content = new DashboardUserControl();
         }
@@ -78,9 +75,9 @@ namespace Presentation.Components
 
         private void ChangeToDefaultColor(Panel stackPanel)
         {
-            _selectionUtil.RestorePanelButtonsBackground(stackPanel, Brushes.White);
-            _selectionUtil.RestoreElementsForeground(GetToolBarIcons(), "#FFA3AED0");
-            _selectionUtil.RestoreElementsForeground(GetToolBarTextBlocks(), "#FFA3AED0");
+            SelectionUtil.RestorePanelButtonsBackground(stackPanel, Brushes.White);
+            SelectionUtil.RestoreElementsForeground(GetToolBarIcons(), ColorPalette.Gray);
+            SelectionUtil.RestoreElementsForeground(GetToolBarTextBlocks(), ColorPalette.Gray);
         }
 
         private IEnumerable<TextBlock> GetToolBarTextBlocks()
@@ -107,7 +104,7 @@ namespace Presentation.Components
         private static void ChangeSelectedButtonColor(Control selectedButton,
             TextBlock textBlock, Control icon)
         {
-            selectedButton.Background = (Brush)new BrushConverter().ConvertFrom("#FF6AB9B4");
+            selectedButton.Background = ColorPalette.Main;
             textBlock.Foreground      = Brushes.White;
             icon.Foreground           = Brushes.White;
         }
