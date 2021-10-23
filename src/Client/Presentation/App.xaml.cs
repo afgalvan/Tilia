@@ -11,6 +11,7 @@ namespace Presentation
     public partial class App
     {
         private readonly ServiceProvider _serviceProvider;
+
         public App()
         {
             var services = new ServiceCollection();

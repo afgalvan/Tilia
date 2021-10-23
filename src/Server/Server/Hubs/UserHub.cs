@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Users.Create;
 using MapsterMapper;
@@ -16,30 +16,29 @@ namespace Server.Hubs
     [SignalRHub("/hubs/users")]
     public class UserHub : Hub
     {
-        private readonly IMediator _mediator;
-        private readonly IMapper   _mapper;
+        private readonly IMediator            _mediator;
+        private readonly IMapper              _mapper;
 
         public UserHub(IMediator mediator, IMapper mapper)
         {
-            _mediator = mediator;
-            _mapper   = mapper;
+            _mediator       = mediator;
+            _mapper         = mapper;
         }
 
         [SignalRMethod("create")]
         [return: SignalRReturn(typeof(AccessToken), StatusCodes.Status201Created)]
-        public async Task Create([SignalRArg] CreateUserRequest createRequest,
-            CancellationToken cancellation)
+        public async Task Create([SignalRArg] CreateUserRequest createRequest)
         {
-            var createUserCommand = _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
-            await Clients.Caller.SendAsync("create", createUserCommand, cancellation);
+            var createUserCommand =
+                _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
+            await Clients.Caller.SendAsync("create", createUserCommand);
         }
 
         [SignalRMethod("getAll", OperationType.Get)]
         [return: SignalRReturn(typeof(IEnumerable<UserResponse>))]
-        public async Task GetAll([SignalRArg] AccessToken getAllRequest,
-            CancellationToken cancellation)
+        public async Task GetAll([SignalRArg] AccessToken getAllRequest)
         {
-            await Clients.Caller.SendAsync("getAll", getAllRequest, cancellation);
+            await Clients.Caller.SendAsync("getAll", getAllRequest);
         }
     }
 }
