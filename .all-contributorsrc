@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "afgalvan",
+      "name": "Andrés Galván",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62343874?v=4",
+      "profile": "https://github.com/afgalvan",
+      "contributions": [
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Tilia",
+  "projectOwner": "afgalvan",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
