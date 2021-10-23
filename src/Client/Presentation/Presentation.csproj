@@ -55,7 +55,9 @@
     <Folder Include="Components\MedicalOrders\" />
     <Folder Include="Components\Configuration\" />
     <Folder Include="Components\Users\" />
+    <Folder Include="Controllers" />
     <Folder Include="Utils\" />
+    <Folder Include="Windows" />
   </ItemGroup>
 
 </Project>

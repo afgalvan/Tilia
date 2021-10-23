@@ -2,11 +2,11 @@
 
 namespace Presentation.Utils
 {
-    public class ColorUtil
+    public class ColorsUtil
     {
         private readonly BrushConverter _brushConverter;
 
-        public ColorUtil(BrushConverter brushConverter)
+        public ColorsUtil(BrushConverter brushConverter)
         {
             _brushConverter = brushConverter;
         }
