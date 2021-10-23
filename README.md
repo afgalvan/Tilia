@@ -52,7 +52,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/afgalvan"><img src="https://avatars.githubusercontent.com/u/62343874?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés Galván</b></sub></a><br /><a href="https://github.com/afgalvan/Tilia/commits?author=afgalvan" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/jwar28"><img src="https://avatars.githubusercontent.com/u/64824859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Javier Guerra</b></sub></a><br /><a href="https://github.com/afgalvan/Tilia/commits?author=jwar28" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jwar28"><img src="https://avatars.githubusercontent.com/u/64824859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Javier Guerra</b></sub></a><br /><a href="https://github.com/afgalvan/Tilia/commits?author=jwar28" title="Code">💻</a> <a href="#design-jwar28" title="Design">🎨</a></td>
   </tr>
 </table>
 
