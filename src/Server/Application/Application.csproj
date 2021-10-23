@@ -16,8 +16,18 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Users\Authenticate" />
-      <Folder Include="Users\GetAll" />
+      <Compile Remove="Users\Authenticate\**" />
+      <Compile Remove="Users\GetAll\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Users\Authenticate\**" />
+      <EmbeddedResource Remove="Users\GetAll\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Users\Authenticate\**" />
+      <None Remove="Users\GetAll\**" />
     </ItemGroup>
 
 </Project>

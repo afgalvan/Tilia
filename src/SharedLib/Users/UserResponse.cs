@@ -12,6 +12,5 @@ namespace SharedLib.Users
 
         [Required]
         public string Email { get; set; }
-
     }
 }
