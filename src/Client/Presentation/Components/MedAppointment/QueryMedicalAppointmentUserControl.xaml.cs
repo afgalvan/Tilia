@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Presentation.Components.MedAppointment
@@ -10,6 +11,10 @@ namespace Presentation.Components.MedAppointment
         public QueryMedicalAppointmentUserControl()
         {
             InitializeComponent();
+        }
+
+        private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

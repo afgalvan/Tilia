@@ -16,7 +16,7 @@
                     <DataGridTextColumn Header="Estado"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="Agendar cita" Width="100" Height="30" Margin="0,30,89,0" HorizontalAlignment="Right" Click="Button_Click" Background="#FF6AB9B4" BorderBrush="{x:Null}" Foreground="White" FontWeight="Normal" FontFamily="DM Sans"></Button>
+            <Button x:Name="AddAppointmentButton" Content="Agendar cita" Width="100" Height="30" Margin="0,30,89,0" HorizontalAlignment="Right" Background="#FF6AB9B4" BorderBrush="{x:Null}" Foreground="White" FontWeight="Normal" FontFamily="DM Sans" Click="AddAppointmentButton_Click"></Button>
         </StackPanel>
 
     </Grid>
