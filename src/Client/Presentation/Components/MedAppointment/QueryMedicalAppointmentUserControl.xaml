@@ -1,10 +1,9 @@
-<UserControl x:Class="Presentation.Components.MedicalAppointment.MedicalAppointmentUserControl"
+<UserControl x:Class="Presentation.Components.MedAppointment.QueryMedicalAppointmentUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Presentation.Components.MedicalAppointment"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Presentation.Components.MedAppointment"
              mc:Ignorable="d" 
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
     <Grid x:Name="MainGrid">
@@ -19,6 +18,6 @@
             </DataGrid>
             <Button Content="Agendar cita" Width="100" Height="30" Margin="0,30,89,0" HorizontalAlignment="Right" Click="Button_Click" Background="#FF6AB9B4" BorderBrush="{x:Null}" Foreground="White" FontWeight="Normal" FontFamily="DM Sans"></Button>
         </StackPanel>
-        
+
     </Grid>
 </UserControl>
