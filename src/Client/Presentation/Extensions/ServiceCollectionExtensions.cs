@@ -12,6 +12,7 @@ namespace Presentation.Extensions
             services.AddScoped<MainPanel>();
             services.AddSingleton<ColorUtil>();
             services.AddSingleton<SelectionUtil>();
+            services.AddSingleton<ContentAreaUtil>();
             services.AddScoped<BrushConverter>();
         }
     }

@@ -6,6 +6,7 @@ using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
 using MahApps.Metro.Controls.Dialogs;
 using Presentation.Components.ClinicalHistories;
+using Presentation.Components.MedAppointment;
 using Presentation.Components.MedicalAppointment;
 using Presentation.Utils;
 
@@ -14,30 +15,32 @@ namespace Presentation.Components
     public partial class MainPanel
     {
         private readonly SelectionUtil _selectionUtil;
+        private readonly ContentAreaUtil _contentAreaUtil;
 
-        public MainPanel(SelectionUtil selectionUtil)
+        public MainPanel(SelectionUtil selectionUtil, ContentAreaUtil contentAreaUtil)
         {
             _selectionUtil = selectionUtil;
+            _contentAreaUtil = contentAreaUtil;
             InitializeComponent();
-            ContentArea.Content = new DashboardUserControl();
+            _contentAreaUtil.DisplayContentInArea(MainPanelContentArea, new DashboardUserControl());
         }
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, DashboardTextBlock, DashboardIcon);
-            ContentArea.Content = new DashboardUserControl();
+            _contentAreaUtil.DisplayContentInArea(MainPanelContentArea, new DashboardUserControl());
         }
 
         private void MedicalAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalAppointmentTextBlock, MedicalAppointmentIcon);
-            ContentArea.Content = new MedicalAppointmentUserControl();
+            _contentAreaUtil.DisplayContentInArea(MainPanelContentArea, new DefaultMedAppointmentPanelUserControl());
         }
 
         private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            ContentArea.Content = new ClinicalHistoryDataUserControl();
+            _contentAreaUtil.DisplayContentInArea(MainPanelContentArea, new ClinicalHistoryDataUserControl());
         }
 
         private async void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
