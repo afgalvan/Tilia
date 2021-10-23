@@ -4,7 +4,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <h1 align="center">
     <a href="https://tilia-web.vercel.app" target="_blank">
-        <img src="docs/assets/tilia.png" alt="Tilia logo" width="20%" title="Tilia logo"/>
+        <img src="docs/assets/tilia.png" alt="Tilia logo" width="20%" title="Tilia website"/>
     </a>
     <div>Tilia</div>
 </h1>
