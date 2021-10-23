@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Presentation.Components.MedicalAppointment"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Presentation.Components.MedicalAppointment.RegisterMedicalAppointmentUserControl"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="800">
+             d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
     <Grid>
         
-        <materialDesign:Card HorizontalAlignment="Left" Margin="247,156,0,0" VerticalAlignment="Top" Background="White">
+        <materialDesign:Card HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"></ColumnDefinition>
