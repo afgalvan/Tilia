@@ -15,6 +15,8 @@
             <Setter Property="FontFamily" Value="DM Sans" />
         </Style>
     </Window.Resources>
+
+    <!--Main content-->
     <Grid x:Name="MainGrid"
           Background="#FFF4F7FE">
 
@@ -54,11 +56,12 @@
                 <!--Left header-->
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"></ColumnDefinition>
-                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft"
+                    <StackPanel Grid.Column="1" Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
                                 Margin="0, 0, 50, 0">
                         <mah:Badged Badge="{Binding Path=BadgeValue}"
                                     BadgePlacementMode="BottomRight" Margin="0, 0, 20, 0"
@@ -72,11 +75,14 @@
                                     BadgePlacementMode="BottomRight" Margin="0, 0, 20, 0"
                                     Height="32" Width="32" Cursor="Hand">
                             <Button>
-                                <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                                <StackPanel Orientation="Horizontal"
+                                            FlowDirection="LeftToRight">
                                     <materialDesign:PackIcon Kind="Add"
-                                                         Foreground="#A3AED0" Margin="0, 0, -5, 0" />
+                                                             Foreground="#A3AED0"
+                                                             Margin="0, 0, -5, 0" />
                                     <materialDesign:PackIcon Kind="ExpandMore"
-                                                         Foreground="#A3AED0" Margin="0, 0, -4, 0" />
+                                                             Foreground="#A3AED0"
+                                                             Margin="0, 0, -4, 0" />
                                 </StackPanel>
                             </Button>
                         </mah:Badged>
@@ -90,7 +96,8 @@
                         </mah:Badged>
                     </StackPanel>
 
-                    <materialDesign:Card Grid.Row="0" x:Name="SearchBarCard" Background="#FFF4F7FE"
+                    <materialDesign:Card Grid.Row="0" Grid.Column="0" x:Name="SearchBarCard"
+                                         Background="#FFF4F7FE"
                                          Width="400" Height="30" HorizontalAlignment="Left"
                                          Margin="30, 0, 0, 0">
                         <DockPanel x:Name="SearchDockPanel" LastChildFill="True">
@@ -100,7 +107,8 @@
                                                      Margin="5,0,0,0" />
                             <TextBox BorderThickness="0" Background="{x:Null}"
                                      DockPanel.Dock="Left"
-                                     BorderBrush="{x:Null}" Foreground="#FF99A3C4" Width="Auto"
+                                     BorderBrush="{x:Null}" Foreground="#FF99A3C4"
+                                     Width="Auto"
                                      Margin="5, 0, 10, 0" Height="25" CaretBrush="{x:Null}"
                                      SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}"
                                      FontFamily="DM Sans" VerticalAlignment="Center"
@@ -109,12 +117,11 @@
                     </materialDesign:Card>
                 </Grid>
             </Grid>
-
         </materialDesign:Card>
 
-
         <!-- Right Panel -->
-        <materialDesign:Card x:Name="ButtonsCard" Grid.Row="1" Background="White">
+        <materialDesign:Card x:Name="ButtonsCard" Grid.Row="1" Grid.Column="0"
+                             Background="White">
             <StackPanel x:Name="ButtonStack" Orientation="Vertical">
 
                 <!-- Dashboard button -->
@@ -248,7 +255,7 @@
                 </Button>
 
                 <!-- Log out button -->
-                <Button Click="LogoutButton_Click" x:Name="LogoutButton" Height="45"
+                <Button x:Name="LogoutButton" Click="LogoutButton_Click" Height="45"
                         Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}"
                         Foreground="{x:Null}" Width="205" Margin="0,60,0,0"
                         VerticalAlignment="Bottom">
@@ -267,9 +274,7 @@
                         </TextBlock>
                     </StackPanel>
                 </Button>
-
             </StackPanel>
-
         </materialDesign:Card>
 
         <!-- Content Area -->
