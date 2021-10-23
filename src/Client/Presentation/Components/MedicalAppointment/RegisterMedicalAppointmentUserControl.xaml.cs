@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 ﻿using System.Windows.Controls;
+=======
+﻿using System.Windows;
+using System.Windows.Controls;
+>>>>>>> Stashed changes
 
 namespace Presentation.Components.MedicalAppointment
 {
