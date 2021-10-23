@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace Presentation.Notifications
 {
-    public class AppointmentAlert
+    public static class AppointmentAlert
     {
         public static void Show()
         {
