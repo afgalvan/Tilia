@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <h1 align="center">
-    <a href="https://github.com/afgalvan/Tilia" target="_blank">
+    <a href="https://tilia-web.vercel.app" target="_blank">
         <img src="docs/assets/tilia.png" alt="Tilia logo" width="20%" title="Tilia logo"/>
     </a>
     <div>Tilia</div>
