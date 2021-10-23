@@ -8,9 +8,9 @@ namespace Presentation
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
         public App()
         {
             var services = new ServiceCollection();

@@ -7,6 +7,7 @@ namespace Application.Test
         [SetUp]
         public void Setup()
         {
+            // Setup test
         }
 
         [Test]
