@@ -7,6 +7,7 @@ namespace Integration.Test
         [Fact]
         public void Test1()
         {
+            Assert.Null(null);
         }
     }
 }

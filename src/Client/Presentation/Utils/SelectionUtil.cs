@@ -39,6 +39,5 @@ namespace Presentation.Utils
             Brush defaultColor = _colorUtil.FromHex(hexCodeColor);
             controls.ToList().ForEach(control => control.Foreground = defaultColor);
         }
-
     }
 }

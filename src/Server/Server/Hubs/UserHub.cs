@@ -28,16 +28,16 @@ namespace Server.Hubs
         [SignalRMethod("create")]
         [return: SignalRReturn(typeof(AccessToken), StatusCodes.Status201Created)]
         public async Task Create([SignalRArg] CreateUserRequest createRequest,
-            CancellationToken cancellation = default)
+            CancellationToken cancellation)
         {
             var createUserCommand = _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
-            await Clients.Caller.SendAsync("create", createRequest, cancellation);
+            await Clients.Caller.SendAsync("create", createUserCommand, cancellation);
         }
 
         [SignalRMethod("getAll", OperationType.Get)]
         [return: SignalRReturn(typeof(IEnumerable<UserResponse>))]
         public async Task GetAll([SignalRArg] AccessToken getAllRequest,
-            CancellationToken cancellation = default)
+            CancellationToken cancellation)
         {
             await Clients.Caller.SendAsync("getAll", getAllRequest, cancellation);
         }
