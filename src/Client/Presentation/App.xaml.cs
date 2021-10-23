@@ -2,6 +2,7 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components;
 using Presentation.Extensions;
+using Presentation.Notifications;
 
 namespace Presentation
 {
@@ -24,6 +25,7 @@ namespace Presentation
             base.OnStartup(e);
             var mainPanel = _serviceProvider.GetService<MainPanel>();
             mainPanel?.Show();
+            AppointmentAlert.Show();
         }
     }
 }
