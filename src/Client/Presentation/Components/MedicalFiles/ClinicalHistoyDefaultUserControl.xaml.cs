@@ -9,5 +9,10 @@
         {
             InitializeComponent();
         }
+
+        private void BasicDataButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

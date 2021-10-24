@@ -32,7 +32,8 @@
                                          VerticalAlignment="Center"
                                          FontWeight="Bold"/>
 
-                <TextBlock Foreground="#FF99A3C4"
+                <TextBlock x:Name="BackToQueryAppoitmentTextBlock"
+                           Foreground="#FF99A3C4"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontSize="15" 
@@ -45,7 +46,10 @@
         </Button>
 
 
-        <materialDesign:Card HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+        <materialDesign:Card HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Background="White">
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"></ColumnDefinition>

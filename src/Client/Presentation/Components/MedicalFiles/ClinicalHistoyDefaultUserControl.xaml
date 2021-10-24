@@ -7,15 +7,27 @@
              mc:Ignorable="d"
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
     <Grid x:Name="MainGrid">
-        <Grid x:Name="BasicDataGrid" Margin="20">
+
+        <Grid x:Name="BasicDataGrid"
+              Margin="20">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="12*"/>
+                <RowDefinition Height="14*"/>
             </Grid.RowDefinitions>
 
-            <Label FontSize="34" HorizontalAlignment="Center" VerticalAlignment="Center">Datos generales</Label>
-            <materialDesign:Card Grid.Row="1">
-                <Grid x:Name="CardGrid" Background="White">
+            <Label FontSize="34"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+                Datos generales
+            </Label>
+
+            <materialDesign:Card x:Name="PatientBasicInformationCard"
+                Grid.Row="1">
+
+                <Grid x:Name="CardGrid"
+                      Background="White">
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="20*"/>
@@ -27,11 +39,39 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="BasicDataButton" Background="White" Content="Informacion basica" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
-                    <Button Grid.Row="0" Grid.Column="1"  x:Name="ContactInfoButton" Background="White" Content="Informacion de contacto" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
-                    <Button Grid.Row="0" Grid.Column="2" x:Name="MedicalInfoButton" Background="White" Content="Informacion medica" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0"/>
+                    <Button x:Name="BasicDataButton"
+                            Background="{x:Null}"
+                            Content="Informacion basica"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            BorderThickness="0"
+                            Click="BasicDataButton_Click"
+                            Foreground="#FF99A3C4"
+                            BorderBrush="{x:Null}"/>
 
-                    <!-- Content Area -->
+                    <Button Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="ContactInfoButton"
+                            Background="{x:Null}"
+                            Content="Informacion de contacto"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Foreground="#FF99A3C4"
+                            BorderBrush="{x:Null}"/>
+
+                    <Button Grid.Row="0"
+                            Grid.Column="2"
+                            x:Name="MedicalInfoButton"
+                            Background="{x:Null}"
+                            Content="Informacion medica"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Stretch"
+                            BorderThickness="0"
+                            Foreground="#FF99A3C4"
+                            BorderBrush="{x:Null}"/>
+
+                    <!-- Content Area --> 
                     <ContentControl x:Name="ContentArea" Grid.ColumnSpan="3" Grid.Column="0"
                                     Grid.Row="1" Margin="20"/>
                 </Grid>
