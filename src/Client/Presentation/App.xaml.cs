@@ -1,6 +1,6 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Components;
+using Presentation.Components.MainWindow;
 using Presentation.Extensions;
 
 namespace Presentation
@@ -21,8 +21,8 @@ namespace Presentation
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var mainPanel = _serviceProvider.GetService<MainPanel>();
-            mainPanel?.Show();
+            var mainWindow = _serviceProvider.GetService<MainWindow>();
+            mainWindow?.Show();
         }
     }
 }
