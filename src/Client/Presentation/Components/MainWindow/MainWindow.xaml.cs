@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MaterialDesignThemes.Wpf;
+using Presentation.Components.Dashboard;
 using Presentation.Utils;
 
 namespace Presentation.Components.MainWindow
@@ -19,10 +20,10 @@ namespace Presentation.Components.MainWindow
             InitializeComponent();
         }
 
-        private void ChangeContentAreaDisplay(UserControl content)
+        private void ChangeContentAreaDisplay(UserControl content, ContentControl contentArea)
         {
             
-            WindowContentArea.Content = content;
+            contentArea.Content = content;
         }
 
         private void ToggleButtonColor(object sender, TextBlock textBlock, Control icon)

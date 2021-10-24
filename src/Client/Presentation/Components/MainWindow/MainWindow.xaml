@@ -480,6 +480,8 @@
             </StackPanel>
         </materialDesign:Card>
 
+
+
         <!-- Content Area -->
         <ContentControl x:Name="WindowContentArea"
                         Grid.Row="1"
