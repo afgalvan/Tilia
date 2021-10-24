@@ -10,31 +10,34 @@
 
     <Grid x:Name="MainGrid">
 
-        <Grid x:Name="QueryMedicalAppointmentGrid">
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
+                                             OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="8*"/>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
+            <Grid x:Name="QueryMedicalAppointmentGrid">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
 
-            <!-- Query Appointments labe -->
-            <Label x:Name="MainLabel"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Query Appointments labe -->
+                <Label x:Name="MainLabel"
                    Grid.Column="1"
                    FontSize="34"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom" FontFamily="DM Sans" FontWeight="Bold">
-                Consultar citas
-            </Label>
+                    Consultar citas
+                </Label>
 
-            <!-- Query Appointments DataGrid -->
-            <materialDesign:Card x:Name="MedAppointmentDataGridCard"
+                <!-- Query Appointments DataGrid -->
+                <materialDesign:Card x:Name="MedAppointmentDataGridCard"
                                  Grid.Row="1"
                                  Grid.ColumnSpan="3"
                                  Width="696"
@@ -42,22 +45,22 @@
                                  Margin="0,0,0,0"
                                  Background="White">
 
-                <DataGrid x:Name="MedicalAppointmentsDataGrid"
+                    <DataGrid x:Name="MedicalAppointmentsDataGrid"
                           HorizontalAlignment="Center"
                           Width="696"
                           Margin="0,60,0,50">
 
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Documento" Width="3*"/>
-                        <DataGridTextColumn Header="Nombre y Apellido" Width="3*"/>
-                        <DataGridTextColumn Header="Estado" Width="3*"/>
-                    </DataGrid.Columns>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Documento" Width="3*"/>
+                            <DataGridTextColumn Header="Nombre y Apellido" Width="3*"/>
+                            <DataGridTextColumn Header="Estado" Width="3*"/>
+                        </DataGrid.Columns>
 
-                </DataGrid>
-            </materialDesign:Card>
+                    </DataGrid>
+                </materialDesign:Card>
 
-            <!-- Schedule Appointment Button -->
-            <Button x:Name="ScheduleAppointmentButton"
+                <!-- Schedule Appointment Button -->
+                <Button x:Name="ScheduleAppointmentButton"
                     Grid.Row="2"
                     Grid.Column="2"
                     Content="Agendar cita"
@@ -70,9 +73,11 @@
                     FontFamily="DM Sans"
                     Click="AddAppointmentButton_Click"
                     Margin="15,0,0,0">
-            </Button>
+                </Button>
 
-        </Grid>
+            </Grid>
 
+        </materialDesign:TransitioningContent>
+        
     </Grid>
 </UserControl>
