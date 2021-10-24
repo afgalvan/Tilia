@@ -13,17 +13,18 @@ namespace Server.Test
         [Test]
         public void TestConnectionWithServer()
         {
-            /*const string  url        = @"https://localhost:5001/hubs/users";
+            const string  url        = @"https://localhost:5001/hubs/users";
             HubConnection connection = new HubConnectionBuilder()
                 .WithUrl(url)
                 .AddMessagePackProtocol()
                 .Build();
-            var cts = new CancellationTokenSource();
-            await connection.StartAsync(cts.Token);
-            await connection.SendAsync("create", new CreateUserRequest
+            var cts     = new CancellationTokenSource();
+            // await connection.StartAsync(cts.Token);
+            var request = new CreateUserRequest()
             {
-                Name = "Andres"
-            }, cts.Token);*/
+                Name = "John Doe"
+            };
+            // await connection.SendAsync("create", request);
         }
     }
 }
