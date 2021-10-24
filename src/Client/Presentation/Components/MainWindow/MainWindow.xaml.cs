@@ -19,6 +19,12 @@ namespace Presentation.Components.MainWindow
             InitializeComponent();
         }
 
+        private void ChangeContentAreaDisplay(UserControl content)
+        {
+            
+            WindowContentArea.Content = content;
+        }
+
         private void ToggleButtonColor(object sender, TextBlock textBlock, Control icon)
         {
             ChangeToDefaultColor(ButtonStack);

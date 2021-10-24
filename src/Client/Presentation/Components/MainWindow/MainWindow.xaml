@@ -481,8 +481,8 @@
         </materialDesign:Card>
 
         <!-- Content Area -->
-        <ContentControl x:Name="MainPanelContentArea"
-                        Grid.Column="1"
-                        Grid.Row="1" />
+        <ContentControl x:Name="WindowContentArea"
+                        Grid.Row="1"
+                        Grid.Column="1"/>
     </Grid>
 </mah:MetroWindow>
