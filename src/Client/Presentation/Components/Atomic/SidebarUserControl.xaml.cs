@@ -6,7 +6,7 @@ using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Dashboard;
 using Presentation.Components.MedAppointment;
-using Presentation.Components.MedicalRecords;
+using Presentation.Components.MedicalFiles;
 using Presentation.Utils;
 using Presentation.Windows;
 
@@ -37,7 +37,7 @@ namespace Presentation.Components.Atomic
         private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            _mainWindow.ChangeMainContentArea(new ClinicalHistoryDataUserControl());
+            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
         }
 
         private async void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
