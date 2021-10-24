@@ -1,7 +1,7 @@
 using System.Windows.Media;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Components.MainWindow;
 using Presentation.Utils;
+using Presentation.Windows;
 
 namespace Presentation.Extensions
 {
@@ -10,8 +10,7 @@ namespace Presentation.Extensions
         public static void AddPresentationServices(this IServiceCollection services)
         {
             services.AddScoped<MainWindow>();
-            services.AddSingleton<ColorUtil>();
-            services.AddSingleton<SelectionUtil>();
+            services.AddSingleton<ColorsUtil>();
             services.AddScoped<BrushConverter>();
         }
     }

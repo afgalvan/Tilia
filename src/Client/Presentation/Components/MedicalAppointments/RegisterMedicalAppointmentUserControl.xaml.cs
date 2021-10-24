@@ -1,12 +1,9 @@
-﻿using System.Windows.Controls;
-﻿using System.Windows.Controls;
-
-namespace Presentation.Components.MedicalAppointment
+﻿namespace Presentation.Components.MedAppointment
 {
     /// <summary>
     /// Interaction logic for RegisterMedicalAppointmentUserControl.xaml
     /// </summary>
-    public partial class RegisterMedicalAppointmentUserControl : UserControl
+    public partial class RegisterMedicalAppointmentUserControl
     {
         public RegisterMedicalAppointmentUserControl()
         {

@@ -5,6 +5,6 @@ namespace SharedLib.Auth
     public class AccessToken
     {
         [Required]
-        public string Token { get; set; }
+        public string Bearer { get; set; }
     }
 }

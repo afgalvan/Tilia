@@ -1,0 +1,44 @@
+<mah:MetroWindow x:Class="Presentation.Windows.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 Title="Tilia" Height="617" Width="1097"
+                 Icon="../../Assets/Icons/tilia.png"
+                 WindowStartupLocation="CenterScreen"
+                 WindowState="Maximized">
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily"
+                    Value="DM Sans" />
+        </Style>
+    </Window.Resources>
+
+    <!--Main content-->
+    <Grid x:Name="MainGrid"
+          Background="#FFF4F7FE">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.3*" />
+            <ColumnDefinition Width="9*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Header -->
+        <ContentControl x:Name="HeaderContentArea" Grid.ColumnSpan="3" Panel.ZIndex="1" />
+
+        <!-- Right Panel -->
+        <ContentControl x:Name="SideBarContentArea" Grid.Row="1" Grid.Column="0" />
+
+        <!-- Content Area -->
+        <ContentControl x:Name="MainContentArea" Grid.Row="1" Grid.Column="1" />
+    </Grid>
+</mah:MetroWindow>

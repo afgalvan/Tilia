@@ -1,0 +1,30 @@
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
+using SharedLib.Users;
+
+namespace Server.Test
+{
+    [TestFixture]
+    public class HubConnectionTest
+    {
+        [Test]
+        public void TestConnectionWithServer()
+        {
+            const string url = @"https://localhost:5001/hubs";
+            HubConnection connection = new HubConnectionBuilder()
+                .WithUrl(url)
+                .AddMessagePackProtocol()
+                .Build();
+            var cts = new CancellationTokenSource();
+            // await connection.StartAsync(cts.Token);
+            var request = new CreateUserRequest
+            {
+                Name = "John Doe"
+            };
+            // await connection.SendAsync("user/create", request);
+        }
+    }
+}

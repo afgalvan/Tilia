@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Reflection;
 using System.Text;
 using Domain.Users;
+using Hangfire;
+using Hangfire.Storage.SQLite;
 using Infrastructure.Persistence.Users;
 using Mapster;
 using MapsterMapper;
@@ -38,9 +40,21 @@ namespace Server.Extensions
 
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
+            services.ConfigureHangFire();
             services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IUserRepository, MySqlUserRepository>();
             services.AddScoped<IMapper, ServiceMapper>();
+        }
+
+        private static void ConfigureHangFire(this IServiceCollection services)
+        {
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSQLiteStorage()
+            );
+            services.AddHangfireServer();
         }
 
         private static TypeAdapterConfig GetTypeAdapterConfig()
@@ -83,7 +97,7 @@ namespace Server.Extensions
                 options.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "Tilia", Version = "v1" });
                 options.DocumentFilter<SignalRSwaggerGen.SignalRSwaggerGen>(new List<Assembly>
-                    { typeof(UserHub).Assembly });
+                    { typeof(UserHub).Assembly, typeof(AppointmentHub).Assembly });
             });
         }
     }

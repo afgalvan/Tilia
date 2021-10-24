@@ -1,18 +1,23 @@
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Components.MainWindow;
 using Presentation.Extensions;
+using Presentation.Notifications;
+using Presentation.Windows;
 
 namespace Presentation
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
+
         public App()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             var services = new ServiceCollection();
             services.AddPresentationServices();
             _serviceProvider = services.BuildServiceProvider();
@@ -23,6 +28,7 @@ namespace Presentation
             base.OnStartup(e);
             var mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow?.Show();
+            AppointmentAlert.Show();
         }
     }
 }
