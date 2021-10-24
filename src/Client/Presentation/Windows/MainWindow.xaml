@@ -41,4 +41,5 @@
         <!-- Content Area -->
         <ContentControl x:Name="MainContentArea" Grid.Row="1" Grid.Column="1" />
     </Grid>
+
 </mah:MetroWindow>
