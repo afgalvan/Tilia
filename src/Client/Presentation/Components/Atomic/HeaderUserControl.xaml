@@ -8,11 +8,10 @@
              mc:Ignorable="d"
              d:DesignHeight="54.64" d:DesignWidth="1097">
     <materialDesign:Card Grid.ColumnSpan="3"
-                         Background="#FF6AB9B4"
+                         Background="{StaticResource PrimaryColor}"
                          Panel.ZIndex="1">
 
-        <Grid x:Name="HeaderGrid"
-              Background="#FF6AB9B4">
+        <Grid x:Name="HeaderGrid">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2.3*" />
@@ -62,37 +61,25 @@
                             FlowDirection="RightToLeft"
                             Margin="0, 0, 50, 0">
 
-                    <mah:Badged Badge="{Binding Path=BadgeValue}"
-                                BadgePlacementMode="BottomRight"
-                                Margin="0, 0, 20, 0"
-                                Height="32" Width="32"
-                                Cursor="Hand">
+                    <Button Margin="0, 0, 20, 0"
+                            Height="32" Width="32"
+                            Cursor="Hand">
+                        <materialDesign:PackIcon Kind="UserOutline"
+                                                 Foreground="#A3AED0" />
+                    </Button>
 
-                        <Button>
-                            <materialDesign:PackIcon Kind="UserOutline"
-                                                     Foreground="#A3AED0" />
-                        </Button>
-
-                    </mah:Badged>
-
-                    <mah:Badged Badge="{Binding Path=BadgeValue}"
-                                BadgePlacementMode="BottomRight"
-                                Margin="0, 0, 20, 0"
-                                Height="32" Width="32" Cursor="Hand">
-
-                        <Button>
-                            <StackPanel Orientation="Horizontal"
-                                        FlowDirection="LeftToRight">
-                                <materialDesign:PackIcon Kind="Add"
-                                                         Foreground="#A3AED0"
-                                                         Margin="0, 0, -5, 0" />
-                                <materialDesign:PackIcon Kind="ExpandMore"
-                                                         Foreground="#A3AED0"
-                                                         Margin="0, 0, -4, 0" />
-                            </StackPanel>
-                        </Button>
-
-                    </mah:Badged>
+                    <Button Margin="0, 0, 20, 0"
+                            Height="32" Width="32" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal"
+                                    FlowDirection="LeftToRight">
+                            <materialDesign:PackIcon Kind="Add"
+                                                     Foreground="#A3AED0"
+                                                     Margin="0, 0, -5, 0" />
+                            <materialDesign:PackIcon Kind="ExpandMore"
+                                                     Foreground="#A3AED0"
+                                                     Margin="0, 0, -4, 0" />
+                        </StackPanel>
+                    </Button>
 
                     <mah:Badged Badge="{Binding Path=BadgeValue}"
                                 BadgePlacementMode="BottomRight"

@@ -17,6 +17,7 @@
     <None Remove="Assets\Fonts\DMSans-Regular.ttf" />
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
+    <None Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,8 +59,19 @@
   <ItemGroup>
     <Folder Include="Components\Configuration\" />
     <Folder Include="Components\Users\" />
-    <Folder Include="Controllers" />
     <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Controllers\**" />
   </ItemGroup>
 
 </Project>

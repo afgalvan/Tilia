@@ -26,9 +26,10 @@ namespace Presentation
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var mainWindow = _serviceProvider.GetService<MainWindow>();
-            mainWindow?.Show();
-            AppointmentAlert.Show();
+            var loginWindow = _serviceProvider.GetService<LoginWindow>();
+            // var mainWindow  = _serviceProvider.GetService<MainWindow>();
+            loginWindow?.Show();
+            // AppointmentAlert.Show();
         }
     }
 }
