@@ -11,7 +11,7 @@ namespace Server.Test
     public class HubConnectionTest
     {
         [Test]
-        public async Task TestConnectionWithServer()
+        public void TestConnectionWithServer()
         {
             const string url = @"https://localhost:5001/hubs";
             HubConnection connection = new HubConnectionBuilder()
