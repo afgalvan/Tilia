@@ -107,7 +107,7 @@ namespace Presentation.Components.Atomic
         private static void ChangeSelectedButtonColor(Control selectedButton,
             TextBlock textBlock, Control icon)
         {
-            selectedButton.Background = ColorPalette.Main;
+            selectedButton.Background = ColorPalette.PrimaryColor;
             textBlock.Foreground      = Brushes.White;
             icon.Foreground           = Brushes.White;
         }
