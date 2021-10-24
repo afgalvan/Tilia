@@ -11,20 +11,20 @@ namespace Server.Test
     public class HubConnectionTest
     {
         [Test]
-        public void TestConnectionWithServer()
+        public async Task TestConnectionWithServer()
         {
-            const string  url        = @"https://localhost:5001/hubs/users";
+            const string url = @"https://localhost:5001/hubs";
             HubConnection connection = new HubConnectionBuilder()
                 .WithUrl(url)
                 .AddMessagePackProtocol()
                 .Build();
-            var cts     = new CancellationTokenSource();
-            // await connection.StartAsync(cts.Token);
-            var request = new CreateUserRequest()
+            var cts = new CancellationTokenSource();
+            await connection.StartAsync(cts.Token);
+            var request = new CreateUserRequest
             {
                 Name = "John Doe"
             };
-            // await connection.SendAsync("create", request);
+            await connection.SendAsync("user/create", request);
         }
     }
 }
