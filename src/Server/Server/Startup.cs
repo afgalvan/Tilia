@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Application.Extensions;
+using Hangfire;
 using Server.Extensions;
 
 namespace Server
@@ -33,6 +34,7 @@ namespace Server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHangfireDashboard();
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
