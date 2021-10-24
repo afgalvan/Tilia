@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -31,7 +31,7 @@ namespace Presentation.Components.Atomic
         private void MedicalAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalAppointmentTextBlock, MedicalAppointmentIcon);
-            _mainWindow.ChangeMainContentArea(new QueryMedicalAppointmentUserControl());
+            _mainWindow.ChangeMainContentArea(new QueryMedicalAppointmentUserControl(_mainWindow));
         }
 
         private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
