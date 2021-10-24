@@ -1,23 +1,78 @@
 <UserControl x:Class="Presentation.Components.MedAppointment.QueryMedicalAppointmentUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Presentation.Components.MedAppointment"
              mc:Ignorable="d" 
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
+
     <Grid x:Name="MainGrid">
-        <StackPanel>
-            <Label x:Name="MainLabel" FontSize="34" HorizontalAlignment="Center" Margin="0,50,0,0">Consultar citas</Label>
-            <DataGrid x:Name="MedicalAppointmentsDataGrid" Width="696" Height="223" HorizontalAlignment="Center" Margin="0,60,0,0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Documento"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Nombre y Apellido"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Estado"></DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button x:Name="AddAppointmentButton" Content="Agendar cita" Width="100" Height="30" Margin="0,30,89,0" HorizontalAlignment="Right" Background="#FF6AB9B4" BorderBrush="{x:Null}" Foreground="White" FontWeight="Normal" FontFamily="DM Sans" Click="AddAppointmentButton_Click"></Button>
-        </StackPanel>
+
+        <Grid x:Name="QueryMedicalAppointmentGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Query Appointments labe -->
+            <Label x:Name="MainLabel"
+                   Grid.Column="1"
+                   FontSize="34"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom" FontFamily="DM Sans" FontWeight="Bold">
+                Consultar citas
+            </Label>
+
+            <!-- Query Appointments DataGrid -->
+            <materialDesign:Card x:Name="MedAppointmentDataGridCard"
+                                 Grid.Row="1"
+                                 Grid.ColumnSpan="3"
+                                 Width="696"
+                                 Height="300"
+                                 Margin="0,0,0,0"
+                                 Background="White">
+
+                <DataGrid x:Name="MedicalAppointmentsDataGrid"
+                          HorizontalAlignment="Center"
+                          Width="696"
+                          Margin="0,60,0,50">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Documento" Width="3*"/>
+                        <DataGridTextColumn Header="Nombre y Apellido" Width="3*"/>
+                        <DataGridTextColumn Header="Estado" Width="3*"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </materialDesign:Card>
+
+            <!-- Schedule Appointment Button -->
+            <Button x:Name="ScheduleAppointmentButton"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Content="Agendar cita"
+                    Width="100" Height="30"
+                    HorizontalAlignment="Stretch"
+                    Background="#FF6AB9B4"
+                    BorderBrush="{x:Null}"
+                    Foreground="White"
+                    FontWeight="Normal"
+                    FontFamily="DM Sans"
+                    Click="AddAppointmentButton_Click"
+                    Margin="15,0,0,0">
+            </Button>
+
+        </Grid>
 
     </Grid>
 </UserControl>
