@@ -19,12 +19,12 @@ namespace Server.Test
                 .AddMessagePackProtocol()
                 .Build();
             var cts = new CancellationTokenSource();
-            await connection.StartAsync(cts.Token);
+            // await connection.StartAsync(cts.Token);
             var request = new CreateUserRequest
             {
                 Name = "John Doe"
             };
-            await connection.SendAsync("user/create", request);
+            // await connection.SendAsync("user/create", request);
         }
     }
 }
