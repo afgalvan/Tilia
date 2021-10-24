@@ -16,8 +16,9 @@
             <Button x:Name="DashboardButton"
                     Height="45"
                     Cursor="Hand"
-                    Background="#6AB9B4"
+                    Background="{StaticResource PrimaryColor}"
                     Width="200"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Margin="0,20,0,0"
                     Foreground="{x:Null}"
                     BorderBrush="{x:Null}"
@@ -57,6 +58,7 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="MedicalAppointmentButton_Click"
                     Margin="0,15,0,0">
@@ -93,6 +95,7 @@
                     Height="45"
                     Background="{x:Null}"
                     Cursor="Hand"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
                     Width="205"
@@ -133,6 +136,7 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="MedicalNotesButton_Click"
                     Margin="0,15,0,0">
@@ -171,6 +175,7 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="MedicalOrdersButton_Click"
                     Margin="0,15,0,0">
@@ -209,6 +214,7 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="UsersButton_Click"
                     Margin="0,15,0,0">
@@ -245,6 +251,7 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="ConfigButton_Click"
                     Margin="0,15,0,0">
@@ -276,6 +283,8 @@
                 </StackPanel>
             </Button>
 
+
+            <Separator Margin="0,50,0,10" />
             <!-- Log out button -->
             <Button x:Name="LogoutButton"
                     Height="45"
@@ -283,9 +292,9 @@
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="LogoutButton_Click"
-                    Margin="0,60,0,0"
                     VerticalAlignment="Bottom">
 
                 <StackPanel x:Name="LogoutStackPanel"

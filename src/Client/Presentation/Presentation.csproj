@@ -17,6 +17,7 @@
     <None Remove="Assets\Fonts\DMSans-Regular.ttf" />
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
+    <None Remove="Assets\Ilustrations\DoctorOrgLogin.png" />
     <None Remove="Controllers\**" />
   </ItemGroup>
 
@@ -53,6 +54,9 @@
     </Resource>
     <Resource Include="Assets\Icons\tilia_whites.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Ilustrations\DoctorOrgLogin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 

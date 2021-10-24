@@ -11,13 +11,14 @@
                 <materialDesign:BundledTheme BaseTheme="Inherit" PrimaryColor="Green"
                                              SecondaryColor="Lime"
                                              ColorAdjustment="{materialDesign:ColorAdjustment}" />
-
                 <ResourceDictionary
                     Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary
                     Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary
                     Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Green.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

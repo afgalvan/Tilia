@@ -1,4 +1,4 @@
-﻿using Presentation.Windows;
+using Presentation.Windows;
 
 namespace Presentation.Components.Atomic
 {
@@ -8,8 +8,9 @@ namespace Presentation.Components.Atomic
 
         public HeaderUserControl(MainWindow mainWindow)
         {
-            _mainWindow = mainWindow;
             InitializeComponent();
+            _mainWindow = mainWindow;
+            SearchBarContentArea.Content = new SearchBarUserControl();
         }
     }
 }

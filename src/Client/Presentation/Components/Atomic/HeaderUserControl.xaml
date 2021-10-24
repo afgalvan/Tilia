@@ -94,41 +94,7 @@
                     </mah:Badged>
                 </StackPanel>
 
-                <materialDesign:Card Grid.Row="0" Grid.Column="0"
-                                     x:Name="SearchBarCard"
-                                     Background="#FFF4F7FE"
-                                     Width="400"
-                                     Height="30"
-                                     HorizontalAlignment="Left"
-                                     Margin="30, 0, 0, 0">
-
-                    <DockPanel x:Name="SearchDockPanel"
-                               LastChildFill="True">
-
-                        <materialDesign:PackIcon x:Name="SearchBarIcon"
-                                                 Kind="Magnify"
-                                                 Foreground="#FF99A3C4"
-                                                 Width="18"
-                                                 Height="24"
-                                                 VerticalAlignment="Center"
-                                                 Margin="5,0,0,0" />
-
-                        <TextBox BorderThickness="0"
-                                 Background="{x:Null}"
-                                 DockPanel.Dock="Left"
-                                 BorderBrush="{x:Null}"
-                                 Foreground="#FF99A3C4"
-                                 Width="Auto"
-                                 Margin="5, 0, 10, 0"
-                                 Height="25" CaretBrush="{x:Null}"
-                                 SelectionBrush="{x:Null}"
-                                 SelectionTextBrush="{x:Null}"
-                                 FontFamily="DM Sans"
-                                 VerticalAlignment="Center"
-                                 MinHeight="0" />
-                    </DockPanel>
-
-                </materialDesign:Card>
+                <ContentControl x:Name="SearchBarContentArea" ></ContentControl>
 
             </Grid>
 
