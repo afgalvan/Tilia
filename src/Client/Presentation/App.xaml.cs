@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components;
@@ -15,6 +17,7 @@ namespace Presentation
 
         public App()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             var services = new ServiceCollection();
             services.AddPresentationServices();
             _serviceProvider = services.BuildServiceProvider();
