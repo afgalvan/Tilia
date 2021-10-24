@@ -7,7 +7,44 @@
              mc:Ignorable="d" 
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
     <Grid>
-        
+
+        <!-- Go back button -->
+        <Button x:Name="BackToQueryAppointmentUserControlButton"
+                Width="100"
+                Height="40"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{x:Null}"
+                Foreground="{x:Null}"
+                BorderBrush="{x:Null}"
+                Margin="43,38,0,0"
+                Click="BackToQueryAppointmentUserControlButton_Click">
+
+            <StackPanel x:Name="BackToQueryAppointmentUserControlStackPanel"
+                        Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80">
+
+                <materialDesign:PackIcon Kind="ArrowLeft"
+                                         Foreground="#FF99A3C4"
+                                         Width="20"
+                                         Height="20"
+                                         Margin="0,0,0,0"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         FontWeight="Bold"/>
+
+                <TextBlock Foreground="#FF99A3C4"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="15" 
+                           FontWeight="Normal"
+                           FontFamily="Segoe UI"
+                           Margin="5,0,0,0">
+                     Volver
+                </TextBlock>
+            </StackPanel>
+        </Button>
+
+
         <materialDesign:Card HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
             <Grid>
                 <Grid.ColumnDefinitions>

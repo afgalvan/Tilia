@@ -19,7 +19,7 @@ namespace Presentation.Components.MedAppointment
 
         private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindowControl.ChangeMainContentArea(new RegisterMedicalAppointmentUserControl());
+            _mainWindowControl.ChangeMainContentArea(new RegisterMedicalAppointmentUserControl(_mainWindowControl));
         }
     }
 }
