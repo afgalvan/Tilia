@@ -97,7 +97,7 @@ namespace Server.Extensions
                 options.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "Tilia", Version = "v1" });
                 options.DocumentFilter<SignalRSwaggerGen.SignalRSwaggerGen>(new List<Assembly>
-                    { typeof(UserHub).Assembly });
+                    { typeof(UserHub).Assembly, typeof(AppointmentHub).Assembly });
             });
         }
     }

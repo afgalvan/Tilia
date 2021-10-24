@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Users.Create;
 using MapsterMapper;
@@ -27,7 +26,7 @@ namespace Server.Hubs
 
         [SignalRMethod("create")]
         [return: SignalRReturn(typeof(AccessToken), StatusCodes.Status201Created)]
-        public async Task Create([SignalRArg] CreateUserRequest createRequest)
+        public async Task CreateUser([SignalRArg] CreateUserRequest createRequest)
         {
             var createUserCommand =
                 _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
