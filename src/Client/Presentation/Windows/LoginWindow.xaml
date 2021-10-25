@@ -5,14 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-    xmlns:utils="clr-namespace:Presentation.Utils"
     x:Class="Presentation.Windows.LoginWindow"
     mc:Ignorable="d"
     Icon="../../Assets/Icons/tilia.png"
     ResizeMode="NoResize"
-    d:DataContext="{d:DesignInstance utils:FieldsViewModel, IsDesignTimeCreatable=False}"
     WindowStartupLocation="CenterScreen"
     Title="Tilia" Height="600" Width="800">
+
     <Grid x:Name="LoginMainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />

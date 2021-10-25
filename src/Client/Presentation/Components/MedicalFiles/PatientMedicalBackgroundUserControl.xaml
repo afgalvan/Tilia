@@ -63,7 +63,7 @@
                                 VerticalAlignment="Center"
                                 BorderThickness="0"
                                 Foreground="#FF99A3C4"
-                                BorderBrush="Gray"/>
+                                BorderBrush="Gray" Click="ContactInfoButton_Click"/>
 
                         <Button x:Name="MedicalInfoButton"
                                 Grid.Column="2"
