@@ -33,7 +33,7 @@
                         <RowDefinition Height="9*"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="GraphicCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="31,0,0,0" Content="Atención"/>
+                    <Label x:Name="GraphicCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="31,0,0,0" Content="Atención" Foreground="#FFA3AED0"/>
                     <ComboBox x:Name="GraphicCardComboBox"
                     materialDesign:HintAssist.Hint="Mensual" Width="100.2" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFA3AED0" Margin="0,0,30,0" FontFamily="DM Sans">
                         <ComboBoxItem
@@ -59,8 +59,8 @@
             <materialDesign:Card x:Name="TotalPatientsCard" Grid.Row="1" Grid.Column="1" Margin="40,40,40,150" Background="White">
                 <Grid>
                     <materialDesign:PackIcon Kind="AccountSupervisorCircle" Foreground="#FF6AB9B4" Width="56" Height="56" VerticalAlignment="Center" Margin="17,0,0,0" />
-                    <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal" Width="80" Height="30" VerticalAlignment="Top" Margin="78,23,53,0" FontSize="15" Content="Pacientes"/>
-                    <TextBlock Width="50" Height="23" VerticalAlignment="Top" Margin="93,47,68,0"><Run Text="..."/></TextBlock>
+                    <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal" Width="80" Height="30" VerticalAlignment="Top" Margin="78,15,53,0" FontSize="15" Content="Pacientes"/>
+                    <TextBlock Width="50" Height="24" VerticalAlignment="Top" Margin="83,37,78,0"><Run Text="..."/></TextBlock>
                 </Grid>
             </materialDesign:Card>
 
@@ -73,13 +73,47 @@
                         <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="ScheduleCardLabel" FontSize="20" FontFamily="DM Sans" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" Content="15 de septiembre"/>
-                    <Grid Grid.Row="2" Width="102" Height="28" Margin="90,0,0,0">
-                        <Button x:Name="ScheduleCardButton" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                        <TextBlock x:Name="ScheduleCardLabel1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="#FF6AB9B4"><Run Text="Ver más"/></TextBlock>
-                        <materialDesign:PackIcon Kind="ArrowRight" HorizontalAlignment="Right" VerticalAlignment="Center" Width="20" Height="20" Margin="0,3,0,0" Foreground="#FF6AB9B4" />
-                    </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <Label x:Name="ScheduleCardLabel"
+                           FontSize="20"
+                           FontFamily="DM Sans"
+                           FontWeight="Normal"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Content="15 de septiembre"
+                           Foreground="#FFA3AED0"
+                           Grid.ColumnSpan="2"/>
+
+                    <Button x:Name="ScheduleCardButton"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                Grid.Row="2"
+                                Grid.Column="1">
+
+                        <StackPanel HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Orientation="Horizontal">
+
+                            <TextBlock x:Name="ScheduleCardLabel1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Stretch"
+                                       Foreground="#FF6AB9B4">
+                                    <Run Text="Ver más"/>
+                            </TextBlock>
+
+                            <materialDesign:PackIcon Kind="ArrowRight"
+                                                         HorizontalAlignment="Right"
+                                                         VerticalAlignment="Center"
+                                                         Width="20"
+                                                         Height="20"
+                                                         Margin="0,3,0,0"
+                                                         Foreground="#FF6AB9B4" />
+                        </StackPanel>
+                    </Button>
                 </Grid>
             </materialDesign:Card>
         </Grid>
