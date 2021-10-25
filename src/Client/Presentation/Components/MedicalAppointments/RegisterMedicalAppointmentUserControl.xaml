@@ -84,7 +84,7 @@
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center"
                             Margin="0,40,0,0"
-                            BorderBrush="Gray"/>
+                            BorderBrush="Gray" />
 
                         <TextBox
                             materialDesign:HintAssist.Hint="Departamento de residencia"

@@ -8,8 +8,7 @@
                  mc:Ignorable="d"
                  Title="Tilia" Height="617" Width="1097"
                  Icon="../../Assets/Icons/tilia.png"
-                 WindowStartupLocation="CenterScreen"
-                 WindowState="Maximized">
+                 WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style TargetType="Label">

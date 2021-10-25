@@ -20,20 +20,22 @@
                     <RowDefinition Height="14*"/>
                 </Grid.RowDefinitions>
 
-                <Label FontSize="34"
+                <Label FontSize="28"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center">
                     Datos generales
                 </Label>
 
                 <materialDesign:Card x:Name="PatientBasicInformationCard"
-                Grid.Row="1">
+                                     Grid.Row="1"
+                                     Foreground="{x:Null}"
+                                     Background="White">
 
                     <Grid x:Name="CardGrid"
-                      Background="White">
+                      Background="Transparent">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="20*"/>
                         </Grid.RowDefinitions>
 
@@ -44,45 +46,63 @@
                         </Grid.ColumnDefinitions>
 
                         <Button x:Name="BasicDataButton"
-                            Background="{x:Null}"
-                            Content="Informacion basica"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center"
-                            BorderThickness="0"
-                            Click="BasicDataButton_Click"
-                            Foreground="#FF99A3C4"
-                            BorderBrush="{x:Null}"/>
+                                Background="{x:Null}"
+                                Content="Informacion basica"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                BorderThickness="0"
+                                Click="BasicDataButton_Click"
+                                Foreground="#FF99A3C4"
+                                BorderBrush="{x:Null}"/>
 
-                        <Button Grid.Row="0"
-                            Grid.Column="1"
-                            x:Name="ContactInfoButton"
-                            Background="{x:Null}"
-                            Content="Informacion de contacto"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center"
-                            BorderThickness="0"
-                            Foreground="#FF99A3C4"
-                            BorderBrush="{x:Null}"/>
+                        <Button x:Name="ContactInfoButton"
+                                Grid.Column="1"
+                                Background="{x:Null}"
+                                Content="Informacion de contacto"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                BorderThickness="0"
+                                Foreground="#FF99A3C4"
+                                BorderBrush="Gray"/>
 
-                        <Button Grid.Row="0"
-                            Grid.Column="2"
-                            x:Name="MedicalInfoButton"
-                            Background="{x:Null}"
-                            Content="Informacion medica"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Stretch"
-                            BorderThickness="0"
-                            Foreground="#FF99A3C4"
-                            BorderBrush="{x:Null}"/>
+                        <Button x:Name="MedicalInfoButton"
+                                Grid.Column="2"
+                                Background="{x:Null}"
+                                Content="Informacion medica"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Stretch"
+                                BorderThickness="0"
+                                Foreground="#FF99A3C4"
+                                BorderBrush="{x:Null}"/>
 
                         <!-- Content Area -->
-                        <ContentControl x:Name="ContentArea"
+                        <ContentControl x:Name="DataRegisterContentArea"
                                         Grid.ColumnSpan="3"
                                         Grid.Column="0"
                                         Grid.Row="1"
-                                        Margin="20"/>
+                                        Margin="20,38,20,20"/>
+
+                        <StackPanel x:Name="DateStackPanel"
+                                    Orientation="Horizontal"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="191.706666666667"
+                                    Height="24"
+                                    VerticalAlignment="Top"
+                                    Margin="43,6,43,0">
+
+                            <Label Foreground="#FF9BA4C5">
+                                Fecha: 15/09/2021
+                            </Label>
+
+                            <Label Foreground="#FF9BA4C5">
+                                Hora: 8:09 A.M
+                            </Label>
+
+                        </StackPanel>
                     </Grid>
                 </materialDesign:Card>
+
             </Grid>
         </Grid>
     </materialDesign:TransitioningContent>

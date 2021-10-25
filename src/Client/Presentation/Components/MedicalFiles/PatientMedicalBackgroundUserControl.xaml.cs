@@ -1,18 +1,22 @@
-﻿namespace Presentation.Components.MedicalFiles
+using System.Windows;
+using Presentation.Components.MedicalFiles.Patients;
+
+namespace Presentation.Components.MedicalFiles
 {
     /// <summary>
-    /// Lógica de interacción para ClinicalHistoryDataUserControl.xaml
+    /// Logic interaction for PatientMedicalBackgroundUserControl.xaml
     /// </summary>
     public partial class PatientMedicalBackgroundUserControl
     {
         public PatientMedicalBackgroundUserControl()
         {
             InitializeComponent();
+            DataRegisterContentArea.Content = new PatientBasicDataRegisterUserControl();
         }
 
-        private void BasicDataButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BasicDataButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
+
     }
 }

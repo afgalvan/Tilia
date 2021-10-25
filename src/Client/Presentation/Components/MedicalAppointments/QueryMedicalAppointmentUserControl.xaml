@@ -30,9 +30,9 @@
                 <!-- Query Appointments labe -->
                 <Label x:Name="MainLabel"
                    Grid.Column="1"
-                   FontSize="34"
+                   FontSize="28"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom" FontFamily="DM Sans" FontWeight="Bold">
+                   VerticalAlignment="Bottom" FontFamily="DM Sans" FontWeight="Normal">
                     Consultar citas
                 </Label>
 

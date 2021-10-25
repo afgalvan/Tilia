@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace Presentation.Components.MedicalFiles.Patients
 {
     /// <summary>
-    /// Lógica de interacción para PatientBasicDataUserControl.xaml
+    /// Logic interaction for PatientBasicDataRegisterUserControl.xaml
     /// </summary>
-    public partial class PatientBasicDataUserControl : UserControl
+    public partial class PatientBasicDataRegisterUserControl : UserControl
     {
-        public PatientBasicDataUserControl()
+        public PatientBasicDataRegisterUserControl()
         {
             InitializeComponent();
         }
+
     }
 }
