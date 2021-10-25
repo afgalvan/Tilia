@@ -46,11 +46,11 @@
                   Grid.Column="2"
                   materialDesign:HintAssist.Hint="Tipo de documento"
                   HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
+                  VerticalAlignment="Center"
                   Width="140"
-                  Margin="0,54,0,0"
+                  Margin="0,0,0,0"
                   Foreground="#FF99A3C4"
-                  BorderBrush="Gray"/>
+                  BorderBrush="Gray" Height="36.77109375" VerticalContentAlignment="Center"/>
 
         <DatePicker x:Name="BasicDataBirthDayDatePicker"
                     Grid.Row="1"
@@ -76,11 +76,11 @@
                   Grid.Column="2"
                   materialDesign:HintAssist.Hint="Sexo"
                   HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
+                  VerticalAlignment="Center"
                   Width="140"
-                  Margin="0,54,0,0"
+                  Margin="0,0,0,0"
                   Foreground="#FF99A3C4"
-                  BorderBrush="Gray"/>
+                  BorderBrush="Gray" Height="36.77109375" VerticalContentAlignment="Center"/>
 
         <TextBox x:Name="BasicDataChargeTextBox"
                  Grid.Row="2"
@@ -90,7 +90,7 @@
                  HorizontalAlignment="Right"
                  Width="140"
                  Foreground="#FF99A3C4"
-                 BorderBrush="Gray" />
+                 BorderBrush="Gray" VerticalContentAlignment="Center" ScrollViewer.CanContentScroll="True" />
 
         <ComboBox x:Name="BasicDataStudiesComboBox"
                   Grid.Row="2"
@@ -101,7 +101,7 @@
                   Width="140"
                   Margin="0,0,0,0"
                   Foreground="#FF99A3C4"
-                  BorderBrush="Gray" VerticalContentAlignment="Bottom" Height="36.77109375" HorizontalContentAlignment="Left"/>
+                  BorderBrush="Gray" VerticalContentAlignment="Center" Height="36.77109375" HorizontalContentAlignment="Left"/>
 
         <Button Grid.Row="2"
                 Grid.Column="2"
@@ -111,10 +111,10 @@
                 materialDesign:ButtonAssist.CornerRadius="10"
                 ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
                 HorizontalAlignment="Left"
-                Margin="0,38,0,0"
+                Margin="0,0,0,0"
                 Width="120"
                 Height="40"
-                VerticalAlignment="Top"
+                VerticalAlignment="Center"
                 Cursor="Hand">
 
             <TextBlock Text="Siguiente" />
