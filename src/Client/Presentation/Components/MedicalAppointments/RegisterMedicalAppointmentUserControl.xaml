@@ -13,14 +13,14 @@
         <Grid>
             <!-- Go back button -->
             <Button x:Name="BackToQueryAppointmentUserControlButton"
-                Width="100"
+                Width="120"
                 Height="40"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Background="{x:Null}"
-                Foreground="{x:Null}"
+                Foreground="{x:Null}" 
                 BorderBrush="{x:Null}"
-                Margin="43,38,0,0"
+                Margin="40,60,0,0"
                 Click="BackToQueryAppointmentUserControlButton_Click">
 
                 <StackPanel x:Name="BackToQueryAppointmentUserControlStackPanel"
@@ -59,48 +59,87 @@
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="40">
-                        <StackPanel Orientation="Vertical">
-                            <Label HorizontalAlignment="Left">Tipo documento:</Label>
-                            <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label HorizontalAlignment="Left">Nombre:</Label>
-                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label HorizontalAlignment="Left">Teléfono fijo:</Label>
-                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label HorizontalAlignment="Left">Departamento de residencia:</Label>
-                            <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label HorizontalAlignment="Left">Correo electrónico:</Label>
-                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                        </StackPanel>
+                    <StackPanel x:Name="RegisterLeftStackPanel" Grid.Column="0"
+                                Orientation="Vertical"
+                                Margin="40">
+
+                        <ComboBox x:Name="DocumentTypeComboBox"
+                            materialDesign:HintAssist.Hint="Tipo de documento"
+                            Height="36.77109375"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Margin="0,10,0,0"
+                            BorderBrush="Gray">
+                        </ComboBox>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Nombre"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,30,0,0"
+                            BorderBrush="Gray"/>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Teléfono fijo"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,40,0,0"
+                            BorderBrush="Gray"/>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Departamento de residencia"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,40,0,0"
+                            BorderBrush="Gray"/>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Correo electrónico"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,40,0,0"
+                            BorderBrush="Gray"/>
+                        
                     </StackPanel>
 
                     <!-- Rigth Panel -->
-                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="40">
-                        <StackPanel Orientation="Vertical">
-                            <Label>Número de documento:</Label>
-                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label>Apellidos:</Label>
-                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label>Telefono celular:</Label>
-                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                            <Label>Ciudad de residencia:</Label>
-                            <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
-                        </StackPanel>
-                        <Button Margin="0, 55, 0, 0" Background="#6AB9B4" Foreground="White">Solicitar</Button>
+                    <StackPanel Grid.Column="1"
+                                Orientation="Vertical"
+                                Margin="40">
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Nombre"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            BorderBrush="Gray"/>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Teléfono fijo"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,40,0,0"
+                            BorderBrush="Gray"/>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Departamento de residencia"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,40,0,0"
+                            BorderBrush="Gray"/>
+
+                        <TextBox
+                            materialDesign:HintAssist.Hint="Correo electrónico"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center"
+                            Margin="0,40,0,0"
+                            BorderBrush="Gray"/>
+
+                        <Button
+                                Background="#6AB9B4"
+                                Foreground="White" Content="Solicitar"
+                                Margin="0,45,0,0"/>
+
                     </StackPanel>
                 </Grid>
             </materialDesign:Card>
