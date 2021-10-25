@@ -9,8 +9,7 @@
     <materialDesign:Card x:Name="ButtonsCard"
                          Background="White">
 
-        <StackPanel x:Name="ButtonStack"
-                    Orientation="Vertical">
+        <StackPanel x:Name="ButtonStack" Orientation="Vertical">
 
             <!-- Dashboard button -->
             <Button x:Name="DashboardButton"

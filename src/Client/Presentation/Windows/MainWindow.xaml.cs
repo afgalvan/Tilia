@@ -22,6 +22,10 @@ namespace Presentation.Windows
                 MainContentArea.Content = new DashboardUserControl();
                 return;
             }
+            if (content.GetType() == MainContentArea.Content.GetType())
+            {
+                return;
+            }
 
             MainContentArea.Content = content;
         }

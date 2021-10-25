@@ -135,10 +135,11 @@
                             Margin="0,40,0,0"
                             BorderBrush="Gray"/>
 
-                        <Button
-                                Background="#6AB9B4"
-                                Foreground="White" Content="Solicitar"
-                                Margin="0,45,0,0"/>
+                        <Button Background="{StaticResource ButtonColor}"
+                            BorderBrush="{StaticResource ButtonColor}"
+                            Foreground="White" Content="Solicitar"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            Margin="0,45,0,0"/>
 
                     </StackPanel>
                 </Grid>

@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 namespace Presentation.Utils
 {
     public class FieldsViewModel : ViewModelBase
@@ -10,6 +10,5 @@ namespace Presentation.Utils
             get => _name;
             set => SetProperty(ref _name, value);
         }
-
     }
 }

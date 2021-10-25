@@ -86,7 +86,7 @@
 
                     <mah:Badged Badge="2"
                                 BadgePlacementMode="TopLeft"
-                                BadgeBackground="{StaticResource AltSecondaryColor}"
+                                BadgeBackground="{StaticResource PrimaryAccentColor}"
                                 Margin="0, 0, 20, 0"
                                 Height="32" Width="32" Cursor="Hand">
 
