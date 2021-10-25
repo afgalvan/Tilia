@@ -6,15 +6,13 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Presentation.Components.MedAppointment.RegisterMedicalAppointmentUserControl"
              mc:Ignorable="d" 
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
-    <Grid>
 
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
-                                             OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
+                                         OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
 
-            <Grid>
-
-                <!-- Go back button -->
-                <Button x:Name="BackToQueryAppointmentUserControlButton"
+        <Grid>
+            <!-- Go back button -->
+            <Button x:Name="BackToQueryAppointmentUserControlButton"
                 Width="100"
                 Height="40"
                 HorizontalAlignment="Left"
@@ -25,10 +23,10 @@
                 Margin="43,38,0,0"
                 Click="BackToQueryAppointmentUserControlButton_Click">
 
-                    <StackPanel x:Name="BackToQueryAppointmentUserControlStackPanel"
+                <StackPanel x:Name="BackToQueryAppointmentUserControlStackPanel"
                         Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80">
 
-                        <materialDesign:PackIcon Kind="ArrowLeft"
+                    <materialDesign:PackIcon Kind="ArrowLeft"
                                          Foreground="#FF99A3C4"
                                          Width="20"
                                          Height="20"
@@ -37,7 +35,7 @@
                                          VerticalAlignment="Center"
                                          FontWeight="Bold"/>
 
-                        <TextBlock x:Name="BackToQueryAppoitmentTextBlock"
+                    <TextBlock x:Name="BackToQueryAppoitmentTextBlock"
                            Foreground="#FF99A3C4"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
@@ -46,68 +44,66 @@
                            FontFamily="Segoe UI"
                            Margin="5,0,0,0">
                      Volver
-                        </TextBlock>
-                    </StackPanel>
-                </Button>
+                    </TextBlock>
+                </StackPanel>
+            </Button>
 
 
-                <materialDesign:Card HorizontalAlignment="Center"
+            <materialDesign:Card HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              Background="White">
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="40">
-                            <StackPanel Orientation="Vertical">
-                                <Label HorizontalAlignment="Left">Tipo documento:</Label>
-                                <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label HorizontalAlignment="Left">Nombre:</Label>
-                                <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label HorizontalAlignment="Left">Teléfono fijo:</Label>
-                                <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label HorizontalAlignment="Left">Departamento de residencia:</Label>
-                                <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label HorizontalAlignment="Left">Correo electrónico:</Label>
-                                <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                            </StackPanel>
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="40">
+                        <StackPanel Orientation="Vertical">
+                            <Label HorizontalAlignment="Left">Tipo documento:</Label>
+                            <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
                         </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label HorizontalAlignment="Left">Nombre:</Label>
+                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label HorizontalAlignment="Left">Teléfono fijo:</Label>
+                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label HorizontalAlignment="Left">Departamento de residencia:</Label>
+                            <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label HorizontalAlignment="Left">Correo electrónico:</Label>
+                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
 
-                        <!-- Rigth Panel -->
-                        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="40">
-                            <StackPanel Orientation="Vertical">
-                                <Label>Número de documento:</Label>
-                                <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label>Apellidos:</Label>
-                                <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label>Telefono celular:</Label>
-                                <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
-                                <Label>Ciudad de residencia:</Label>
-                                <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
-                            </StackPanel>
-                            <Button Margin="0, 55, 0, 0" Background="#6AB9B4" Foreground="White">Solicitar</Button>
+                    <!-- Rigth Panel -->
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="40">
+                        <StackPanel Orientation="Vertical">
+                            <Label>Número de documento:</Label>
+                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
                         </StackPanel>
-                    </Grid>
-                </materialDesign:Card>
-            </Grid>
-        </materialDesign:TransitioningContent>
-        
-    </Grid>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label>Apellidos:</Label>
+                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label>Telefono celular:</Label>
+                            <TextBox Margin="0, 10, 0, 0" Width="160"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0">
+                            <Label>Ciudad de residencia:</Label>
+                            <ComboBox Margin="0, 10, 0, 0" Width="160"></ComboBox>
+                        </StackPanel>
+                        <Button Margin="0, 55, 0, 0" Background="#6AB9B4" Foreground="White">Solicitar</Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>

@@ -6,50 +6,54 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
-    <Grid x:Name="MainGrid">
 
-        <Grid x:Name="BasicDataGrid"
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
+                                         OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
+
+        <Grid x:Name="MainGrid">
+
+            <Grid x:Name="BasicDataGrid"
               Margin="20">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="14*"/>
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="14*"/>
+                </Grid.RowDefinitions>
 
-            <Label FontSize="34"
+                <Label FontSize="34"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center">
-                Datos generales
-            </Label>
+                    Datos generales
+                </Label>
 
-            <materialDesign:Card x:Name="PatientBasicInformationCard"
+                <materialDesign:Card x:Name="PatientBasicInformationCard"
                 Grid.Row="1">
 
-                <Grid x:Name="CardGrid"
+                    <Grid x:Name="CardGrid"
                       Background="White">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="20*"/>
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="20*"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="3*"/>
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Button x:Name="BasicDataButton"
+                        <Button x:Name="BasicDataButton"
                             Background="{x:Null}"
                             Content="Informacion basica"
                             HorizontalAlignment="Stretch"
-                            VerticalAlignment="Bottom"
+                            VerticalAlignment="Center"
                             BorderThickness="0"
                             Click="BasicDataButton_Click"
                             Foreground="#FF99A3C4"
                             BorderBrush="{x:Null}"/>
 
-                    <Button Grid.Row="0"
+                        <Button Grid.Row="0"
                             Grid.Column="1"
                             x:Name="ContactInfoButton"
                             Background="{x:Null}"
@@ -60,7 +64,7 @@
                             Foreground="#FF99A3C4"
                             BorderBrush="{x:Null}"/>
 
-                    <Button Grid.Row="0"
+                        <Button Grid.Row="0"
                             Grid.Column="2"
                             x:Name="MedicalInfoButton"
                             Background="{x:Null}"
@@ -71,11 +75,15 @@
                             Foreground="#FF99A3C4"
                             BorderBrush="{x:Null}"/>
 
-                    <!-- Content Area -->
-                    <ContentControl x:Name="ContentArea" Grid.ColumnSpan="3" Grid.Column="0"
-                                    Grid.Row="1" Margin="20"/>
-                </Grid>
-            </materialDesign:Card>
+                        <!-- Content Area -->
+                        <ContentControl x:Name="ContentArea"
+                                        Grid.ColumnSpan="3"
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        Margin="20"/>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
         </Grid>
-    </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>
