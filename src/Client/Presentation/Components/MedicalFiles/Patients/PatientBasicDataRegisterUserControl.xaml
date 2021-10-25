@@ -105,15 +105,15 @@
 
         <Button Grid.Row="2"
                 Grid.Column="2"
-                Background="{StaticResource PrimaryColor}"
-                BorderBrush="{StaticResource PrimaryColor}"
+                Background="{StaticResource ButtonColor}"
+                BorderBrush="{StaticResource ButtonColor}"
+                materialDesign:ButtonAssist.CornerRadius="15"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                materialDesign:ButtonAssist.CornerRadius="10"
                 ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
                 HorizontalAlignment="Left"
-                Margin="0,38,0,0"
+                Margin="0,45,0,0"
                 Width="120"
-                Height="40"
+                Height="35"
                 VerticalAlignment="Top"
                 Cursor="Hand">
 

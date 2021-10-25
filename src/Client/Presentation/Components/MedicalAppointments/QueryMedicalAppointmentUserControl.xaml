@@ -92,9 +92,7 @@
                                                 Width="3*"
                                                 ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                                                 EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-
                         </DataGrid.Columns>
-
                     </DataGrid>
                 </materialDesign:Card>
 
@@ -103,15 +101,15 @@
                     Grid.Row="2"
                     Grid.Column="2"
                     Content="Agendar cita"
-                    Width="120" Height="30"
-                    HorizontalAlignment="Stretch"
-                    Background="#FF6AB9B4"
-                    BorderBrush="{x:Null}"
+                    Width="125" Height="35"
+                    Background="{StaticResource ButtonColor}"
+                    BorderBrush="{StaticResource ButtonColor}"
+                    materialDesign:ButtonAssist.CornerRadius="15"
                     Foreground="White"
                     FontWeight="Normal"
                     FontFamily="DM Sans"
                     Click="AddAppointmentButton_Click"
-                    Margin="0,0,5,0" VerticalAlignment="Stretch">
+                    Margin="0, 0, 10, 0" >
                 </Button>
             </Grid>
         </materialDesign:TransitioningContent>

@@ -9,6 +9,7 @@
     x:Class="Presentation.Windows.LoginWindow"
     mc:Ignorable="d"
     Icon="../../Assets/Icons/tilia.png"
+    ResizeMode="NoResize"
     d:DataContext="{d:DesignInstance utils:FieldsViewModel, IsDesignTimeCreatable=False}"
     WindowStartupLocation="CenterScreen"
     Title="Tilia" Height="600" Width="800">
@@ -23,8 +24,9 @@
                    Source="/Assets/Ilustrations/DoctorOrgLogin.png"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Margin="40, 10" />
+                   Margin="40" />
             <Label Content="Tilia" HorizontalAlignment="Center"
+                   Foreground="{StaticResource AltSecondaryColor}"
                    FontSize="35" FontWeight="Bold" FontFamily="DM Sans" />
             <Label Foreground="White"
                    HorizontalAlignment="Center" FontSize="17"
@@ -41,52 +43,42 @@
             </Border.Effect>
 
             <StackPanel Background="White">
-                <Image Source="/Assets/Icons/tilia-big.png"
+                <Image Source="/Assets/Icons/tilia.png"
                        HorizontalAlignment="Center"
-                       Width="55" Margin="0, 40, 0, 0" />
+                       Width="75" Margin="0, 40, 0, 0" />
                 <Label HorizontalAlignment="Center"
                        Content="Inicio de sesión" Margin="0, 20, 0, 40"
-                       Foreground="#FF383838" FontWeight="Bold" FontSize="30" />
+                       Foreground="{StaticResource AltSecondaryColor}" FontWeight="Bold" FontSize="30" />
 
                 <!-- Username input -->
                 <TextBox x:Name="UsernameField" Width="250"
                          materialDesign:HintAssist.Foreground="DimGray"
                          materialDesign:TextFieldAssist.HasClearButton="True"
-                         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource AltSecondaryColor}"
                          materialDesign:HintAssist.HelperTextFontSize="14"
-                         materialDesign:HintAssist.HelperText="Bro"
-                         materialDesign:ValidationAssist.Background="White"
+                         ToolTip="Ingrese su nombre de usuario"
+                         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource SecondaryColor}"
                          materialDesign:ValidationAssist.FontSize="14"
-                         materialDesign:HintAssist.Background="White"
                          FontSize="17"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                         BorderBrush="Gray">
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}">
                     <materialDesign:HintAssist.Hint>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="User" Height="24" Width="24"
                                                      Margin="0, 0, 10, 0" />
-                            <TextBlock Text="Name" />
+                            <TextBlock Text="Nombre de usuario" />
                         </StackPanel>
                     </materialDesign:HintAssist.Hint>
-                    <TextBox.Text>
-                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <utils:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
                 </TextBox>
 
                 <!-- Password input -->
                 <StackPanel>
                     <PasswordBox
-                        x:Name="PasswordField" Width="250" Margin="0, 30"
+                        x:Name="PasswordField" Width="250" Margin="0 40 0 5"
+                        mah:PasswordBoxHelper.CapsLockWarningToolTip="Mayúsculas activas"
                         materialDesign:HintAssist.Foreground="DimGray"
-                        materialDesign:HintAssist.Background="White"
-                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource AltSecondaryColor}"
+                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource SecondaryColor}"
+                        ToolTip="Ingrese su contraseña"
                         FontSize="17"
-                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
-                        BorderBrush="Gray">
+                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Lock"
@@ -98,14 +90,12 @@
                         </materialDesign:HintAssist.Hint>
                     </PasswordBox>
                     <TextBox
-                        x:Name="UnmaskedPasswordField" Width="250" Margin="0, 30"
+                        x:Name="UnmaskedPasswordField" Width="250" Margin="0 40 0 5"
                         materialDesign:HintAssist.Foreground="DimGray"
-                        materialDesign:HintAssist.Background="White"
-                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource AltSecondaryColor}"
                         FontSize="17"
                         Visibility="Collapsed"
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                        BorderBrush="Gray">
+                        materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource SecondaryColor}"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Lock"
@@ -118,17 +108,17 @@
                     </TextBox>
                     <CheckBox
                         HorizontalAlignment="Center"
-                        Margin="0 0 90 0"
+                        Margin="0 10 80 15"
                         x:Name="ShowPasswordCheckBox"
-                        materialDesign:CheckBoxAssist.CheckBoxSize="30"
-                        BorderThickness="1" Content="Mostrar contraseña"
+                        materialDesign:CheckBoxAssist.CheckBoxSize="25"
+                        Content="Mostrar contraseña"
                         Checked="ShowPasswordCheckBox_Checked"
                         Unchecked="ShowPasswordCheckBox_Unchecked"
-                        Background="{StaticResource AltSecondaryColor}"
-
-                        FontSize="15">
+                        Background="{StaticResource SecondaryColor}"
+                        Foreground="DimGray"
+                        FontSize="17">
                         <CheckBox.Resources>
-                            <SolidColorBrush x:Key="MaterialDesignCheckBoxOff" Color="Gray" />
+                            <SolidColorBrush x:Key="MaterialDesignCheckBoxOff" Color="{StaticResource MahApps.Colors.Gray3}" />
                         </CheckBox.Resources>
                     </CheckBox>
                 </StackPanel>
@@ -136,12 +126,13 @@
                 <Button x:Name="LogInButton" Cursor="Hand" Content="Iniciar sesión"
                         Margin="0, 35"
                         ToolTip="Click para inicar sesión"
-                        Background="{StaticResource AltSecondaryColor}"
                         Click="LogInButton_Click"
                         Foreground="White"
+                        Background="{StaticResource ButtonColor}"
+                        BorderBrush="{StaticResource ButtonColor}" 
                         materialDesign:ButtonAssist.CornerRadius="20"
                         FontSize="18"
-                        Width="200" Height="45" />
+                        Width="200" Height="45"/>
                 <mah:ToggleSwitch HorizontalAlignment="Center"
                                   Visibility="Hidden" Header="ToggleSwitch"
                                   Height="100" Width="100" />
