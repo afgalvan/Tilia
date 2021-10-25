@@ -108,28 +108,28 @@
                                 Margin="40">
 
                         <TextBox
-                            materialDesign:HintAssist.Hint="Nombre"
+                            materialDesign:HintAssist.Hint="Numero de documento"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch"
-                            BorderBrush="Gray"/>
+                            BorderBrush="Gray" Cursor="IBeam"/>
 
                         <TextBox
-                            materialDesign:HintAssist.Hint="Teléfono fijo"
+                            materialDesign:HintAssist.Hint="Apellido"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center"
                             Margin="0,40,0,0"
                             BorderBrush="Gray"/>
 
                         <TextBox
-                            materialDesign:HintAssist.Hint="Departamento de residencia"
+                            materialDesign:HintAssist.Hint="Teléfono celular"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center"
                             Margin="0,40,0,0"
                             BorderBrush="Gray"/>
 
                         <TextBox
-                            materialDesign:HintAssist.Hint="Correo electrónico"
+                            materialDesign:HintAssist.Hint="Ciudad de residencia"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center"
                             Margin="0,40,0,0"
