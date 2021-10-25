@@ -47,13 +47,52 @@
 
                     <DataGrid x:Name="MedicalAppointmentsDataGrid"
                           HorizontalAlignment="Center"
-                          Width="696"
-                          Margin="0,60,0,50">
+                          Width="697"
+                          Margin="0,58,0,52">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Documento" Width="3*"/>
-                            <DataGridTextColumn Header="Nombre y Apellido" Width="3*"/>
-                            <DataGridTextColumn Header="Estado" Width="3*"/>
+
+                            <DataGridCheckBoxColumn
+                                Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                Width="1*">
+
+                                <DataGridCheckBoxColumn.Header>
+                                    <Border
+                                        Background="Transparent">
+                                        <CheckBox
+                                            IsChecked="{Binding Data.IsAllItems1Selected}" />
+                                    </Border>
+                                </DataGridCheckBoxColumn.Header>
+
+                                <DataGridCheckBoxColumn.HeaderStyle>
+                                    <Style
+                                        TargetType="{x:Type DataGridColumnHeader}"
+                                        BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                                        <Setter
+                                            Property="HorizontalContentAlignment"
+                                            Value="Center" />
+                                    </Style>
+                                </DataGridCheckBoxColumn.HeaderStyle>
+
+                            </DataGridCheckBoxColumn>
+
+                            <DataGridTextColumn Header="Documento"
+                                                Width="3*"
+                                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+
+                            <DataGridTextColumn Header="Nombre y Apellido"
+                                                Width="3*"
+                                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                            <DataGridTextColumn Header="Estado"
+                                                Width="3*"
+                                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -64,7 +103,7 @@
                     Grid.Row="2"
                     Grid.Column="2"
                     Content="Agendar cita"
-                    Width="100" Height="30"
+                    Width="120" Height="30"
                     HorizontalAlignment="Stretch"
                     Background="#FF6AB9B4"
                     BorderBrush="{x:Null}"
@@ -72,12 +111,9 @@
                     FontWeight="Normal"
                     FontFamily="DM Sans"
                     Click="AddAppointmentButton_Click"
-                    Margin="15,0,0,0">
+                    Margin="0,0,5,0" VerticalAlignment="Stretch">
                 </Button>
-
             </Grid>
-
         </materialDesign:TransitioningContent>
-        
     </Grid>
 </UserControl>
