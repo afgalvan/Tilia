@@ -8,9 +8,12 @@
             <!-- Colors -->
             <SolidColorBrush x:Key="PrimaryColor" Color="#FF6AB9B4"/>
             <SolidColorBrush x:Key="SecondaryColor" Color="#33BCBA"/>
-            <SolidColorBrush x:Key="AltSecondaryColor" Color="#16A8FC"/>
+            <SolidColorBrush x:Key="AltSecondaryColor" Color="#024A65"/>
+            <SolidColorBrush x:Key="ButtonColor" Color="#33BCBA"/>
+            <SolidColorBrush x:Key="PrimaryAccentColor" Color="#20ABFC"/>
             <SolidColorBrush x:Key="Gray" Color="#FF99A3C4"/>
 
+            
             <!-- Styles -->
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Inherit" PrimaryColor="Teal"
@@ -22,6 +25,8 @@
                     Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml"/>
                 <ResourceDictionary
                     Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Teal.xaml"/>
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
                 <ResourceDictionary
                     Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
