@@ -1,4 +1,5 @@
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
 using Presentation.Components.Atomic;
 using Presentation.Components.Dashboard;
 

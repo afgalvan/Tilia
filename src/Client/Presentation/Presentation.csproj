@@ -15,6 +15,8 @@
     <None Remove="Assets\Fonts\DMSans-Medium.ttf" />
     <None Remove="Assets\Fonts\DMSans-MediumItalic.ttf" />
     <None Remove="Assets\Fonts\DMSans-Regular.ttf" />
+    <None Remove="Assets\Icons\tilia-big.png" />
+    <None Remove="Assets\Icons\tilia-title.png" />
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
     <None Remove="Assets\Ilustrations\DoctorOrgLogin.png" />
@@ -49,6 +51,12 @@
     <Resource Include="Assets\Fonts\DMSans-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icons\tilia-big.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\tilia-title.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Icons\tilia.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -63,7 +71,6 @@
   <ItemGroup>
     <Folder Include="Components\Configuration\" />
     <Folder Include="Components\Users\" />
-    <Folder Include="Utils\" />
   </ItemGroup>
 
   <ItemGroup>

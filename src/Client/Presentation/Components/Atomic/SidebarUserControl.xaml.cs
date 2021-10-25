@@ -107,6 +107,7 @@ namespace Presentation.Components.Atomic
         private static void ChangeSelectedButtonColor(Control selectedButton,
             TextBlock textBlock, Control icon)
         {
+            ShadowAssist.SetShadowDepth(selectedButton, ShadowDepth.Depth1);
             selectedButton.Background = ColorPalette.PrimaryColor;
             textBlock.Foreground      = Brushes.White;
             icon.Foreground           = Brushes.White;
