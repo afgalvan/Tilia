@@ -7,8 +7,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
              d:DesignHeight="54.64" d:DesignWidth="1097">
-    <materialDesign:Card Grid.ColumnSpan="3"
-                         Background="{StaticResource PrimaryColor}"
+    <materialDesign:Card Background="{StaticResource PrimaryColor}"
                          Panel.ZIndex="1">
 
         <Grid x:Name="HeaderGrid">
@@ -56,6 +55,8 @@
                     <ColumnDefinition Width="4*" />
                 </Grid.ColumnDefinitions>
 
+                <ContentControl x:Name="SearchBarContentArea"></ContentControl>
+
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
                             FlowDirection="RightToLeft"
@@ -63,39 +64,41 @@
 
                     <Button Margin="0, 0, 20, 0"
                             Height="32" Width="32"
-                            Cursor="Hand">
-                        <materialDesign:PackIcon Kind="UserOutline"
-                                                 Foreground="#A3AED0" />
+                            materialDesign:ButtonAssist.CornerRadius="8"
+                            Cursor="Hand" Background="White" BorderBrush="White">
+                        <materialDesign:PackIcon Kind="UserOutline" HorizontalAlignment="Center"
+                                                 Foreground="{StaticResource Gray}" />
                     </Button>
 
-                    <Button Margin="0, 0, 20, 0"
+                    <Button Margin="0, 0, 20, 0" Background="White" BorderBrush="White"
+                            materialDesign:ButtonAssist.CornerRadius="8"
                             Height="32" Width="32" Cursor="Hand">
                         <StackPanel Orientation="Horizontal"
                                     FlowDirection="LeftToRight">
                             <materialDesign:PackIcon Kind="Add"
-                                                     Foreground="#A3AED0"
+                                                     Foreground="{StaticResource Gray}"
                                                      Margin="0, 0, -5, 0" />
                             <materialDesign:PackIcon Kind="ExpandMore"
-                                                     Foreground="#A3AED0"
+                                                     Foreground="{StaticResource Gray}"
                                                      Margin="0, 0, -4, 0" />
                         </StackPanel>
                     </Button>
 
-                    <mah:Badged Badge="{Binding Path=BadgeValue}"
-                                BadgePlacementMode="BottomRight"
+                    <mah:Badged Badge="2"
+                                BadgePlacementMode="TopLeft"
+                                BadgeBackground="{StaticResource AltSecondaryColor}"
                                 Margin="0, 0, 20, 0"
                                 Height="32" Width="32" Cursor="Hand">
 
-                        <Button>
+                        <Button Background="White" BorderBrush="White" Cursor="Hand"
+                                materialDesign:ButtonAssist.CornerRadius="8">
                             <materialDesign:PackIcon Kind="BellOutline"
-                                                     Foreground="#A3AED0" />
+                                                     Foreground="{StaticResource Gray}"
+                                                     HorizontalAlignment="Center"/>
                         </Button>
 
                     </mah:Badged>
                 </StackPanel>
-
-                <ContentControl x:Name="SearchBarContentArea" ></ContentControl>
-
             </Grid>
 
         </Grid>

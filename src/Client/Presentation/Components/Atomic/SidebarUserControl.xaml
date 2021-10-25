@@ -19,7 +19,8 @@
                     Background="{StaticResource PrimaryColor}"
                     Width="200"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                    Margin="0,20,0,0"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Margin="0, 20, 0, 0"
                     Foreground="{x:Null}"
                     BorderBrush="{x:Null}"
                     Click="DashboardButton_Click">
@@ -72,12 +73,12 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0" />
+                                             Foreground="{StaticResource Gray}" />
 
                     <TextBlock x:Name="MedicalAppointmentTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
@@ -111,17 +112,16 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0" />
+                                             Foreground="{StaticResource Gray}" />
 
                     <TextBlock x:Name="ClinicalHistoriesTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
                                FontWeight="Normal">
-
                         Historias clínicas
                     </TextBlock>
 
@@ -150,12 +150,12 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0" />
+                                             Foreground="{StaticResource Gray}" />
 
                     <TextBlock x:Name="MedicalNotesTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
@@ -189,12 +189,12 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0" />
+                                             Foreground="{StaticResource Gray}" />
 
                     <TextBlock x:Name="MedicalOrdersTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
@@ -229,12 +229,12 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0" />
+                                             Foreground="{StaticResource Gray}" />
 
                     <TextBlock x:Name="UsersTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
@@ -254,7 +254,7 @@
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
                     Click="ConfigButton_Click"
-                    Margin="0,15,0,0">
+                    Margin="0, 15, 0, 0">
 
                 <StackPanel x:Name="ConfigStackPanel"
                             Orientation="Horizontal"
@@ -266,14 +266,14 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0"
+                                             Foreground="{StaticResource Gray}"
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
 
                     <TextBlock x:Name="ConfigTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
@@ -284,7 +284,7 @@
             </Button>
 
 
-            <Separator Margin="0,50,0,10" />
+            <Separator Margin="0,50,0,10" Style="{StaticResource MaterialDesignDarkSeparator}" />
             <!-- Log out button -->
             <Button x:Name="LogoutButton"
                     Height="45"
@@ -307,14 +307,14 @@
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
-                                             Foreground="#FFA3AED0"
+                                             Foreground="{StaticResource Gray}"
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
 
                     <TextBlock x:Name="LogoutTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
-                               Foreground="#A3AED0"
+                               Foreground="{StaticResource Gray}"
                                Margin="10,3,48,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
