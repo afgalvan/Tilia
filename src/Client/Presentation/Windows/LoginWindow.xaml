@@ -47,7 +47,8 @@
                        Width="75" Margin="0, 40, 0, 0" />
                 <Label HorizontalAlignment="Center"
                        Content="Inicio de sesión" Margin="0, 20, 0, 40"
-                       Foreground="{StaticResource AltSecondaryColor}" FontWeight="Bold" FontSize="30" />
+                       Foreground="{StaticResource AltSecondaryColor}" FontWeight="Bold"
+                       FontSize="30" />
 
                 <!-- Username input -->
                 <TextBox x:Name="UsernameField" Width="250"
@@ -117,7 +118,8 @@
                         Foreground="DimGray"
                         FontSize="17">
                         <CheckBox.Resources>
-                            <SolidColorBrush x:Key="MaterialDesignCheckBoxOff" Color="{StaticResource MahApps.Colors.Gray3}" />
+                            <SolidColorBrush x:Key="MaterialDesignCheckBoxOff"
+                                             Color="{StaticResource MahApps.Colors.Gray3}" />
                         </CheckBox.Resources>
                     </CheckBox>
                 </StackPanel>
@@ -128,10 +130,10 @@
                         Click="LogInButton_Click"
                         Foreground="White"
                         Background="{StaticResource ButtonColor}"
-                        BorderBrush="{StaticResource ButtonColor}" 
+                        BorderBrush="{StaticResource ButtonColor}"
                         materialDesign:ButtonAssist.CornerRadius="20"
                         FontSize="18"
-                        Width="200" Height="45"/>
+                        Width="200" Height="45" />
                 <mah:ToggleSwitch HorizontalAlignment="Center"
                                   Visibility="Hidden" Header="ToggleSwitch"
                                   Height="100" Width="100" />

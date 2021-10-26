@@ -70,6 +70,7 @@
 
   <ItemGroup>
     <Folder Include="Components\Configuration\" />
+    <Folder Include="Components\MedicalFiles" />
     <Folder Include="Components\Users\" />
   </ItemGroup>
 

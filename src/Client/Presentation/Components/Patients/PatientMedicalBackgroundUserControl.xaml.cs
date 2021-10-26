@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Presentation.Components.MedicalFiles.Patients;
 
-namespace Presentation.Components.MedicalFiles
+namespace Presentation.Components.Patients
 {
     /// <summary>
     /// Logic interaction for PatientMedicalBackgroundUserControl.xaml
