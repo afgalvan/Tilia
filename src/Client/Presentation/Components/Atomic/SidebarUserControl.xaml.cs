@@ -6,7 +6,8 @@ using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Dashboard;
 using Presentation.Components.MedAppointment;
-using Presentation.Components.MedicalFiles;
+using Presentation.Components.MedicalFiles.Patients;
+using Presentation.Components.Patients;
 using Presentation.Utils;
 using Presentation.Windows;
 
@@ -64,10 +65,10 @@ namespace Presentation.Components.Atomic
             await _mainWindow.ShowMessageAsync("Tilia", "MedicalOrders");
         }
 
-        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, LogoutTextBlock, LogoutIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Logout");
+            _mainWindow.LogoutSession();
         }
 
         private void ToggleButtonColor(object sender, TextBlock textBlock, Control icon)

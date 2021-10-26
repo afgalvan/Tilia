@@ -198,7 +198,6 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
                                FontWeight="Normal">
-
                         Ordenes médicas
                     </TextBlock>
 

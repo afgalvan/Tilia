@@ -9,8 +9,8 @@ namespace Presentation.Extensions
     {
         public static void AddPresentationServices(this IServiceCollection services)
         {
-            services.AddScoped<LoginWindow>();
-            services.AddScoped<MainWindow>();
+            services.AddTransient<LoginWindow>();
+            services.AddTransient<MainWindow>();
             services.AddSingleton<ColorsUtil>();
             services.AddScoped<BrushConverter>();
         }

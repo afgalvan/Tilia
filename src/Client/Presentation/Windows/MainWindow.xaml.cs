@@ -1,5 +1,7 @@
+using System;
 using System.Windows.Controls;
 using MahApps.Metro.Controls;
+using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components.Atomic;
 using Presentation.Components.Dashboard;
 
@@ -7,8 +9,11 @@ namespace Presentation.Windows
 {
     public partial class MainWindow
     {
-        public MainWindow()
+        private readonly IServiceProvider _provider;
+
+        public MainWindow(IServiceProvider provider)
         {
+            _provider = provider;
             InitializeComponent();
             MainContentArea.Content    = new DashboardUserControl();
             HeaderContentArea.Content  = new HeaderUserControl(this);
@@ -28,6 +33,12 @@ namespace Presentation.Windows
             }
 
             MainContentArea.Content = content;
+        }
+
+        public void LogoutSession()
+        {
+            _provider.GetRequiredService<LoginWindow>()?.Show();
+            Close();
         }
     }
 }
