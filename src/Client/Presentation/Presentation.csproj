@@ -20,7 +20,9 @@
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
     <None Remove="Assets\Ilustrations\DoctorOrgLogin.png" />
+    <None Remove="Components\Configuration\**" />
     <None Remove="Components\MedicalFiles\**" />
+    <None Remove="Components\Users\**" />
     <None Remove="Controllers\**" />
   </ItemGroup>
 
@@ -70,22 +72,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Configuration\" />
-    <Folder Include="Components\Users\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Remove="Components\Configuration\**" />
     <Compile Remove="Components\MedicalFiles\**" />
+    <Compile Remove="Components\Users\**" />
     <Compile Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Components\Configuration\**" />
     <EmbeddedResource Remove="Components\MedicalFiles\**" />
+    <EmbeddedResource Remove="Components\Users\**" />
     <EmbeddedResource Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Components\Configuration\**" />
     <Page Remove="Components\MedicalFiles\**" />
+    <Page Remove="Components\Users\**" />
     <Page Remove="Controllers\**" />
   </ItemGroup>
 

@@ -37,13 +37,13 @@ namespace Presentation.Components.Atomic
         private async void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Users");
+            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
         }
 
-        private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
+        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
+            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
         }
 
         private async void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
