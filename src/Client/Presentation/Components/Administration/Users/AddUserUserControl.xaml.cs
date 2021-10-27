@@ -1,17 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Presentation.Windows;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Presentation.Components.Administration.Users
 {
@@ -20,9 +9,17 @@ namespace Presentation.Components.Administration.Users
     /// </summary>
     public partial class AddUserUserControl : UserControl
     {
-        public AddUserUserControl()
+        private readonly MainWindow _mainWindow;
+
+        public AddUserUserControl(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
+        }
+
+        private void BackToAdminUserControlButton_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
+using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;
 using Presentation.Components.MedicalMeetings;
 using Presentation.Components.Patients;
@@ -52,10 +53,10 @@ namespace Presentation.Components.Atomic
             await _mainWindow.ShowMessageAsync("Tilia", "MedicalNotes");
         }
 
-        private async void AdminButton_Click(object sender, RoutedEventArgs e)
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Configuration");
+            _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
         }
 
         private async void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
