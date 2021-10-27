@@ -9,27 +9,27 @@ namespace Domain.MedicalFiles
 {
     public class MedicalAppointment
     {
-        public string                   AppointmentReason  { get; set; }
-        public string                   DiseaseHistory     { get; set; }
-        public DateTime                 AppointmentDate    { get; set; }
-        public MedicalRecord            MedicalRecord      { get; set; }
-        public MedicalNote              MedicalNote        { get; set; }
-        public MedicalOrder             MedicalOrder       { get; set; }
+        public string AppointmentReason { get; set; }
+        public string DiseaseHistory { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public MedicalRecord MedicalRecord { get; set; }
+        public MedicalNote MedicalNote { get; set; }
+        public MedicalOrder MedicalOrder { get; set; }
         public IList<MedicalBackground> MedicalBackgrounds { get; set; }
 #nullable enable
-        public GynecologicalBackground? GynecologicalBackground { get; set; }
+        public IList<GynecologicalBackground> GynecologicalBackgrounds { get; set; }
 #nullable disable
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
             DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote,
             MedicalOrder medicalOrder)
         {
-            AppointmentReason  = appointmentReason;
-            DiseaseHistory     = diseaseHistory;
-            AppointmentDate    = appointmentDate;
-            MedicalRecord      = medicalRecord;
-            MedicalNote        = medicalNote;
-            MedicalOrder       = medicalOrder;
+            AppointmentReason = appointmentReason;
+            DiseaseHistory = diseaseHistory;
+            AppointmentDate = appointmentDate;
+            MedicalRecord = medicalRecord;
+            MedicalNote = medicalNote;
+            MedicalOrder = medicalOrder;
             MedicalBackgrounds = new List<MedicalBackground>();
         }
 
@@ -38,6 +38,17 @@ namespace Domain.MedicalFiles
         {
             var medicalBackground = new MedicalBackground(name, state, observation);
             MedicalBackgrounds.Add(medicalBackground);
+        }
+
+        public void AddGynecologycalBackground(DateTime menarchy, int cycle, bool isRegular,
+            bool hasDysmenorrhea, bool hasAmenorrhea, DateTime lastMenstrualPeriod,
+            DateTime estimatedDateConfinement, bool hasPlanning, string method)
+        {
+            var gynecologicalBackground = new GynecologicalBackground(menarchy, cycle,
+                isRegular, hasDysmenorrhea, hasAmenorrhea, lastMenstrualPeriod,
+                estimatedDateConfinement, hasPlanning, method);
+
+            GynecologicalBackgrounds.Add(gynecologicalBackground);
         }
     }
 }
