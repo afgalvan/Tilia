@@ -6,6 +6,7 @@ using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Dashboard;
 using Presentation.Components.MedicalMeetings;
+using Presentation.Components.MedicalNotes;
 using Presentation.Components.Patients;
 using Presentation.Utils;
 using Presentation.Windows;
@@ -40,28 +41,28 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
         }
 
-        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
-        }
-
-        private async void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
+        private void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalNotesTextBlock, MedicalNotesIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "MedicalNotes");
-        }
-
-        private async void AdminButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Configuration");
+            _mainWindow.ChangeMainContentArea(new MedicalNotesUserControl());
         }
 
         private async void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalOrdersTextBlock, MedicalOrdersIcon);
             await _mainWindow.ShowMessageAsync("Tilia", "MedicalOrders");
+        }
+
+        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
+            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
+        }
+
+        private async void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
+            await _mainWindow.ShowMessageAsync("Tilia", "Configuration");
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,237 @@
+<UserControl x:Class="Presentation.Components.MedicalNotes.MedicalNotesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Presentation.Components.MedicalNotes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="546" d:DesignWidth="873" Cursor="">
+
+    <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
+                                         OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card Margin="30,15,10,15">
+                <StackPanel Orientation="Horizontal">
+                    
+                </StackPanel>
+            </materialDesign:Card>
+
+            <Grid x:Name="MedicalNotesCardsGrid"
+                  Margin="20,0,20,20"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <!-- CIE10 card -->
+                <materialDesign:Card x:Name="CIE10Card"
+                                     Margin="10">
+
+                    <Grid x:Name="CIE10Grid">
+                        <Label x:Name="CIE10Label" FontFamily="DM Sans"
+                               FontSize="15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Margin="0,10,0,0"
+                               FontWeight="Normal">
+                            CIE10
+                        </Label>
+
+                        <CheckBox
+                            x:Name="CIE10FilledTextBoxEnabledComboBox"
+                            Content="Agregar"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,14,20,0"
+                            Foreground="#FFB0B1B3"
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            Padding="4,0,0,2" />
+
+                        <TextBox x:Name="CIE10TextBox"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 FontSize="14"
+                                 VerticalAlignment="Stretch"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Descripcion"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="20,40,20,20"
+                                 Background="#FFF4F7FE"
+                                 BorderBrush="#FFF4F7FE"
+                                 IsEnabled="{Binding Path=IsChecked, ElementName=CIE10FilledTextBoxEnabledComboBox}"/>
+                    </Grid>
+
+                </materialDesign:Card>
+
+                <!-- Functional diagnosis card -->
+                <materialDesign:Card x:Name="FunctionalDiagnosisCard"
+                                     Grid.Column="1"
+                                     Margin="10">
+
+                    <Grid>
+                        <Label x:Name="FunctionalDiagnosisLabel"
+                               FontFamily="DM Sans"
+                               FontSize="15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Margin="0,10,0,0"
+                               FontWeight="Normal">
+                            Diagnostico funcional
+                        </Label>
+
+                        <CheckBox
+                            x:Name="FunctionalDiagnosisFilledTextBoxEnabledComboBox"
+                            Content="Agregar"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,14,20,0"
+                            Foreground="#FFB0B1B3"
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            Padding="4,0,0,2" />
+
+                        <TextBox x:Name="FunctionalDiagnosisTextBox"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 FontSize="14"
+                                 VerticalAlignment="Stretch"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Descripcion"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="20,40,20,20"
+                                 Background="#FFF4F7FE"
+                                 BorderBrush="#FFF4F7FE"
+                                 IsEnabled="{Binding Path=IsChecked, ElementName=FunctionalDiagnosisFilledTextBoxEnabledComboBox}"/>
+                    </Grid>
+
+                </materialDesign:Card>
+
+                <!-- EvolutionSheet card -->
+                <materialDesign:Card x:Name="EvolutionSheetCard" 
+                                    Grid.Row="1"
+                                    Margin="10">
+
+                    <Grid>
+                        <Label x:Name="EvolutionSheetLabel"
+                               FontFamily="DM Sans"
+                               FontSize="15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Margin="0,10,0,0"
+                               FontWeight="Normal">
+                            Evolucion del paciente
+                        </Label>
+
+                        <CheckBox
+                            x:Name="EvolutionSheetFilledTextBoxEnabledComboBox"
+                            Content="Agregar"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,14,20,0"
+                            Foreground="#FFB0B1B3"
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            Padding="4,0,0,2" />
+
+                        <TextBox x:Name="EvolutionSheetTextBox"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 FontSize="14"
+                                 VerticalAlignment="Stretch"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Descripcion"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="20,40,20,20"
+                                 Background="#FFF4F7FE"
+                                 BorderBrush="#FFF4F7FE"
+                                 IsEnabled="{Binding Path=IsChecked, ElementName=EvolutionSheetFilledTextBoxEnabledComboBox}"/>
+                    </Grid>
+
+                </materialDesign:Card>
+
+                <!-- ManagementPlan card -->
+                <materialDesign:Card x:Name="ManagementPlanCard"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     Margin="10">
+
+                    <Grid>
+
+                        <Label x:Name="ManagementPlanLabel"
+                               FontFamily="DM Sans"
+                               FontSize="15"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               Margin="0,10,0,0"
+                               FontWeight="Normal">
+                            Plan de manejo
+                        </Label>
+
+                        <CheckBox
+                            x:Name="ManagementPlanFilledTextBoxEnabledComboBox"
+                            Content="Agregar"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,14,20,0"
+                            Foreground="#FFB0B1B3"
+                            HorizontalContentAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            Padding="4,0,0,2" />
+
+                        <TextBox x:Name="ManagementPlanTextBox"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 FontSize="14"
+                                 VerticalAlignment="Stretch"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 materialDesign:HintAssist.Hint="Descripcion"
+                                 HorizontalAlignment="Stretch"
+                                 Margin="20,40,20,20"
+                                 Background="#FFF4F7FE"
+                                 BorderBrush="#FFF4F7FE"
+                                 Cursor="IBeam"
+                                 IsEnabled="{Binding Path=IsChecked, ElementName=ManagementPlanFilledTextBoxEnabledComboBox}"/>
+                    </Grid>
+
+                </materialDesign:Card>
+            </Grid>
+
+            <Button x:Name="AddInformationButton"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Background="{StaticResource ButtonColor}"
+                    Content="Realizar nota"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"/>
+        </Grid>
+
+    </materialDesign:TransitioningContent>
+</UserControl>
