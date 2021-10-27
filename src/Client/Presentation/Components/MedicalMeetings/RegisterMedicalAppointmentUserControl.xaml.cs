@@ -1,3 +1,4 @@
+using System.Windows;
 using Presentation.Windows;
 
 namespace Presentation.Components.MedicalMeetings
@@ -15,7 +16,7 @@ namespace Presentation.Components.MedicalMeetings
             InitializeComponent();
         }
 
-        private void BackToQueryAppointmentUserControlButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BackToQueryAppointmentUserControlButton_Click(object sender, RoutedEventArgs e)
         {
             _mainWindowControl.ChangeMainContentArea(new QueryMedicalAppointmentUserControl(_mainWindowControl));
         }
