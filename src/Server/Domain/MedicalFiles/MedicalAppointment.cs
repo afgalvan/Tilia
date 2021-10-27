@@ -21,15 +21,13 @@ namespace Domain.MedicalFiles
 #nullable disable
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
-            DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote,
-            MedicalOrder medicalOrder)
+            DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote)
         {
             AppointmentReason  = appointmentReason;
             DiseaseHistory     = diseaseHistory;
             AppointmentDate    = appointmentDate;
             MedicalRecord      = medicalRecord;
             MedicalNote        = medicalNote;
-            MedicalOrder       = medicalOrder;
             MedicalBackgrounds = new List<MedicalBackground>();
         }
 
@@ -38,6 +36,11 @@ namespace Domain.MedicalFiles
         {
             var medicalBackground = new MedicalBackground(name, state, observation);
             MedicalBackgrounds.Add(medicalBackground);
+        }
+
+        public void AddMedicalOrder(AptitudeCertificate aptitudeCertificate)
+        {
+            MedicalOrder = new MedicalOrder(aptitudeCertificate);
         }
     }
 }

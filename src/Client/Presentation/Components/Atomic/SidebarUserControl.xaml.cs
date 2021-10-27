@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Administration;
@@ -11,6 +7,10 @@ using Presentation.Components.MedicalNotes;
 using Presentation.Components.Patients;
 using Presentation.Utils;
 using Presentation.Windows;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Presentation.Components.Atomic
 {
@@ -59,7 +59,7 @@ namespace Presentation.Components.Atomic
             ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
             _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
         }
-      
+
         private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
@@ -111,8 +111,8 @@ namespace Presentation.Components.Atomic
         {
             ShadowAssist.SetShadowDepth(selectedButton, ShadowDepth.Depth1);
             selectedButton.Background = ColorPalette.PrimaryColor;
-            textBlock.Foreground      = Brushes.White;
-            icon.Foreground           = Brushes.White;
+            textBlock.Foreground = Brushes.White;
+            icon.Foreground = Brushes.White;
         }
     }
 }

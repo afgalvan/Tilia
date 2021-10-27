@@ -1,5 +1,4 @@
-﻿using Domain.Locations;
-using Domain.MedicalFiles;
+﻿using Domain.MedicalFiles;
 using Domain.People;
 
 namespace Domain.Patients
