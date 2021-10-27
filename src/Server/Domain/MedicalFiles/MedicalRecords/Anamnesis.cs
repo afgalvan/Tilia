@@ -3,5 +3,10 @@
     public class Anamnesis
     {
         public string Description { get; set; }
+
+        public Anamnesis(string description)
+        {
+            Description = description;
+        }
     }
 }
