@@ -68,7 +68,7 @@
                             Width="180">
 
                     <materialDesign:PackIcon x:Name="MedicalAppointmentIcon"
-                                             Kind="MedicalBag"
+                                             Kind="CalendarPlus"
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
@@ -90,8 +90,8 @@
 
             </Button>
 
-            <!-- Clinical histories button -->
-            <Button x:Name="ClinicalHistoriesButton"
+            <!-- Medical meeting button -->
+            <Button x:Name="MedicalMeetingButton"
                     Height="45"
                     Background="{x:Null}"
                     Cursor="Hand"
@@ -99,21 +99,21 @@
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
                     Width="205"
-                    Click="ClinicalHistoriesButton_Click"
+                    Click="MedicalMeetingButton_Click"
                     Margin="0,15,0,0">
 
-                <StackPanel x:Name="ClinicalHistoriesStackPanel"
+                <StackPanel x:Name="MedicalMeetingStackPanel"
                             Orientation="Horizontal"
                             Width="180">
 
-                    <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon"
-                                             Kind="FolderOutline"
+                    <materialDesign:PackIcon x:Name="MedicalMeetingIcon"
+                                             Kind="MedicalBag"
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
                                              Foreground="{StaticResource Gray}" />
 
-                    <TextBlock x:Name="ClinicalHistoriesTextBlock"
+                    <TextBlock x:Name="MedicalMeetingTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
                                Foreground="{StaticResource Gray}"
@@ -121,7 +121,7 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
                                FontWeight="Normal">
-                        Historias clínicas
+                        Consultas médicas
                     </TextBlock>
 
                 </StackPanel>
@@ -205,8 +205,8 @@
 
             </Button>
 
-            <!-- Users button -->
-            <Button x:Name="UsersButton"
+            <!-- Clinical histories button -->
+            <Button x:Name="ClinicalHistoriesButton"
                     Height="45"
                     Cursor="Hand"
                     Background="{x:Null}"
@@ -214,22 +214,22 @@
                     Foreground="{x:Null}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
-                    Click="UsersButton_Click"
+                    Click="ClinicalHistoriesButton_Click"
                     Margin="0,15,0,0">
 
-                <StackPanel x:Name="UsersStackPanel"
+                <StackPanel x:Name="ClinicalHistoriesStackPanel"
                             Orientation="Horizontal"
                             Margin="0,0,0,0"
                             Width="180">
 
-                    <materialDesign:PackIcon x:Name="UsersIcon"
-                                             Kind="ShieldAccountOutline"
+                    <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon"
+                                             Kind="FolderPlusOutline"
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
                                              Foreground="{StaticResource Gray}" />
 
-                    <TextBlock x:Name="UsersTextBlock"
+                    <TextBlock x:Name="ClinicalHistoriesTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
                                Foreground="{StaticResource Gray}"
@@ -237,13 +237,13 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
                                FontWeight="Normal">
-                        Usuarios
+                        Historias clínicas
                     </TextBlock>
                 </StackPanel>
             </Button>
 
-            <!-- Config button -->
-            <Button x:Name="ConfigButton"
+            <!-- Administration button -->
+            <Button x:Name="AdminButton"
                     Height="45"
                     Cursor="Hand"
                     Background="{x:Null}"
@@ -251,7 +251,7 @@
                     Foreground="{x:Null}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"
                     Width="205"
-                    Click="ConfigButton_Click"
+                    Click="AdminButton_Click"
                     Margin="0, 15, 0, 0">
 
                 <StackPanel x:Name="ConfigStackPanel"
@@ -259,8 +259,8 @@
                             Margin="0,0,0,0"
                             Width="180">
 
-                    <materialDesign:PackIcon x:Name="ConfigIcon"
-                                             Kind="CogOutline"
+                    <materialDesign:PackIcon x:Name="AdminIcon"
+                                             Kind="ShieldAccountOutline"
                                              Width="24"
                                              Height="24"
                                              Margin="10,0,0,0"
@@ -268,7 +268,7 @@
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Left" />
 
-                    <TextBlock x:Name="ConfigTextBlock"
+                    <TextBlock x:Name="AdminTextBlock"
                                FontSize="15"
                                FontFamily="DM Sans"
                                Foreground="{StaticResource Gray}"
@@ -276,7 +276,7 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Stretch"
                                FontWeight="Normal">
-                        Configuración
+                        Administracion
                     </TextBlock>
                 </StackPanel>
             </Button>
