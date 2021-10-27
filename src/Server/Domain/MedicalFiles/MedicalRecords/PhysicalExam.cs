@@ -6,5 +6,11 @@ namespace Domain.MedicalFiles.MedicalRecords
     {
         public VitalSign             VitalSignResults { get; set; }
         public IList<BodyPartRecord> BodyPartRecords  { get; set; }
+
+        public PhysicalExam(VitalSign vitalSignResults, IList<BodyPartRecord> bodyPartRecords)
+        {
+            VitalSignResults = vitalSignResults;
+            BodyPartRecords = bodyPartRecords;
+        }
     }
 }

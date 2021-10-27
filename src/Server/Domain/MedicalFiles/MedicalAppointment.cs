@@ -31,6 +31,7 @@ namespace Domain.MedicalFiles
             MedicalNote = medicalNote;
             MedicalOrder = medicalOrder;
             MedicalBackgrounds = new List<MedicalBackground>();
+            GynecologicalBackgrounds = new List<GynecologicalBackground>();
         }
 
         public void AddMedicalBackground(string name, bool state,
