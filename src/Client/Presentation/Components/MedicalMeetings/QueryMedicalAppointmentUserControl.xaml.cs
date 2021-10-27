@@ -21,5 +21,10 @@ namespace Presentation.Components.MedicalMeetings
         {
             _mainWindowControl.ChangeMainContentArea(new RegisterMedicalAppointmentUserControl(_mainWindowControl));
         }
+
+        private void MedicalAppointmentsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -47,7 +47,7 @@
                     <DataGrid x:Name="MedicalAppointmentsDataGrid"
                           HorizontalAlignment="Center"
                           Width="697"
-                          Margin="0,58,0,52">
+                          Margin="0,58,0,52" SelectionChanged="MedicalAppointmentsDataGrid_SelectionChanged">
 
                         <DataGrid.Columns>
 
