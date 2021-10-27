@@ -7,6 +7,7 @@ using MaterialDesignThemes.Wpf;
 using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;
 using Presentation.Components.MedicalMeetings;
+using Presentation.Components.MedicalNotes;
 using Presentation.Components.Patients;
 using Presentation.Utils;
 using Presentation.Windows;
@@ -41,16 +42,16 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
         }
 
-        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
-        }
-
-        private async void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
+        private void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalNotesTextBlock, MedicalNotesIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "MedicalNotes");
+            _mainWindow.ChangeMainContentArea(new MedicalNotesUserControl());
+        }
+
+        private async void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, MedicalOrdersTextBlock, MedicalOrdersIcon);
+            await _mainWindow.ShowMessageAsync("Tilia", "MedicalOrders");
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -58,11 +59,11 @@ namespace Presentation.Components.Atomic
             ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
             _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
         }
-
-        private async void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
+      
+        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButtonColor(sender, MedicalOrdersTextBlock, MedicalOrdersIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "MedicalOrders");
+            ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
+            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)

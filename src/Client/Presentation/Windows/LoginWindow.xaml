@@ -59,7 +59,7 @@
                          materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource SecondaryColor}"
                          materialDesign:ValidationAssist.FontSize="14"
                          FontSize="17"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}" Cursor="IBeam">
                     <materialDesign:HintAssist.Hint>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="User" Height="24" Width="24"
