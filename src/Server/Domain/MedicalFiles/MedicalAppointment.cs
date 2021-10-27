@@ -21,15 +21,13 @@ namespace Domain.MedicalFiles
 #nullable disable
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
-            DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote,
-            MedicalOrder medicalOrder)
+            DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote)
         {
-            AppointmentReason = appointmentReason;
-            DiseaseHistory = diseaseHistory;
-            AppointmentDate = appointmentDate;
-            MedicalRecord = medicalRecord;
-            MedicalNote = medicalNote;
-            MedicalOrder = medicalOrder;
+            AppointmentReason  = appointmentReason;
+            DiseaseHistory     = diseaseHistory;
+            AppointmentDate    = appointmentDate;
+            MedicalRecord      = medicalRecord;
+            MedicalNote        = medicalNote;
             MedicalBackgrounds = new List<MedicalBackground>();
             GynecologicalBackgrounds = new List<GynecologicalBackground>();
         }
@@ -50,6 +48,11 @@ namespace Domain.MedicalFiles
                 estimatedDateConfinement, hasPlanning, method);
 
             GynecologicalBackgrounds.Add(gynecologicalBackground);
+        }
+      
+        public void AddMedicalOrder(AptitudeCertificate aptitudeCertificate)
+        {
+            MedicalOrder = new MedicalOrder(aptitudeCertificate);
         }
     }
 }
