@@ -5,7 +5,6 @@ using System.Windows.Media;
 using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Dashboard;
-using Presentation.Components.MedicalFiles.Patients;
 using Presentation.Components.MedicalMeetings;
 using Presentation.Components.Patients;
 using Presentation.Utils;
@@ -35,10 +34,16 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(new QueryMedicalAppointmentUserControl(_mainWindow));
         }
 
-        private void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
+        private async void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
+            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
+        }
+
+        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
+            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
         }
 
         private async void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
@@ -47,15 +52,9 @@ namespace Presentation.Components.Atomic
             await _mainWindow.ShowMessageAsync("Tilia", "MedicalNotes");
         }
 
-        private async void UsersButton_Click(object sender, RoutedEventArgs e)
+        private async void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButtonColor(sender, UsersTextBlock, UsersIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Users");
-        }
-
-        private async void ConfigButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, ConfigTextBlock, ConfigIcon);
+            ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
             await _mainWindow.ShowMessageAsync("Tilia", "Configuration");
         }
 
@@ -89,8 +88,8 @@ namespace Presentation.Components.Atomic
             return new[]
             {
                 DashboardTextBlock, MedicalAppointmentTextBlock,
-                ClinicalHistoriesTextBlock, MedicalNotesTextBlock, UsersTextBlock,
-                ConfigTextBlock,
+                ClinicalHistoriesTextBlock, MedicalNotesTextBlock, AdminTextBlock,
+                MedicalMeetingTextBlock,
                 MedicalOrdersTextBlock, LogoutTextBlock
             };
         }
@@ -100,7 +99,7 @@ namespace Presentation.Components.Atomic
             return new[]
             {
                 DashboardIcon, MedicalAppointmentIcon,
-                ClinicalHistoriesIcon, MedicalNotesIcon, UsersIcon, ConfigIcon,
+                ClinicalHistoriesIcon, MedicalNotesIcon, MedicalMeetingIcon, AdminIcon,
                 MedicalOrdersIcon, LogoutIcon
             };
         }
