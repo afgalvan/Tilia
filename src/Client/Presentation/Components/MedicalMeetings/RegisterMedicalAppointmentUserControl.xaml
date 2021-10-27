@@ -35,7 +35,7 @@
                                              HorizontalAlignment="Left"
                                              VerticalAlignment="Center"
                                              FontWeight="Bold" />
-                    <TextBlock x:Name="BackToQueryAppoitmentTextBlock"
+                    <TextBlock x:Name="BackToQueryAppointmentTextBlock"
                                Foreground="#FF99A3C4"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"

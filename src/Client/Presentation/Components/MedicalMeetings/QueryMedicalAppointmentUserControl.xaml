@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
 
     <Grid x:Name="MainGrid">
 
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
+        <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
                                              OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
 
             <Grid x:Name="QueryMedicalAppointmentGrid">
@@ -38,7 +38,7 @@
                 <!-- Query Appointments DataGrid -->
                 <materialDesign:Card x:Name="MedAppointmentDataGridCard"
                                  Grid.Row="1"
-                                 Grid.ColumnSpan="3"
+                                 Grid.ColumnSpan="3" Grid.Column="0"
                                  Width="696"
                                  Height="300"
                                  Margin="0,0,0,0"
