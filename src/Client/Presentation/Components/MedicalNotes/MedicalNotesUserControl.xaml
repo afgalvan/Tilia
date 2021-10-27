@@ -1,12 +1,12 @@
 <UserControl x:Class="Presentation.Components.MedicalNotes.MedicalNotesUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Presentation.Components.MedicalNotes"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="546" d:DesignWidth="873" Cursor="">
+             mc:Ignorable="d"
+             d:DesignHeight="546" d:DesignWidth="873">
 
     <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
                                          OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
@@ -26,7 +26,7 @@
 
             <materialDesign:Card Margin="30,15,10,15">
                 <StackPanel Orientation="Horizontal">
-                    
+
                 </StackPanel>
             </materialDesign:Card>
 
@@ -132,7 +132,7 @@
                 </materialDesign:Card>
 
                 <!-- EvolutionSheet card -->
-                <materialDesign:Card x:Name="EvolutionSheetCard" 
+                <materialDesign:Card x:Name="EvolutionSheetCard"
                                     Grid.Row="1"
                                     Margin="10">
 

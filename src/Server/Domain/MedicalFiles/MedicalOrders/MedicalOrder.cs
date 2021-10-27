@@ -14,14 +14,14 @@ namespace Domain.MedicalFiles.MedicalOrders
             AptitudeCertificate = aptitudeCertificate;
         }
 
-        public void AddReferrals(Referrals referral)
+        public void AddReferrals(string referralDepartment)
         {
-            Referrals.Add(referral);
+            Referrals.Add(new Referrals(referralDepartment));
         }
 
-        public void AddInability(Inability inability)
+        public void AddInability(string inabilityDescription)
         {
-            Inabilities.Add(inability);
+            Inabilities.Add(new Inability(inabilityDescription));
         }
     }
 }
