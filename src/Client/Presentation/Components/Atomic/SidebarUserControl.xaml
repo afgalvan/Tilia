@@ -1,0 +1,326 @@
+<UserControl x:Class="Presentation.Components.Atomic.SidebarUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="546.4" d:DesignWidth="223.283185840708">
+    <materialDesign:Card x:Name="ButtonsCard"
+                         Background="White">
+
+        <StackPanel x:Name="ButtonStack" Orientation="Vertical">
+
+            <!-- Dashboard button -->
+            <Button x:Name="DashboardButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{StaticResource PrimaryColor}"
+                    Width="200"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Margin="0, 20, 0, 0"
+                    Foreground="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Click="DashboardButton_Click">
+
+                <StackPanel x:Name="DashboardStackPanel"
+                            Orientation="Horizontal"
+                            Margin="7,0,0,0"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="DashboardIcon"
+                                             Kind="ViewDashboard"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="7,0,10,0"
+                                             Foreground="White" />
+
+                    <TextBlock x:Name="DashboardTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="White"
+                               Margin="0,2,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+                        Dashboard
+                    </TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+            <!-- Medical Appointments button -->
+            <Button x:Name="MedicalAppointmentButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Width="205"
+                    Click="MedicalAppointmentButton_Click"
+                    Margin="0,15,0,0">
+
+                <StackPanel x:Name="MedicalAppointmentStackPanel"
+                            Orientation="Horizontal"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="MedicalAppointmentIcon"
+                                             Kind="CalendarPlus"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}" />
+
+                    <TextBlock x:Name="MedicalAppointmentTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+
+                        Citas médicas
+                    </TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+            <!-- Medical meeting button -->
+            <Button x:Name="MedicalMeetingButton"
+                    Height="45"
+                    Background="{x:Null}"
+                    Cursor="Hand"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Width="205"
+                    Click="MedicalMeetingButton_Click"
+                    Margin="0,15,0,0">
+
+                <StackPanel x:Name="MedicalMeetingStackPanel"
+                            Orientation="Horizontal"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="MedicalMeetingIcon"
+                                             Kind="MedicalBag"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}" />
+
+                    <TextBlock x:Name="MedicalMeetingTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+                        Consultas médicas
+                    </TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+            <!-- Medical notes button -->
+            <Button x:Name="MedicalNotesButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Width="205"
+                    Click="MedicalNotesButton_Click"
+                    Margin="0,15,0,0">
+
+                <StackPanel x:Name="MedicalNotesStackPanel"
+                            Orientation="Horizontal"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="MedicalNotesIcon"
+                                             Kind="NoteOutline"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}" />
+
+                    <TextBlock x:Name="MedicalNotesTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+
+                        Notas médicas
+                    </TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+            <!-- Medical orders button -->
+            <Button x:Name="MedicalOrdersButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Width="205"
+                    Click="MedicalOrdersButton_Click"
+                    Margin="0,15,0,0">
+
+                <StackPanel x:Name="MedicalOrdersStackPanel"
+                            Orientation="Horizontal"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="MedicalOrdersIcon"
+                                             Kind="WalletOutline"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}" />
+
+                    <TextBlock x:Name="MedicalOrdersTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+                        Ordenes médicas
+                    </TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+            <!-- Clinical histories button -->
+            <Button x:Name="ClinicalHistoriesButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Width="205"
+                    Click="ClinicalHistoriesButton_Click"
+                    Margin="0,15,0,0">
+
+                <StackPanel x:Name="ClinicalHistoriesStackPanel"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="ClinicalHistoriesIcon"
+                                             Kind="FolderPlusOutline"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}" />
+
+                    <TextBlock x:Name="ClinicalHistoriesTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+                        Historias clínicas
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+
+            <!-- Administration button -->
+            <Button x:Name="AdminButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Width="205"
+                    Click="AdminButton_Click"
+                    Margin="0, 15, 0, 0">
+
+                <StackPanel x:Name="ConfigStackPanel"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="AdminIcon"
+                                             Kind="ShieldAccountOutline"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+
+                    <TextBlock x:Name="AdminTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+                        Administracion
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+
+
+            <Separator Margin="0,50,0,10" Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <!-- Log out button -->
+            <Button x:Name="LogoutButton"
+                    Height="45"
+                    Cursor="Hand"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Foreground="{x:Null}"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Width="205"
+                    Click="LogoutButton_Click"
+                    VerticalAlignment="Bottom">
+
+                <StackPanel x:Name="LogoutStackPanel"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0"
+                            Width="180">
+
+                    <materialDesign:PackIcon x:Name="LogoutIcon"
+                                             Kind="Logout"
+                                             Width="24"
+                                             Height="24"
+                                             Margin="10,0,0,0"
+                                             Foreground="{StaticResource Gray}"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Left" />
+
+                    <TextBlock x:Name="LogoutTextBlock"
+                               FontSize="15"
+                               FontFamily="DM Sans"
+                               Foreground="{StaticResource Gray}"
+                               Margin="10,3,48,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch"
+                               FontWeight="Normal">
+                        Cerrar sesión
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </materialDesign:Card>
+</UserControl>

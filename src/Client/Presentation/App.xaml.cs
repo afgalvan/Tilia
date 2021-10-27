@@ -2,9 +2,8 @@ using System.Globalization;
 using System.Threading;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Components;
 using Presentation.Extensions;
-using Presentation.Notifications;
+using Presentation.Windows;
 
 namespace Presentation
 {
@@ -26,9 +25,11 @@ namespace Presentation
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var mainPanel = _serviceProvider.GetService<MainPanel>();
-            mainPanel?.Show();
-            AppointmentAlert.Show();
+            var loginWindow = _serviceProvider.GetService<LoginWindow>();
+            // var mainWindow = _serviceProvider.GetService<MainWindow>();
+            // mainWindow?.Show();
+            loginWindow?.Show();
+            // AppointmentAlert.Show();
         }
     }
 }

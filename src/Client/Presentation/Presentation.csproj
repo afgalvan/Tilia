@@ -15,8 +15,15 @@
     <None Remove="Assets\Fonts\DMSans-Medium.ttf" />
     <None Remove="Assets\Fonts\DMSans-MediumItalic.ttf" />
     <None Remove="Assets\Fonts\DMSans-Regular.ttf" />
+    <None Remove="Assets\Icons\tilia-big.png" />
+    <None Remove="Assets\Icons\tilia-title.png" />
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
+    <None Remove="Assets\Ilustrations\DoctorOrgLogin.png" />
+    <None Remove="Components\Configuration\**" />
+    <None Remove="Components\MedicalFiles\**" />
+    <None Remove="Components\Users\**" />
+    <None Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,21 +54,42 @@
     <Resource Include="Assets\Fonts\DMSans-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icons\tilia-big.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\tilia-title.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Icons\tilia.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\tilia_whites.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Ilustrations\DoctorOrgLogin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\MedicalNotes\" />
-    <Folder Include="Components\MedicalOrders\" />
-    <Folder Include="Components\Configuration\" />
-    <Folder Include="Components\Users\" />
-    <Folder Include="Utils\" />
-    <Folder Include="Windows" />
+    <Compile Remove="Components\Configuration\**" />
+    <Compile Remove="Components\MedicalFiles\**" />
+    <Compile Remove="Components\Users\**" />
+    <Compile Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Components\Configuration\**" />
+    <EmbeddedResource Remove="Components\MedicalFiles\**" />
+    <EmbeddedResource Remove="Components\Users\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Components\Configuration\**" />
+    <Page Remove="Components\MedicalFiles\**" />
+    <Page Remove="Components\Users\**" />
+    <Page Remove="Controllers\**" />
   </ItemGroup>
 
 </Project>
