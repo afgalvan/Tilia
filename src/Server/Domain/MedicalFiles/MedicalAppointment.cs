@@ -39,7 +39,7 @@ namespace Domain.MedicalFiles
             MedicalBackgrounds.Add(medicalBackground);
         }
 
-        public void AddGynecologycalBackground(DateTime menarchy, int cycle, bool isRegular,
+        public void AddGynecologicalBackground(DateTime menarchy, int cycle, bool isRegular,
             bool hasDysmenorrhea, bool hasAmenorrhea, DateTime lastMenstrualPeriod,
             DateTime estimatedDateConfinement, bool hasPlanning, string method)
         {
@@ -49,7 +49,7 @@ namespace Domain.MedicalFiles
 
             GynecologicalBackgrounds.Add(gynecologicalBackground);
         }
-      
+
         public void AddMedicalOrder(AptitudeCertificate aptitudeCertificate)
         {
             MedicalOrder = new MedicalOrder(aptitudeCertificate);
