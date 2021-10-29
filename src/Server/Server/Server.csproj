@@ -7,7 +7,7 @@
 
     <ItemGroup>
         <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
-        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.25" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.26" />
         <PackageReference Include="Hangfire.Storage.SQLite" Version="0.3.0" />
         <PackageReference Include="Mapster" Version="7.2.0" />
         <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
