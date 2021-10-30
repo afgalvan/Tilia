@@ -30,17 +30,19 @@
     </a>
 </p>
 
-<!--
-## Download
+<p align="center">
+    This software is focused on entities in the health sector, specifically sports health, that need to automate the attention, registration, and consultation of data, also processing them to obtain relevant information. 
+</p>
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e0ca850deeab48fb9752365880cec35d)](https://app.codacy.com/gh/afgalvan/Tilia?utm_source=github.com&utm_medium=referral&utm_content=afgalvan/Tilia&utm_campaign=Badge_Grade_Settings)
+## Download
 
 ## Features
 
 ## Building from source
 
 ## License
--->
+
+The MIT License (MIT). Please see [License](LICENSE) for more information.
 
 ## Contributors ✨
 
