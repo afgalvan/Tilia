@@ -1,4 +1,6 @@
-﻿using Domain.People;
+﻿using System;
+using Domain.Patients;
+using Domain.People;
 
 namespace Domain.Employees
 {
@@ -7,6 +9,10 @@ namespace Domain.Employees
         public Employee(string code, string idType, string firstName, string lastName,
             Genre genre, string locationId, string city, string department) : base(code,
             idType, firstName, lastName, genre, locationId, city, department)
+        {
+        }
+
+        public void ScheduleMeeting(Patient patient, DateTime dateTime)
         {
         }
     }
