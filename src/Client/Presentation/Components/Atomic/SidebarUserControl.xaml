@@ -285,15 +285,13 @@
             <Separator Margin="0,50,0,10" Style="{StaticResource MaterialDesignDarkSeparator}" />
             <!-- Log out button -->
             <Button x:Name="LogoutButton"
-                    Height="45"
                     Cursor="Hand"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
                     Foreground="{x:Null}"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                    Width="205"
                     Click="LogoutButton_Click"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0">
 
                 <StackPanel x:Name="LogoutStackPanel"
                             Orientation="Horizontal"
