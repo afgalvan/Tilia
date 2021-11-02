@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Presentation.Components.MedicalOrders;
 
 namespace Presentation.Components.Atomic
 {
@@ -48,10 +49,10 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(new MedicalNotesUserControl());
         }
 
-        private async void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
+        private void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalOrdersTextBlock, MedicalOrdersIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "MedicalOrders");
+            _mainWindow.ChangeMainContentArea(new MedicalOrderUserControl());
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
