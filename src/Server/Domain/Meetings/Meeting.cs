@@ -7,7 +7,7 @@ namespace Domain.Meetings
     {
         public        DateTime DateTime { get; set; }
         public        Patient  Patient  { get; set; }
-        public static TimeSpan MinimumMeetingDaysBetween = new(5);
+        public static readonly TimeSpan MinimumMeetingDaysBetween = new(5);
 
         public Meeting(DateTime dateTime, Patient patient)
         {
