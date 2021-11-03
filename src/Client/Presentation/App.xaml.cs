@@ -26,10 +26,7 @@ namespace Presentation
         {
             base.OnStartup(e);
             var loginWindow = _serviceProvider.GetService<LoginWindow>();
-            // var mainWindow = _serviceProvider.GetService<MainWindow>();
-            // mainWindow?.Show();
             loginWindow?.Show();
-            // AppointmentAlert.Show();
         }
     }
 }

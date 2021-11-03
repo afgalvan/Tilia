@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Employees;
 using Domain.MedicalFiles.Background;
 using Domain.MedicalFiles.MedicalNotes;
 using Domain.MedicalFiles.MedicalOrders;
@@ -9,12 +10,14 @@ namespace Domain.MedicalFiles
 {
     public class MedicalAppointment
     {
-        public string AppointmentReason { get; set; }
-        public string DiseaseHistory { get; set; }
-        public DateTime AppointmentDate { get; set; }
-        public MedicalRecord MedicalRecord { get; set; }
-        public MedicalNote MedicalNote { get; set; }
-        public MedicalOrder MedicalOrder { get; set; }
+        public string                   AppointmentReason  { get; set; }
+        public string                   DiseaseHistory     { get; set; }
+        public DateTime                 AppointmentDate    { get; set; }
+        public MedicalRecord            MedicalRecord      { get; set; }
+        public MedicalNote              MedicalNote        { get; set; }
+        public MedicalOrder             MedicalOrder       { get; set; }
+        public SanitaryEmployee         DoctorCaring       { get; set; }
+        public Employee                 Scheduler          { get; set; }
         public IList<MedicalBackground> MedicalBackgrounds { get; set; }
 #nullable enable
         public IList<GynecologicalBackground> GynecologicalBackgrounds { get; set; }
@@ -23,12 +26,12 @@ namespace Domain.MedicalFiles
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
             DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote)
         {
-            AppointmentReason  = appointmentReason;
-            DiseaseHistory     = diseaseHistory;
-            AppointmentDate    = appointmentDate;
-            MedicalRecord      = medicalRecord;
-            MedicalNote        = medicalNote;
-            MedicalBackgrounds = new List<MedicalBackground>();
+            AppointmentReason        = appointmentReason;
+            DiseaseHistory           = diseaseHistory;
+            AppointmentDate          = appointmentDate;
+            MedicalRecord            = medicalRecord;
+            MedicalNote              = medicalNote;
+            MedicalBackgrounds       = new List<MedicalBackground>();
             GynecologicalBackgrounds = new List<GynecologicalBackground>();
         }
 
@@ -53,6 +56,11 @@ namespace Domain.MedicalFiles
         public void AddMedicalOrder(AptitudeCertificate aptitudeCertificate)
         {
             MedicalOrder = new MedicalOrder(aptitudeCertificate);
+        }
+
+        public bool IsBetweenDates(DateTime initialDate, DateTime limitDate)
+        {
+            return AppointmentDate <= initialDate && AppointmentDate >= limitDate;
         }
     }
 }

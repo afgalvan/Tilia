@@ -1,4 +1,7 @@
-﻿using Domain.MedicalFiles;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Domain.MedicalFiles;
 using Domain.People;
 
 namespace Domain.Patients
@@ -18,6 +21,15 @@ namespace Domain.Patients
         {
             SportsData  = sportsData;
             ContactData = contactData;
+        }
+
+        public IEnumerable<MedicalAppointment> GetMedicalAppointmentsBetweenDates(
+            DateTime initialDate,
+            DateTime limitDate)
+        {
+            return MedicalFile.MedicalAppointments.Where(appointment =>
+                appointment.IsBetweenDates(initialDate, limitDate)
+            );
         }
     }
 }
