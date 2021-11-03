@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Meetings;
 using Domain.Patients;
 using Domain.People;
 
@@ -12,8 +13,15 @@ namespace Domain.Employees
         {
         }
 
-        public void ScheduleMeeting(Patient patient, DateTime dateTime)
+        public Meeting ScheduleMeeting(DateTime dateTime, Patient patient)
         {
+            if (dateTime < DateTime.Now.Add(Meeting.MinimumMeetingDaysBetween))
+            {
+                throw new ArgumentException(
+                    "La fecha sobrepasa el mínimo de días para una cita");
+            }
+
+            return new Meeting(dateTime, patient);
         }
     }
 }
