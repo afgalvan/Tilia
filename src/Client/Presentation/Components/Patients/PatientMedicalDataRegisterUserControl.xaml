@@ -86,6 +86,24 @@
                     BorderBrush="Gray"
                     HorizontalAlignment="Left"/>
 
+        <Button x:Name="ContactDataGoBackButton"
+                Grid.Row="2"
+                Grid.Column="1"
+                Background="{StaticResource ButtonColor}"
+                BorderBrush="{StaticResource ButtonColor}"
+                materialDesign:ButtonAssist.CornerRadius="15"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Volver a la seccion anterior"
+                HorizontalAlignment="Center"
+                Margin="0,45,0,0"
+                Width="120"
+                Height="35"
+                VerticalAlignment="Top"
+                Cursor="Hand">
+
+            <TextBlock Text="Volver" />
+        </Button>
+
         <Button x:Name="MedicalDataSubmitButton"
                 Grid.Row="2"
                 Grid.Column="2"

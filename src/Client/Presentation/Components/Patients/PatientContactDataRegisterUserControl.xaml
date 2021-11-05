@@ -101,6 +101,24 @@
                  Foreground="#FF99A3C4"
                  BorderBrush="Gray"/>
 
+        <Button x:Name="ContactDataGoBackButton"
+                Grid.Row="2"
+                Grid.Column="1"
+                Background="{StaticResource ButtonColor}"
+                BorderBrush="{StaticResource ButtonColor}"
+                materialDesign:ButtonAssist.CornerRadius="15"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Volver a la seccion anterior"
+                HorizontalAlignment="Center"
+                Margin="0,45,0,0"
+                Width="120"
+                Height="35"
+                VerticalAlignment="Top"
+                Cursor="Hand">
+
+            <TextBlock Text="Volver" />
+        </Button>
+
         <Button x:Name="ContactDataGoNextButton"
                 Grid.Row="2"
                 Grid.Column="2"
@@ -108,7 +126,7 @@
                 BorderBrush="{StaticResource ButtonColor}"
                 materialDesign:ButtonAssist.CornerRadius="15"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+                ToolTip="Ir a la seccion siguiente"
                 HorizontalAlignment="Left"
                 Margin="0,45,0,0"
                 Width="120"
