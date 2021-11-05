@@ -25,6 +25,11 @@ namespace Presentation.Components.Patients
             ChangeDataRegisterContentArea(new PatientContactDataRegisterUserControl());
         }
 
+        private void MedicalInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeDataRegisterContentArea(new PatientMedicalDataRegisterUserControl());
+        }
+
         public void ChangeDataRegisterContentArea(UserControl content)
         {
             if (content == null)

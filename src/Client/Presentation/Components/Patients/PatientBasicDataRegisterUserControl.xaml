@@ -116,7 +116,7 @@
                 BorderBrush="{StaticResource ButtonColor}"
                 materialDesign:ButtonAssist.CornerRadius="15"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+                ToolTip="Ir a la seccion siguiente"
                 HorizontalAlignment="Left"
                 Margin="0,45,0,0"
                 Width="120"
