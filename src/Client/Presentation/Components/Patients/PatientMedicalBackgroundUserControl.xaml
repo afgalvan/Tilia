@@ -73,7 +73,7 @@
                                 HorizontalAlignment="Stretch"
                                 BorderThickness="0"
                                 Foreground="#FF99A3C4"
-                                BorderBrush="{x:Null}"/>
+                                BorderBrush="{x:Null}" Click="MedicalInfoButton_Click"/>
 
                         <!-- Content Area -->
                         <ContentControl x:Name="DataRegisterContentArea"
