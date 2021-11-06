@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Domain.MedicalFiles.MedicalOrders;
 
 namespace Domain.MedicalFiles.MedicalNotes
 {
