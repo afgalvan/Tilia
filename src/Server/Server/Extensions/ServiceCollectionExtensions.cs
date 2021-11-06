@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Server.Hubs;
-using Shared.Infrastructure.Persistence;
+using SharedLib.Infrastructure.Persistence;
 using SharedLib.Users;
 
 namespace Server.Extensions

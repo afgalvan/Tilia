@@ -1,9 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
-using SharedLib.Users;
+﻿using NUnit.Framework;
 
 namespace Server.Test
 {
