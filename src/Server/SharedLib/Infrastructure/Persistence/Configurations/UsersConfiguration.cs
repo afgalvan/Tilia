@@ -10,6 +10,7 @@ namespace SharedLib.Infrastructure.Persistence.Configurations
         {
             builder.HasIndex(user => user.Email).IsUnique();
             builder.HasIndex(user => user.Name).IsUnique();
+            builder.OwnsOne(user => user.Email);
         }
     }
 }

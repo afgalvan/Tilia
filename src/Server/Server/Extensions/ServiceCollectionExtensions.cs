@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Text;
 using Domain.Users;
+using Domain.Users.Repositories;
 using Hangfire;
 using Hangfire.Storage.SQLite;
 using Infrastructure.Persistence.Users;

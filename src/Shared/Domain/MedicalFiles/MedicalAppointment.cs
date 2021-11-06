@@ -11,6 +11,7 @@ namespace Domain.MedicalFiles
 {
     public class MedicalAppointment
     {
+        public Guid                     AppointmentId      { get; set; }
         public string                   AppointmentReason  { get; set; }
         public string                   DiseaseHistory     { get; set; }
         public DateTime                 AppointmentDate    { get; set; }

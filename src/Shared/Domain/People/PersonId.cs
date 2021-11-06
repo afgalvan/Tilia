@@ -1,7 +1,10 @@
-﻿namespace Domain.People
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.People
 {
     public class PersonId
     {
+        [Key]
         public string Code   { get; set; }
         public string IdType { get; set; }
 

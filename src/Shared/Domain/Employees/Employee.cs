@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.Locations;
 using Domain.Meetings;
 using Domain.Patients;
 using Domain.People;
@@ -8,9 +9,14 @@ namespace Domain.Employees
     public class Employee : Person
     {
         public Employee(string code, string idType, string firstName, string lastName,
-            Genre genre, string locationId, string city, string department) : base(code,
+            Genre genre, string locationId, string city, Department department) : base(code,
             idType, firstName, lastName, genre, locationId, city, department)
         {
+        }
+
+        public Employee()
+        {
+            // For EF
         }
 
         public Meeting ScheduleMeeting(DateTime dateTime, Patient patient)
