@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
-using SharedLib.Appointments;
+using Requests.Appointments;
 using SignalRSwaggerGen.Attributes;
 
 namespace Server.Hubs

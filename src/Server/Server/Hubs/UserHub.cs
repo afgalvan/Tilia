@@ -6,8 +6,8 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.OpenApi.Models;
-using SharedLib.Auth;
-using SharedLib.Users;
+using Requests.Auth;
+using Requests.Users;
 using SignalRSwaggerGen.Attributes;
 
 namespace Server.Hubs

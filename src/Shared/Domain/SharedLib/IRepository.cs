@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.Shared
+namespace Domain.SharedLib
 {
     public interface IRepository<TEntity, in TId>
     {

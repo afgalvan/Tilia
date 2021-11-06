@@ -1,6 +1,5 @@
 using System.Windows;
 using System.Windows.Controls;
-using Presentation.Components.MedicalFiles.Patients;
 
 namespace Presentation.Components.Patients
 {
