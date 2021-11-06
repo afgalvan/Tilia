@@ -5,6 +5,7 @@ using Domain.MedicalFiles.Background;
 using Domain.MedicalFiles.MedicalNotes;
 using Domain.MedicalFiles.MedicalOrders;
 using Domain.MedicalFiles.MedicalRecords;
+using Domain.Patients;
 
 namespace Domain.MedicalFiles
 {
@@ -16,23 +17,23 @@ namespace Domain.MedicalFiles
         public MedicalRecord            MedicalRecord      { get; set; }
         public MedicalNote              MedicalNote        { get; set; }
         public MedicalOrder             MedicalOrder       { get; set; }
+        public Patient                  Patient            { get; set; }
         public SanitaryEmployee         DoctorCaring       { get; set; }
         public Employee                 Scheduler          { get; set; }
         public IList<MedicalBackground> MedicalBackgrounds { get; set; }
 #nullable enable
-        public IList<GynecologicalBackground> GynecologicalBackgrounds { get; set; }
+        public IList<GynecologicalBackground>? GynecologicalBackgrounds { get; set; }
 #nullable disable
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
             DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote)
         {
-            AppointmentReason        = appointmentReason;
-            DiseaseHistory           = diseaseHistory;
-            AppointmentDate          = appointmentDate;
-            MedicalRecord            = medicalRecord;
-            MedicalNote              = medicalNote;
-            MedicalBackgrounds       = new List<MedicalBackground>();
-            GynecologicalBackgrounds = new List<GynecologicalBackground>();
+            AppointmentReason  = appointmentReason;
+            DiseaseHistory     = diseaseHistory;
+            AppointmentDate    = appointmentDate;
+            MedicalRecord      = medicalRecord;
+            MedicalNote        = medicalNote;
+            MedicalBackgrounds = new List<MedicalBackground>();
         }
 
         public void AddMedicalBackground(string name, bool state,
@@ -49,8 +50,7 @@ namespace Domain.MedicalFiles
             var gynecologicalBackground = new GynecologicalBackground(menarchy, cycle,
                 isRegular, hasDysmenorrhea, hasAmenorrhea, lastMenstrualPeriod,
                 estimatedDateConfinement, hasPlanning, method);
-
-            GynecologicalBackgrounds.Add(gynecologicalBackground);
+            GynecologicalBackgrounds?.Add(gynecologicalBackground);
         }
 
         public void AddMedicalOrder(AptitudeCertificate aptitudeCertificate)
