@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Shared.Domain.Bus.Command
+namespace SharedLib.Domain.Bus.Command
 {
     public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
         where TCommand : ICommand<TResponse>

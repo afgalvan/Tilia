@@ -37,7 +37,7 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(new QueryMedicalAppointmentUserControl(_mainWindow));
         }
 
-        private async void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
+        private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
             _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());

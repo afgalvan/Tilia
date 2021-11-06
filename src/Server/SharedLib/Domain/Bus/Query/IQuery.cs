@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Shared.Domain.Bus.Query
+namespace SharedLib.Domain.Bus.Query
 {
     public interface IQuery<out TResponse> : IRequest<TResponse>
     {

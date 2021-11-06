@@ -1,6 +1,6 @@
 using System.Windows.Controls;
 
-namespace Presentation.Components.MedicalFiles.Patients
+namespace Presentation.Components.Patients
 {
     /// <summary>
     /// Logic interaction for PatientBasicDataRegisterUserControl.xaml

@@ -1,6 +1,6 @@
-﻿using SharedLib.Auth;
+﻿using Requests.Auth;
 
-namespace SharedLib.Appointments
+namespace Requests.Appointments
 {
     public class CreateMedicalAppointmentRequest : AccessToken
     {

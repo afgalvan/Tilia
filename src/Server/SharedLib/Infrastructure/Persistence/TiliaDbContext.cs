@@ -1,7 +1,7 @@
 ﻿using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace Shared.Infrastructure.Persistence
+namespace SharedLib.Infrastructure.Persistence
 {
     public class TiliaDbContext : DbContext
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Shared.Domain.Bus.Command;
+using SharedLib.Domain.Bus.Command;
 
 namespace Application.Users.Create
 {

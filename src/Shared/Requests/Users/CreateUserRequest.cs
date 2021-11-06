@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SharedLib.Users
+namespace Requests.Users
 {
     public class CreateUserRequest
     {

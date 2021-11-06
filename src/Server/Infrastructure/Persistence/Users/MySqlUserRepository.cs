@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Users;
-using Shared.Infrastructure.Persistence;
+using SharedLib.Infrastructure.Persistence;
 
 namespace Infrastructure.Persistence.Users
 {

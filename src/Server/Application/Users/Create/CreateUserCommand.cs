@@ -1,4 +1,4 @@
-﻿using Shared.Domain.Bus.Command;
+﻿using SharedLib.Domain.Bus.Command;
 
 namespace Application.Users.Create
 {
