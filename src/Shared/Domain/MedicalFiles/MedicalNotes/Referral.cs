@@ -1,7 +1,13 @@
-﻿namespace Domain.MedicalFiles.MedicalNotes
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Domain.MedicalFiles.MedicalNotes
 {
     public class Referral
     {
+        [Key]
+        public Guid Id { get; set; }
+
         public string Department  { get; set; }
         public string Description { get; set; }
 
@@ -9,6 +15,11 @@
         {
             Department  = department;
             Description = description;
+        }
+
+        public Referral()
+        {
+            // For EF
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Domain.Persistence;
 using Domain.Users;
 using Domain.Users.Repositories;
-using SharedLib.Infrastructure.Persistence;
 
 namespace Infrastructure.Persistence.Users
 {

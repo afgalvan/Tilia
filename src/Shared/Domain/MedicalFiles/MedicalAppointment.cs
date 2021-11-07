@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Employees;
 using Domain.MedicalFiles.Background;
 using Domain.MedicalFiles.MedicalNotes;
-using Domain.MedicalFiles.MedicalOrders;
 using Domain.MedicalFiles.MedicalRecords;
 using Domain.Patients;
 
@@ -11,19 +12,34 @@ namespace Domain.MedicalFiles
 {
     public class MedicalAppointment
     {
-        public Guid                     AppointmentId      { get; set; }
-        public string                   AppointmentReason  { get; set; }
-        public string                   DiseaseHistory     { get; set; }
-        public DateTime                 AppointmentDate    { get; set; }
-        public MedicalRecord            MedicalRecord      { get; set; }
-        public MedicalNote              MedicalNote        { get; set; }
-        public MedicalOrder             MedicalOrder       { get; set; }
-        public Patient                  Patient            { get; set; }
-        public SanitaryEmployee         DoctorCaring       { get; set; }
-        public Employee                 Scheduler          { get; set; }
+        [Key]
+        public Guid AppointmentId { get; set; }
+
+        public string   AppointmentReason { get; set; }
+        public string   DiseaseHistory    { get; set; }
+        public DateTime AppointmentDate   { get; set; }
+
+        [ForeignKey("medical_record_id")]
+        public MedicalRecord MedicalRecord { get; set; }
+
+        [ForeignKey("medical_note_id")]
+        public MedicalNote MedicalNote { get; set; }
+
+        public AptitudeCertificate AptitudeCertificate { get; set; }
+
+        [ForeignKey("patient_id")]
+        public Patient Patient { get; set; }
+
+        [ForeignKey("doctor_id")]
+        public SanitaryEmployee DoctorCaring { get; set; }
+
+        [ForeignKey("scheduler_id")]
+        public Employee Scheduler { get; set; }
+
         public IList<MedicalBackground> MedicalBackgrounds { get; set; }
 #nullable enable
-        public IList<GynecologicalBackground>? GynecologicalBackgrounds { get; set; }
+        [ForeignKey("gynecological_background_id")]
+        public GynecologicalBackground? GynecologicalBackground { get; private set; }
 #nullable disable
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
@@ -37,6 +53,11 @@ namespace Domain.MedicalFiles
             MedicalBackgrounds = new List<MedicalBackground>();
         }
 
+        public MedicalAppointment()
+        {
+            // For EF
+        }
+
         public void AddMedicalBackground(string name, bool state,
             string observation)
         {
@@ -48,15 +69,9 @@ namespace Domain.MedicalFiles
             bool hasDysmenorrhea, bool hasAmenorrhea, DateTime lastMenstrualPeriod,
             DateTime estimatedDateConfinement, bool hasPlanning, string method)
         {
-            var gynecologicalBackground = new GynecologicalBackground(menarchy, cycle,
+            GynecologicalBackground = new GynecologicalBackground(menarchy, cycle,
                 isRegular, hasDysmenorrhea, hasAmenorrhea, lastMenstrualPeriod,
                 estimatedDateConfinement, hasPlanning, method);
-            GynecologicalBackgrounds?.Add(gynecologicalBackground);
-        }
-
-        public void AddMedicalOrder(AptitudeCertificate aptitudeCertificate)
-        {
-            MedicalOrder = new MedicalOrder(aptitudeCertificate);
         }
 
         public bool IsBetweenDates(DateTime initialDate, DateTime limitDate)

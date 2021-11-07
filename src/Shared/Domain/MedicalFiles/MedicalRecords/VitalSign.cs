@@ -12,5 +12,10 @@
             Weight      = weight;
             Height      = height;
         }
+
+        public VitalSign()
+        {
+            // For EF
+        }
     }
 }
