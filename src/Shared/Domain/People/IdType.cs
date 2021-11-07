@@ -1,5 +1,4 @@
-﻿
-namespace Domain.People
+﻿namespace Domain.People
 {
     public class IdType
     {
