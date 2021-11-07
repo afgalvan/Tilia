@@ -3,7 +3,7 @@ using Domain.People;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace SharedLib.Infrastructure.Persistence
+namespace Domain.Persistence
 {
     public class TiliaDbContext : DbContext
     {

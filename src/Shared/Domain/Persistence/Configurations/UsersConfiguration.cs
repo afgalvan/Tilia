@@ -2,15 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SharedLib.Infrastructure.Persistence.Configurations
+namespace Domain.Persistence.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasIndex(user => user.Email).IsUnique();
-            builder.HasIndex(user => user.Name).IsUnique();
             builder.OwnsOne(user => user.Email);
+            builder.HasIndex(user => user.Name).IsUnique();
         }
     }
 }

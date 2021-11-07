@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
+using Domain.Persistence;
 using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
@@ -18,7 +19,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Requests.Users;
 using Server.Hubs;
-using SharedLib.Infrastructure.Persistence;
 
 namespace Server.Extensions
 {
@@ -33,7 +33,8 @@ namespace Server.Extensions
                 services.AddDbContext<TiliaDbContext>(options =>
                     options.UseMySql(
                             configuration.GetConnectionString("DefaultConnection"),
-                            new MySqlServerVersion(new Version(8, 0, 26)))
+                            new MySqlServerVersion(new Version(8, 0, 26)),
+                            builder => builder.MigrationsAssembly("Server"))
                         .UseSnakeCaseNamingConvention()
                 );
             }

@@ -7,10 +7,17 @@ namespace Domain.Users
     public class AccessRole
     {
         [Key]
-        public Guid             Id         { get; set; }
+        public Guid Id { get; set; }
+
         [Required]
-        public string           Name       { get; set; }
+        public string Name { get; set; }
+
         public IList<Privilege> Privileges { get; set; }
+
+        public AccessRole()
+        {
+            Privileges = new List<Privilege>();
+        }
 
         public void AddPrivilege(Privilege privilege)
         {

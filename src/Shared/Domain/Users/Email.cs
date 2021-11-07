@@ -11,5 +11,10 @@ namespace Domain.Users
         {
             EmailAddress = emailAddress;
         }
+
+        public Email()
+        {
+            // For EF
+        }
     }
 }

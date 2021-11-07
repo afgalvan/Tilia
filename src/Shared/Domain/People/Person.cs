@@ -7,8 +7,9 @@ namespace Domain.People
     public class Person
     {
         [Key]
-        public PersonId Id { get; set; }
+        public string Id { get; set; }
 
+        public IdType     IdType    { get; set; }
         public PersonName Names     { get; set; }
         public Genre      Genre     { get; set; }
         public City       City      { get; set; }
@@ -16,13 +17,14 @@ namespace Domain.People
 
         public int Age => (BirthDate - DateTime.Now).Days;
 
-        public Person(string code, string idType, string firstName, string lastName,
+        public Person(string id, string idType, string firstName, string lastName,
             Genre genre, string locationId, string city, Department department)
         {
-            Id    = new PersonId(code, idType);
-            Names = new PersonName(firstName, lastName);
-            Genre = genre;
-            City  = new City(locationId, city, department);
+            Id     = id;
+            IdType = new IdType(idType);
+            Names  = new PersonName(firstName, lastName);
+            Genre  = genre;
+            City   = new City(locationId, city, department);
         }
 
         public Person()

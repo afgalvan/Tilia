@@ -8,8 +8,8 @@ namespace Domain.Employees
 {
     public class Employee : Person
     {
-        public Employee(string code, string idType, string firstName, string lastName,
-            Genre genre, string locationId, string city, Department department) : base(code,
+        public Employee(string id, string idType, string firstName, string lastName,
+            Genre genre, string locationId, string city, Department department) : base(id,
             idType, firstName, lastName, genre, locationId, city, department)
         {
         }

@@ -13,7 +13,6 @@ namespace Domain.Users
         [Required]
         public string Name { get; set; }
 
-        [Required]
         public Email Email { get; set; }
 
         [Required]
