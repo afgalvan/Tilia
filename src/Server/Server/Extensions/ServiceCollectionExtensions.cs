@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
-using Domain.Persistence;
 using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
@@ -19,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Requests.Users;
 using Server.Hubs;
+using SharedLib.Persistence;
 
 namespace Server.Extensions
 {

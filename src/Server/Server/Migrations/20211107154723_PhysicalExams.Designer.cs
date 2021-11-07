@@ -9,8 +9,8 @@ using SharedLib.Persistence;
 namespace Server.Migrations
 {
     [DbContext(typeof(TiliaDbContext))]
-    [Migration("20211107043007_MedicalSchema")]
-    partial class MedicalSchema
+    [Migration("20211107154723_PhysicalExams")]
+    partial class PhysicalExams
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -404,9 +404,9 @@ namespace Server.Migrations
                         .HasColumnName("id");
 
                     b.HasKey("Id")
-                        .HasName("pk_physical_exam");
+                        .HasName("pk_physical_exams");
 
-                    b.ToTable("physical_exam");
+                    b.ToTable("physical_exams");
                 });
 
             modelBuilder.Entity("Domain.People.Person", b =>
@@ -663,7 +663,7 @@ namespace Server.Migrations
                     b.HasOne("Domain.MedicalFiles.MedicalRecords.PhysicalExam", null)
                         .WithMany("BodyPartRecords")
                         .HasForeignKey("PhysicalExamId")
-                        .HasConstraintName("fk_body_part_records_physical_exam_physical_exam_id");
+                        .HasConstraintName("fk_body_part_records_physical_exams_physical_exam_id");
                 });
 
             modelBuilder.Entity("Domain.MedicalFiles.MedicalRecords.MedicalRecord", b =>
@@ -671,7 +671,7 @@ namespace Server.Migrations
                     b.HasOne("Domain.MedicalFiles.MedicalRecords.PhysicalExam", "PhysicalExams")
                         .WithMany()
                         .HasForeignKey("physical_exam_id")
-                        .HasConstraintName("fk_medical_records_physical_exam_physical_exam_id");
+                        .HasConstraintName("fk_medical_records_physical_exams_physical_exam_id");
 
                     b.OwnsOne("Domain.MedicalFiles.MedicalRecords.Anamnesis", "Anamnesis", b1 =>
                         {
@@ -719,13 +719,13 @@ namespace Server.Migrations
                                 .HasColumnName("vital_sign_results_weight");
 
                             b1.HasKey("PhysicalExamId")
-                                .HasName("pk_physical_exam");
+                                .HasName("pk_physical_exams");
 
-                            b1.ToTable("physical_exam");
+                            b1.ToTable("physical_exams");
 
                             b1.WithOwner()
                                 .HasForeignKey("PhysicalExamId")
-                                .HasConstraintName("fk_physical_exam_physical_exam_id");
+                                .HasConstraintName("fk_physical_exams_physical_exams_id");
                         });
 
                     b.Navigation("VitalSignResults");
