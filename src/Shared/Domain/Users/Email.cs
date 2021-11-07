@@ -5,6 +5,16 @@ namespace Domain.Users
     public class Email
     {
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail inválido")]
-        public string EmailAddress { get; set; }
+        public string EmailAddress { get; }
+
+        public Email(string emailAddress)
+        {
+            EmailAddress = emailAddress;
+        }
+
+        public Email()
+        {
+            // For EF
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Application.Users.GenerateJwt;
 using Encryptor = BCrypt.Net.BCrypt;
 using Domain.Users;
+using Domain.Users.Repositories;
 
 namespace Application.Users.Create
 {

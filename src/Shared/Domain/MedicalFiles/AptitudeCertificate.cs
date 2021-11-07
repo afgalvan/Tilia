@@ -1,4 +1,4 @@
-﻿namespace Domain.MedicalFiles.MedicalOrders
+﻿namespace Domain.MedicalFiles
 {
     public enum AptitudeCertificate
     {

@@ -1,12 +1,23 @@
-﻿namespace Domain.MedicalFiles.MedicalNotes
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Domain.MedicalFiles.MedicalNotes
 {
     public class ManagementPlan
     {
+        [Key]
+        public Guid Id { get; set; }
+
         public string Description { get; set; }
 
         public ManagementPlan(string description)
         {
             Description = description;
+        }
+
+        public ManagementPlan()
+        {
+            // For EF
         }
     }
 }

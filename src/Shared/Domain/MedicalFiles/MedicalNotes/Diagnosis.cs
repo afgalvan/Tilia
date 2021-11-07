@@ -1,7 +1,13 @@
-﻿namespace Domain.MedicalFiles.MedicalNotes
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Domain.MedicalFiles.MedicalNotes
 {
     public class Diagnosis
     {
+        [Key]
+        public Guid Id { get; set; }
+
         public string CIE10      { get; set; }
         public string Functional { get; set; }
 
@@ -9,6 +15,11 @@
         {
             CIE10      = cie10;
             Functional = functional;
+        }
+
+        public Diagnosis()
+        {
+            // For EF
         }
     }
 }

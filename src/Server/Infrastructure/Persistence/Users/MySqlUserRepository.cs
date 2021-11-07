@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Domain.Persistence;
 using Domain.Users;
-using SharedLib.Infrastructure.Persistence;
+using Domain.Users.Repositories;
 
 namespace Infrastructure.Persistence.Users
 {

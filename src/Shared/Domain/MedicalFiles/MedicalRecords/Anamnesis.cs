@@ -8,5 +8,10 @@
         {
             Description = description;
         }
+
+        public Anamnesis()
+        {
+            // For EF
+        }
     }
 }

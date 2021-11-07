@@ -1,4 +1,5 @@
-﻿using Domain.People;
+﻿using Domain.Locations;
+using Domain.People;
 
 namespace Domain.Patients
 {
@@ -9,13 +10,18 @@ namespace Domain.Patients
         public SportsData  SportsData  { get; set; }
         public ContactData ContactData { get; set; }
 
-        public Patient(string code, string idType, string firstName, string lastName,
-            Genre genre, string locationId, string city, string department,
-            SportsData sportsData, ContactData contactData) : base(code, idType, firstName,
+        public Patient(string id, string idType, string firstName, string lastName,
+            Genre genre, string locationId, string city, Department department,
+            SportsData sportsData, ContactData contactData) : base(id, idType, firstName,
             lastName, genre, locationId, city, department)
         {
             SportsData  = sportsData;
             ContactData = contactData;
+        }
+
+        public Patient()
+        {
+            // For EF
         }
     }
 }

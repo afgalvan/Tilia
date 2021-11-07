@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain.SharedLib;
 
-namespace Domain.Users
+namespace Domain.Users.Repositories
 {
     public interface IUserRepository : IRepository<User, Guid>
     {
