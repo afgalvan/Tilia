@@ -29,8 +29,8 @@
 
                     <Image x:Name="TiliaIcon"
                            Source="/Assets/Icons/tilia.png"
-                           Width="53"
-                           Height="60"
+                           Width="50"
+                           Height="50"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Margin="0,0,90,0" />
