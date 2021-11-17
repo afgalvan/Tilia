@@ -51,9 +51,10 @@
                   VerticalContentAlignment="Center"/>
 
         <atomic:DatePickerUserControl x:Name="BirthDayDatePicker"
-                                      Grid.Row="1"
+                                      Grid.Row="1" Grid.Column="0"
                                       HorizontalAlignment="Center"
-                                      Hint="Fecha de nacimiento" VerticalAlignment="Center"/>
+                                      DatePickerHint="Fecha de nacimiento"
+                                      VerticalAlignment="Center"/>
 
         <TextBox x:Name="BasicDataBirthPlaceTextBox"
                  Grid.Row="1"
