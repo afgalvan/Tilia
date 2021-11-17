@@ -8,6 +8,6 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Label Foreground="Black"
-           Content="{Binding Content}"
-           FontSize="{Binding FontSize}"/>
+           Content="{Binding LabelContent}"
+           FontSize="{Binding LabelFontSize}"/>
 </UserControl>

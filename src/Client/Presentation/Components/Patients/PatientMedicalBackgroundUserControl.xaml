@@ -21,10 +21,10 @@
                     <RowDefinition Height="14*"/>
                 </Grid.RowDefinitions>
 
-                <atomic:LabelUserControl Content="Pacientes"
+                <atomic:LabelUserControl LabelContent="Pacientes"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
-                                         FontSize="30"/>
+                                         LabelFontSize="30"/>
 
                 <materialDesign:Card x:Name="PatientBasicInformationCard"
                                      Grid.Row="1"

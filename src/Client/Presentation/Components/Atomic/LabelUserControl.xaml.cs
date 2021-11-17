@@ -13,22 +13,22 @@ namespace Presentation.Components.Atomic
             InitializeComponent();
         }
 
-        public new string Content
+        public string LabelContent
         {
-            get => (string)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (string)GetValue(LabelContentProperty);
+            set => SetValue(LabelContentProperty, value);
         }
 
-        public new string FontSize
+        public string LabelFontSize
         {
-            get => (string)GetValue(FontSizeProperty);
-            set => SetValue(FontSizeProperty, value);
+            get => (string)GetValue(LabelFontSizeProperty);
+            set => SetValue(LabelFontSizeProperty, value);
         }
 
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(string), typeof(LabelUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty LabelContentProperty =
+            DependencyProperty.Register("LabelContent", typeof(string), typeof(LabelUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty FontSizeProperty =
-            DependencyProperty.Register("FontSize", typeof(string), typeof(LabelUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty LabelFontSizeProperty =
+            DependencyProperty.Register("LabelFontSize", typeof(string), typeof(LabelUserControl), new PropertyMetadata(null));
     }
 }

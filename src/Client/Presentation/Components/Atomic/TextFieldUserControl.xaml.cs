@@ -45,6 +45,6 @@ namespace Presentation.Components.Atomic
             DependencyProperty.Register("ButtonWidth", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty FontSizeProperty =
-            DependencyProperty.Register("FontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("LabelFontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
     }
 }
