@@ -22,15 +22,11 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="BasicDataNamesTextBox"
-                 materialDesign:HintAssist.Hint="Nombres"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Right"
-                 Width="140"
-                 Cursor="IBeam"
-                 Foreground="#FF99A3C4"
-                 BorderBrush="Gray"/>
+
+        <atomic:TextFieldUserControl x:Name="BasicDataNamesTextField"
+                                     FloatingHint="Nombres"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"/>
 
         <TextBox x:Name="BasicDataLastNamesTextBox"
                  Grid.Row="0" Grid.Column="1"
@@ -56,8 +52,8 @@
 
         <atomic:DatePickerUserControl x:Name="BirthDayDatePicker"
                                       Grid.Row="1"
-                                      HorizontalAlignment="Right"
-                                      Hint="Fecha de nacimiento"/>
+                                      HorizontalAlignment="Center"
+                                      Hint="Fecha de nacimiento" VerticalAlignment="Center"/>
 
         <TextBox x:Name="BasicDataBirthPlaceTextBox"
                  Grid.Row="1"

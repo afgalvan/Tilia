@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:atomic="clr-namespace:Presentation.Components.Atomic"
              mc:Ignorable="d"
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
 
@@ -20,11 +21,10 @@
                     <RowDefinition Height="14*"/>
                 </Grid.RowDefinitions>
 
-                <Label FontSize="28"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-                    Datos generales
-                </Label>
+                <atomic:LabelUserControl LabelContent="Pacientes"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         FontSize="30"/>
 
                 <materialDesign:Card x:Name="PatientBasicInformationCard"
                                      Grid.Row="1"
