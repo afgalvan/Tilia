@@ -11,7 +11,7 @@ namespace Presentation.Components.Atomic
         public TextFieldUserControl()
         {
             InitializeComponent();
-            DefaultTextField();
+            SetDefaultTextField();
         }
 
         public string TextFieldFloatingHint
@@ -20,13 +20,13 @@ namespace Presentation.Components.Atomic
             set => SetValue(TextFieldFloatingHintProperty, value);
         }
 
-        public new string TextFieldWidth
+        public string TextFieldWidth
         {
             get => (string)GetValue(TextFieldWidthProperty);
             set => SetValue(TextFieldWidthProperty, value);
         }
 
-        public new string TextFieldFontSize
+        public string TextFieldFontSize
         {
             get => (string)GetValue(TextFieldFontSizeProperty);
             set => SetValue(TextFieldFontSizeProperty, value);
@@ -42,9 +42,9 @@ namespace Presentation.Components.Atomic
             DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextFieldWidthProperty =
-            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("TextFieldWidth", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextFieldFontSizeProperty =
-            DependencyProperty.Register("LabelFontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
     }
 }
