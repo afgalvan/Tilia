@@ -21,7 +21,7 @@
                     <RowDefinition Height="14*"/>
                 </Grid.RowDefinitions>
 
-                <atomic:LabelUserControl LabelContent="Pacientes"
+                <atomic:LabelUserControl Content="Pacientes"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          FontSize="30"/>

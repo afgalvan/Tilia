@@ -1,17 +1,20 @@
- <UserControl x:Class="Presentation.Components.Atomic.TextFieldUserControl"
+<UserControl x:Class="Presentation.Components.Atomic.ButtonUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Presentation.Components.Atomic"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d"
+             mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-     <TextBox Foreground="Black"
-              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-              materialDesign:HintAssist.Hint="{Binding FloatingHint}"
-              Width="{Binding Width}"
-              BorderBrush="Gray"
-              FontSize="{Binding FontSize}"/>
+    <Button Content="{Binding Content}"
+            ToolTip="{Binding ToolTip}"
+            Foreground="White"
+            Background="{StaticResource ButtonColor}"
+            BorderBrush="{StaticResource ButtonColor}"
+            materialDesign:ButtonAssist.CornerRadius="{Binding Radius}"
+            Width="{Binding Width}"
+            Height="{Binding Height}"
+            Cursor="Hand"/>
 </UserControl>

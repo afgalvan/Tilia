@@ -102,22 +102,14 @@
                  BorderBrush="Gray" VerticalContentAlignment="Center"
                  ScrollViewer.CanContentScroll="True" />
 
-        <Button x:Name="BasicDataGoNextButton"
-                Grid.Row="2"
-                Grid.Column="2"
-                Background="{StaticResource ButtonColor}"
-                BorderBrush="{StaticResource ButtonColor}"
-                materialDesign:ButtonAssist.CornerRadius="15"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                ToolTip="Ir a la seccion siguiente"
-                HorizontalAlignment="Left"
-                Margin="0,45,0,0"
-                Width="120"
-                Height="35"
-                VerticalAlignment="Top"
-                Cursor="Hand">
-            <TextBlock Text="Siguiente" />
-        </Button>
+        <atomic:ButtonUserControl x:Name="BasicDataGoNextButton"
+                                  Grid.Row="2"
+                                  Grid.Column="2"
+                                  ToolTip="Ir a la seccion siguiente"
+                                  Content="Siguiente"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  Margin="0,45,0,0"/>
 
     </Grid>
 </UserControl>
