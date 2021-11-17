@@ -15,8 +15,8 @@ namespace Presentation.Components.Atomic
 
         public string Hint
         {
-            get { return (string)GetValue(HintProperty); }
-            set { SetValue(HintProperty, value); }
+            get => (string)GetValue(HintProperty);
+            set => SetValue(HintProperty, value);
         }
 
         public static readonly DependencyProperty HintProperty =

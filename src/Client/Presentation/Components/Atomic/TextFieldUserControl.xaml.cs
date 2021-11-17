@@ -16,20 +16,20 @@ namespace Presentation.Components.Atomic
 
         public string FloatingHint
         {
-            get { return (string)GetValue(FloatingHintProperty); }
-            set { SetValue(FloatingHintProperty, value); }
+            get => (string)GetValue(FloatingHintProperty);
+            set => SetValue(FloatingHintProperty, value);
         }
 
-        public string Width
+        public new string Width
         {
-            get { return (string)GetValue(WidthProperty); }
-            set { SetValue(WidthProperty, value); }
+            get => (string)GetValue(WidthProperty);
+            set => SetValue(WidthProperty, value);
         }
 
-        public string FontSize
+        public new string FontSize
         {
-            get { return (string)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
+            get => (string)GetValue(FontSizeProperty);
+            set => SetValue(FontSizeProperty, value);
         }
 
         private void DefaultTextField()

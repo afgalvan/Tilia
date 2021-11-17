@@ -13,16 +13,16 @@ namespace Presentation.Components.Atomic
             InitializeComponent();
         }
 
-        public string Content
+        public new string Content
         {
-            get { return (string)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
+            get => (string)GetValue(ContentProperty);
+            set => SetValue(ContentProperty, value);
         }
 
-        public string FontSize
+        public new string FontSize
         {
-            get { return (string)GetValue(FontSizeProperty); }
-            set { SetValue(FontSizeProperty, value); }
+            get => (string)GetValue(FontSizeProperty);
+            set => SetValue(FontSizeProperty, value);
         }
 
         public static readonly DependencyProperty ContentProperty =

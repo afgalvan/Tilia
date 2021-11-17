@@ -14,34 +14,34 @@ namespace Presentation.Components.Atomic
             DefaultButtonType();
         }
 
-        public string ToolTip
+        public new string ToolTip
         {
-            get { return (string)GetValue(ToolTipProperty); }
-            set { SetValue(ToolTipProperty, value); }
+            get => (string)GetValue(ToolTipProperty);
+            set => SetValue(ToolTipProperty, value);
         }
 
-        public string Content
+        public new string Content
         {
-            get { return (string)GetValue(ContentProperty); }
-            set { SetValue(ContentProperty, value); }
+            get => (string)GetValue(ContentProperty);
+            set => SetValue(ContentProperty, value);
         }
 
         public string Radius
         {
-            get { return (string)GetValue(RadiusProperty); }
-            set { SetValue(RadiusProperty, value); }
+            get => (string)GetValue(RadiusProperty);
+            set => SetValue(RadiusProperty, value);
         }
 
-        public string Width
+        public new string Width
         {
-            get { return (string)GetValue(WidthProperty); }
-            set { SetValue(WidthProperty, value); }
+            get => (string)GetValue(WidthProperty);
+            set => SetValue(WidthProperty, value);
         }
 
-        public string Height
+        public new string Height
         {
-            get { return (string)GetValue(HeightProperty); }
-            set { SetValue(HeightProperty, value); }
+            get => (string)GetValue(HeightProperty);
+            set => SetValue(HeightProperty, value);
         }
 
         public void DefaultButtonType()
