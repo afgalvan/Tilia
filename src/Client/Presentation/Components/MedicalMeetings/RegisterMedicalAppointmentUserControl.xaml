@@ -72,7 +72,7 @@
 
                         <atomic:TextFieldUserControl x:Name="NameTextField"
                                                      Margin="0,30,0,0"
-                                                     FloatingHint="Nombre"/>
+                                                     TextFieldFloatingHint="Nombre"/>
 
                         <TextBox
                             materialDesign:HintAssist.Hint="Teléfono fijo"

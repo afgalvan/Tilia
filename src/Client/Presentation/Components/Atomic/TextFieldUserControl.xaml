@@ -10,8 +10,8 @@
 
      <TextBox Foreground="Black"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-              materialDesign:HintAssist.Hint="{Binding FloatingHint}"
-              Width="{Binding Width}"
+              materialDesign:HintAssist.Hint="{Binding TextFieldFloatingHint}"
+              Width="{Binding TextFieldWidth}"
               BorderBrush="Gray"
-              FontSize="{Binding FontSize}"/>
+              FontSize="{Binding TextFieldFontSize}"/>
 </UserControl>

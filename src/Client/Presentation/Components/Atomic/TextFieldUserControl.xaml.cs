@@ -14,37 +14,37 @@ namespace Presentation.Components.Atomic
             DefaultTextField();
         }
 
-        public string FloatingHint
+        public string TextFieldFloatingHint
         {
-            get => (string)GetValue(FloatingHintProperty);
-            set => SetValue(FloatingHintProperty, value);
+            get => (string)GetValue(TextFieldFloatingHintProperty);
+            set => SetValue(TextFieldFloatingHintProperty, value);
         }
 
-        public new string Width
+        public new string TextFieldWidth
         {
-            get => (string)GetValue(WidthProperty);
-            set => SetValue(WidthProperty, value);
+            get => (string)GetValue(TextFieldWidthProperty);
+            set => SetValue(TextFieldWidthProperty, value);
         }
 
-        public new string FontSize
+        public new string TextFieldFontSize
         {
-            get => (string)GetValue(FontSizeProperty);
-            set => SetValue(FontSizeProperty, value);
+            get => (string)GetValue(TextFieldFontSizeProperty);
+            set => SetValue(TextFieldFontSizeProperty, value);
         }
 
-        private void DefaultTextField()
+        private void SetDefaultTextField()
         {
-            Width = "200";
-            FontSize = "16";
+            TextFieldWidth = "200";
+            TextFieldFontSize = "16";
         }
 
-        public static readonly DependencyProperty FloatingHintProperty =
-            DependencyProperty.Register("FloatingHint", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty TextFieldFloatingHintProperty =
+            DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty WidthProperty =
+        public static readonly DependencyProperty TextFieldWidthProperty =
             DependencyProperty.Register("ButtonWidth", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty FontSizeProperty =
+        public static readonly DependencyProperty TextFieldFontSizeProperty =
             DependencyProperty.Register("LabelFontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
     }
 }

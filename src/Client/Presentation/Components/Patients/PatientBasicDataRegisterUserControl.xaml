@@ -24,7 +24,7 @@
 
 
         <atomic:TextFieldUserControl x:Name="BasicDataNamesTextField"
-                                     FloatingHint="Nombres"
+                                     TextFieldFloatingHint="Nombres"
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"/>
 
