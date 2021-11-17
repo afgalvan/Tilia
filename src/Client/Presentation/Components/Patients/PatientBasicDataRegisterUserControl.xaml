@@ -105,9 +105,8 @@
         <atomic:ButtonUserControl x:Name="BasicDataGoNextButton"
                                   Grid.Row="2"
                                   Grid.Column="2"
-                                  Radius="25"
-                                  ToolTip="Ir a la seccion siguiente"
-                                  Content="Siguiente"
+                                  ButtonRadius="25"
+                                  ButtonToolTip="Ir a la seccion siguiente"
                                   HorizontalAlignment="Left"
                                   VerticalAlignment="Top"
                                   Margin="0,45,0,0"/>

@@ -8,13 +8,14 @@
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <Button Content="{Binding Content}"
-            ToolTip="{Binding ToolTip}"
+    <Button Content="{Binding ButtonContent}"
+            ToolTip="{Binding ButtonToolTip}"
             Foreground="White"
             Background="{StaticResource ButtonColor}"
             BorderBrush="{StaticResource ButtonColor}"
-            materialDesign:ButtonAssist.CornerRadius="{Binding Radius}"
-            Width="{Binding Width}"
-            Height="{Binding Height}"
+            materialDesign:ButtonAssist.CornerRadius="{Binding ButtonRadius}"
+            Width="{Binding ButtonWidth}"
+            Height="{Binding ButtonHeight}"
             Cursor="Hand"/>
+
 </UserControl>

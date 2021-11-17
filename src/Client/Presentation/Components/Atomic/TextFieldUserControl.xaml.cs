@@ -42,7 +42,7 @@ namespace Presentation.Components.Atomic
             DependencyProperty.Register("FloatingHint", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty WidthProperty =
-            DependencyProperty.Register("Width", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register("FontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(null));

@@ -14,56 +14,56 @@ namespace Presentation.Components.Atomic
             DefaultButtonType();
         }
 
-        public new string ToolTip
+        public string ButtonToolTip
         {
-            get => (string)GetValue(ToolTipProperty);
-            set => SetValue(ToolTipProperty, value);
+            get => (string)GetValue(ButtonToolTipProperty);
+            set => SetValue(ButtonToolTipProperty, value);
         }
 
-        public new string Content
+        public string ButtonContent
         {
-            get => (string)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (string)GetValue(ButtonContentProperty);
+            set => SetValue(ButtonContentProperty, value);
         }
 
-        public string Radius
+        public string ButtonRadius
         {
-            get => (string)GetValue(RadiusProperty);
-            set => SetValue(RadiusProperty, value);
+            get => (string)GetValue(ButtonRadiusProperty);
+            set => SetValue(ButtonRadiusProperty, value);
         }
 
-        public new string Width
+        public string ButtonWidth
         {
-            get => (string)GetValue(WidthProperty);
-            set => SetValue(WidthProperty, value);
+            get => (string)GetValue(ButtonWidthProperty);
+            set => SetValue(ButtonWidthProperty, value);
         }
 
-        public new string Height
+        public string ButtonHeight
         {
-            get => (string)GetValue(HeightProperty);
-            set => SetValue(HeightProperty, value);
+            get => (string)GetValue(ButtonHeightProperty);
+            set => SetValue(ButtonHeightProperty, value);
         }
 
         public void DefaultButtonType()
         {
-            Radius = "20";
-            Width = "120";
-            Height = "35";
+            ButtonRadius = "20";
+            ButtonWidth = "120";
+            ButtonHeight = "35";
         }
 
-        public static readonly DependencyProperty ToolTipProperty =
-            DependencyProperty.Register("ToolTip", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ButtonToolTipProperty =
+            DependencyProperty.Register("ButtonToolTip", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ButtonContentProperty =
+            DependencyProperty.Register("ButtonContent", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty RadiusProperty =
-            DependencyProperty.Register("Radius", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ButtonRadiusProperty =
+            DependencyProperty.Register("ButtonRadius", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty WidthProperty =
-            DependencyProperty.Register("Width", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ButtonWidthProperty =
+            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty HeightProperty =
-            DependencyProperty.Register("Height", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ButtonHeightProperty =
+            DependencyProperty.Register("ButtonHeight", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
     }
 }
