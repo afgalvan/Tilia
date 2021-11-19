@@ -1,11 +1,8 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Presentation.Components.Atomic
+namespace Presentation.Components.Atomic.Input
 {
-    /// <summary>
-    /// Lógica de interacción para TextFieldUserControl.xaml
-    /// </summary>
     public partial class TextFieldUserControl : UserControl
     {
         public TextFieldUserControl()

@@ -41,7 +41,7 @@
                                   Direction="-160" />
             </Border.Effect>
 
-            <StackPanel Background="White" Cursor="">
+            <StackPanel Background="White">
                 <Image Source="/Assets/Icons/tilia.png"
                        HorizontalAlignment="Center"
                        Width="75" Margin="0, 40, 0, 0" />

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Presentation.Components.Patients"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:atomic="clr-namespace:Presentation.Components.Atomic"
+             xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
              mc:Ignorable="d" 
              d:DesignHeight="546" d:DesignWidth="873">
 
@@ -25,7 +25,7 @@
             <TextBlock Style="{StaticResource TitleText}" Text="Pacientes" Grid.ColumnSpan="2"/>
 
             <StackPanel x:Name="PatientsButtonStack" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                <atomic:ButtonIconUserControl x:Name="AddPacientButton"
+                <buttons:ButtonIconUserControl x:Name="AddPacientButton"
                                               ButtonContent="Agregar"
                                               ButtonIconName="AccountPlusOutline"
                                               ButtonToolTip="Pulse para agregar paciente"
@@ -33,7 +33,7 @@
                                               ButtonWidth="150"
                                               Margin="0,50,0,0"/>
 
-                <atomic:ButtonIconUserControl x:Name="UpdatePacientButton"
+                <buttons:ButtonIconUserControl x:Name="UpdatePacientButton"
                                               ButtonIconName="AccountEditOutline"
                                               ButtonContent="Actualizar"
                                               Margin="0,30,0,0"
@@ -41,7 +41,7 @@
                                               ButtonToolTip="Pulse para actualizar paciente"
                                               HorizontalAlignment="Center"/>
 
-                <atomic:ButtonIconUserControl x:Name="DeletePacientButton"
+                <buttons:ButtonIconUserControl x:Name="DeletePacientButton"
                                               ButtonIconName="AccountRemoveOutline "
                                               ButtonContent="Eliminar"
                                               Margin="0,30,0,0"

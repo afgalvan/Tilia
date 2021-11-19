@@ -76,6 +76,9 @@
     <Compile Remove="Components\MedicalFiles\**" />
     <Compile Remove="Components\Users\**" />
     <Compile Remove="Controllers\**" />
+    <Compile Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -90,6 +93,14 @@
     <Page Remove="Components\MedicalFiles\**" />
     <Page Remove="Components\Users\**" />
     <Page Remove="Controllers\**" />
+    <Page Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Atomic\Buttons\" />
+    <Folder Include="Components\Atomic\Input\" />
   </ItemGroup>
 
 </Project>

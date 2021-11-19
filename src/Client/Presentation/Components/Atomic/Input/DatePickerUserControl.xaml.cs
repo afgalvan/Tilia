@@ -1,11 +1,8 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Presentation.Components.Atomic
+namespace Presentation.Components.Atomic.Input
 {
-    /// <summary>
-    /// Lógica de interacción para DatePickerUserControl.xaml
-    /// </summary>
     public partial class DatePickerUserControl : UserControl
     {
         public DatePickerUserControl()

@@ -1,12 +1,8 @@
 using System.Windows;
 using System.Windows.Controls;
 
-
-namespace Presentation.Components.Atomic
+namespace Presentation.Components.Atomic.Buttons
 {
-    /// <summary>
-    /// Lógica de interacción para ButtonIconUserControl.xaml
-    /// </summary>
     public partial class ButtonIconUserControl : UserControl
     {
         public ButtonIconUserControl()
@@ -51,7 +47,7 @@ namespace Presentation.Components.Atomic
             set => SetValue(ButtonRadiusProperty, value);
         }
 
-        public void DefaultButtonType()
+        private void DefaultButtonType()
         {
             ButtonWidth = "130";
             ButtonHeight = "35";
