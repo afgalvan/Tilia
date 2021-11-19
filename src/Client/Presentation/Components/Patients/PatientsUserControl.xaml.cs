@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Presentation.Components.Patients
 {
     /// <summary>
-    /// Lógica de interacción para PatientMedicalDataRegisterUserControl.xaml
+    /// Lógica de interacción para PatientsUserControl.xaml
     /// </summary>
-    public partial class PatientMedicalDataRegisterUserControl : UserControl
+    public partial class PatientsUserControl : UserControl
     {
-        public PatientMedicalDataRegisterUserControl()
+        public PatientsUserControl()
         {
             InitializeComponent();
         }

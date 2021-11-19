@@ -3,13 +3,13 @@ using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;
 using Presentation.Components.MedicalMeetings;
 using Presentation.Components.MedicalNotes;
-using Presentation.Components.Patients;
 using Presentation.Utils;
 using Presentation.Windows;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Presentation.Components.Patients;
 
 namespace Presentation.Components.Atomic
 {
@@ -32,7 +32,7 @@ namespace Presentation.Components.Atomic
         private void PatientsButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, PatientsTextBlock, PatientsIcon);
-            _mainWindow.ChangeMainContentArea(new QueryMedicalAppointmentUserControl(_mainWindow));
+            _mainWindow.ChangeMainContentArea(new PatientsUserControl());
         }
 
         private void MedicalAppointments_Click(object sender, RoutedEventArgs e)
@@ -43,8 +43,6 @@ namespace Presentation.Components.Atomic
 
         private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
-            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)

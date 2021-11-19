@@ -16,6 +16,6 @@
             materialDesign:ButtonAssist.CornerRadius="{Binding ButtonRadius}"
             Width="{Binding ButtonWidth}"
             Height="{Binding ButtonHeight}"
-            Cursor="Hand"/>
-
+            Cursor="Hand"
+            FontFamily="DM Sans"/>
 </UserControl>
