@@ -13,7 +13,9 @@ namespace Domain.Users
         [Required]
         public string Name { get; set; }
 
-        public Email Email { get; set; }
+        [DataType(DataType.EmailAddress, ErrorMessage = "Correo electrónico inválido")]
+        [Required]
+        public string Email { get; set; }
 
         [Required]
         public string Password { get; set; }
@@ -24,14 +26,11 @@ namespace Domain.Users
         [ForeignKey("employee_id")]
         public Employee Employee { get; set; }
 
-        public User(string name, string email, string password, AccessRole accessRole,
-            Employee employee)
+        public User(string name, string email, string password)
         {
             Name       = name;
-            Email      = new Email(email);
+            Email      = email;
             Password   = password;
-            AccessRole = accessRole;
-            Employee   = employee;
         }
 
         public User()

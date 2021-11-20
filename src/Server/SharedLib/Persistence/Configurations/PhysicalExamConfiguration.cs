@@ -8,7 +8,7 @@ namespace SharedLib.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<PhysicalExam> builder)
         {
-            builder.OwnsOne(physicalExam => physicalExam.VitalSignResults);
+            builder.OwnsOne(exam => exam.VitalSignResults);
         }
     }
 }

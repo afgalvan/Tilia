@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Locations;
 using Domain.Meetings;
 using Domain.Patients;
@@ -6,10 +7,11 @@ using Domain.People;
 
 namespace Domain.Employees
 {
+    [Table("employees")]
     public class Employee : Person
     {
-        public Employee(string id, string idType, string firstName, string lastName,
-            Genre genre, string locationId, string city, Department department) : base(id,
+        public Employee(string personId, string idType, string firstName, string lastName,
+            Genre genre, string locationId, string city, Department department) : base(personId,
             idType, firstName, lastName, genre, locationId, city, department)
         {
         }

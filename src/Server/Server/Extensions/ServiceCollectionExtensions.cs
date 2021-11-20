@@ -27,24 +27,20 @@ namespace Server.Extensions
         public static void ConfigureDbContext(this IServiceCollection services,
             IConfiguration configuration)
         {
-            string provider = configuration["Database:Provider"];
-            if (provider.ToLower(CultureInfo.CurrentCulture) == "mysql")
-            {
-                services.AddDbContext<TiliaDbContext>(options =>
-                    options.UseMySql(
-                            configuration.GetConnectionString("DefaultConnection"),
-                            new MySqlServerVersion(new Version(8, 0, 26)),
-                            builder => builder.MigrationsAssembly("Server"))
-                        .UseSnakeCaseNamingConvention()
-                );
-            }
+            string provider              = configuration["Database:Provider"];
+            var    connectionInformation = new ConnectionInformation(configuration, provider);
+
+            services.AddDbContext<TiliaDbContext>(options =>
+                options.SetupDatabaseEngine(connectionInformation)
+                    .UseSnakeCaseNamingConvention()
+            );
         }
 
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             services.ConfigureHangFire();
             services.AddSingleton(GetTypeAdapterConfig());
-            services.AddScoped<IUserRepository, MySqlUserRepository>();
+            services.AddScoped<IUserRepository, OracleUserRepository>();
             services.AddScoped<IMapper, ServiceMapper>();
         }
 

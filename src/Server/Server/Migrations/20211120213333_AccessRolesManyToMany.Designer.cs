@@ -4,30 +4,51 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Oracle.EntityFrameworkCore.Metadata;
 using SharedLib.Persistence;
 
 namespace Server.Migrations
 {
     [DbContext(typeof(TiliaDbContext))]
-    [Migration("20211107154723_PhysicalExams")]
-    partial class PhysicalExams
+    [Migration("20211120213333_AccessRolesManyToMany")]
+    partial class AccessRolesManyToMany
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.11");
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AccessRolePrivilege", b =>
+                {
+                    b.Property<Guid>("AccessRolesId")
+                        .HasColumnType("RAW(16)")
+                        .HasColumnName("access_roles_id");
+
+                    b.Property<int>("PrivilegesId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("privileges_id");
+
+                    b.HasKey("AccessRolesId", "PrivilegesId")
+                        .HasName("pk_access_role_privilege");
+
+                    b.HasIndex("PrivilegesId")
+                        .HasDatabaseName("ix_access_role_privilege_privileges_id");
+
+                    b.ToTable("access_role_privilege");
+                });
 
             modelBuilder.Entity("Domain.Employees.SanitaryRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -39,15 +60,15 @@ namespace Server.Migrations
             modelBuilder.Entity("Domain.Locations.City", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("id");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("name");
 
                     b.Property<string>("department_id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("department_id");
 
                     b.HasKey("Id")
@@ -62,11 +83,11 @@ namespace Server.Migrations
             modelBuilder.Entity("Domain.Locations.Department", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("id");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -79,43 +100,43 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<int>("Cycle")
-                        .HasColumnType("int")
+                        .HasColumnType("NUMBER(10)")
                         .HasColumnName("cycle");
 
                     b.Property<DateTime>("EstimatedDateConfinement")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("estimated_date_confinement");
 
                     b.Property<bool>("HasAmenorrhea")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("NUMBER(1)")
                         .HasColumnName("has_amenorrhea");
 
                     b.Property<bool>("HasDysmenorrhea")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("NUMBER(1)")
                         .HasColumnName("has_dysmenorrhea");
 
                     b.Property<bool>("HasPlanning")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("NUMBER(1)")
                         .HasColumnName("has_planning");
 
                     b.Property<bool>("IsRegular")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("NUMBER(1)")
                         .HasColumnName("is_regular");
 
                     b.Property<DateTime>("LastMenstrualPeriod")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("last_menstrual_period");
 
                     b.Property<DateTime>("Menarchy")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("menarchy");
 
                     b.Property<string>("Method")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("method");
 
                     b.HasKey("Id")
@@ -128,23 +149,23 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<Guid?>("MedicalAppointmentAppointmentId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("medical_appointment_appointment_id");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("name");
 
                     b.Property<string>("Observations")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("observations");
 
                     b.Property<bool>("State")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("NUMBER(1)")
                         .HasColumnName("state");
 
                     b.HasKey("Id")
@@ -160,47 +181,47 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("AppointmentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("appointment_id");
 
                     b.Property<DateTime>("AppointmentDate")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("appointment_date");
 
                     b.Property<string>("AppointmentReason")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("appointment_reason");
 
                     b.Property<int>("AptitudeCertificate")
-                        .HasColumnType("int")
+                        .HasColumnType("NUMBER(10)")
                         .HasColumnName("aptitude_certificate");
 
                     b.Property<string>("DiseaseHistory")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("disease_history");
 
                     b.Property<string>("doctor_id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("doctor_id");
 
                     b.Property<Guid?>("gynecological_background_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("gynecological_background_id");
 
                     b.Property<Guid?>("medical_note_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("medical_note_id");
 
                     b.Property<Guid?>("medical_record_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("medical_record_id");
 
                     b.Property<string>("patient_id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("patient_id");
 
                     b.Property<string>("scheduler_id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("scheduler_id");
 
                     b.HasKey("AppointmentId")
@@ -231,19 +252,19 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("CIE10")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("cie10");
 
                     b.Property<string>("Functional")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("functional");
 
                     b.Property<Guid?>("MedicalNoteId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("medical_note_id");
 
                     b.HasKey("Id")
@@ -259,11 +280,11 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("description");
 
                     b.HasKey("Id")
@@ -276,11 +297,11 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("description");
 
                     b.HasKey("Id")
@@ -293,15 +314,15 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<Guid?>("evolution_sheet_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("evolution_sheet_id");
 
                     b.Property<Guid?>("management_plan_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("management_plan_id");
 
                     b.HasKey("Id")
@@ -320,19 +341,19 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("Department")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("department");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("description");
 
                     b.Property<Guid?>("MedicalNoteId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("medical_note_id");
 
                     b.HasKey("Id")
@@ -348,23 +369,23 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("Observations")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("observations");
 
                     b.Property<Guid?>("PhysicalExamId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("physical_exam_id");
 
                     b.Property<string>("Region")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("region");
 
                     b.Property<string>("Segment")
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("segment");
 
                     b.HasKey("Id")
@@ -380,11 +401,11 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<Guid?>("physical_exam_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("physical_exam_id");
 
                     b.HasKey("Id")
@@ -400,7 +421,7 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.HasKey("Id")
@@ -409,50 +430,75 @@ namespace Server.Migrations
                     b.ToTable("physical_exams");
                 });
 
+            modelBuilder.Entity("Domain.People.IdType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_id_types");
+
+                    b.ToTable("id_types");
+                });
+
             modelBuilder.Entity("Domain.People.Person", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("id");
+                    b.Property<string>("PersonId")
+                        .HasColumnType("NVARCHAR2(450)")
+                        .HasColumnName("person_id");
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("TIMESTAMP(7)")
                         .HasColumnName("birth_date");
 
                     b.Property<string>("CityId")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("city_id");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("discriminator");
+                    b.Property<string>("FirstName")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("first_name");
 
                     b.Property<int>("Genre")
-                        .HasColumnType("int")
+                        .HasColumnType("NUMBER(10)")
                         .HasColumnName("genre");
 
-                    b.HasKey("Id")
-                        .HasName("pk_people");
+                    b.Property<string>("LastName")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("last_name");
+
+                    b.Property<int?>("identification_type_id")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("identification_type_id");
+
+                    b.HasKey("PersonId");
 
                     b.HasIndex("CityId")
                         .HasDatabaseName("ix_people_city_id");
 
-                    b.ToTable("people");
+                    b.HasIndex("identification_type_id")
+                        .HasDatabaseName("ix_people_identification_type_id");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+                    b.ToTable("people");
                 });
 
             modelBuilder.Entity("Domain.Users.AccessRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -463,24 +509,19 @@ namespace Server.Migrations
 
             modelBuilder.Entity("Domain.Users.Privilege", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("id");
-
-                    b.Property<Guid?>("AccessRoleId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("access_role_id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id")
+                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
                         .HasName("pk_privileges");
-
-                    b.HasIndex("AccessRoleId")
-                        .HasDatabaseName("ix_privileges_access_role_id");
 
                     b.ToTable("privileges");
                 });
@@ -489,25 +530,33 @@ namespace Server.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("id");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
+                        .HasColumnName("email");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
                         .HasColumnName("name");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
                         .HasColumnName("password");
 
                     b.Property<Guid?>("access_role_id")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("access_role_id");
 
                     b.Property<string>("employee_id")
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("employee_id");
 
                     b.HasKey("Id")
@@ -530,7 +579,7 @@ namespace Server.Migrations
                 {
                     b.HasBaseType("Domain.People.Person");
 
-                    b.HasDiscriminator().HasValue("Employee");
+                    b.ToTable("employees");
                 });
 
             modelBuilder.Entity("Domain.Patients.Patient", b =>
@@ -538,14 +587,16 @@ namespace Server.Migrations
                     b.HasBaseType("Domain.People.Person");
 
                     b.Property<string>("Occupation")
-                        .HasColumnType("longtext")
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
                         .HasColumnName("occupation");
 
                     b.Property<string>("Studies")
-                        .HasColumnType("longtext")
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
                         .HasColumnName("studies");
 
-                    b.HasDiscriminator().HasValue("Patient");
+                    b.ToTable("patients");
                 });
 
             modelBuilder.Entity("Domain.Employees.SanitaryEmployee", b =>
@@ -553,13 +604,30 @@ namespace Server.Migrations
                     b.HasBaseType("Domain.Employees.Employee");
 
                     b.Property<Guid?>("SanitaryRoleId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("RAW(16)")
                         .HasColumnName("sanitary_role_id");
 
                     b.HasIndex("SanitaryRoleId")
-                        .HasDatabaseName("ix_people_sanitary_role_id");
+                        .HasDatabaseName("ix_sanitary_employees_sanitary_role_id");
 
-                    b.HasDiscriminator().HasValue("SanitaryEmployee");
+                    b.ToTable("sanitary_employees");
+                });
+
+            modelBuilder.Entity("AccessRolePrivilege", b =>
+                {
+                    b.HasOne("Domain.Users.AccessRole", null)
+                        .WithMany()
+                        .HasForeignKey("AccessRolesId")
+                        .HasConstraintName("fk_access_role_privilege_access_roles_access_roles_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Users.Privilege", null)
+                        .WithMany()
+                        .HasForeignKey("PrivilegesId")
+                        .HasConstraintName("fk_access_role_privilege_privileges_privileges_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Locations.City", b =>
@@ -577,7 +645,7 @@ namespace Server.Migrations
                     b.HasOne("Domain.MedicalFiles.MedicalAppointment", null)
                         .WithMany("MedicalBackgrounds")
                         .HasForeignKey("MedicalAppointmentAppointmentId")
-                        .HasConstraintName("fk_medical_backgrounds_medical_appointments_medical_appointment");
+                        .HasConstraintName("fk_medical_backgrounds_medical_appointments_medical_appointment_appointment_id");
                 });
 
             modelBuilder.Entity("Domain.MedicalFiles.MedicalAppointment", b =>
@@ -585,12 +653,12 @@ namespace Server.Migrations
                     b.HasOne("Domain.Employees.SanitaryEmployee", "DoctorCaring")
                         .WithMany()
                         .HasForeignKey("doctor_id")
-                        .HasConstraintName("fk_medical_appointments_people_doctor_id");
+                        .HasConstraintName("fk_medical_appointments_sanitary_employees_doctor_id");
 
                     b.HasOne("Domain.MedicalFiles.Background.GynecologicalBackground", "GynecologicalBackground")
                         .WithMany()
                         .HasForeignKey("gynecological_background_id")
-                        .HasConstraintName("fk_medical_appointments_gynecological_backgrounds_gynecological");
+                        .HasConstraintName("fk_medical_appointments_gynecological_backgrounds_gynecological_background_id");
 
                     b.HasOne("Domain.MedicalFiles.MedicalNotes.MedicalNote", "MedicalNote")
                         .WithMany()
@@ -605,12 +673,12 @@ namespace Server.Migrations
                     b.HasOne("Domain.Patients.Patient", "Patient")
                         .WithMany()
                         .HasForeignKey("patient_id")
-                        .HasConstraintName("fk_medical_appointments_people_patient_id");
+                        .HasConstraintName("fk_medical_appointments_patients_patient_id");
 
                     b.HasOne("Domain.Employees.Employee", "Scheduler")
                         .WithMany()
                         .HasForeignKey("scheduler_id")
-                        .HasConstraintName("fk_medical_appointments_people_scheduler_id");
+                        .HasConstraintName("fk_medical_appointments_employees_scheduler_id");
 
                     b.Navigation("DoctorCaring");
 
@@ -676,11 +744,11 @@ namespace Server.Migrations
                     b.OwnsOne("Domain.MedicalFiles.MedicalRecords.Anamnesis", "Anamnesis", b1 =>
                         {
                             b1.Property<Guid>("MedicalRecordId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("RAW(16)")
                                 .HasColumnName("id");
 
                             b1.Property<string>("Description")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("anamnesis_description");
 
                             b1.HasKey("MedicalRecordId")
@@ -703,19 +771,19 @@ namespace Server.Migrations
                     b.OwnsOne("Domain.MedicalFiles.MedicalRecords.VitalSign", "VitalSignResults", b1 =>
                         {
                             b1.Property<Guid>("PhysicalExamId")
-                                .HasColumnType("char(36)")
+                                .HasColumnType("RAW(16)")
                                 .HasColumnName("id");
 
                             b1.Property<double>("Height")
-                                .HasColumnType("double")
+                                .HasColumnType("BINARY_DOUBLE")
                                 .HasColumnName("vital_sign_results_height");
 
                             b1.Property<double>("Temperature")
-                                .HasColumnType("double")
+                                .HasColumnType("BINARY_DOUBLE")
                                 .HasColumnName("vital_sign_results_temperature");
 
                             b1.Property<double>("Weight")
-                                .HasColumnType("double")
+                                .HasColumnType("BINARY_DOUBLE")
                                 .HasColumnName("vital_sign_results_weight");
 
                             b1.HasKey("PhysicalExamId")
@@ -738,63 +806,14 @@ namespace Server.Migrations
                         .HasForeignKey("CityId")
                         .HasConstraintName("fk_people_cities_city_id");
 
-                    b.OwnsOne("Domain.People.IdType", "IdType", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("varchar(255)")
-                                .HasColumnName("id");
-
-                            b1.Property<string>("Name")
-                                .HasColumnType("longtext")
-                                .HasColumnName("id_type_name");
-
-                            b1.HasKey("PersonId")
-                                .HasName("pk_people");
-
-                            b1.ToTable("people");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId")
-                                .HasConstraintName("fk_people_people_id");
-                        });
-
-                    b.OwnsOne("Domain.People.PersonName", "Names", b1 =>
-                        {
-                            b1.Property<string>("PersonId")
-                                .HasColumnType("varchar(255)")
-                                .HasColumnName("id");
-
-                            b1.Property<string>("FirstName")
-                                .HasColumnType("longtext")
-                                .HasColumnName("names_first_name");
-
-                            b1.Property<string>("LastName")
-                                .HasColumnType("longtext")
-                                .HasColumnName("names_last_name");
-
-                            b1.HasKey("PersonId")
-                                .HasName("pk_people");
-
-                            b1.ToTable("people");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PersonId")
-                                .HasConstraintName("fk_people_people_id");
-                        });
+                    b.HasOne("Domain.People.IdType", "IdType")
+                        .WithMany()
+                        .HasForeignKey("identification_type_id")
+                        .HasConstraintName("fk_people_id_types_identification_type_id");
 
                     b.Navigation("City");
 
                     b.Navigation("IdType");
-
-                    b.Navigation("Names");
-                });
-
-            modelBuilder.Entity("Domain.Users.Privilege", b =>
-                {
-                    b.HasOne("Domain.Users.AccessRole", null)
-                        .WithMany("Privileges")
-                        .HasForeignKey("AccessRoleId")
-                        .HasConstraintName("fk_privileges_access_roles_access_role_id");
                 });
 
             modelBuilder.Entity("Domain.Users.User", b =>
@@ -807,121 +826,118 @@ namespace Server.Migrations
                     b.HasOne("Domain.Employees.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("employee_id")
-                        .HasConstraintName("fk_users_people_employee_id");
-
-                    b.OwnsOne("Domain.Users.Email", "Email", b1 =>
-                        {
-                            b1.Property<Guid>("UserId")
-                                .HasColumnType("char(36)")
-                                .HasColumnName("id");
-
-                            b1.HasKey("UserId")
-                                .HasName("pk_users");
-
-                            b1.ToTable("users");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserId")
-                                .HasConstraintName("fk_users_users_id");
-                        });
+                        .HasConstraintName("fk_users_employees_employee_id");
 
                     b.Navigation("AccessRole");
-
-                    b.Navigation("Email");
 
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("Domain.Employees.Employee", b =>
+                {
+                    b.HasOne("Domain.People.Person", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.Employees.Employee", "PersonId")
+                        .HasConstraintName("fk_employees_people_person_id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Domain.Patients.Patient", b =>
                 {
+                    b.HasOne("Domain.People.Person", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.Patients.Patient", "PersonId")
+                        .HasConstraintName("fk_patients_people_person_id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
                     b.OwnsOne("Domain.Patients.ContactData", "ContactData", b1 =>
                         {
-                            b1.Property<string>("PatientId")
-                                .HasColumnType("varchar(255)")
-                                .HasColumnName("id");
+                            b1.Property<string>("PatientPersonId")
+                                .HasColumnType("NVARCHAR2(450)")
+                                .HasColumnName("person_id");
 
                             b1.Property<string>("Address")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("contact_data_address");
 
                             b1.Property<string>("Landline")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("contact_data_landline");
 
                             b1.Property<string>("PhoneNumber")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("contact_data_phone_number");
 
                             b1.Property<int>("Stratum")
-                                .HasColumnType("int")
+                                .HasColumnType("NUMBER(10)")
                                 .HasColumnName("contact_data_stratum");
 
                             b1.Property<string>("city_id")
-                                .HasColumnType("varchar(255)")
+                                .HasColumnType("NVARCHAR2(450)")
                                 .HasColumnName("contact_data_city_id");
 
-                            b1.HasKey("PatientId")
-                                .HasName("pk_people");
+                            b1.HasKey("PatientPersonId");
 
                             b1.HasIndex("city_id")
-                                .HasDatabaseName("ix_people_contact_data_city_id");
+                                .HasDatabaseName("ix_patients_contact_data_city_id");
 
-                            b1.ToTable("people");
+                            b1.ToTable("patients");
 
                             b1.WithOwner()
-                                .HasForeignKey("PatientId")
-                                .HasConstraintName("fk_people_people_id");
+                                .HasForeignKey("PatientPersonId")
+                                .HasConstraintName("fk_patients_patients_person_id");
 
                             b1.HasOne("Domain.Locations.City", "City")
                                 .WithMany()
                                 .HasForeignKey("city_id")
-                                .HasConstraintName("fk_people_cities_contact_data_city_id");
+                                .HasConstraintName("fk_patients_cities_contact_data_city_id");
 
                             b1.Navigation("City");
                         });
 
                     b.OwnsOne("Domain.Patients.SportsData", "SportsData", b1 =>
                         {
-                            b1.Property<string>("PatientId")
-                                .HasColumnType("varchar(255)")
-                                .HasColumnName("id");
+                            b1.Property<string>("PatientPersonId")
+                                .HasColumnType("NVARCHAR2(450)")
+                                .HasColumnName("person_id");
 
                             b1.Property<string>("Coach")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("sports_data_coach");
 
                             b1.Property<bool>("ContinuousTraining")
-                                .HasColumnType("tinyint(1)")
+                                .HasColumnType("NUMBER(1)")
                                 .HasColumnName("sports_data_continuous_training");
 
                             b1.Property<int>("Dominance")
-                                .HasColumnType("int")
+                                .HasColumnType("NUMBER(10)")
                                 .HasColumnName("sports_data_dominance");
 
                             b1.Property<string>("Modality")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("sports_data_modality");
 
                             b1.Property<string>("Sport")
-                                .HasColumnType("longtext")
+                                .HasColumnType("NVARCHAR2(2000)")
                                 .HasColumnName("sports_data_sport");
 
                             b1.Property<DateTime>("StartDate")
-                                .HasColumnType("datetime(6)")
+                                .HasColumnType("TIMESTAMP(7)")
                                 .HasColumnName("sports_data_start_date");
 
                             b1.Property<bool>("TrainingPlan")
-                                .HasColumnType("tinyint(1)")
+                                .HasColumnType("NUMBER(1)")
                                 .HasColumnName("sports_data_training_plan");
 
-                            b1.HasKey("PatientId")
-                                .HasName("pk_people");
+                            b1.HasKey("PatientPersonId");
 
-                            b1.ToTable("people");
+                            b1.ToTable("patients");
 
                             b1.WithOwner()
-                                .HasForeignKey("PatientId")
-                                .HasConstraintName("fk_people_people_id");
+                                .HasForeignKey("PatientPersonId")
+                                .HasConstraintName("fk_patients_patients_person_id");
                         });
 
                     b.Navigation("ContactData");
@@ -931,10 +947,17 @@ namespace Server.Migrations
 
             modelBuilder.Entity("Domain.Employees.SanitaryEmployee", b =>
                 {
+                    b.HasOne("Domain.Employees.Employee", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.Employees.SanitaryEmployee", "PersonId")
+                        .HasConstraintName("fk_sanitary_employees_employees_person_id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.Employees.SanitaryRole", "SanitaryRole")
                         .WithMany()
                         .HasForeignKey("SanitaryRoleId")
-                        .HasConstraintName("fk_people_sanitary_roles_sanitary_role_id");
+                        .HasConstraintName("fk_sanitary_employees_sanitary_roles_sanitary_role_id");
 
                     b.Navigation("SanitaryRole");
                 });
@@ -954,11 +977,6 @@ namespace Server.Migrations
             modelBuilder.Entity("Domain.MedicalFiles.MedicalRecords.PhysicalExam", b =>
                 {
                     b.Navigation("BodyPartRecords");
-                });
-
-            modelBuilder.Entity("Domain.Users.AccessRole", b =>
-                {
-                    b.Navigation("Privileges");
                 });
 #pragma warning restore 612, 618
         }

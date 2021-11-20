@@ -30,4 +30,8 @@
       <None Remove="Users\GetAll\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Shared\Filters" />
+    </ItemGroup>
+
 </Project>

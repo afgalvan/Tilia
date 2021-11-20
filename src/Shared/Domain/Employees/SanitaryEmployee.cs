@@ -1,15 +1,17 @@
-﻿using Domain.Locations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Locations;
 using Domain.People;
 
 namespace Domain.Employees
 {
+    [Table("sanitary_employees")]
     public class SanitaryEmployee : Employee
     {
         public SanitaryRole SanitaryRole { get; set; }
 
-        public SanitaryEmployee(string id, string idType, string firstName, string lastName,
+        public SanitaryEmployee(string personId, string idType, string firstName, string lastName,
             Genre genre, string locationId, string city, SanitaryRole sanitaryRole,
-            Department department) : base(id, idType, firstName, lastName, genre, locationId,
+            Department department) : base(personId, idType, firstName, lastName, genre, locationId,
             city, department)
         {
             SanitaryRole = sanitaryRole;

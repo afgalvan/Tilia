@@ -8,8 +8,10 @@ namespace SharedLib.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.OwnsOne(user => user.Email);
             builder.HasIndex(user => user.Name).IsUnique();
+            builder.Property(user => user.Name).HasMaxLength(255);
+            builder.Property(user => user.Email).HasMaxLength(255);
+            builder.Property(user => user.Password).HasMaxLength(255);
         }
     }
 }

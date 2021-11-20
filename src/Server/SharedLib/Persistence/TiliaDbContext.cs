@@ -14,15 +14,16 @@ namespace SharedLib.Persistence
     public class TiliaDbContext : DbContext
     {
         public DbSet<Person>           People            { get; set; }
-        public DbSet<User>             Users             { get; set; }
-        public DbSet<AccessRole>       AccessRoles       { get; set; }
-        public DbSet<Privilege>        Privileges        { get; set; }
-        public DbSet<Employee>         Employees         { get; set; }
-        public DbSet<SanitaryEmployee> SanitaryEmployees { get; set; }
-        public DbSet<SanitaryRole>     SanitaryRoles     { get; set; }
+        public DbSet<IdType>           IdTypes           { get; set; }
         public DbSet<City>             Cities            { get; set; }
         public DbSet<Department>       Departments       { get; set; }
         public DbSet<Patient>          Patients          { get; set; }
+        public DbSet<Employee>         Employees         { get; set; }
+        public DbSet<SanitaryEmployee> SanitaryEmployees { get; set; }
+        public DbSet<SanitaryRole>     SanitaryRoles     { get; set; }
+        public DbSet<User>             Users             { get; set; }
+        public DbSet<AccessRole>       AccessRoles       { get; set; }
+        public DbSet<Privilege>        Privileges        { get; set; }
 
         public DbSet<MedicalAppointment> MedicalAppointments { get; set; }
 
@@ -54,6 +55,9 @@ namespace SharedLib.Persistence
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TiliaDbContext).Assembly);
+            modelBuilder.Entity<AccessRole>()
+                .HasMany(role => role.Privileges)
+                .WithMany(privilege => privilege.AccessRoles);
         }
     }
 }

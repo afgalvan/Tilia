@@ -28,9 +28,9 @@ namespace Server.Hubs
         [return: SignalRReturn(typeof(AccessToken), StatusCodes.Status201Created)]
         public async Task CreateUser([SignalRArg] CreateUserRequest createRequest)
         {
-            var createUserCommand =
-                _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
-            await Clients.Caller.SendAsync("create", createUserCommand);
+            var createUserCommand = _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
+            string authToken = await _mediator.Send(createUserCommand);
+            await Clients.Caller.SendAsync("create", authToken);
         }
 
         [SignalRMethod("getAll", OperationType.Get)]

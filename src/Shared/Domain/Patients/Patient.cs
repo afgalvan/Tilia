@@ -1,8 +1,10 @@
-﻿using Domain.Locations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Locations;
 using Domain.People;
 
 namespace Domain.Patients
 {
+    [Table("patients")]
     public class Patient : Person
     {
         public string      Occupation  { get; set; }
@@ -10,9 +12,9 @@ namespace Domain.Patients
         public SportsData  SportsData  { get; set; }
         public ContactData ContactData { get; set; }
 
-        public Patient(string id, string idType, string firstName, string lastName,
+        public Patient(string personId, string idType, string firstName, string lastName,
             Genre genre, string locationId, string city, Department department,
-            SportsData sportsData, ContactData contactData) : base(id, idType, firstName,
+            SportsData sportsData, ContactData contactData) : base(personId, idType, firstName,
             lastName, genre, locationId, city, department)
         {
             SportsData  = sportsData;
