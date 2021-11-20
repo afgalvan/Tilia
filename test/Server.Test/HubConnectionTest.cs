@@ -1,4 +1,9 @@
-﻿using NUnit.Framework;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
+using Requests.Users;
 
 namespace Server.Test
 {
@@ -6,9 +11,22 @@ namespace Server.Test
     public class HubConnectionTest
     {
         [Test]
-        public void TestConnectionWithServer()
+        public async Task TestConnectionWithServer()
         {
-            Assert.Pass();
+            const string url = @"https://localhost:5001/hubs";
+            HubConnection connection = new HubConnectionBuilder()
+                .WithUrl(url)
+                .AddMessagePackProtocol()
+                .Build();
+            var cts = new CancellationTokenSource();
+            await connection.StartAsync(cts.Token);
+            var request = new CreateUserRequest
+            {
+                Name = "John Doe",
+                Email = "johndoe@gmail.com",
+                Password = "secret"
+            };
+            await connection.SendAsync("user/create", request, cts.Token);
         }
     }
 }

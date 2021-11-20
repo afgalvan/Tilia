@@ -1,18 +1,18 @@
-﻿using System;
+﻿using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Server.Extensions
 {
-    public class ConnectionInformation
+    public class DbConnectionConfig
     {
         public string Url      { get; set; }
         public string Provider { get; set; }
 
-        public ConnectionInformation(IConfiguration configuration, string provider)
+        public DbConnectionConfig(IConfiguration configuration)
         {
-            Url      = configuration.GetConnectionString($"{provider}Connection");
-            Provider = provider;
+            Provider = configuration["Database:Provider"];
+            Url      = configuration.GetConnectionString($"{Provider}Connection");
         }
     }
 
@@ -22,19 +22,17 @@ namespace Server.Extensions
 
         public static DbContextOptionsBuilder SetupDatabaseEngine(
             this DbContextOptionsBuilder options,
-            ConnectionInformation connectionInformation) =>
-            connectionInformation.Provider switch
+            DbConnectionConfig dbConnectionConfig) =>
+            dbConnectionConfig.Provider.ToLower(CultureInfo.CurrentCulture) switch
             {
-                "Oracle" => SetupOracle(options, connectionInformation.Url),
-                _ => SetupMysql(options, connectionInformation.Url)
+                "oracle" => SetupOracle(options, dbConnectionConfig.Url),
+                _ => SetupMysql(options, dbConnectionConfig.Url)
             };
 
         private static DbContextOptionsBuilder SetupMysql(DbContextOptionsBuilder options,
             string connectionString)
         {
-            return options.UseMySql(connectionString,
-                new MySqlServerVersion(new Version(8, 0, 26)),
-                builder => builder.MigrationsAssembly(MigrationsAssembly));
+            return null;
         }
 
         private static DbContextOptionsBuilder SetupOracle(DbContextOptionsBuilder options,

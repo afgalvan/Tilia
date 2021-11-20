@@ -27,8 +27,7 @@ namespace Server.Extensions
         public static void ConfigureDbContext(this IServiceCollection services,
             IConfiguration configuration)
         {
-            string provider              = configuration["Database:Provider"];
-            var    connectionInformation = new ConnectionInformation(configuration, provider);
+            var    connectionInformation = new DbConnectionConfig(configuration);
 
             services.AddDbContext<TiliaDbContext>(options =>
                 options.SetupDatabaseEngine(connectionInformation)
