@@ -29,6 +29,12 @@ namespace Presentation.Components.Atomic.Input
             set => SetValue(DatePickerFontSizeProperty, value);
         }
 
+        public string Text
+        {
+            get => DatePicker.Text;
+            set => DatePicker.Text = Text;
+        }
+
         private void SetDefaultDatePicker()
         {
             DatePickerWidth = "200";

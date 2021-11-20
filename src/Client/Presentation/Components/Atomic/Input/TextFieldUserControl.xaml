@@ -8,7 +8,8 @@
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-     <TextBox Foreground="Black"
+     <TextBox x:Name="TextField"
+              Foreground="Black"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               materialDesign:HintAssist.Hint="{Binding TextFieldFloatingHint}"
               Width="{Binding TextFieldWidth}"

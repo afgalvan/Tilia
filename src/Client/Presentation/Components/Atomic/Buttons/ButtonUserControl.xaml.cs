@@ -5,10 +5,17 @@ namespace Presentation.Components.Atomic.Buttons
 {
     public partial class ButtonUserControl : UserControl
     {
+        public event RoutedEventHandler Click;
+
         public ButtonUserControl()
         {
             InitializeComponent();
             DefaultButtonType();
+        }
+
+        private void ButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            Click?.Invoke(this, new RoutedEventArgs());
         }
 
         public string ButtonToolTip

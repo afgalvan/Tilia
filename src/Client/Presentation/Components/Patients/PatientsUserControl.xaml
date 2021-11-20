@@ -11,29 +11,30 @@
 
     <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
                                          OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
+        <materialDesign:Card Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="14*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
 
-        <Grid Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="14*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource TitleText}" Text="Pacientes" Grid.ColumnSpan="2"/>
 
-            <TextBlock Style="{StaticResource TitleText}" Text="Pacientes" Grid.ColumnSpan="2"/>
+                <StackPanel x:Name="PatientsButtonStack" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                    <buttons:ButtonIconUserControl x:Name="AddPacientButton"
+                                               ButtonContent="Agregar"
+                                               ButtonIconName="AccountPlusOutline"
+                                               ButtonToolTip="Pulse para agregar paciente"
+                                               HorizontalAlignment="Center"
+                                               ButtonWidth="150"
+                                               Margin="0,150,0,0"
+                                               Click="AddPacientButton_Click"/>
 
-            <StackPanel x:Name="PatientsButtonStack" Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                <buttons:ButtonIconUserControl x:Name="AddPacientButton"
-                                              ButtonContent="Agregar"
-                                              ButtonIconName="AccountPlusOutline"
-                                              ButtonToolTip="Pulse para agregar paciente"
-                                              HorizontalAlignment="Center"
-                                              ButtonWidth="150"
-                                              Margin="0,50,0,0"/>
-
-                <buttons:ButtonIconUserControl x:Name="UpdatePacientButton"
+                    <buttons:ButtonIconUserControl x:Name="UpdatePacientButton"
                                               ButtonIconName="AccountEditOutline"
                                               ButtonContent="Actualizar"
                                               Margin="0,30,0,0"
@@ -41,15 +42,15 @@
                                               ButtonToolTip="Pulse para actualizar paciente"
                                               HorizontalAlignment="Center"/>
 
-                <buttons:ButtonIconUserControl x:Name="DeletePacientButton"
+                    <buttons:ButtonIconUserControl x:Name="DeletePacientButton"
                                               ButtonIconName="AccountRemoveOutline "
                                               ButtonContent="Eliminar"
                                               Margin="0,30,0,0"
                                               ButtonWidth="150"
                                               ButtonToolTip="Pulse para eliminar paciente"
                                               HorizontalAlignment="Center"/>
-            </StackPanel>
-        </Grid>
-
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
     </materialDesign:TransitioningContent>
 </UserControl>

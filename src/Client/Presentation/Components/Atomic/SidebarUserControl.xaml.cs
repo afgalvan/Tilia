@@ -1,7 +1,6 @@
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;
-using Presentation.Components.MedicalMeetings;
 using Presentation.Components.MedicalNotes;
 using Presentation.Utils;
 using Presentation.Windows;
@@ -32,7 +31,7 @@ namespace Presentation.Components.Atomic
         private void PatientsButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, PatientsTextBlock, PatientsIcon);
-            _mainWindow.ChangeMainContentArea(new PatientsUserControl());
+            _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
         }
 
         private void MedicalAppointments_Click(object sender, RoutedEventArgs e)

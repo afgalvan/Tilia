@@ -20,6 +20,7 @@
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
     <None Remove="Assets\Ilustrations\DoctorOrgLogin.png" />
+    <None Remove="Components\Patients\PatientsRegisterForms\PatientsContactDataRegisterPage.xaml.cs~RF2fe11b5.TMP" />
     <None Remove="Components\Configuration\**" />
     <None Remove="Components\MedicalFiles\**" />
     <None Remove="Components\Users\**" />
@@ -99,7 +100,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Atomic\Buttons\" />
     <Folder Include="Components\Atomic\Input\" />
   </ItemGroup>
 

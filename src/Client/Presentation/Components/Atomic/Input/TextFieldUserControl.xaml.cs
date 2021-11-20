@@ -29,6 +29,12 @@ namespace Presentation.Components.Atomic.Input
             set => SetValue(TextFieldFontSizeProperty, value);
         }
 
+        public string Text
+        {
+            get => TextField.Text;
+            set => TextField.Text = Text;
+        }
+
         private void SetDefaultTextField()
         {
             TextFieldWidth = "200";

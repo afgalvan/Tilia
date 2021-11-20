@@ -11,6 +11,13 @@ namespace Presentation.Components.Atomic.Buttons
             DefaultButtonType();
         }
 
+        public event RoutedEventHandler Click;
+
+        private void ButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            Click?.Invoke(this, new RoutedEventArgs());
+        }
+
         public string ButtonToolTip
         {
             get => (string)GetValue(ButtonToolTipProperty);
@@ -58,7 +65,6 @@ namespace Presentation.Components.Atomic.Buttons
 
         public static readonly DependencyProperty ButtonIconProperty =
             DependencyProperty.Register("ButtonIconName", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));
-
 
         public static readonly DependencyProperty ButtonToolTipProperty =
             DependencyProperty.Register("ButtonToolTip", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));

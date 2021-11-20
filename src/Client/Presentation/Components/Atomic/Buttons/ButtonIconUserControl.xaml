@@ -9,6 +9,7 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Button Background="{StaticResource ButtonColor}"
+            Click="ButtonOnClick"
             BorderBrush="{StaticResource ButtonColor}"
             ToolTip="{Binding ButtonToolTip}"
             Width="{Binding ButtonWidth}"
