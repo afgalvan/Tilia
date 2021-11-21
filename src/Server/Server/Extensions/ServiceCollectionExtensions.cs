@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using Application.Users.Authenticate;
+using Application.Users.Create;
 using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
@@ -15,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Requests.Auth;
 using Requests.Users;
 using Server.Hubs;
 using SharedLib.Persistence;
@@ -57,7 +60,8 @@ namespace Server.Extensions
         private static TypeAdapterConfig GetTypeAdapterConfig()
         {
             var configuration = new TypeAdapterConfig();
-            configuration.NewConfig<User, UserResponse>();
+            configuration.NewConfig<CreateUserRequest, CreateUserCommand>();
+            configuration.NewConfig<LoginUserRequest, AuthenticateCommand>();
             return configuration;
         }
 

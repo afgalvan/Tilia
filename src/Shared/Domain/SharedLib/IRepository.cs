@@ -8,7 +8,7 @@ namespace Domain.SharedLib
     {
         public Task Save(TEntity entity, CancellationToken cancellation);
         public Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellation);
-        public Task<TEntity> GetById(TId id, CancellationToken cancellation);
-        public Task Remove(TEntity entity, CancellationToken cancellation);
+        public Task<TEntity> FindById(TId id, CancellationToken cancellation);
+        public Task RemoveById(TId id, CancellationToken cancellation);
     }
 }

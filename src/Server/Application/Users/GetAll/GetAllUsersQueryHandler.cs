@@ -2,23 +2,22 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Users;
-using Domain.Users.Repositories;
 using SharedLib.Domain.Bus.Query;
 
 namespace Application.Users.GetAll
 {
     public class GetAllUsersQueryHandler : IQueryHandler<GetAllUsersQuery, IEnumerable<User>>
     {
-        private readonly IUserRepository _repository;
+        private readonly UsersRetriever _usersRetriever;
 
-        public GetAllUsersQueryHandler(IUserRepository repository)
+        public GetAllUsersQueryHandler(UsersRetriever usersRetriever)
         {
-            _repository = repository;
+            _usersRetriever = usersRetriever;
         }
 
         public async Task<IEnumerable<User>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetAll(cancellationToken);
+            return await _usersRetriever.GetAllUsers(cancellationToken);
         }
     }
 }

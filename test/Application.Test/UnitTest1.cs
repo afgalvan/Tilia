@@ -1,4 +1,3 @@
-using Application.Users.Create;
 using NUnit.Framework;
 
 namespace Application.Test

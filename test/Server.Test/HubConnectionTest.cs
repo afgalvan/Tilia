@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Domain.Users;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
@@ -14,31 +11,52 @@ namespace Server.Test
     [TestFixture]
     public class HubConnectionTest
     {
-        [Test]
-        public async Task TestConnectionWithServer()
+        // private HubConnection _connection;
+
+        [SetUp]
+        public Task SetUp()
         {
             const string url = @"https://localhost:5001/hubs/users";
-            HubConnection connection = new HubConnectionBuilder()
+            /*_connection = new HubConnectionBuilder()
                 .WithUrl(url)
                 .AddMessagePackProtocol()
                 .Build();
-            await connection.StartAsync();
-            Console.WriteLine("Connected with hub!");
+            await _connection.StartAsync();
+            Console.WriteLine("Connected with hub!");*/
+            return Task.CompletedTask;
+        }
 
-            connection.On<AccessToken>("create",
-                users => Console.WriteLine("Create worked!"));
-            connection.On<IEnumerable<User>>("getAll",
-                users => users.ToList().ForEach(Console.WriteLine));
-
+        [Test, Order(0)]
+        public async Task TestUserCreation()
+        {
             var request = new CreateUserRequest
             {
-                Username = "Brodel",
-                Email    = "brodel@gmail.com",
+                Username = "Sofi",
+                Email    = "sofi@gmail.com",
                 Password = "secret"
             };
-            await connection.SendAsync("create", request);
-            await connection.SendAsync("getAll");
-            await Task.Delay(1000);
+            // await _connection.SendAsync("create", request);
+            // await connection.SendAsync("findById", "a1d1767c-6487-4b21-a81c-bbf10f8998ac");
+            // await connection.SendAsync("getAll");
+        }
+
+        [Test, Order(1)]
+        public void TestUserLogin()
+        {
+            /*_connection.On<LoginResponse>("authenticate",
+                response =>
+                {
+                    Console.WriteLine("Authentication call worked");
+                    Console.WriteLine(response.UserId);
+                }
+            );
+            var requestA = new LoginUserRequest
+            {
+                Username = "Sofi",
+                Password = "secret"
+            };
+            await _connection.SendAsync("authenticate", requestA);
+            await Task.Delay(10_000);*/
         }
     }
 }

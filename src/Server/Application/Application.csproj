@@ -16,6 +16,9 @@
 
     <ItemGroup>
       <Compile Remove="Users\Authenticate\**" />
+      <Compile Include="Users\Authenticate\AuthenticateCommand.cs" />
+      <Compile Include="Users\Authenticate\AuthenticateCommandHandler.cs" />
+      <Compile Include="Users\Authenticate\UserAuthenticator.cs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -33,14 +33,11 @@ namespace Infrastructure.Persistence.Users
                 .ToListAsync(cancellation);
         }
 
-        public Task<User?> GetById(Guid id, CancellationToken cancellation)
+        public async Task<User?> FindById(Guid id, CancellationToken cancellation)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Remove(User entity, CancellationToken cancellation)
-        {
-            throw new NotImplementedException();
+            return await _dbContext.Users
+                .FromSqlInterpolated($"SELECT * FROM \"users\" WHERE \"id\" = {id}")
+                .SingleAsync(cancellation);
         }
 
         public Task CreateRole(AccessRole accessRole, CancellationToken cancellation)
@@ -54,10 +51,12 @@ namespace Infrastructure.Persistence.Users
             throw new NotImplementedException();
         }
 
-        public Task<User> GetUserByEmailOrUsername(string usernameOrEmail,
+        public async Task<User> GetUserByEmailOrUsername(string usernameOrEmail,
             CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users
+                .FromSqlInterpolated($"SELECT * FROM \"users\" WHERE \"name\" = {usernameOrEmail} OR \"email\" = {usernameOrEmail}")
+                .SingleAsync(cancellation);
         }
 
         public Task RemoveById(Guid id, CancellationToken cancellation)

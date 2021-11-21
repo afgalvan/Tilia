@@ -1,8 +1,6 @@
-﻿using Requests.Auth;
-
-namespace Requests.Appointments
+﻿namespace Requests.Appointments
 {
-    public class CreateMedicalAppointmentRequest : AccessToken
+    public class CreateMedicalAppointmentRequest
     {
     }
 }

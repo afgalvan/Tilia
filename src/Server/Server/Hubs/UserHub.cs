@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Users.Authenticate;
 using Application.Users.Create;
+using Application.Users.FindById;
 using Application.Users.GetAll;
 using Domain.Users;
 using MapsterMapper;
@@ -33,7 +35,6 @@ namespace Server.Hubs
         [return: SignalRReturn(typeof(AccessToken), StatusCodes.Status201Created)]
         public async Task Create([SignalRArg] CreateUserRequest createRequest)
         {
-            _logger.LogInformation("Creating user...");
             var createUserCommand =
                 _mapper.From(createRequest).AdaptToType<CreateUserCommand>();
             string authToken = await _mediator.Send(createUserCommand);
@@ -42,12 +43,28 @@ namespace Server.Hubs
         }
 
         [SignalRMethod("getAll", OperationType.Get)]
-        [return: SignalRReturn(typeof(IEnumerable<UserResponse>))]
+        [return: SignalRReturn(typeof(IEnumerable<User>))]
         public async Task GetAll()
         {
-            _logger.LogInformation("Getting all users...");
             IEnumerable<User> response = await _mediator.Send(new GetAllUsersQuery());
             await Clients.All.SendAsync("getAll", response);
+        }
+
+        [SignalRMethod("findById", OperationType.Get)]
+        public async Task FindById([SignalRArg] string id)
+        {
+            User response = await _mediator.Send(new FindUserByIdQuery(id));
+            await Clients.All.SendAsync("findById", response);
+        }
+
+        [SignalRMethod("authenticate", OperationType.Get)]
+        [return: SignalRReturn(typeof(LoginResponse))]
+        public async Task Authenticate([SignalRArg] LoginUserRequest request)
+        {
+            _logger.LogInformation("authenticating...");
+            var authenticateCommand = _mapper.From(request).AdaptToType<AuthenticateCommand>();
+            string userId = await _mediator.Send(authenticateCommand);
+            await Clients.Caller.SendAsync("authenticate", new LoginResponse(userId));
         }
     }
 }
