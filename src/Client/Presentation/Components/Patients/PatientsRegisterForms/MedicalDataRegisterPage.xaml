@@ -29,7 +29,12 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"/>
 
-        <!-- Dominancia ComboBox -->
+        <input:ComboBoxUserControl x:Name="MedicalDataDominanceComboBox"
+                                   ComboBoxHint="Dominancia"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="0"/>
 
         <input:TextFieldUserControl x:Name="MedicalDataSportTextBox"
                                     TextFieldFloatingHint="Deporte"

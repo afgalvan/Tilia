@@ -12,11 +12,18 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             _nextPage = new ContactDataRegisterPage(patientsRegisterUserControl, this);
             _patientsRegisterUserControl = patientsRegisterUserControl;
             InitializeComponent();
+            PopulateFormOptions();
         }
 
         private void GoToNextPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _patientsRegisterUserControl.NavigateTo(_nextPage);
+        }
+
+        private void PopulateFormOptions()
+        {
+            BasicDataDocTypeComboBox.ComboBoxItemsSource = new[] { "Cedula", "Tarjeta de identidad", "Pasaporte", "Cedula extranjera" };
+            BasicDataGenreComboBox.ComboBoxItemsSource = new[] { "Masculino", "Femenino" };
         }
     }
 }

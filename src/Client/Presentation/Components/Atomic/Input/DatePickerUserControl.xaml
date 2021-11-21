@@ -8,11 +8,11 @@
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <DatePicker x:Name="DatePicker"
+    <DatePicker x:Name="DatePickerInput"
                 Width="{Binding DatePickerWidth}"
                 materialDesign:HintAssist.Hint="{Binding DatePickerHint}"
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                Foreground="Black"
+                Foreground="DimGray"
                 BorderBrush="Gray"
                 FontSize="{Binding DatePickerFontSize}"/>
 </UserControl>

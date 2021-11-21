@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,6 +10,26 @@ namespace Presentation.Components.Atomic.Input
         {
             InitializeComponent();
             SetDefaultDatePicker();
+        }
+
+        private void SetDefaultDatePicker()
+        {
+            DatePickerWidth = "200";
+            DatePickerFontSize = "15";
+        }
+
+        public string Text
+        {
+            get => DatePickerInput.Text;
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                DatePickerInput.Text = Text;
+            }
         }
 
         public string DatePickerHint
@@ -29,17 +50,6 @@ namespace Presentation.Components.Atomic.Input
             set => SetValue(DatePickerFontSizeProperty, value);
         }
 
-        public string Text
-        {
-            get => DatePicker.Text;
-            set => DatePicker.Text = Text;
-        }
-
-        private void SetDefaultDatePicker()
-        {
-            DatePickerWidth = "200";
-            DatePickerFontSize = "16";
-        }
 
         public static readonly DependencyProperty DatePickerHintProperty =
             DependencyProperty.Register("DatePickerHint", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(null));

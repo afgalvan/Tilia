@@ -14,6 +14,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             _basicDataRegisterPage = basicDataRegisterPage;
             _patientsRegisterUserControl = patientsRegisterUserControl;
             InitializeComponent();
+            PopulateFormOptions();
         }
 
         private void GoBackToPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -24,6 +25,11 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private void GoToNextPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _patientsRegisterUserControl.NavigateTo(_nextPage);
+        }
+
+        private void PopulateFormOptions()
+        {
+            ContactDataStratumComboBox.ComboBoxItemsSource = new[] { "1", "2", "3", "4", "5", "6" };
         }
     }
 }

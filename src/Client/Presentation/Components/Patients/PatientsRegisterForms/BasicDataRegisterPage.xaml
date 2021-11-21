@@ -24,16 +24,25 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
-
-        <!-- Tipo de documento: combo box -->
+ 
+        <input:ComboBoxUserControl x:Name="BasicDataDocTypeComboBox"
+                                   ComboBoxHint="Tipo de documento"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
 
         <input:TextFieldUserControl x:Name="BasicDataDataNumberTextBox"
                                     TextFieldFloatingHint="Numero de documento"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Grid.Column="1"/>
+                                    Grid.Column="1"
+                                    Grid.Row="0"/>
 
-        <!-- Genero: combo box -->
+        <input:ComboBoxUserControl x:Name="BasicDataGenreComboBox"
+                                   ComboBoxHint="Genero"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="2"
+                                   Grid.Row="0"/>
 
         <input:TextFieldUserControl x:Name="BasicDataNamesTextBox"
                                     TextFieldFloatingHint="Nombres"
@@ -78,6 +87,5 @@
                                    HorizontalAlignment="Center"
                                    Grid.Column="1"
                                    Grid.Row="3"/>
-
     </Grid>
 </Page>

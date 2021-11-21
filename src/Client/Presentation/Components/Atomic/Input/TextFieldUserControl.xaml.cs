@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,6 +10,26 @@ namespace Presentation.Components.Atomic.Input
         {
             InitializeComponent();
             SetDefaultTextField();
+        }
+
+        private void SetDefaultTextField()
+        {
+            TextFieldWidth = "200";
+            TextFieldFontSize = "15";
+        }
+
+        public string Text
+        {
+            get => TextField.Text;
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                TextField.Text = Text;
+            }
         }
 
         public string TextFieldFloatingHint
@@ -27,18 +48,6 @@ namespace Presentation.Components.Atomic.Input
         {
             get => (string)GetValue(TextFieldFontSizeProperty);
             set => SetValue(TextFieldFontSizeProperty, value);
-        }
-
-        public string Text
-        {
-            get => TextField.Text;
-            set => TextField.Text = Text;
-        }
-
-        private void SetDefaultTextField()
-        {
-            TextFieldWidth = "200";
-            TextFieldFontSize = "16";
         }
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =

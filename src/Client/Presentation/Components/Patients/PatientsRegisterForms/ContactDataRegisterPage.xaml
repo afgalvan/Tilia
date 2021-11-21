@@ -29,9 +29,19 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"/>
 
-        <!-- Ciudad combo box -->
+        <input:ComboBoxUserControl x:Name="ContactDataCityComboBox"
+                                   ComboBoxHint="Ciudad"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="0"/>
 
-        <!-- Estrato combo box -->
+        <input:ComboBoxUserControl x:Name="ContactDataStratumComboBox"
+                                   ComboBoxHint="Estrato"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="2"
+                                   Grid.Row="0"/>
 
         <input:TextFieldUserControl x:Name="ContactDataLocationTextBox"
                                     TextFieldFloatingHint="Localidad"

@@ -13,6 +13,13 @@ namespace Presentation.Components.Atomic.Buttons
             DefaultButtonType();
         }
 
+        public void DefaultButtonType()
+        {
+            ButtonRadius = "20";
+            ButtonWidth = "120";
+            ButtonHeight = "35";
+        }
+
         private void ButtonOnClick(object sender, RoutedEventArgs e)
         {
             Click?.Invoke(this, new RoutedEventArgs());
@@ -46,13 +53,6 @@ namespace Presentation.Components.Atomic.Buttons
         {
             get => (string)GetValue(ButtonHeightProperty);
             set => SetValue(ButtonHeightProperty, value);
-        }
-
-        public void DefaultButtonType()
-        {
-            ButtonRadius = "20";
-            ButtonWidth = "120";
-            ButtonHeight = "35";
         }
 
         public static readonly DependencyProperty ButtonToolTipProperty =

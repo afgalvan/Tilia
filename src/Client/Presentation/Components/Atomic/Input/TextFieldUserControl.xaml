@@ -9,10 +9,11 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
      <TextBox x:Name="TextField"
-              Foreground="Black"
+              Foreground="DimGray"
               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
               materialDesign:HintAssist.Hint="{Binding TextFieldFloatingHint}"
               Width="{Binding TextFieldWidth}"
               BorderBrush="Gray"
-              FontSize="{Binding TextFieldFontSize}"/>
+              FontSize="{Binding TextFieldFontSize}"
+              TextWrapping="Wrap"/>
 </UserControl>

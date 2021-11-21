@@ -99,8 +99,4 @@
     </Page>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Components\Atomic\Input\" />
-  </ItemGroup>
-
 </Project>

@@ -5,13 +5,20 @@ namespace Presentation.Components.Atomic.Buttons
 {
     public partial class ButtonIconUserControl : UserControl
     {
+
+        public event RoutedEventHandler Click;
+
         public ButtonIconUserControl()
         {
             InitializeComponent();
             DefaultButtonType();
         }
 
-        public event RoutedEventHandler Click;
+        private void DefaultButtonType()
+        {
+            ButtonWidth = "130";
+            ButtonHeight = "35";
+        }
 
         private void ButtonOnClick(object sender, RoutedEventArgs e)
         {
@@ -52,12 +59,6 @@ namespace Presentation.Components.Atomic.Buttons
         {
             get => (string)GetValue(ButtonRadiusProperty);
             set => SetValue(ButtonRadiusProperty, value);
-        }
-
-        private void DefaultButtonType()
-        {
-            ButtonWidth = "130";
-            ButtonHeight = "35";
         }
 
         public static readonly DependencyProperty ButtonContentProperty =

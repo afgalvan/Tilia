@@ -12,6 +12,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             _contactDataRegisterPage = contactDataRegisterPage;
             _patientsRegisterUserControl = patientsRegisterUserControl;
             InitializeComponent();
+            PopulateFormOptions();
         }
 
         private void FinishRegisterPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -21,6 +22,11 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private void GoBackToPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _patientsRegisterUserControl.NavigateTo(_contactDataRegisterPage);
+        }
+
+        private void PopulateFormOptions()
+        {
+            MedicalDataDominanceComboBox.ComboBoxItemsSource = new[] { "Diestro", "Zurdo" };
         }
     }
 }
