@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Domain.Users;
@@ -14,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Requests.Users;
@@ -27,7 +26,7 @@ namespace Server.Extensions
         public static void ConfigureDbContext(this IServiceCollection services,
             IConfiguration configuration)
         {
-            var    connectionInformation = new DbConnectionConfig(configuration);
+            var connectionInformation = new DbConnectionConfig(configuration);
 
             services.AddDbContext<TiliaDbContext>(options =>
                 options.SetupDatabaseEngine(connectionInformation)
@@ -41,6 +40,7 @@ namespace Server.Extensions
             services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IUserRepository, OracleUserRepository>();
             services.AddScoped<IMapper, ServiceMapper>();
+            services.AddScoped<ILogger<UserHub>, Logger<UserHub>>();
         }
 
         private static void ConfigureHangFire(this IServiceCollection services)

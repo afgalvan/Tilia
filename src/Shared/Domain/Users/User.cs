@@ -8,7 +8,7 @@ namespace Domain.Users
     public class User
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         public string Name { get; set; }
@@ -36,6 +36,11 @@ namespace Domain.Users
         public User()
         {
             // For EF
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

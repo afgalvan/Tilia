@@ -1,3 +1,4 @@
+using Application.Users.Create;
 using NUnit.Framework;
 
 namespace Application.Test
@@ -13,7 +14,6 @@ namespace Application.Test
         [Test]
         public void Test1()
         {
-            Assert.Pass();
         }
     }
 }

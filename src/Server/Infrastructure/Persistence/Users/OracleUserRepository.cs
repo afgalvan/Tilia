@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,19 +21,19 @@ namespace Infrastructure.Persistence.Users
 
         public async Task Save(User entity, CancellationToken cancellation)
         {
-            // FormattableString sql = $"CALL create_user({entity.Id}, {})";
-            FormattableString sql =
-                $"INSERT INTO \"users\" (\"id\", \"name\", \"email\", \"password\") VALUES ({entity.Id}, '{entity.Name}', '{entity.Name}', '{entity.Password}')";
-            await _dbContext.Database.ExecuteSqlInterpolatedAsync(sql, cancellation);
+            await _dbContext.Database.ExecuteSqlInterpolatedAsync(
+                $"CALL pkg_users.create_user({entity.Id}, {entity.Name}, {entity.Password}, {entity.Email});",
+                cancellation);
             await _dbContext.SaveChangesAsync(cancellation);
         }
 
-        public Task<IEnumerable<User>> GetAll(CancellationToken cancellation)
+        public async Task<IEnumerable<User>> GetAll(CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.FromSqlRaw("SELECT * FROM \"users\"")
+                .ToListAsync(cancellation);
         }
 
-        public Task<User> GetById(Guid id, CancellationToken cancellation)
+        public Task<User?> GetById(Guid id, CancellationToken cancellation)
         {
             throw new NotImplementedException();
         }

@@ -5,7 +5,7 @@ namespace Requests.Users
     public class CreateUserRequest
     {
         [Required]
-        public string Name { get; set; }
+        public string Username { get; set; }
 
         [Required]
         public string Email { get; set; }
