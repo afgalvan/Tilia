@@ -1,0 +1,40 @@
+<UserControl x:Class="Presentation.Components.Atomic.SearchBarUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Presentation.Components.Atomic"
+             mc:Ignorable="d">
+    <materialDesign:Card x:Name="SearchBarCard" Background="#FFF4F7FE"
+                                     Width="400" Height="35"
+                                     HorizontalAlignment="Left"
+                                     ToolTip="Buscar"
+                                     Margin="30, 0, 0, 0">
+
+        <DockPanel x:Name="SearchDockPanel" LastChildFill="True">
+
+            <materialDesign:PackIcon x:Name="SearchBarIcon"
+                                                 Kind="Magnify"
+                                                 Foreground="#FF99A3C4"
+                                                 Width="18"
+                                                 Height="24"
+                                                 VerticalAlignment="Center"
+                                                 Margin="5,0,0,0" />
+
+            <TextBox BorderThickness="0"
+                                 Background="{x:Null}"
+                                 materialDesign:HintAssist.Hint="Buscar"
+                                 DockPanel.Dock="Left"
+                                 BorderBrush="{x:Null}"
+                                 Foreground="#FF99A3C4"
+                                 Width="Auto"
+                                 Margin="5, 0, 8, 0"
+                                 Height="25" CaretBrush="{x:Null}"
+                                 SelectionBrush="{x:Null}"
+                                 SelectionTextBrush="{x:Null}"
+                                 FontFamily="DM Sans"
+                                 VerticalAlignment="Center"/>
+        </DockPanel>
+    </materialDesign:Card>
+</UserControl>

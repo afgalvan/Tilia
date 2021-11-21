@@ -1,17 +1,14 @@
-using MahApps.Metro.Controls.Dialogs;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;
-using Presentation.Components.MedicalMeetings;
 using Presentation.Components.MedicalNotes;
-using Presentation.Components.Patients;
 using Presentation.Utils;
 using Presentation.Windows;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Presentation.Components.MedicalOrders;
+using Presentation.Components.Patients;
 
 namespace Presentation.Components.Atomic
 {
@@ -31,40 +28,26 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(new DashboardUserControl());
         }
 
-        private void MedicalAppointmentButton_Click(object sender, RoutedEventArgs e)
+        private void PatientsButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButtonColor(sender, MedicalAppointmentTextBlock, MedicalAppointmentIcon);
-            _mainWindow.ChangeMainContentArea(new QueryMedicalAppointmentUserControl(_mainWindow));
+            ToggleButtonColor(sender, PatientsTextBlock, PatientsIcon);
+            _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
+        }
+
+        private void MedicalAppointments_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButtonColor(sender, MedicalAppointmentsTextBlock, MedicalAppointmentsIcon);
+            _mainWindow.ChangeMainContentArea(new MedicalNotesUserControl());
         }
 
         private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
-            _mainWindow.ChangeMainContentArea(new PatientMedicalBackgroundUserControl());
-        }
-
-        private void MedicalNotesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, MedicalNotesTextBlock, MedicalNotesIcon);
-            _mainWindow.ChangeMainContentArea(new MedicalNotesUserControl());
-        }
-
-        private void MedicalOrdersButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, MedicalOrdersTextBlock, MedicalOrdersIcon);
-            _mainWindow.ChangeMainContentArea(new MedicalOrderUserControl());
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, AdminTextBlock, AdminIcon);
             _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
-        }
-
-        private async void ClinicalHistoriesButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, ClinicalHistoriesTextBlock, ClinicalHistoriesIcon);
-            await _mainWindow.ShowMessageAsync("Tilia", "Clinical histories");
         }
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -90,10 +73,10 @@ namespace Presentation.Components.Atomic
         {
             return new[]
             {
-                DashboardTextBlock, MedicalAppointmentTextBlock,
-                ClinicalHistoriesTextBlock, MedicalNotesTextBlock, AdminTextBlock,
+                DashboardTextBlock, PatientsTextBlock,
+                MedicalAppointmentsTextBlock, AdminTextBlock,
                 MedicalMeetingTextBlock,
-                MedicalOrdersTextBlock, LogoutTextBlock
+                LogoutTextBlock
             };
         }
 
@@ -101,9 +84,9 @@ namespace Presentation.Components.Atomic
         {
             return new[]
             {
-                DashboardIcon, MedicalAppointmentIcon,
-                ClinicalHistoriesIcon, MedicalNotesIcon, MedicalMeetingIcon, AdminIcon,
-                MedicalOrdersIcon, LogoutIcon
+                DashboardIcon, PatientsIcon,
+                MedicalAppointmentsIcon, MedicalMeetingIcon, AdminIcon,
+                LogoutIcon
             };
         }
 

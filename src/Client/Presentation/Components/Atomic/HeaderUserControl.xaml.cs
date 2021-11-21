@@ -10,7 +10,6 @@ namespace Presentation.Components.Atomic
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            SearchBarContentArea.Content = new SearchBarUserControl();
         }
     }
 }
