@@ -23,7 +23,6 @@
     <None Remove="Components\Configuration\**" />
     <None Remove="Components\MedicalFiles\**" />
     <None Remove="Components\Users\**" />
-    <None Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +30,7 @@
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.1" />
   </ItemGroup>
@@ -75,21 +75,19 @@
     <Compile Remove="Components\Configuration\**" />
     <Compile Remove="Components\MedicalFiles\**" />
     <Compile Remove="Components\Users\**" />
-    <Compile Remove="Controllers\**" />
+    <Compile Include="Controllers\Connection\ServerConnection.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Components\Configuration\**" />
     <EmbeddedResource Remove="Components\MedicalFiles\**" />
     <EmbeddedResource Remove="Components\Users\**" />
-    <EmbeddedResource Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Components\Configuration\**" />
     <Page Remove="Components\MedicalFiles\**" />
     <Page Remove="Components\Users\**" />
-    <Page Remove="Controllers\**" />
   </ItemGroup>
 
 </Project>

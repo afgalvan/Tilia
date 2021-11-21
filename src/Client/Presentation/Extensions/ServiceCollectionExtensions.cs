@@ -1,5 +1,9 @@
 using System.Windows.Media;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Controllers.Connection;
+using Presentation.Settings;
 using Presentation.Utils;
 using Presentation.Windows;
 
@@ -13,6 +17,15 @@ namespace Presentation.Extensions
             services.AddTransient<MainWindow>();
             services.AddSingleton<ColorsUtil>();
             services.AddScoped<BrushConverter>();
+        }
+
+        public static void AddServerConnectionServices(this IServiceCollection services)
+        {
+            IConfiguration configuration = ConfigurationLoader.Configuration;
+            services.AddSingleton(new ConnectionConfig(configuration["Server:Host"]));
+            services.AddSingleton(configuration);
+            services.AddScoped<HubConnectionBuilder>();
+            services.AddScoped<ServerConnection>();
         }
     }
 }

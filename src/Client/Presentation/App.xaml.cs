@@ -19,6 +19,7 @@ namespace Presentation
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             var services = new ServiceCollection();
             services.AddPresentationServices();
+            services.AddServerConnectionServices();
             _serviceProvider = services.BuildServiceProvider();
         }
 
