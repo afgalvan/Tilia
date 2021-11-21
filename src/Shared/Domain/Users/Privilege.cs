@@ -12,6 +12,5 @@ namespace Domain.Users
         public string Name { get; set; }
 
         public IList<AccessRole> AccessRoles { get; set; }
-
     }
 }

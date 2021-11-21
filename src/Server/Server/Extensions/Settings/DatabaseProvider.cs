@@ -1,21 +1,8 @@
 ﻿using System.Globalization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
-namespace Server.Extensions
+namespace Server.Extensions.Settings
 {
-    public class DbConnectionConfig
-    {
-        public string Url      { get; set; }
-        public string Provider { get; set; }
-
-        public DbConnectionConfig(IConfiguration configuration)
-        {
-            Provider = configuration["Database:Provider"];
-            Url      = configuration.GetConnectionString($"{Provider}Connection");
-        }
-    }
-
     public static class DatabaseProvider
     {
         private const string MigrationsAssembly = "Server";

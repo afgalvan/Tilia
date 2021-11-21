@@ -19,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Requests.Auth;
 using Requests.Users;
+using Server.Extensions.Settings;
 using Server.Hubs;
 using SharedLib.Persistence;
 
