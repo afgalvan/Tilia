@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using SharedLib.Persistence;
@@ -9,34 +10,16 @@ using SharedLib.Persistence;
 namespace Server.Migrations
 {
     [DbContext(typeof(TiliaDbContext))]
-    partial class TiliaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211120211426_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("AccessRolePrivilege", b =>
-                {
-                    b.Property<Guid>("AccessRolesId")
-                        .HasColumnType("RAW(16)")
-                        .HasColumnName("access_roles_id");
-
-                    b.Property<int>("PrivilegesId")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("privileges_id");
-
-                    b.HasKey("AccessRolesId", "PrivilegesId")
-                        .HasName("pk_access_role_privilege");
-
-                    b.HasIndex("PrivilegesId")
-                        .HasDatabaseName("ix_access_role_privilege_privileges_id");
-
-                    b.ToTable("access_role_privilege");
-                });
 
             modelBuilder.Entity("Domain.Employees.SanitaryRole", b =>
                 {
@@ -513,6 +496,10 @@ namespace Server.Migrations
                         .HasColumnName("id")
                         .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<Guid?>("AccessRoleId")
+                        .HasColumnType("RAW(16)")
+                        .HasColumnName("access_role_id");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)")
@@ -521,27 +508,28 @@ namespace Server.Migrations
                     b.HasKey("Id")
                         .HasName("pk_privileges");
 
+                    b.HasIndex("AccessRoleId")
+                        .HasDatabaseName("ix_privileges_access_role_id");
+
                     b.ToTable("privileges");
                 });
 
             modelBuilder.Entity("Domain.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)")
                         .HasColumnName("id");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
+                        .HasColumnName("name");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("NVARCHAR2(255)")
                         .HasColumnName("email");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("NVARCHAR2(255)")
-                        .HasColumnName("name");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -557,7 +545,7 @@ namespace Server.Migrations
                         .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("employee_id");
 
-                    b.HasKey("Id")
+                    b.HasKey("Id", "Name")
                         .HasName("pk_users");
 
                     b.HasIndex("Name")
@@ -609,23 +597,6 @@ namespace Server.Migrations
                         .HasDatabaseName("ix_sanitary_employees_sanitary_role_id");
 
                     b.ToTable("sanitary_employees");
-                });
-
-            modelBuilder.Entity("AccessRolePrivilege", b =>
-                {
-                    b.HasOne("Domain.Users.AccessRole", null)
-                        .WithMany()
-                        .HasForeignKey("AccessRolesId")
-                        .HasConstraintName("fk_access_role_privilege_access_roles_access_roles_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Users.Privilege", null)
-                        .WithMany()
-                        .HasForeignKey("PrivilegesId")
-                        .HasConstraintName("fk_access_role_privilege_privileges_privileges_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Locations.City", b =>
@@ -814,6 +785,14 @@ namespace Server.Migrations
                     b.Navigation("IdType");
                 });
 
+            modelBuilder.Entity("Domain.Users.Privilege", b =>
+                {
+                    b.HasOne("Domain.Users.AccessRole", null)
+                        .WithMany("Privileges")
+                        .HasForeignKey("AccessRoleId")
+                        .HasConstraintName("fk_privileges_access_roles_access_role_id");
+                });
+
             modelBuilder.Entity("Domain.Users.User", b =>
                 {
                     b.HasOne("Domain.Users.AccessRole", "AccessRole")
@@ -975,6 +954,11 @@ namespace Server.Migrations
             modelBuilder.Entity("Domain.MedicalFiles.MedicalRecords.PhysicalExam", b =>
                 {
                     b.Navigation("BodyPartRecords");
+                });
+
+            modelBuilder.Entity("Domain.Users.AccessRole", b =>
+                {
+                    b.Navigation("Privileges");
                 });
 #pragma warning restore 612, 618
         }

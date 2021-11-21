@@ -6,5 +6,14 @@ namespace Requests.Auth
     {
         [Required]
         public string Bearer { get; set; }
+
+        public AccessToken(string bearer)
+        {
+            Bearer = bearer;
+        }
+
+        public AccessToken()
+        {
+        }
     }
 }

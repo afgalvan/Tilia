@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Domain.Persistence;
+using Application.Users.Authenticate;
+using Application.Users.Create;
 using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
@@ -15,10 +14,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Requests.Auth;
 using Requests.Users;
+using Server.Extensions.Settings;
 using Server.Hubs;
+using SharedLib.Persistence;
 
 namespace Server.Extensions
 {
@@ -27,25 +30,21 @@ namespace Server.Extensions
         public static void ConfigureDbContext(this IServiceCollection services,
             IConfiguration configuration)
         {
-            string provider = configuration["Database:Provider"];
-            if (provider.ToLower(CultureInfo.CurrentCulture) == "mysql")
-            {
-                services.AddDbContext<TiliaDbContext>(options =>
-                    options.UseMySql(
-                            configuration.GetConnectionString("DefaultConnection"),
-                            new MySqlServerVersion(new Version(8, 0, 26)),
-                            builder => builder.MigrationsAssembly("Server"))
-                        .UseSnakeCaseNamingConvention()
-                );
-            }
+            var connectionInformation = new DbConnectionConfig(configuration);
+
+            services.AddDbContext<TiliaDbContext>(options =>
+                options.SetupDatabaseEngine(connectionInformation)
+                    .UseSnakeCaseNamingConvention()
+            );
         }
 
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             services.ConfigureHangFire();
             services.AddSingleton(GetTypeAdapterConfig());
-            services.AddScoped<IUserRepository, MySqlUserRepository>();
+            services.AddScoped<IUserRepository, OracleUserRepository>();
             services.AddScoped<IMapper, ServiceMapper>();
+            services.AddScoped<ILogger<UserHub>, Logger<UserHub>>();
         }
 
         private static void ConfigureHangFire(this IServiceCollection services)
@@ -62,7 +61,8 @@ namespace Server.Extensions
         private static TypeAdapterConfig GetTypeAdapterConfig()
         {
             var configuration = new TypeAdapterConfig();
-            configuration.NewConfig<User, UserResponse>();
+            configuration.NewConfig<CreateUserRequest, CreateUserCommand>();
+            configuration.NewConfig<LoginUserRequest, AuthenticateCommand>();
             return configuration;
         }
 

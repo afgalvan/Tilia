@@ -13,7 +13,6 @@ namespace Application.Test
         [Test]
         public void Test1()
         {
-            Assert.Pass();
         }
     }
 }
