@@ -20,18 +20,19 @@
     <None Remove="Assets\Icons\tilia.png" />
     <None Remove="Assets\Icons\tilia_whites.png" />
     <None Remove="Assets\Ilustrations\DoctorOrgLogin.png" />
+    <None Remove="Components\Patients\PatientsRegisterForms\PatientsContactDataRegisterPage.xaml.cs~RF2fe11b5.TMP" />
     <None Remove="Components\Configuration\**" />
     <None Remove="Components\MedicalFiles\**" />
     <None Remove="Components\Users\**" />
+    <None Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="5.0.11" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.1" />
   </ItemGroup>
 
@@ -75,19 +76,27 @@
     <Compile Remove="Components\Configuration\**" />
     <Compile Remove="Components\MedicalFiles\**" />
     <Compile Remove="Components\Users\**" />
-    <Compile Include="Controllers\Connection\ServerConnection.cs" />
+    <Compile Remove="Controllers\**" />
+    <Compile Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Components\Configuration\**" />
     <EmbeddedResource Remove="Components\MedicalFiles\**" />
     <EmbeddedResource Remove="Components\Users\**" />
+    <EmbeddedResource Remove="Controllers\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Components\Configuration\**" />
     <Page Remove="Components\MedicalFiles\**" />
     <Page Remove="Components\Users\**" />
+    <Page Remove="Controllers\**" />
+    <Page Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

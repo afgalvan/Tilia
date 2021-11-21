@@ -39,7 +39,7 @@
         <ContentControl x:Name="SideBarContentArea" Grid.Row="1" Grid.Column="0" />
 
         <!-- Content Area -->
-        <ContentControl x:Name="MainContentArea" Grid.Row="1" Grid.Column="1" />
+        <ContentControl x:Name="MainContentArea" Grid.Row="1" Grid.Column="1" Margin="10"/>
     </Grid>
 
 </mah:MetroWindow>
