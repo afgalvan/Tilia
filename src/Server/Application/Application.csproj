@@ -7,7 +7,6 @@
     <ItemGroup>
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
-      <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -17,17 +16,21 @@
 
     <ItemGroup>
       <Compile Remove="Users\Authenticate\**" />
-      <Compile Remove="Users\GetAll\**" />
+      <Compile Include="Users\Authenticate\AuthenticateCommand.cs" />
+      <Compile Include="Users\Authenticate\AuthenticateCommandHandler.cs" />
+      <Compile Include="Users\Authenticate\UserAuthenticator.cs" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Users\Authenticate\**" />
-      <EmbeddedResource Remove="Users\GetAll\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Users\Authenticate\**" />
-      <None Remove="Users\GetAll\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Shared\Filters" />
     </ItemGroup>
 
 </Project>
