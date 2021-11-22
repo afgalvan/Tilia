@@ -11,15 +11,7 @@ namespace Presentation.Components.Atomic.Input
         public ComboBoxUserControl()
         {
             InitializeComponent();
-            SetDefaultComboBox();
             ItemSourceBinding();
-        }
-
-        private void SetDefaultComboBox()
-        {
-            ComboBoxWidth = "200";
-            ComboBoxFontSize = "15";
-            ComboBoxHeight = "46";
         }
 
         private void ItemSourceBinding()
@@ -79,13 +71,13 @@ namespace Presentation.Components.Atomic.Input
             DependencyProperty.Register("ComboBoxHint", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ComboBoxWidthProperty =
-            DependencyProperty.Register("ComboBoxWidth", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ComboBoxWidth", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty ComboBoxHeightProperty =
-            DependencyProperty.Register("ComboBoxHeight", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ComboBoxHeight", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata("46"));
 
         public static readonly DependencyProperty ComboBoxFontSizeProperty =
-            DependencyProperty.Register("ComboBoxFontSize", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ComboBoxFontSize", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata("15"));
 
         public static readonly DependencyProperty ComboBoxItemsSourceProperty =
             DependencyProperty.Register("ComboBoxItemsSource", typeof(IEnumerable), typeof(ComboBoxUserControl), new PropertyMetadata(null));

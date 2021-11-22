@@ -10,14 +10,6 @@ namespace Presentation.Components.Atomic.Buttons
         public ButtonUserControl()
         {
             InitializeComponent();
-            DefaultButtonType();
-        }
-
-        public void DefaultButtonType()
-        {
-            ButtonRadius = "20";
-            ButtonWidth = "120";
-            ButtonHeight = "35";
         }
 
         private void ButtonOnClick(object sender, RoutedEventArgs e)
@@ -62,12 +54,12 @@ namespace Presentation.Components.Atomic.Buttons
             DependencyProperty.Register("ButtonContent", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ButtonRadiusProperty =
-            DependencyProperty.Register("ButtonRadius", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonRadius", typeof(string), typeof(ButtonUserControl), new PropertyMetadata("20"));
 
         public static readonly DependencyProperty ButtonWidthProperty =
-            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(ButtonUserControl), new PropertyMetadata("120"));
 
         public static readonly DependencyProperty ButtonHeightProperty =
-            DependencyProperty.Register("ButtonHeight", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonHeight", typeof(string), typeof(ButtonUserControl), new PropertyMetadata("35"));
     }
 }

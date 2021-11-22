@@ -9,13 +9,6 @@ namespace Presentation.Components.Atomic.Input
         public DatePickerUserControl()
         {
             InitializeComponent();
-            SetDefaultDatePicker();
-        }
-
-        private void SetDefaultDatePicker()
-        {
-            DatePickerWidth = "200";
-            DatePickerFontSize = "15";
         }
 
         public string Text
@@ -51,12 +44,12 @@ namespace Presentation.Components.Atomic.Input
         }
 
         public static readonly DependencyProperty DatePickerHintProperty =
-            DependencyProperty.Register("DatePickerHint", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("DatePickerHint", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty DatePickerWidthProperty =
-            DependencyProperty.Register("DatePickerWidth", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("DatePickerWidth", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty DatePickerFontSizeProperty =
-            DependencyProperty.Register("DatePickerFontSize", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("DatePickerFontSize", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata("15"));
     }
 }
