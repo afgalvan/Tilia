@@ -10,11 +10,11 @@ using SharedLib.Persistence;
 
 namespace Infrastructure.Persistence.Users
 {
-    public class OracleUserRepository : IUserRepository
+    public class OracleUsersRepository : IUsersRepository
     {
         private readonly TiliaDbContext _dbContext;
 
-        public OracleUserRepository(TiliaDbContext dbContext)
+        public OracleUsersRepository(TiliaDbContext dbContext)
         {
             _dbContext = dbContext;
         }

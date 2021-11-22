@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Settings;
 
 namespace Presentation.Controllers.Connection
 {

@@ -13,5 +13,14 @@ namespace Domain.People
         {
             Name = name;
         }
+
+        public IdType()
+        {
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

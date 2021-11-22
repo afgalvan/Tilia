@@ -8,16 +8,16 @@ namespace Application.Users.FindById
 {
     public class UserFinder
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUsersRepository _usersRepository;
 
-        public UserFinder(IUserRepository userRepository)
+        public UserFinder(IUsersRepository usersRepository)
         {
-            _userRepository = userRepository;
+            _usersRepository = usersRepository;
         }
 
         public async Task<User> FindUserById(Guid id, CancellationToken cancellation)
         {
-            return await _userRepository.FindById(id, cancellation);
+            return await _usersRepository.FindById(id, cancellation);
         }
     }
 }

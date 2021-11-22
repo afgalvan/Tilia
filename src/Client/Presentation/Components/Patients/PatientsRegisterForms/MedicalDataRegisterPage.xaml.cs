@@ -4,13 +4,13 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class MedicalDataRegisterPage : Page
     {
-        private readonly PatientsRegisterUserControl _patientsRegisterUserControl;
+        private readonly RegisterPatientUserControl _registerPatientUserControl;
         private readonly ContactDataRegisterPage _contactDataRegisterPage;
 
-        public MedicalDataRegisterPage(PatientsRegisterUserControl patientsRegisterUserControl, ContactDataRegisterPage contactDataRegisterPage)
+        public MedicalDataRegisterPage(RegisterPatientUserControl registerPatientUserControl, ContactDataRegisterPage contactDataRegisterPage)
         {
             _contactDataRegisterPage = contactDataRegisterPage;
-            _patientsRegisterUserControl = patientsRegisterUserControl;
+            _registerPatientUserControl = registerPatientUserControl;
             InitializeComponent();
             PopulateFormOptions();
         }
@@ -21,7 +21,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoBackToPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            _patientsRegisterUserControl.NavigateTo(_contactDataRegisterPage);
+            _registerPatientUserControl.NavigateTo(_contactDataRegisterPage);
         }
 
         private void PopulateFormOptions()

@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -12,7 +13,8 @@ namespace Presentation
     /// </summary>
     public partial class App
     {
-        private readonly ServiceProvider _serviceProvider;
+        private readonly       ServiceProvider   _serviceProvider;
+        public static readonly CancellationToken CancellationToken = new(false);
 
         public App()
         {
@@ -26,7 +28,7 @@ namespace Presentation
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var loginWindow = _serviceProvider.GetService<LoginWindow>();
+            var loginWindow = _serviceProvider.GetRequiredService<LoginWindow>();
             loginWindow?.Show();
         }
     }

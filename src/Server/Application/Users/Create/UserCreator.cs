@@ -10,12 +10,12 @@ namespace Application.Users.Create
     public class UserCreator
     {
         private readonly JwtGenerator    _jwtGenerator;
-        private readonly IUserRepository _userRepository;
+        private readonly IUsersRepository _usersRepository;
 
-        public UserCreator(JwtGenerator jwtGenerator, IUserRepository userRepository)
+        public UserCreator(JwtGenerator jwtGenerator, IUsersRepository usersRepository)
         {
             _jwtGenerator   = jwtGenerator;
-            _userRepository = userRepository;
+            _usersRepository = usersRepository;
         }
 
         public async Task<string> Create(string username, string email, string password,
@@ -23,7 +23,7 @@ namespace Application.Users.Create
         {
             string hashedPassword = Encryptor.EnhancedHashPassword(password);
             var    user           = new User(username, email, hashedPassword);
-            await _userRepository.Save(user, cancellation);
+            await _usersRepository.Save(user, cancellation);
             return _jwtGenerator.Generate(user);
         }
     }

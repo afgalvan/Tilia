@@ -1,28 +1,39 @@
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using Presentation.Controllers.Http;
+using Presentation.Windows;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class BasicDataRegisterPage : Page
     {
-        private readonly PatientsRegisterUserControl _patientsRegisterUserControl;
-        private readonly ContactDataRegisterPage _nextPage;
+        private readonly MainWindow           _mainWindow;
+        private readonly ContextDataRetriever _contextData;
 
-        public BasicDataRegisterPage(PatientsRegisterUserControl patientsRegisterUserControl)
+        public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData)
         {
-            _nextPage = new ContactDataRegisterPage(patientsRegisterUserControl, this);
-            _patientsRegisterUserControl = patientsRegisterUserControl;
+            _mainWindow  = mainWindow;
+            _contextData = contextData;
             InitializeComponent();
-            PopulateFormOptions();
+            Loaded += OnLoadedPage;
         }
 
-        private void GoToNextPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _patientsRegisterUserControl.NavigateTo(_nextPage);
+            var nextPage = _mainWindow.GetComponent<ContactDataRegisterPage>();
+            _mainWindow.GetComponent<RegisterPatientUserControl>().NavigateTo(nextPage);
         }
 
-        private void PopulateFormOptions()
+        private async void OnLoadedPage(object sender, RoutedEventArgs e)
         {
-            BasicDataDocTypeComboBox.ComboBoxItemsSource = new[] { "Cedula", "Tarjeta de identidad", "Pasaporte", "Cedula extranjera" };
+            await PopulateFormOptions();
+        }
+
+        private async Task PopulateFormOptions()
+        {
+            BasicDataDocTypeComboBox.ComboBoxItemsSource =
+                await _contextData.GetIdTypes(App.CancellationToken);
             BasicDataGenreComboBox.ComboBoxItemsSource = new[] { "Masculino", "Femenino" };
         }
     }

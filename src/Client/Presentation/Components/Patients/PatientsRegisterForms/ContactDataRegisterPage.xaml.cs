@@ -4,32 +4,36 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class ContactDataRegisterPage : Page
     {
-        private readonly PatientsRegisterUserControl _patientsRegisterUserControl;
-        private readonly BasicDataRegisterPage _basicDataRegisterPage;
+        private readonly RegisterPatientUserControl _registerPatientUserControl;
+
+        // private readonly BasicDataRegisterPage _basicDataRegisterPage;
         private readonly MedicalDataRegisterPage _nextPage;
 
-        public ContactDataRegisterPage(PatientsRegisterUserControl patientsRegisterUserControl, BasicDataRegisterPage basicDataRegisterPage)
+        public ContactDataRegisterPage(RegisterPatientUserControl registerPatientUserControl
+            // BasicDataRegisterPage basicDataRegisterPage)
+        )
         {
-            _nextPage = new MedicalDataRegisterPage(patientsRegisterUserControl, this);
-            _basicDataRegisterPage = basicDataRegisterPage;
-            _patientsRegisterUserControl = patientsRegisterUserControl;
+            _nextPage = new MedicalDataRegisterPage(registerPatientUserControl, this);
+            // _basicDataRegisterPage = basicDataRegisterPage;
+            _registerPatientUserControl = registerPatientUserControl;
             InitializeComponent();
             PopulateFormOptions();
         }
 
         private void GoBackToPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            _patientsRegisterUserControl.NavigateTo(_basicDataRegisterPage);
+            // _registerPatientUserControl.NavigateTo(_basicDataRegisterPage);
         }
 
         private void GoToNextPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            _patientsRegisterUserControl.NavigateTo(_nextPage);
+            _registerPatientUserControl.NavigateTo(_nextPage);
         }
 
         private void PopulateFormOptions()
         {
-            ContactDataStratumComboBox.ComboBoxItemsSource = new[] { "1", "2", "3", "4", "5", "6" };
+            ContactDataStratumComboBox.ComboBoxItemsSource =
+                new[] { "1", "2", "3", "4", "5", "6" };
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Presentation.Controllers.Connection
+﻿namespace Presentation.Settings
 {
     public record ConnectionConfig(string Host);
 }
