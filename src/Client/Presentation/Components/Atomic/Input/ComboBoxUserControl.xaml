@@ -5,19 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Presentation.Components.Atomic.Input"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:dotNetKitControls="clr-namespace:DotNetKit.Windows.Controls;assembly=DotNetKit.Wpf.AutoCompleteComboBox"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Presentation.Components.Atomic.Input.ComboBoxUserControl"
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <ComboBox x:Name="ComboBoxInput"
-              Foreground="DimGray"
-              SelectedIndex="0"
-              ItemsSource="{Binding ComboBoxItemsSource}"
-              materialDesign:HintAssist.Hint="{Binding ComboBoxHint}"
-              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-              Width="{Binding ComboBoxWidth}"
-              Height="{Binding Height}"
-              BorderBrush="Gray"
-              FontSize="{Binding ComboBoxFontSize}"
-              VerticalContentAlignment="Center" />
+    <dotNetKitControls:AutoCompleteComboBox x:Name="ComboBoxInput"
+                                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                            Foreground="DimGray"
+                                            SelectedIndex="0"
+                                            ItemsSource="{Binding ComboBoxItemsSource}"
+                                            materialDesign:HintAssist.Hint="{Binding ComboBoxHint}"
+                                            Width="{Binding ComboBoxWidth}"
+                                            Height="{Binding Height}"
+                                            BorderBrush="Gray"
+                                            FontSize="{Binding ComboBoxFontSize}"
+                                            VerticalContentAlignment="Center"
+
+    />
 </UserControl>
