@@ -69,6 +69,5 @@ namespace Presentation.Components.Atomic.Buttons
 
         public static readonly DependencyProperty ButtonHeightProperty =
             DependencyProperty.Register("ButtonHeight", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
-
     }
 }

@@ -5,7 +5,6 @@ namespace Presentation.Components.Atomic.Buttons
 {
     public partial class ButtonIconUserControl : UserControl
     {
-
         public event RoutedEventHandler Click;
 
         public ButtonIconUserControl()

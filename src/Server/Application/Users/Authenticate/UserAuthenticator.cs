@@ -9,16 +9,16 @@ namespace Application.Users.Authenticate
 {
     public class UserAuthenticator
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUsersRepository _usersRepository;
 
-        public UserAuthenticator(IUserRepository userRepository)
+        public UserAuthenticator(IUsersRepository usersRepository)
         {
-            _userRepository = userRepository;
+            _usersRepository = usersRepository;
         }
 
         public async Task<string> Authenticate(string usernameOrEmail, string password, CancellationToken cancellation)
         {
-            User user = await _userRepository.GetUserByEmailOrUsername(usernameOrEmail, cancellation);
+            User user = await _usersRepository.GetUserByEmailOrUsername(usernameOrEmail, cancellation);
             if (user == null)
             {
                 throw new AuthenticationException("El usuario no existe.");

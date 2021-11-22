@@ -95,8 +95,8 @@ namespace Presentation.Components.Atomic
         {
             ShadowAssist.SetShadowDepth(selectedButton, ShadowDepth.Depth1);
             selectedButton.Background = ColorPalette.PrimaryColor;
-            textBlock.Foreground = Brushes.White;
-            icon.Foreground = Brushes.White;
+            textBlock.Foreground      = Brushes.White;
+            icon.Foreground           = Brushes.White;
         }
     }
 }

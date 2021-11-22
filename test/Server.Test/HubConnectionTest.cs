@@ -11,19 +11,19 @@ namespace Server.Test
     [TestFixture]
     public class HubConnectionTest
     {
-        // private HubConnection _connection;
+        private HubConnection _connection;
 
         [SetUp]
-        public Task SetUp()
+        public async Task SetUp()
         {
-            const string url = @"https://localhost:5001/hubs/users";
-            /*_connection = new HubConnectionBuilder()
+            const string url = @"https://794f-186-169-44-106.ngrok.io/hubs/users";
+            _connection = new HubConnectionBuilder()
                 .WithUrl(url)
                 .AddMessagePackProtocol()
                 .Build();
             await _connection.StartAsync();
-            Console.WriteLine("Connected with hub!");*/
-            return Task.CompletedTask;
+            Console.WriteLine("Connected with hub!");
+            // return Task.CompletedTask;
         }
 
         [Test, Order(0)]
@@ -35,9 +35,7 @@ namespace Server.Test
                 Email    = "sofi@gmail.com",
                 Password = "secret"
             };
-            // await _connection.SendAsync("create", request);
-            // await connection.SendAsync("findById", "a1d1767c-6487-4b21-a81c-bbf10f8998ac");
-            // await connection.SendAsync("getAll");
+            await _connection.SendAsync("create", request);
         }
 
         [Test, Order(1)]

@@ -8,9 +8,9 @@ namespace Application.Users.GetAll
 {
     public class UsersRetriever
     {
-        private readonly IUserRepository _repository;
+        private readonly IUsersRepository _repository;
 
-        public UsersRetriever(IUserRepository repository)
+        public UsersRetriever(IUsersRepository repository)
         {
             _repository = repository;
         }

@@ -16,7 +16,7 @@ namespace Presentation.Windows
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            _serviceProvider.GetService<MainWindow>()?.Show();
+            new MainWindow(_serviceProvider).Show();
             Close();
         }
 

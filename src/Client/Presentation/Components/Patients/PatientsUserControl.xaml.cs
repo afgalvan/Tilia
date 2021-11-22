@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
+using Presentation.Components.Dashboard;
 using Presentation.Windows;
-
 
 namespace Presentation.Components.Patients
 {
@@ -15,9 +15,9 @@ namespace Presentation.Components.Patients
             InitializeComponent();
         }
 
-        private void AddPacientButton_Click(object sender, RoutedEventArgs e)
+        private void AddPatientButton_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindow.ChangeMainContentArea(new PatientsRegisterUserControl(_mainWindow));
+            _mainWindow.ChangeMainContentArea(new RegisterPatientUserControl(_mainWindow));
         }
     }
 }

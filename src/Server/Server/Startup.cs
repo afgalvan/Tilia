@@ -46,7 +46,11 @@ namespace Server
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints => endpoints.ConfigureHubMaps());
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.ConfigureHubMaps();
+            });
         }
     }
 }

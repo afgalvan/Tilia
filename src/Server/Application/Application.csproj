@@ -19,18 +19,17 @@
       <Compile Include="Users\Authenticate\AuthenticateCommand.cs" />
       <Compile Include="Users\Authenticate\AuthenticateCommandHandler.cs" />
       <Compile Include="Users\Authenticate\UserAuthenticator.cs" />
+      <Compile Remove="Shared\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Users\Authenticate\**" />
+      <EmbeddedResource Remove="Shared\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Users\Authenticate\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Shared\Filters" />
+      <None Remove="Shared\**" />
     </ItemGroup>
 
 </Project>

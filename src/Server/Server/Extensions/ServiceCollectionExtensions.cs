@@ -3,10 +3,12 @@ using System.Reflection;
 using System.Text;
 using Application.Users.Authenticate;
 using Application.Users.Create;
+using Domain.People.Repositories;
 using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
 using Hangfire.Storage.SQLite;
+using Infrastructure.Persistence.IdTypes;
 using Infrastructure.Persistence.Users;
 using Mapster;
 using MapsterMapper;
@@ -42,8 +44,9 @@ namespace Server.Extensions
         {
             services.ConfigureHangFire();
             services.AddSingleton(GetTypeAdapterConfig());
-            services.AddScoped<IUserRepository, OracleUserRepository>();
             services.AddScoped<IMapper, ServiceMapper>();
+            services.AddScoped<IUsersRepository, OracleUsersRepository>();
+            services.AddScoped<IIdTypesRepository, OracleIdTypesRepository>();
             services.AddScoped<ILogger<UserHub>, Logger<UserHub>>();
         }
 
