@@ -14,6 +14,5 @@ namespace Presentation.Settings
             new RestRequest(configuration["Tunnel:ConfigUrl"])
                 .Send()
                 .DataFromJson<ConnectionConfig>();
-
     }
 }

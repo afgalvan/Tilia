@@ -50,7 +50,6 @@ namespace Presentation.Components.Atomic.Input
             set => SetValue(DatePickerFontSizeProperty, value);
         }
 
-
         public static readonly DependencyProperty DatePickerHintProperty =
             DependencyProperty.Register("DatePickerHint", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(null));
 
