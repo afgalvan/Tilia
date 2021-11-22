@@ -16,8 +16,9 @@ namespace Presentation.Windows
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            new MainWindow(_serviceProvider).Show();
-            Close();
+            var window = _serviceProvider.GetRequiredService<MainWindow>();
+            window.Show();
+            Hide();
         }
 
         private void ShowPasswordCheckBox_Checked(object sender, RoutedEventArgs e)

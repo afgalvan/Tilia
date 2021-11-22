@@ -17,7 +17,7 @@ namespace Presentation.Extensions
         public static void AddPresentationServices(this IServiceCollection services)
         {
             services.AddTransient<LoginWindow>();
-            services.AddSingleton<MainWindow>();
+            services.AddTransient<MainWindow>();
             services.AddTransient<RegisterPatientUserControl>();
             services.AddTransient<BasicDataRegisterPage>();
             services.AddTransient<PatientsUserControl>();

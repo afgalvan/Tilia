@@ -21,8 +21,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            var nextPage = _mainWindow.GetComponent<ContactDataRegisterPage>();
-            _mainWindow.GetComponent<RegisterPatientUserControl>().NavigateTo(nextPage);
+            var registerPatient = new RegisterPatientUserControl(_mainWindow);
+            var nextPage        = new ContactDataRegisterPage(registerPatient);
         }
 
         private async void OnLoadedPage(object sender, RoutedEventArgs e)
