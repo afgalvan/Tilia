@@ -24,6 +24,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         {
             var registerPatient = new RegisterPatientUserControl(_mainWindow);
             var nextPage        = new ContactDataRegisterPage(registerPatient);
+            registerPatient.NavigateTo(nextPage);
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
