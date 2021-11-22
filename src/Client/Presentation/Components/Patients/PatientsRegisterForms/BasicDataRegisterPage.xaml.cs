@@ -16,7 +16,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             _mainWindow  = mainWindow;
             _contextData = contextData;
             InitializeComponent();
-            Loaded += OnLoadedPage;
+            Loaded                          += OnLoadedPage;
+            BasicDataDocTypeComboBox.Loaded += OnLoadedIdCombo;
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
@@ -25,16 +26,25 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             var nextPage        = new ContactDataRegisterPage(registerPatient);
         }
 
-        private async void OnLoadedPage(object sender, RoutedEventArgs e)
+        private void OnLoadedPage(object sender, RoutedEventArgs e)
         {
-            await PopulateFormOptions();
+            PopulateSyncOptions();
         }
 
-        private async Task PopulateFormOptions()
+        private void PopulateSyncOptions()
+        {
+            BasicDataGenreComboBox.ComboBoxItemsSource = new[] { "Masculino", "Femenino" };
+        }
+
+        private async void OnLoadedIdCombo(object sender, RoutedEventArgs e)
+        {
+            await PopulateIdTypes();
+        }
+
+        private async Task PopulateIdTypes()
         {
             BasicDataDocTypeComboBox.ComboBoxItemsSource =
                 await _contextData.GetIdTypes(App.CancellationToken);
-            BasicDataGenreComboBox.ComboBoxItemsSource = new[] { "Masculino", "Femenino" };
         }
     }
 }

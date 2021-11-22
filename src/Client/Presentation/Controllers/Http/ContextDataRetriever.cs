@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain.Locations;
 using Domain.People;
+using Presentation.Filters;
 using Presentation.Settings;
 using RestWrapper;
 
@@ -18,16 +19,25 @@ namespace Presentation.Controllers.Http
             _config = config;
         }
 
-        public async Task<IEnumerable<IdType>> GetIdTypes(CancellationToken cancellation)
+        [HandleUnconnected]
+        public async Task<IEnumerable> GetIdTypes(CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/id-types").SendAsync(cancellation))
-                .DataFromJson<IEnumerable<IdType>>();
+            return (await new RestRequest($"{_config.Host}/id-types")
+                .SendAsync(cancellation)).DataFromJson<IEnumerable<IdType>>();
         }
 
-        public async Task<IEnumerable<City>> GetCities(CancellationToken cancellation)
+        [HandleUnconnected]
+        public async Task<IEnumerable> GetDepartments(CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/cities").SendAsync(cancellation))
-                .DataFromJson<IEnumerable<City>>();
+            return (await new RestRequest($"{_config.Host}/departments")
+                    .SendAsync(cancellation)).DataFromJson<IEnumerable<Department>>();
+        }
+
+        [HandleUnconnected]
+        public async Task<IEnumerable> GetCities(CancellationToken cancellation)
+        {
+            return (await new RestRequest($"{_config.Host}/cities")
+                .SendAsync(cancellation)).DataFromJson<IEnumerable<City>>();
         }
     }
 }
