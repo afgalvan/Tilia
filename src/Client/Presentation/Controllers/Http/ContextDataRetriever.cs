@@ -29,14 +29,14 @@ namespace Presentation.Controllers.Http
         [HandleUnconnected]
         public async Task<IEnumerable> GetDepartments(CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/departments")
+            return (await new RestRequest($"{_config.Host}/locations/departments")
                     .SendAsync(cancellation)).DataFromJson<IEnumerable<Department>>();
         }
 
         [HandleUnconnected]
-        public async Task<IEnumerable> GetCities(CancellationToken cancellation)
+        public async Task<IEnumerable> GetCities(string departmentId, CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/cities")
+            return (await new RestRequest($"{_config.Host}/locations/cities?departmentId={departmentId}")
                 .SendAsync(cancellation)).DataFromJson<IEnumerable<City>>();
         }
     }
