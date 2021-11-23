@@ -19,18 +19,10 @@ namespace Presentation.Components.Atomic.Input
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        public string Text
+        public string FieldText
         {
-            get => TextField.Text;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                TextField.Text = Text;
-            }
+            get => (string)GetValue(FieldTextProperty);
+            set => SetValue(FieldTextProperty, value);
         }
 
         public string TextFieldFloatingHint
@@ -50,6 +42,9 @@ namespace Presentation.Components.Atomic.Input
             get => (string)GetValue(TextFieldFontSizeProperty);
             set => SetValue(TextFieldFontSizeProperty, value);
         }
+
+        public static readonly DependencyProperty FieldTextProperty =
+            DependencyProperty.Register("FieldText", typeof(string), typeof(NumericTextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
             DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(NumericTextFieldUserControl), new PropertyMetadata(""));

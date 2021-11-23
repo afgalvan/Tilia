@@ -14,5 +14,6 @@
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                 Foreground="DimGray"
                 BorderBrush="Gray"
-                FontSize="{Binding DatePickerFontSize}"/>
+                FontSize="{Binding DatePickerFontSize}"
+                Text="{Binding FieldText}"/>
 </UserControl>

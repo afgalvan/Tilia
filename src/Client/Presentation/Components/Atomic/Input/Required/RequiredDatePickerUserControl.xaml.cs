@@ -23,25 +23,16 @@ namespace Presentation.Components.Atomic.Input.Required
             set => RequiredDatePickerInput.DisplayDateEnd = value;
         }
 
-
         private void TextField_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        public string Text
+        public string FieldText
         {
-            get => RequiredDatePickerInput.Text;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                RequiredDatePickerInput.Text = Text;
-            }
+            get => (string)GetValue(FieldTextHintProperty);
+            set => SetValue(FieldTextHintProperty, value);
         }
 
         public string DatePickerHint
@@ -56,11 +47,16 @@ namespace Presentation.Components.Atomic.Input.Required
             set => SetValue(DatePickerWidthProperty, value);
         }
 
+
+
         public string DatePickerFontSize
         {
             get => (string)GetValue(DatePickerFontSizeProperty);
             set => SetValue(DatePickerFontSizeProperty, value);
         }
+
+        public static readonly DependencyProperty FieldTextHintProperty =
+            DependencyProperty.Register("FieldText", typeof(string), typeof(RequiredDatePickerUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty DatePickerHintProperty =
             DependencyProperty.Register("DatePickerHint", typeof(string), typeof(RequiredDatePickerUserControl), new PropertyMetadata(""));

@@ -24,5 +24,6 @@
                                             SelectedItem="{Binding ComboBoxSelectedItem}"
                                             SelectionChanged="ComboBoxInput_OnSelectionChanged"
                                             DropDownClosed="ComboBoxInput_OnDropDownClosed"
+                                            Text="{Binding FieldText}"
     />
 </UserControl>

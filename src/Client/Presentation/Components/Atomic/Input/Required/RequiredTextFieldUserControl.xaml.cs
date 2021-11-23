@@ -36,7 +36,7 @@ namespace Presentation.Components.Atomic.Input.Required
         }
 
         public static readonly DependencyProperty FieldTextProperty =
-            DependencyProperty.Register("FieldText", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(""));
+            DependencyProperty.Register("FieldText", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
             DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(""));

@@ -1,4 +1,3 @@
-﻿using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,18 +18,10 @@ namespace Presentation.Components.Atomic.Input.Required
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        public string Text
+        public string FieldText
         {
-            get => TextField.Text;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                TextField.Text = Text;
-            }
+            get => (string)GetValue(FieldTextHintProperty);
+            set => SetValue(FieldTextHintProperty, value);
         }
 
         public string TextFieldFloatingHint
@@ -50,6 +41,9 @@ namespace Presentation.Components.Atomic.Input.Required
             get => (string)GetValue(TextFieldFontSizeProperty);
             set => SetValue(TextFieldFontSizeProperty, value);
         }
+
+        public static readonly DependencyProperty FieldTextHintProperty =
+            DependencyProperty.Register("FieldText", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
             DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata(""));
