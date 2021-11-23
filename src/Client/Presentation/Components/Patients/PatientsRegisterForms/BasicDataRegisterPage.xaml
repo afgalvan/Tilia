@@ -47,7 +47,7 @@
                                    ComboBoxSelectedIndex="0"
         />
 
-        <input:TextFieldUserControl x:Name="BasicDataNamesTextBox"
+        <input:RequiredTextFieldUserControl x:Name="BasicDataNamesTextBox"
                                     TextFieldFloatingHint="Nombres"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"

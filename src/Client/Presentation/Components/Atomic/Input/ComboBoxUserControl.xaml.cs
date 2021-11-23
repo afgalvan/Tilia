@@ -21,26 +21,12 @@ namespace Presentation.Components.Atomic.Input
         private void ComboBoxInput_OnSelectionChanged(object sender,
             SelectionChangedEventArgs e)
         {
-            try
-            {
-                OnSelectionChangedAction();
-            }
-            catch (NullReferenceException)
-            {
-                // Ignored
-            }
+            OnSelectionChangedAction?.Invoke();
         }
 
         private void ComboBoxInput_OnDropDownClosed(object? sender, EventArgs e)
         {
-            try
-            {
-                OnDropDownClosedAction();
-            }
-            catch (NullReferenceException)
-            {
-                // Ignored
-            }
+            OnDropDownClosedAction?.Invoke();
         }
 
         private void ItemSourceBinding()
