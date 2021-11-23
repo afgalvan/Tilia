@@ -30,13 +30,15 @@ namespace Presentation.Controllers.Http
         public async Task<IEnumerable> GetDepartments(CancellationToken cancellation)
         {
             return (await new RestRequest($"{_config.Host}/locations/departments")
-                    .SendAsync(cancellation)).DataFromJson<IEnumerable<Department>>();
+                .SendAsync(cancellation)).DataFromJson<IEnumerable<Department>>();
         }
 
         [HandleUnconnected]
-        public async Task<IEnumerable> GetCities(string departmentId, CancellationToken cancellation)
+        public async Task<IEnumerable> GetCities(string departmentId,
+            CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/locations/cities?departmentId={departmentId}")
+            return (await new RestRequest(
+                    $"{_config.Host}/locations/cities?departmentId={departmentId}")
                 .SendAsync(cancellation)).DataFromJson<IEnumerable<City>>();
         }
     }

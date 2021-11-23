@@ -16,14 +16,15 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             _mainWindow  = mainWindow;
             _contextData = contextData;
             InitializeComponent();
-            Loaded                          += OnLoadedPage;
-            BasicDataDocTypeComboBox.Loaded += OnLoadedIdCombo;
+            Loaded                             += OnLoadedPage;
+            BasicDataDocTypeComboBox.Loaded    += OnLoadedIdCombo;
+            BasicDataDepartmentComboBox.Loaded += OnLoadedDepartmentsCombo;
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
             var registerPatient = new RegisterPatientUserControl(_mainWindow);
-            var nextPage        = new ContactDataRegisterPage(registerPatient);
+            var nextPage        = new ContactDataRegisterPage(registerPatient, _contextData);
             registerPatient.NavigateTo(nextPage);
         }
 
@@ -37,15 +38,26 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             BasicDataGenreComboBox.ComboBoxItemsSource = new[] { "Masculino", "Femenino" };
         }
 
+        private async Task PopulateIdTypes()
+        {
+            BasicDataDocTypeComboBox.ComboBoxItemsSource =
+                await _contextData.GetIdTypes(App.CancellationToken);
+        }
+
         private async void OnLoadedIdCombo(object sender, RoutedEventArgs e)
         {
             await PopulateIdTypes();
         }
 
-        private async Task PopulateIdTypes()
+        private async Task PopulateDepartments()
         {
-            BasicDataDocTypeComboBox.ComboBoxItemsSource =
-                await _contextData.GetIdTypes(App.CancellationToken);
+            BasicDataDepartmentComboBox.ComboBoxItemsSource =
+                await _contextData.GetDepartments(App.CancellationToken);
+        }
+
+        private async void OnLoadedDepartmentsCombo(object sender, RoutedEventArgs e)
+        {
+            await PopulateDepartments();
         }
     }
 }
