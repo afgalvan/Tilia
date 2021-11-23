@@ -72,7 +72,7 @@
                                     Grid.Row="1"
         />
 
-        <required:RequiredDatePickerUserControl x:Name="BasicDataBirthDayDatePicker"
+        <input:DatePickerUserControl x:Name="BasicDataBirthDayDatePicker"
                                      DatePickerHint="Fecha de nacimiento"
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"
