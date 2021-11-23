@@ -53,7 +53,6 @@ namespace Server.Extensions
             services.AddMediatR(Assembly.Load("Application"));
         }
 
-
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             services.ConfigureHangFire();
