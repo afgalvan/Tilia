@@ -61,4 +61,3 @@ namespace Presentation.Components.Atomic.Input.Required
             DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("15"));
     }
 }
-

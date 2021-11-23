@@ -61,4 +61,3 @@ namespace Presentation.Components.Atomic.Input.Required
             DependencyProperty.Register("DatePickerFontSize", typeof(string), typeof(RequiredDatePickerUserControl), new PropertyMetadata("15"));
     }
 }
-
