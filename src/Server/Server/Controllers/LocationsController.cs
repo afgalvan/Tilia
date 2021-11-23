@@ -22,7 +22,7 @@ namespace Server.Controllers
         [HttpGet("departments")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<Department>), StatusCodes.Status200OK)]
-        public async Task<ActionResult> GetAllDepartments(CancellationToken cancellation)
+        public async Task<IActionResult> GetAllDepartments(CancellationToken cancellation)
         {
             return Ok(await _repository.GetAll(cancellation));
         }
@@ -30,7 +30,7 @@ namespace Server.Controllers
         [HttpGet("cities")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<City>), StatusCodes.Status200OK)]
-        public async Task<ActionResult> GetCityOf([FromQuery] string departmentId, CancellationToken cancellation)
+        public async Task<IActionResult> GetCityOf([FromQuery] string departmentId, CancellationToken cancellation)
         {
             return Ok(await _repository.GetAllCitiesOf(departmentId, cancellation));
         }

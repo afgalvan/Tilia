@@ -23,6 +23,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Requests.Auth;
 using Requests.Users;
+using Server.Controllers;
 using Server.Extensions.Settings;
 using Server.Hubs;
 using SharedLib.Persistence;
@@ -50,7 +51,7 @@ namespace Server.Extensions
             services.AddScoped<IUsersRepository, OracleUsersRepository>();
             services.AddScoped<IIdTypesRepository, OracleIdTypesRepository>();
             services.AddScoped<ILocationsRepository, OracleLocationsRepository>();
-            services.AddScoped<ILogger<UserHub>, Logger<UserHub>>();
+            services.AddScoped<ILogger<AuthenticationController>, Logger<AuthenticationController>>();
         }
 
         private static void ConfigureHangFire(this IServiceCollection services)
@@ -105,7 +106,7 @@ namespace Server.Extensions
                 options.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "Tilia", Version = "v1" });
                 options.DocumentFilter<SignalRSwaggerGen.SignalRSwaggerGen>(new List<Assembly>
-                    { typeof(UserHub).Assembly, typeof(AppointmentHub).Assembly });
+                    { typeof(AuthenticationController).Assembly, typeof(AppointmentHub).Assembly });
             });
         }
     }
