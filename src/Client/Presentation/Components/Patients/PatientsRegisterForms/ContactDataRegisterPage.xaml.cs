@@ -7,14 +7,18 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class ContactDataRegisterPage : Page
     {
-        private readonly MedicalDataRegisterPage _nextPage;
-        private readonly ContextDataRetriever    _contextData;
+        private readonly MedicalDataRegisterPage    _nextPage;
+        private readonly RegisterPatientUserControl _registerPatient;
+        private readonly ContextDataRetriever       _contextData;
+        private readonly BasicDataRegisterPage      _lastPage;
 
-        public ContactDataRegisterPage(RegisterPatientUserControl registerPatientUserControl,
-            ContextDataRetriever contextData)
+        public ContactDataRegisterPage(RegisterPatientUserControl registerPatient,
+            ContextDataRetriever contextData, BasicDataRegisterPage lastPage)
         {
-            _contextData = contextData;
-            _nextPage    = new MedicalDataRegisterPage(registerPatientUserControl, this);
+            _registerPatient = registerPatient;
+            _contextData     = contextData;
+            _lastPage        = lastPage;
+            _nextPage        = new MedicalDataRegisterPage(registerPatient, this);
             InitializeComponent();
             PopulateFormOptions();
             ContactDataDepartmentComboBox.Loaded += OnLoadedDepartmentsCombo;
@@ -22,10 +26,12 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoBackToPageButton_Click(object sender, RoutedEventArgs e)
         {
+            _registerPatient.NavigateTo(_lastPage);
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
+            _registerPatient.NavigateTo(_nextPage);
         }
 
         private void PopulateFormOptions()
