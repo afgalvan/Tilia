@@ -10,18 +10,20 @@ namespace Application.Users.Authenticate
 {
     public class UserAuthenticator
     {
-        private readonly JwtGenerator    _jwtGenerator;
+        private readonly JwtGenerator     _jwtGenerator;
         private readonly IUsersRepository _usersRepository;
 
         public UserAuthenticator(IUsersRepository usersRepository, JwtGenerator jwtGenerator)
         {
-            _usersRepository   = usersRepository;
-            _jwtGenerator = jwtGenerator;
+            _usersRepository = usersRepository;
+            _jwtGenerator    = jwtGenerator;
         }
 
-        public async Task<string> Authenticate(string usernameOrEmail, string password, CancellationToken cancellation)
+        public async Task<string> Authenticate(string usernameOrEmail, string password,
+            CancellationToken cancellation)
         {
-            User user = await _usersRepository.GetUserByEmailOrUsername(usernameOrEmail, cancellation);
+            User user =
+                await _usersRepository.GetUserByEmailOrUsername(usernameOrEmail, cancellation);
             if (user == null)
             {
                 throw new AuthenticationException("El usuario no existe.");
@@ -29,7 +31,8 @@ namespace Application.Users.Authenticate
 
             if (!Encryptor.EnhancedVerify(password, user.Password))
             {
-                throw new AuthenticationException("Combinación de usuario y contraseña incorrecta.");
+                throw new AuthenticationException(
+                    "Combinación de usuario y contraseña incorrecta.");
             }
 
             return _jwtGenerator.Generate(user);

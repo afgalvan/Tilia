@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
-using System.Text;
 using Application.Users.Authenticate;
 using Application.Users.Create;
+using Application.Users.FindById;
+using Application.Users.GenerateJwt;
+using Application.Users.GetAll;
 using Domain.Locations.Repositories;
 using Domain.People.Repositories;
-using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
 using Hangfire.Storage.SQLite;
@@ -14,18 +15,16 @@ using Infrastructure.Persistence.Locations;
 using Infrastructure.Persistence.Users;
 using Mapster;
 using MapsterMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using Requests.Auth;
 using Requests.Users;
 using Server.Controllers;
 using Server.Extensions.Settings;
-using Server.Hubs;
 using SharedLib.Persistence;
 
 namespace Server.Extensions
@@ -41,6 +40,17 @@ namespace Server.Extensions
                 options.SetupDatabaseEngine(connectionInformation)
                     .UseSnakeCaseNamingConvention()
             );
+        }
+
+        public static void AddApplicationServices(this IServiceCollection services)
+        {
+            services.AddScoped<SecurityTokenHandler, JwtSecurityTokenHandler>();
+            services.AddScoped<JwtGenerator>();
+            services.AddScoped<UserCreator>();
+            services.AddScoped<UsersRetriever>();
+            services.AddScoped<UserFinder>();
+            services.AddScoped<UserAuthenticator>();
+            services.AddMediatR(Assembly.Load("Application"));
         }
 
         public static void AddInfrastructureServices(this IServiceCollection services)
@@ -71,43 +81,6 @@ namespace Server.Extensions
             configuration.NewConfig<CreateUserRequest, CreateUserCommand>();
             configuration.NewConfig<LoginUserRequest, AuthenticateCommand>();
             return configuration;
-        }
-
-        public static void AddJwtAuth(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            string secretKey = configuration["SecretKey:Key"];
-            services.AddSingleton(_ => new SecretKey(secretKey));
-            byte[] encodedKey = Encoding.UTF8.GetBytes(secretKey);
-
-            services.AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme    = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(options =>
-                {
-                    options.SaveToken = true;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        ValidateLifetime         = true,
-                        IssuerSigningKey         = new SymmetricSecurityKey(encodedKey),
-                        ValidateIssuer           = false,
-                        ValidateAudience         = false
-                    };
-                });
-        }
-
-        public static void AddSwagger(this IServiceCollection services)
-        {
-            services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1",
-                    new OpenApiInfo { Title = "Tilia", Version = "v1" });
-                options.DocumentFilter<SignalRSwaggerGen.SignalRSwaggerGen>(new List<Assembly>
-                    { typeof(AuthenticationController).Assembly, typeof(AppointmentHub).Assembly });
-            });
         }
     }
 }

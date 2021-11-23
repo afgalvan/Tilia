@@ -10,7 +10,7 @@ namespace Application.Users.GenerateJwt
 {
     public class JwtGenerator
     {
-        private const    int                  TokenDaysDuration = 1;
+        private const    int                  TokenDaysDuration = 7;
         private readonly SecretKey            _secret;
         private readonly SecurityTokenHandler _tokenHandler;
 
@@ -47,7 +47,7 @@ namespace Application.Users.GenerateJwt
             {
                 Subject            = new ClaimsIdentity(claims),
                 Expires            = DateTime.Now.AddDays(TokenDaysDuration),
-                SigningCredentials = signInCredentials,
+                SigningCredentials = signInCredentials
             };
         }
     }
