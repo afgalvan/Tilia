@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 using Requests.Appointments;
 using SignalRSwaggerGen.Attributes;
 
-namespace Server.Hubs
+namespace Api.Hubs
 {
     [SignalRHub("/hubs/appointment")]
     public class AppointmentHub : Hub

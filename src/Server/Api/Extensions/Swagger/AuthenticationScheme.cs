@@ -1,4 +1,4 @@
-﻿namespace Server.Extensions.Swagger
+﻿namespace Api.Extensions.Swagger
 {
     public class AuthenticationScheme
     {

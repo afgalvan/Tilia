@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
-using Microsoft.AspNetCore.Routing;
+using Api.Hubs;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SignalR;
-using Server.Hubs;
 using SignalRSwaggerGen;
 using SignalRSwaggerGen.Attributes;
 
-namespace Server.Extensions
+namespace Api.Extensions
 {
     public static class EndpointExtensions
     {

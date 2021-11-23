@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Server.Extensions.Settings
+namespace Api.Extensions.Settings
 {
     public class DbConnectionConfig
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Server.Controllers
+namespace Api.Controllers
 {
     [Route("/")]
     [ApiController]
@@ -10,7 +10,7 @@ namespace Server.Controllers
         [HttpGet]
         public ActionResult Index() => Ok(new
         {
-            Name    = "Tilia API",
+            Name          = "Tilia API",
             Documentation = $"{HttpContext.Request.GetDisplayUrl()}documentation"
         });
 

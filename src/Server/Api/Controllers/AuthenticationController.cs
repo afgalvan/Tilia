@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Requests.Auth;
 using Requests.Users;
 
-namespace Server.Controllers
+namespace Api.Controllers
 {
     [Route("auth")]
     [ApiController]

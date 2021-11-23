@@ -6,7 +6,7 @@ using Domain.People.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Server.Controllers
+namespace Api.Controllers
 {
     [Route("id-types")]
     [ApiController]
