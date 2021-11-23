@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Domain.Locations;
 using Presentation.Controllers.Http;
 using Presentation.Windows;
 
@@ -10,15 +12,20 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
     {
         private readonly MainWindow           _mainWindow;
         private readonly ContextDataRetriever _contextData;
+        private          IEnumerable          Departments { get; set; }
+        private          IEnumerable          Cities      { get; set; }
 
         public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData)
         {
             _mainWindow  = mainWindow;
             _contextData = contextData;
             InitializeComponent();
-            Loaded                             += OnLoadedPage;
-            BasicDataDocTypeComboBox.Loaded    += OnLoadedIdCombo;
-            BasicDataDepartmentComboBox.Loaded += OnLoadedDepartmentsCombo;
+            BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
+            BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
+            Loaded                                               += OnLoadedPage;
+            BasicDataDocTypeComboBox.Loaded                      += OnLoadedIdCombo;
+            BasicDataDepartmentComboBox.Loaded                   += OnLoadedDepartmentsCombo;
+            BasicDataBirthPlaceTextBox.Loaded                    += OnLoadedCitiesCombo;
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
@@ -51,13 +58,34 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private async Task PopulateDepartments()
         {
-            BasicDataDepartmentComboBox.ComboBoxItemsSource =
-                await _contextData.GetDepartments(App.CancellationToken);
+            Departments ??= await _contextData.GetDepartments(App.CancellationToken);
+            BasicDataDepartmentComboBox.ComboBoxItemsSource = Departments;
+        }
+
+        private Department GetSelectedDepartment()
+        {
+            return (Department)BasicDataDepartmentComboBox.ComboBoxSelectedItem;
         }
 
         private async void OnLoadedDepartmentsCombo(object sender, RoutedEventArgs e)
         {
             await PopulateDepartments();
+        }
+
+        private async Task PopulateCities()
+        {
+            if (GetSelectedDepartment() == null)
+            {
+                await Task.Delay(500);
+            }
+            string departmentId = GetSelectedDepartment().Id;
+            Cities = await _contextData.GetCities(departmentId, App.CancellationToken);
+            BasicDataBirthPlaceTextBox.ComboBoxItemsSource = Cities;
+        }
+
+        private async void OnLoadedCitiesCombo(object sender, RoutedEventArgs e)
+        {
+            await PopulateCities();
         }
     }
 }

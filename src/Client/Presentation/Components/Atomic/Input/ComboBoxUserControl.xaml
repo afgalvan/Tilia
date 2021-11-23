@@ -21,6 +21,8 @@
                                             BorderBrush="Gray"
                                             FontSize="{Binding ComboBoxFontSize}"
                                             VerticalContentAlignment="Center"
-
+                                            SelectedItem="{Binding ComboBoxSelectedItem}"
+                                            SelectionChanged="ComboBoxInput_OnSelectionChanged"
+                                            DropDownClosed="ComboBoxInput_OnDropDownClosed"
     />
 </UserControl>
