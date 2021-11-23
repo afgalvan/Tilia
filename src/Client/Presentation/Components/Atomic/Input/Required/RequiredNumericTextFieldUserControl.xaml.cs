@@ -52,13 +52,15 @@ namespace Presentation.Components.Atomic.Input.Required
         }
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
-            DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata(""));
+            DependencyProperty.Register("TextFieldFloatingHint", typeof(string),
+                typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty TextFieldWidthProperty =
-            DependencyProperty.Register("TextFieldWidth", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("200"));
+            DependencyProperty.Register("TextFieldWidth", typeof(string),
+                typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty TextFieldFontSizeProperty =
-            DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("15"));
+            DependencyProperty.Register("TextFieldFontSize", typeof(string),
+                typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("15"));
     }
 }
-

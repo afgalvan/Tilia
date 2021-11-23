@@ -80,7 +80,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         {
             if (GetSelectedDepartment() == null)
             {
-                BasicDataBirthPlaceComboBox.ComboBoxItemsSource = new[] { "Sin conexión con el servidor" };
+                BasicDataBirthPlaceComboBox.ComboBoxItemsSource =
+                    new[] { "Sin conexión con el servidor" };
                 return;
             }
 
