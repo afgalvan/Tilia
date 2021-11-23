@@ -2,17 +2,17 @@
 
 namespace Requests.Auth
 {
-    public class AccessToken
+    public class AuthenticationResponse
     {
         [Required]
         public string Bearer { get; set; }
 
-        public AccessToken(string bearer)
+        public AuthenticationResponse(string bearer)
         {
             Bearer = bearer;
         }
 
-        public AccessToken()
+        public AuthenticationResponse()
         {
         }
     }
