@@ -1,19 +1,27 @@
-using System;
+﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
-namespace Presentation.Components.Atomic.Input
+namespace Presentation.Components.Atomic.Input.Required
 {
-    public partial class RequiredTextFieldUserControl : UserControl
+    public partial class RequiredNumericTextFieldUserControl : UserControl
     {
-        public RequiredTextFieldUserControl()
+        public RequiredNumericTextFieldUserControl()
         {
             InitializeComponent();
         }
 
+        private void TextField_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         public string Text
         {
-            get => RequiredTextField.Text;
+            get => TextField.Text;
             set
             {
                 if (value == null)
@@ -21,7 +29,7 @@ namespace Presentation.Components.Atomic.Input
                     throw new ArgumentNullException(nameof(value));
                 }
 
-                RequiredTextField.Text = Text;
+                TextField.Text = Text;
             }
         }
 
@@ -44,12 +52,13 @@ namespace Presentation.Components.Atomic.Input
         }
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
-            DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(""));
+            DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty TextFieldWidthProperty =
-            DependencyProperty.Register("TextFieldWidth", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata("200"));
+            DependencyProperty.Register("TextFieldWidth", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty TextFieldFontSizeProperty =
-            DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata("15"));
+            DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(RequiredNumericTextFieldUserControl), new PropertyMetadata("15"));
     }
 }
+

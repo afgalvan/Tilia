@@ -82,6 +82,9 @@
     <Compile Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\Atomic\Input\Required\RequiredTextFieldUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -95,6 +98,9 @@
     <Page Remove="Components\MedicalFiles\**" />
     <Page Remove="Components\Users\**" />
     <Page Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\Atomic\Input\Required\RequiredTextFieldUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

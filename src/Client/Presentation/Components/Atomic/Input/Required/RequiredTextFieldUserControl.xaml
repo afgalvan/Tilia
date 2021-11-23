@@ -1,9 +1,8 @@
-<UserControl x:Class="Presentation.Components.Atomic.Input.RequiredTextFieldUserControl"
+<UserControl x:Class="Presentation.Components.Atomic.Input.Required.RequiredTextFieldUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Presentation.Components.Atomic.Input"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:utils="clr-namespace:Presentation.Utils"
              mc:Ignorable="d"
@@ -20,7 +19,7 @@
 
         <TextBox.Text>
             <Binding
-                Path="RequiredTextField.Text"
+                Path="Style"
                 UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <utils:NotEmptyValidationRule

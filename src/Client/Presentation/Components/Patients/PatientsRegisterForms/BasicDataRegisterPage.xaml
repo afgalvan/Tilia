@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
       xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+      xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
       mc:Ignorable="d"
       d:DesignHeight="384" d:DesignWidth="833"
       Title="BasicDataRegisterPage">
@@ -30,7 +31,7 @@
                                    ComboBoxSelectedIndex="1"
         />
 
-        <input:NumericTextFieldUserControl x:Name="BasicDataDataNumberTextBox"
+        <required:RequiredNumericTextFieldUserControl x:Name="BasicDataDataNumberTextBox"
                                     TextFieldFloatingHint="Numero de documento"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -47,7 +48,7 @@
                                    ComboBoxSelectedIndex="0"
         />
 
-        <input:RequiredTextFieldUserControl x:Name="BasicDataNamesTextBox"
+        <required:RequiredTextFieldUserControl x:Name="BasicDataNamesTextBox"
                                     TextFieldFloatingHint="Nombres"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -55,7 +56,7 @@
                                     Grid.Row="1"
         />
 
-        <input:TextFieldUserControl x:Name="BasicDataLastNamesTextBox"
+        <required:RequiredTextFieldUserControl x:Name="BasicDataLastNamesTextBox"
                                     TextFieldFloatingHint="Apellidos"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -63,7 +64,7 @@
                                     Grid.Row="1"
         />
 
-        <input:TextFieldUserControl x:Name="BasicDataChargeTextBox"
+        <required:RequiredTextFieldUserControl x:Name="BasicDataChargeTextBox"
                                     TextFieldFloatingHint="Ocupacion"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -71,7 +72,7 @@
                                     Grid.Row="1"
         />
 
-        <input:DatePickerUserControl x:Name="BasicDataBirthDayDatePicker"
+        <required:RequiredDatePickerUserControl x:Name="BasicDataBirthDayDatePicker"
                                      DatePickerHint="Fecha de nacimiento"
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"
