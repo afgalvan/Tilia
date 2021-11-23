@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +12,17 @@ namespace Presentation.Components.Atomic.Input.Required
         {
             InitializeComponent();
         }
+
+        public DateTime StartDate
+        {
+            set => RequiredDatePickerInput.DisplayDateStart = value;
+        }
+
+        public DateTime EndDate
+        {
+            set => RequiredDatePickerInput.DisplayDateEnd = value;
+        }
+
 
         private void TextField_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {

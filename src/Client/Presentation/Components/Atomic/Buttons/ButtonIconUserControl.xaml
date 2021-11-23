@@ -14,7 +14,8 @@
             ToolTip="{Binding ButtonToolTip}"
             Width="{Binding ButtonWidth}"
             Height="{Binding ButtonHeight}"
-            materialDesign:ButtonAssist.CornerRadius="{Binding ButtonRadius}">
+            materialDesign:ButtonAssist.CornerRadius="{Binding ButtonRadius}"
+            IsEnabled="{Binding ButtonIsEnabled}">
         <Button.Content>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="{Binding ButtonIconName}"

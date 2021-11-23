@@ -47,6 +47,12 @@ namespace Presentation.Components.Atomic.Buttons
             set => SetValue(ButtonHeightProperty, value);
         }
 
+        public string ButtonIsEnabled
+        {
+            get => (string)GetValue(ButtonIsEnabledProperty);
+            set => SetValue(ButtonIsEnabledProperty, value);
+        }
+
         public static readonly DependencyProperty ButtonToolTipProperty =
             DependencyProperty.Register("ButtonToolTip", typeof(string), typeof(ButtonUserControl), new PropertyMetadata(null));
 
@@ -61,5 +67,8 @@ namespace Presentation.Components.Atomic.Buttons
 
         public static readonly DependencyProperty ButtonHeightProperty =
             DependencyProperty.Register("ButtonHeight", typeof(string), typeof(ButtonUserControl), new PropertyMetadata("35"));
+
+        public static readonly DependencyProperty ButtonIsEnabledProperty =
+            DependencyProperty.Register("ButtonIsEnabled", typeof(string), typeof(ButtonUserControl), new PropertyMetadata("35"));
     }
 }

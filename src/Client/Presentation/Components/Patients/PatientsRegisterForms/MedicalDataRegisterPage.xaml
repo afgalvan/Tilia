@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
       xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
+      xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
       mc:Ignorable="d"
       d:DesignHeight="384" d:DesignWidth="833"
       Title="MedicalDataRegisterPage">
@@ -23,7 +24,7 @@
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
-        <input:TextFieldUserControl x:Name="MedicalDataEpsTextBox"
+        <required:RequiredTextFieldUserControl x:Name="MedicalDataEpsTextBox"
                                     TextFieldFloatingHint="Nombre de EPS"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
@@ -40,31 +41,31 @@
                                    ComboBoxSelectedIndex="0"
         />
 
-        <input:TextFieldUserControl x:Name="MedicalDataSportTextBox"
-                                    TextFieldFloatingHint="Deporte"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Column="2"
-                                    Grid.Row="0"
+        <required:RequiredTextFieldUserControl x:Name="MedicalDataSportTextBox"
+                                               TextFieldFloatingHint="Deporte"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               Grid.Column="2"
+                                               Grid.Row="0"
         />
 
-        <input:TextFieldUserControl x:Name="MedicalDataModalityTextBox"
-                                    TextFieldFloatingHint="Modalidad"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Column="0"
-                                    Grid.Row="1"
+        <required:RequiredTextFieldUserControl x:Name="MedicalDataModalityTextBox"
+                                               TextFieldFloatingHint="Modalidad"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               Grid.Column="0"
+                                               Grid.Row="1"
         />
 
-        <input:TextFieldUserControl x:Name="MedicalDataCoachTextBox"
-                                    TextFieldFloatingHint="Entrenador"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
+        <required:RequiredTextFieldUserControl x:Name="MedicalDataCoachTextBox"
+                                               TextFieldFloatingHint="Entrenador"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               Grid.Column="1"
+                                               Grid.Row="1"
         />
 
-        <input:DatePickerUserControl x:Name="MedicalDataStartDateDatePicker"
+        <required:RequiredDatePickerUserControl x:Name="MedicalDataStartDateDatePicker"
                                      DatePickerHint="Fecha de inicio"
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"

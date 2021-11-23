@@ -14,8 +14,11 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private readonly MainWindow                 _mainWindow;
         private readonly ContextDataRetriever       _contextData;
         private readonly RegisterPatientUserControl _registerPatient;
-        private          IEnumerable                Departments { get; set; }
-        private          IEnumerable                Cities      { get; set; }
+        private readonly ContactDataRegisterPage    _contactDataRegisterPage;
+
+        private IEnumerable Departments { get; set; }
+        private IEnumerable Cities      { get; set; }
+        private IEnumerable IdTypes     { get; set; }
 
         public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData,
             RegisterPatientUserControl registerPatient)
@@ -23,6 +26,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             _mainWindow      = mainWindow;
             _contextData     = contextData;
             _registerPatient = registerPatient;
+            _contactDataRegisterPage =
+                new ContactDataRegisterPage(_registerPatient, _contextData, this);
             InitializeComponent();
             BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -34,8 +39,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            var nextPage = new ContactDataRegisterPage(_registerPatient, _contextData, this);
-            _registerPatient.NavigateTo(nextPage);
+            _registerPatient.NavigateTo(_contactDataRegisterPage);
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
@@ -50,8 +54,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private async Task PopulateIdTypes()
         {
-            BasicDataDocTypeComboBox.ComboBoxItemsSource =
-                await _contextData.GetIdTypes(App.CancellationToken);
+            IdTypes ??= await _contextData.GetIdTypes(App.CancellationToken);
+            BasicDataDocTypeComboBox.ComboBoxItemsSource = IdTypes;
         }
 
         private async void OnLoadedIdCombo(object sender, RoutedEventArgs e)
@@ -80,7 +84,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         {
             if (GetSelectedDepartment() == null)
             {
-                BasicDataBirthPlaceComboBox.ComboBoxItemsSource = new[] { "Sin conexión con el servidor" };
+                BasicDataBirthPlaceComboBox.ComboBoxItemsSource =
+                    new[] { "Sin conexión con el servidor" };
                 return;
             }
 

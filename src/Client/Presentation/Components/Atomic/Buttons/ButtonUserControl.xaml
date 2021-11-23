@@ -20,5 +20,6 @@
             Cursor="Hand"
             FontFamily="DM Sans"
             VerticalContentAlignment="Center"
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Center"
+            IsEnabled="{Binding ButtonIsEnabled}"/>
 </UserControl>
