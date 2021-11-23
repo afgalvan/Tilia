@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Settings;
 
-namespace Presentation.Controllers.Connection
+namespace Presentation.Services.Connection
 {
     public class ServerConnection
     {

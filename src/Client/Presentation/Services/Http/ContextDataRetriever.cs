@@ -8,7 +8,7 @@ using Presentation.Filters;
 using Presentation.Settings;
 using RestWrapper;
 
-namespace Presentation.Controllers.Http
+namespace Presentation.Services.Http
 {
     public class ContextDataRetriever
     {

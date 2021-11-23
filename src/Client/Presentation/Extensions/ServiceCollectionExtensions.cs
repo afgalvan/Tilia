@@ -2,9 +2,9 @@ using System.Windows.Media;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Controllers.Connection;
+using Presentation.Services.Connection;
+using Presentation.Services.Http;
 using Presentation.Settings;
-using Presentation.Controllers.Http;
 using Presentation.Utils;
 using Presentation.Windows;
 

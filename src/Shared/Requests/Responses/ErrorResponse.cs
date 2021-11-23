@@ -1,14 +1,12 @@
-﻿namespace Requests.Responses
-{
-    public class ErrorResponse<TContent> : Response<TContent>
-    {
-        public ErrorResponse(string message) : base(message)
-        {
-            IsError = true;
-        }
+﻿using System.Collections.Generic;
+using System.Linq;
 
-        public ErrorResponse() : this("")
-        {
-        }
+namespace Requests.Responses
+{
+    public class ErrorResponse
+    {
+        public Dictionary<string, string[]> Body { get; set; }
+
+        public string Message => Body.First().Value[0];
     }
 }
