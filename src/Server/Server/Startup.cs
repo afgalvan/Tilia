@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Application.Extensions;
 using Hangfire;
 using Server.Extensions;
+using Server.Extensions.Jwt;
+using Server.Extensions.Swagger;
 
 namespace Server
 {
@@ -20,11 +21,11 @@ namespace Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR().AddMessagePackProtocol();
-            services.AddApplicationServices();
-            services.ConfigureDbContext(Configuration);
-            services.AddInfrastructureServices();
             services.AddJwtAuth(Configuration);
+            services.AddSignalR().AddMessagePackProtocol();
+            services.ConfigureDbContext(Configuration);
+            services.AddApplicationServices();
+            services.AddInfrastructureServices();
             services.AddControllers();
             services.AddSwagger();
         }
@@ -45,6 +46,7 @@ namespace Server
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

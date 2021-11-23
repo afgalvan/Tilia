@@ -5,11 +5,11 @@ namespace Requests.Auth
     public class AuthenticationResponse
     {
         [Required]
-        public string Bearer { get; set; }
+        public string Token { get; set; }
 
-        public AuthenticationResponse(string bearer)
+        public AuthenticationResponse(string token)
         {
-            Bearer = bearer;
+            Token = token;
         }
 
         public AuthenticationResponse()

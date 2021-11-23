@@ -28,7 +28,6 @@ namespace Infrastructure.Persistence.Locations
         {
             return await _dbContext.Cities
                 .FromSqlInterpolated($"SELECT * FROM \"cities\" WHERE \"department_id\" = {departmentId}")
-                .Include(city => city.Department)
                 .ToListAsync(cancellation);
         }
     }

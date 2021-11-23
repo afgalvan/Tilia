@@ -1,6 +1,7 @@
 ﻿#nullable enable
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Users;
@@ -51,12 +52,16 @@ namespace Infrastructure.Persistence.Users
             throw new NotImplementedException();
         }
 
-        public async Task<User> GetUserByEmailOrUsername(string usernameOrEmail,
+#nullable enable
+        public async Task<User?> GetUserByEmailOrUsername(string usernameOrEmail,
             CancellationToken cancellation)
         {
-            return await _dbContext.Users
-                .FromSqlInterpolated($"SELECT * FROM \"users\" WHERE \"name\" = {usernameOrEmail} OR \"email\" = {usernameOrEmail}")
-                .SingleAsync(cancellation);
+            IQueryable<User>? queryResult = _dbContext.Users
+                .FromSqlInterpolated(
+                    $"SELECT * FROM \"users\" WHERE \"name\" = {usernameOrEmail} OR \"email\" = {usernameOrEmail}"
+                );
+
+            return queryResult.Any() ? await queryResult.SingleAsync(cancellation) : null;
         }
 
         public Task RemoveById(Guid id, CancellationToken cancellation)

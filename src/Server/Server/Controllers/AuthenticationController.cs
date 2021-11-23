@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
 using System.Threading.Tasks;
 using Application.Users.Authenticate;
 using Application.Users.Create;
-using Application.Users.FindById;
-using Application.Users.GetAll;
-using Domain.Users;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +26,8 @@ namespace Server.Controllers
             _mapper   = mapper;
         }
 
-        [HttpPost("signUp")]
+        [Authorize]
+        [HttpPost("sign-up")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createRequest)
@@ -49,7 +47,7 @@ namespace Server.Controllers
             }
         }
 
-        [HttpPost("signIn")]
+        [HttpPost("sign-in")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status201Created)]
         public async Task<IActionResult> Authenticate([FromBody] LoginUserRequest request)
@@ -58,7 +56,7 @@ namespace Server.Controllers
             try
             {
                 string token = await _mediator.Send(authenticateCommand);
-                return Created("", token);
+                return Ok(new AuthenticationResponse(token));
             }
             catch (AuthenticationException e)
             {

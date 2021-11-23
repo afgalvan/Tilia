@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Domain.Users;
+using Requests.Users;
 using SharedLib.Domain.Bus.Query;
 
 namespace Application.Users.GetAll
 {
-    public class GetAllUsersQuery : IQuery<IEnumerable<User>>
+    public class GetAllUsersQuery : IQuery<IEnumerable<UserResponse>>
     {
     }
 }

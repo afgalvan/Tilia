@@ -6,6 +6,7 @@ using Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Requests.Users;
 
 namespace Server.Controllers
 {
@@ -24,7 +25,7 @@ namespace Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            IEnumerable<User> response = await _mediator.Send(new GetAllUsersQuery());
+            IEnumerable<UserResponse> response = await _mediator.Send(new GetAllUsersQuery());
             return Ok(response);
         }
 
