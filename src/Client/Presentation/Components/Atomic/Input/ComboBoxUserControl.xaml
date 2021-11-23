@@ -13,7 +13,7 @@
     <dotNetKitControls:AutoCompleteComboBox x:Name="ComboBoxInput"
                                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                             Foreground="DimGray"
-                                            SelectedIndex="0"
+                                            SelectedIndex="{Binding ComboBoxSelectedIndex}"
                                             ItemsSource="{Binding ComboBoxItemsSource}"
                                             materialDesign:HintAssist.Hint="{Binding ComboBoxHint}"
                                             Width="{Binding ComboBoxWidth}"

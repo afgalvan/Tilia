@@ -102,6 +102,12 @@ namespace Presentation.Components.Atomic.Input
             set => SetValue(ComboBoxSelectedItemProperty, value);
         }
 
+        public string ComboBoxSelectedIndex
+        {
+            get => (string)GetValue(ComboBoxSelectedIndexProperty);
+            set => SetValue(ComboBoxSelectedIndexProperty, value);
+        }
+
         public static readonly DependencyProperty ComboBoxHintProperty =
             DependencyProperty.Register("ComboBoxHint", typeof(string),
                 typeof(ComboBoxUserControl), new PropertyMetadata(null));
@@ -125,5 +131,9 @@ namespace Presentation.Components.Atomic.Input
         public static readonly DependencyProperty ComboBoxSelectedItemProperty =
             DependencyProperty.Register("ComboBoxSelectedItem", typeof(object),
                 typeof(ComboBoxUserControl), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty ComboBoxSelectedIndexProperty =
+            DependencyProperty.Register("ComboBoxSelectedIndex", typeof(string),
+                typeof(ComboBoxUserControl), new PropertyMetadata("15"));
     }
 }

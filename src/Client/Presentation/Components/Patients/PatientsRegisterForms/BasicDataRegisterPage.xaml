@@ -27,6 +27,7 @@
                                    ComboBoxHint="Tipo de documento"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
+                                   ComboBoxSelectedIndex="1"
         />
 
         <input:NumericTextFieldUserControl x:Name="BasicDataDataNumberTextBox"
@@ -43,6 +44,7 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="2"
                                    Grid.Row="0"
+                                   ComboBoxSelectedIndex="0"
         />
 
         <input:TextFieldUserControl x:Name="BasicDataNamesTextBox"
@@ -83,9 +85,10 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="1"
                                    Grid.Row="2"
+                                   ComboBoxSelectedIndex="11"
         />
 
-        <input:ComboBoxUserControl x:Name="BasicDataBirthPlaceTextBox"
+        <input:ComboBoxUserControl x:Name="BasicDataBirthPlaceComboBox"
                                     ComboBoxHint="Ciudad de origen"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"

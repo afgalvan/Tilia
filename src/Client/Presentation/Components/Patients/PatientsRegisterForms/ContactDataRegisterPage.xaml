@@ -29,6 +29,7 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="0"
                                    Grid.Row="0"
+                                   ComboBoxSelectedIndex="11"
         />
 
         <input:ComboBoxUserControl x:Name="ContactDataCityComboBox"
@@ -45,6 +46,7 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="2"
                                    Grid.Row="0"
+                                   ComboBoxSelectedIndex="0"
         />
 
         <input:TextFieldUserControl x:Name="ContactDataAddressTextBox"

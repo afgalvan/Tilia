@@ -37,6 +37,7 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="1"
                                    Grid.Row="0"
+                                   ComboBoxSelectedIndex="0"
         />
 
         <input:TextFieldUserControl x:Name="MedicalDataSportTextBox"

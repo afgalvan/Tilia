@@ -25,7 +25,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             Loaded                                               += OnLoadedPage;
             BasicDataDocTypeComboBox.Loaded                      += OnLoadedIdCombo;
             BasicDataDepartmentComboBox.Loaded                   += OnLoadedDepartmentsCombo;
-            BasicDataBirthPlaceTextBox.Loaded                    += OnLoadedCitiesCombo;
+            BasicDataBirthPlaceComboBox.Loaded                    += OnLoadedCitiesCombo;
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
@@ -80,7 +80,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             }
             string departmentId = GetSelectedDepartment().Id;
             Cities = await _contextData.GetCities(departmentId, App.CancellationToken);
-            BasicDataBirthPlaceTextBox.ComboBoxItemsSource = Cities;
+            BasicDataBirthPlaceComboBox.ComboBoxItemsSource = Cities;
+            BasicDataBirthPlaceComboBox.ComboBoxSelectedIndex = "0";
         }
 
         private async void OnLoadedCitiesCombo(object sender, RoutedEventArgs e)
