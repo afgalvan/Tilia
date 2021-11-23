@@ -1,14 +1,14 @@
+using Api.Extensions;
+using Api.Extensions.Jwt;
+using Api.Extensions.Swagger;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Hangfire;
-using Server.Extensions;
-using Server.Extensions.Jwt;
-using Server.Extensions.Swagger;
 
-namespace Server
+namespace Api
 {
     public class Startup
     {

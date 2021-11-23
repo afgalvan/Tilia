@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using Api.Hubs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Server.Controllers;
-using Server.Hubs;
 
-namespace Server.Extensions.Swagger
+namespace Api.Extensions.Swagger
 {
     public static class SwaggerDefinition
     {

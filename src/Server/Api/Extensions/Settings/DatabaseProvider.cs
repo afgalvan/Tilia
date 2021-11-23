@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 
-namespace Server.Extensions.Settings
+namespace Api.Extensions.Settings
 {
     public static class DatabaseProvider
     {

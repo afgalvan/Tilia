@@ -5,10 +5,11 @@ using Application.Users.GetAll;
 using Domain.Users;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Requests.Users;
 
-namespace Server.Controllers
+namespace Api.Controllers
 {
     [Route("users")]
     [ApiController]
@@ -23,6 +24,7 @@ namespace Server.Controllers
 
         [Authorize]
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<UserResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             IEnumerable<UserResponse> response = await _mediator.Send(new GetAllUsersQuery());
@@ -31,6 +33,7 @@ namespace Server.Controllers
 
         [Authorize]
         [HttpGet("find")]
+        [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> FindById([FromQuery] string id)
         {
             User response = await _mediator.Send(new FindUserByIdQuery(id));

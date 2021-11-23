@@ -6,7 +6,7 @@ using Domain.Locations.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Server.Controllers
+namespace Api.Controllers
 {
     [Route("locations")]
     [ApiController]

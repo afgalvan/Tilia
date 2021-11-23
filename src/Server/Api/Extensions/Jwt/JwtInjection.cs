@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Server.Extensions.Jwt
+namespace Api.Extensions.Jwt
 {
     public static class JwtInjection
     {

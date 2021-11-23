@@ -1,5 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using Api.Controllers;
+using Api.Extensions.Settings;
 using Application.Users.Authenticate;
 using Application.Users.Create;
 using Application.Users.FindById;
@@ -23,11 +25,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Requests.Auth;
 using Requests.Users;
-using Server.Controllers;
-using Server.Extensions.Settings;
 using SharedLib.Persistence;
 
-namespace Server.Extensions
+namespace Api.Extensions
 {
     public static class ServiceCollectionExtensions
     {

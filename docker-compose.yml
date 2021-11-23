@@ -19,7 +19,7 @@ services:
     restart: always
     build:
       context: ../
-      dockerfile: src/OAuthGitHub.Api/Dockerfile
+      dockerfile: src/Server/Api/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
     depends_on:
