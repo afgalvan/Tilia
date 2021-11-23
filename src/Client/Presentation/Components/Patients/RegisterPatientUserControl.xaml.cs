@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using Presentation.Components.Patients.PatientsRegisterForms;
+using Presentation.Controllers.Http;
 using Presentation.Windows;
 
 namespace Presentation.Components.Patients
@@ -13,7 +14,8 @@ namespace Presentation.Components.Patients
         {
             _mainWindow = mainWindow;
             InitializeComponent();
-            FormsContentArea.Content = _mainWindow.GetComponent<BasicDataRegisterPage>();
+            var api = _mainWindow.GetComponent<ContextDataRetriever>();
+            FormsContentArea.Content = new BasicDataRegisterPage(_mainWindow, api, this);
         }
 
         private void GoBackButtonUserControl_Click(object sender, RoutedEventArgs e)

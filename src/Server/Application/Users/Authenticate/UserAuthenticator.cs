@@ -1,6 +1,7 @@
 ﻿using System.Security.Authentication;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Users.GenerateJwt;
 using Domain.Users;
 using Encryptor = BCrypt.Net.BCrypt;
 using Domain.Users.Repositories;
@@ -9,11 +10,13 @@ namespace Application.Users.Authenticate
 {
     public class UserAuthenticator
     {
+        private readonly JwtGenerator    _jwtGenerator;
         private readonly IUsersRepository _usersRepository;
 
-        public UserAuthenticator(IUsersRepository usersRepository)
+        public UserAuthenticator(IUsersRepository usersRepository, JwtGenerator jwtGenerator)
         {
-            _usersRepository = usersRepository;
+            _usersRepository   = usersRepository;
+            _jwtGenerator = jwtGenerator;
         }
 
         public async Task<string> Authenticate(string usernameOrEmail, string password, CancellationToken cancellation)
@@ -29,7 +32,7 @@ namespace Application.Users.Authenticate
                 throw new AuthenticationException("Combinación de usuario y contraseña incorrecta.");
             }
 
-            return user.Id.ToString();
+            return _jwtGenerator.Generate(user);
         }
     }
 }

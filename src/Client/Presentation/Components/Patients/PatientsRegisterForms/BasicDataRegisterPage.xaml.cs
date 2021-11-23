@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,29 +11,31 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class BasicDataRegisterPage : Page
     {
-        private readonly MainWindow           _mainWindow;
-        private readonly ContextDataRetriever _contextData;
-        private          IEnumerable          Departments { get; set; }
-        private          IEnumerable          Cities      { get; set; }
+        private readonly MainWindow                 _mainWindow;
+        private readonly ContextDataRetriever       _contextData;
+        private readonly RegisterPatientUserControl _registerPatient;
+        private          IEnumerable                Departments { get; set; }
+        private          IEnumerable                Cities      { get; set; }
 
-        public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData)
+        public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData,
+            RegisterPatientUserControl registerPatient)
         {
-            _mainWindow  = mainWindow;
-            _contextData = contextData;
+            _mainWindow      = mainWindow;
+            _contextData     = contextData;
+            _registerPatient = registerPatient;
             InitializeComponent();
             BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
             Loaded                                               += OnLoadedPage;
             BasicDataDocTypeComboBox.Loaded                      += OnLoadedIdCombo;
             BasicDataDepartmentComboBox.Loaded                   += OnLoadedDepartmentsCombo;
-            BasicDataBirthPlaceComboBox.Loaded                    += OnLoadedCitiesCombo;
+            BasicDataBirthDayDatePicker.EndDate                  =  DateTime.Now;
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            var registerPatient = new RegisterPatientUserControl(_mainWindow);
-            var nextPage        = new ContactDataRegisterPage(registerPatient, _contextData);
-            registerPatient.NavigateTo(nextPage);
+            var nextPage = new ContactDataRegisterPage(_registerPatient, _contextData, this);
+            _registerPatient.NavigateTo(nextPage);
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
@@ -70,23 +73,21 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private async void OnLoadedDepartmentsCombo(object sender, RoutedEventArgs e)
         {
             await PopulateDepartments();
+            await PopulateCities();
         }
 
         private async Task PopulateCities()
         {
             if (GetSelectedDepartment() == null)
             {
-                await Task.Delay(500);
+                BasicDataBirthPlaceComboBox.ComboBoxItemsSource = new[] { "Sin conexión con el servidor" };
+                return;
             }
+
             string departmentId = GetSelectedDepartment().Id;
             Cities = await _contextData.GetCities(departmentId, App.CancellationToken);
             BasicDataBirthPlaceComboBox.ComboBoxItemsSource = Cities;
             BasicDataBirthPlaceComboBox.ComboBoxSelectedIndex = "0";
-        }
-
-        private async void OnLoadedCitiesCombo(object sender, RoutedEventArgs e)
-        {
-            await PopulateCities();
         }
     }
 }

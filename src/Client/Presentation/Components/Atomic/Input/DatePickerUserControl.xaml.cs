@@ -6,6 +6,16 @@ namespace Presentation.Components.Atomic.Input
 {
     public partial class DatePickerUserControl : UserControl
     {
+        public DateTime StartDate
+        {
+            set => DatePickerInput.DisplayDateStart = value;
+        }
+
+        public DateTime EndDate
+        {
+            set => DatePickerInput.DisplayDateEnd = value;
+        }
+
         public DatePickerUserControl()
         {
             InitializeComponent();
@@ -44,12 +54,15 @@ namespace Presentation.Components.Atomic.Input
         }
 
         public static readonly DependencyProperty DatePickerHintProperty =
-            DependencyProperty.Register("DatePickerHint", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata(""));
+            DependencyProperty.Register("DatePickerHint", typeof(string),
+                typeof(DatePickerUserControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty DatePickerWidthProperty =
-            DependencyProperty.Register("DatePickerWidth", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata("200"));
+            DependencyProperty.Register("DatePickerWidth", typeof(string),
+                typeof(DatePickerUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty DatePickerFontSizeProperty =
-            DependencyProperty.Register("DatePickerFontSize", typeof(string), typeof(DatePickerUserControl), new PropertyMetadata("15"));
+            DependencyProperty.Register("DatePickerFontSize", typeof(string),
+                typeof(DatePickerUserControl), new PropertyMetadata("15"));
     }
 }
