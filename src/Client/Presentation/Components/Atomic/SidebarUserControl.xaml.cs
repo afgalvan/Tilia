@@ -1,3 +1,4 @@
+using System;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;

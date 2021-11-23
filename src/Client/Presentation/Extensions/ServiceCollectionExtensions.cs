@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Controllers.Connection;
 using Presentation.Settings;
-using Presentation.Components.Patients;
-using Presentation.Components.Patients.PatientsRegisterForms;
 using Presentation.Controllers.Http;
 using Presentation.Utils;
 using Presentation.Windows;
@@ -17,12 +15,7 @@ namespace Presentation.Extensions
         public static void AddPresentationServices(this IServiceCollection services)
         {
             services.AddTransient<LoginWindow>();
-            services.AddSingleton<MainWindow>();
-            services.AddTransient<RegisterPatientUserControl>();
-            services.AddTransient<BasicDataRegisterPage>();
-            services.AddTransient<PatientsUserControl>();
-            services.AddTransient<ContactDataRegisterPage>();
-            services.AddTransient<MedicalDataRegisterPage>();
+            services.AddTransient<MainWindow>();
             services.AddSingleton<ColorsUtil>();
             services.AddScoped<BrushConverter>();
         }

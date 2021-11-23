@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Presentation.Components.Patients.PatientsRegisterForms"
       xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
       xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
       mc:Ignorable="d"
@@ -24,52 +23,71 @@
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
-        <input:TextFieldUserControl x:Name="ContactDataAddressTextBox"
-                                    TextFieldFloatingHint="Direccion"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
+        <input:ComboBoxUserControl x:Name="ContactDataDepartmentComboBox"
+                                   ComboBoxHint="Departamento"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   ComboBoxSelectedIndex="11"
+        />
 
         <input:ComboBoxUserControl x:Name="ContactDataCityComboBox"
                                    ComboBoxHint="Ciudad"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    Grid.Column="1"
-                                   Grid.Row="0"/>
+                                   Grid.Row="0"
+        />
 
         <input:ComboBoxUserControl x:Name="ContactDataStratumComboBox"
                                    ComboBoxHint="Estrato"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    Grid.Column="2"
-                                   Grid.Row="0"/>
+                                   Grid.Row="0"
+                                   ComboBoxSelectedIndex="0"
+        />
+
+        <input:TextFieldUserControl x:Name="ContactDataAddressTextBox"
+                                    TextFieldFloatingHint="Direccion"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+        />
 
         <input:TextFieldUserControl x:Name="ContactDataLocationTextBox"
                                     TextFieldFloatingHint="Localidad"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Grid.Column="0"
-                                    Grid.Row="1"/>
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+        />
 
         <input:TextFieldUserControl x:Name="ContactDataMotherNameTextBox"
                                     TextFieldFloatingHint="Nombre de la madre"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Grid.Column="1"
-                                    Grid.Row="1"/>
+                                    Grid.Column="2"
+                                    Grid.Row="1"
+        />
 
         <input:TextFieldUserControl x:Name="ContactDataFatherNameTextBox"
                                     TextFieldFloatingHint="Nombre del padre"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Grid.Column="2"
-                                    Grid.Row="1"/>
+                                    Grid.Column="0"
+                                    Grid.Row="2"
+        />
 
-        <input:TextFieldUserControl x:Name="ContactDataPhoneNumberTextBox"
+        <input:NumericTextFieldUserControl x:Name="ContactDataPhoneNumberTextBox"
                                     TextFieldFloatingHint="Celular"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="1"
-                                    Grid.Row="2"/>
+                                    Grid.Row="2"
+        />
 
         <buttons:ButtonUserControl x:Name="GoToNextPageButton"
                                    ButtonContent="Siguiente"
@@ -78,7 +96,8 @@
                                    HorizontalAlignment="Center"
                                    Grid.Column="2"
                                    Grid.Row="3"
-                                   Click="GoToNextPageButton_Click"/>
+                                   Click="GoToNextPageButton_Click"
+        />
 
         <buttons:ButtonUserControl x:Name="GoBackToPageButton"
                                    ButtonContent="Volver"
@@ -87,6 +106,7 @@
                                    HorizontalAlignment="Center"
                                    Grid.Column="0"
                                    Grid.Row="3"
-                                   Click="GoBackToPageButton_Click"/>
+                                   Click="GoBackToPageButton_Click"
+        />
     </Grid>
 </Page>

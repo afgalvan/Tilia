@@ -15,7 +15,7 @@ namespace Application.Users.Authenticate
 
         public async Task<string> Handle(AuthenticateCommand request, CancellationToken cancellationToken)
         {
-            return await _authenticator.Authenticate(request.Username, request.Password, cancellationToken);
+            return await _authenticator.Authenticate(request.UsernameOrEmail, request.Password, cancellationToken);
         }
     }
 }

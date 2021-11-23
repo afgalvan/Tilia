@@ -4,12 +4,12 @@ namespace Application.Users.Authenticate
 {
     public class AuthenticateCommand : ICommand<string>
     {
-        public string Username { get; set; }
+        public string UsernameOrEmail { get; set; }
         public string Password { get; set; }
 
-        public AuthenticateCommand(string username, string password)
+        public AuthenticateCommand(string usernameOrEmail, string password)
         {
-            Username = username;
+            UsernameOrEmail = usernameOrEmail;
             Password = password;
         }
     }

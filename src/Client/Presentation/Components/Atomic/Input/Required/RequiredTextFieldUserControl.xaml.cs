@@ -2,18 +2,18 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Presentation.Components.Atomic.Input
+namespace Presentation.Components.Atomic.Input.Required
 {
-    public partial class TextFieldUserControl : UserControl
+    public partial class RequiredTextFieldUserControl : UserControl
     {
-        public TextFieldUserControl()
+        public RequiredTextFieldUserControl()
         {
             InitializeComponent();
         }
 
         public string Text
         {
-            get => TextField.Text;
+            get => RequiredTextField.Text;
             set
             {
                 if (value == null)
@@ -21,7 +21,7 @@ namespace Presentation.Components.Atomic.Input
                     throw new ArgumentNullException(nameof(value));
                 }
 
-                TextField.Text = Text;
+                RequiredTextField.Text = Text;
             }
         }
 
@@ -44,12 +44,12 @@ namespace Presentation.Components.Atomic.Input
         }
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
-            DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata(""));
+            DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty TextFieldWidthProperty =
-            DependencyProperty.Register("TextFieldWidth", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata("200"));
+            DependencyProperty.Register("TextFieldWidth", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty TextFieldFontSizeProperty =
-            DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(TextFieldUserControl), new PropertyMetadata("15"));
+            DependencyProperty.Register("TextFieldFontSize", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata("15"));
     }
 }

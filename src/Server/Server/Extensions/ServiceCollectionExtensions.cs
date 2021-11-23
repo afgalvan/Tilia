@@ -3,12 +3,14 @@ using System.Reflection;
 using System.Text;
 using Application.Users.Authenticate;
 using Application.Users.Create;
+using Domain.Locations.Repositories;
 using Domain.People.Repositories;
 using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
 using Hangfire.Storage.SQLite;
 using Infrastructure.Persistence.IdTypes;
+using Infrastructure.Persistence.Locations;
 using Infrastructure.Persistence.Users;
 using Mapster;
 using MapsterMapper;
@@ -21,6 +23,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Requests.Auth;
 using Requests.Users;
+using Server.Controllers;
 using Server.Extensions.Settings;
 using Server.Hubs;
 using SharedLib.Persistence;
@@ -47,7 +50,8 @@ namespace Server.Extensions
             services.AddScoped<IMapper, ServiceMapper>();
             services.AddScoped<IUsersRepository, OracleUsersRepository>();
             services.AddScoped<IIdTypesRepository, OracleIdTypesRepository>();
-            services.AddScoped<ILogger<UserHub>, Logger<UserHub>>();
+            services.AddScoped<ILocationsRepository, OracleLocationsRepository>();
+            services.AddScoped<ILogger<AuthenticationController>, Logger<AuthenticationController>>();
         }
 
         private static void ConfigureHangFire(this IServiceCollection services)
@@ -102,7 +106,7 @@ namespace Server.Extensions
                 options.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "Tilia", Version = "v1" });
                 options.DocumentFilter<SignalRSwaggerGen.SignalRSwaggerGen>(new List<Assembly>
-                    { typeof(UserHub).Assembly, typeof(AppointmentHub).Assembly });
+                    { typeof(AuthenticationController).Assembly, typeof(AppointmentHub).Assembly });
             });
         }
     }

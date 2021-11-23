@@ -19,5 +19,10 @@ namespace Domain.Locations
         {
             // For EF
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -1,39 +1,54 @@
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using Presentation.Controllers.Http;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class ContactDataRegisterPage : Page
     {
-        private readonly RegisterPatientUserControl _registerPatientUserControl;
+        private readonly MedicalDataRegisterPage    _nextPage;
+        private readonly RegisterPatientUserControl _registerPatient;
+        private readonly ContextDataRetriever       _contextData;
+        private readonly BasicDataRegisterPage      _lastPage;
 
-        // private readonly BasicDataRegisterPage _basicDataRegisterPage;
-        private readonly MedicalDataRegisterPage _nextPage;
-
-        public ContactDataRegisterPage(RegisterPatientUserControl registerPatientUserControl
-            // BasicDataRegisterPage basicDataRegisterPage)
-        )
+        public ContactDataRegisterPage(RegisterPatientUserControl registerPatient,
+            ContextDataRetriever contextData, BasicDataRegisterPage lastPage)
         {
-            _nextPage = new MedicalDataRegisterPage(registerPatientUserControl, this);
-            // _basicDataRegisterPage = basicDataRegisterPage;
-            _registerPatientUserControl = registerPatientUserControl;
+            _registerPatient = registerPatient;
+            _contextData     = contextData;
+            _lastPage        = lastPage;
+            _nextPage        = new MedicalDataRegisterPage(registerPatient, this);
             InitializeComponent();
             PopulateFormOptions();
+            ContactDataDepartmentComboBox.Loaded += OnLoadedDepartmentsCombo;
         }
 
-        private void GoBackToPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void GoBackToPageButton_Click(object sender, RoutedEventArgs e)
         {
-            // _registerPatientUserControl.NavigateTo(_basicDataRegisterPage);
+            _registerPatient.NavigateTo(_lastPage);
         }
 
-        private void GoToNextPageButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _registerPatientUserControl.NavigateTo(_nextPage);
+            _registerPatient.NavigateTo(_nextPage);
         }
 
         private void PopulateFormOptions()
         {
             ContactDataStratumComboBox.ComboBoxItemsSource =
                 new[] { "1", "2", "3", "4", "5", "6" };
+        }
+
+        private async Task PopulateDepartments()
+        {
+            ContactDataDepartmentComboBox.ComboBoxItemsSource =
+                await _contextData.GetDepartments(App.CancellationToken);
+        }
+
+        private async void OnLoadedDepartmentsCombo(object sender, RoutedEventArgs e)
+        {
+            await PopulateDepartments();
         }
     }
 }

@@ -1,29 +1,27 @@
-using System;
+﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
-namespace Presentation.Components.Atomic.Input
+namespace Presentation.Components.Atomic.Input.Required
 {
-    public partial class DatePickerUserControl : UserControl
+    public partial class RequiredDatePickerUserControl : UserControl
     {
-        public DateTime StartDate
-        {
-            set => DatePickerInput.DisplayDateStart = value;
-        }
-
-        public DateTime EndDate
-        {
-            set => DatePickerInput.DisplayDateEnd = value;
-        }
-
-        public DatePickerUserControl()
+        public RequiredDatePickerUserControl()
         {
             InitializeComponent();
         }
 
+        private void TextField_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         public string Text
         {
-            get => DatePickerInput.Text;
+            get => RequiredDatePickerInput.Text;
             set
             {
                 if (value == null)
@@ -31,7 +29,7 @@ namespace Presentation.Components.Atomic.Input
                     throw new ArgumentNullException(nameof(value));
                 }
 
-                DatePickerInput.Text = Text;
+                RequiredDatePickerInput.Text = Text;
             }
         }
 
@@ -54,15 +52,12 @@ namespace Presentation.Components.Atomic.Input
         }
 
         public static readonly DependencyProperty DatePickerHintProperty =
-            DependencyProperty.Register("DatePickerHint", typeof(string),
-                typeof(DatePickerUserControl), new PropertyMetadata(""));
+            DependencyProperty.Register("DatePickerHint", typeof(string), typeof(RequiredDatePickerUserControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty DatePickerWidthProperty =
-            DependencyProperty.Register("DatePickerWidth", typeof(string),
-                typeof(DatePickerUserControl), new PropertyMetadata("200"));
+            DependencyProperty.Register("DatePickerWidth", typeof(string), typeof(RequiredDatePickerUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty DatePickerFontSizeProperty =
-            DependencyProperty.Register("DatePickerFontSize", typeof(string),
-                typeof(DatePickerUserControl), new PropertyMetadata("15"));
+            DependencyProperty.Register("DatePickerFontSize", typeof(string), typeof(RequiredDatePickerUserControl), new PropertyMetadata("15"));
     }
 }

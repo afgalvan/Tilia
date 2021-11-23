@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetKit.Wpf.AutoCompleteComboBox" Version="1.4.0" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.11" />
@@ -34,6 +35,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.1" />
+    <PackageReference Include="MrAdvice" Version="2.9.2" />
     <PackageReference Include="RestWrapper" Version="2.2.1.14" />
   </ItemGroup>
 
@@ -80,6 +82,9 @@
     <Compile Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\Atomic\Input\Required\RequiredTextFieldUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -93,6 +98,9 @@
     <Page Remove="Components\MedicalFiles\**" />
     <Page Remove="Components\Users\**" />
     <Page Update="Components\Atomic\Buttons\ButtonIconUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\Atomic\Input\Required\RequiredTextFieldUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

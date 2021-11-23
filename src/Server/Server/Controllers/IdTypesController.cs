@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.People;
@@ -23,7 +22,7 @@ namespace Server.Controllers
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(typeof(IEnumerable<IdType>), StatusCodes.Status200OK)]
-        public async Task<ActionResult> GetAllTypes(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAllTypes(CancellationToken cancellationToken)
         {
             return Ok(await _repository.GetAll(cancellationToken));
         }

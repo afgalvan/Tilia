@@ -3,10 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Presentation.Components.Patients.PatientsRegisterForms"
       xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+      xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
       mc:Ignorable="d"
       d:DesignHeight="384" d:DesignWidth="833"
       Title="BasicDataRegisterPage">
@@ -24,60 +23,79 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
- 
+
         <input:ComboBoxUserControl x:Name="BasicDataDocTypeComboBox"
                                    ComboBoxHint="Tipo de documento"
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center"
+                                   ComboBoxSelectedIndex="1"
+        />
 
-        <input:TextFieldUserControl x:Name="BasicDataDataNumberTextBox"
+        <required:RequiredNumericTextFieldUserControl x:Name="BasicDataDataNumberTextBox"
                                     TextFieldFloatingHint="Numero de documento"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="1"
-                                    Grid.Row="0"/>
+                                    Grid.Row="0"
+        />
 
         <input:ComboBoxUserControl x:Name="BasicDataGenreComboBox"
                                    ComboBoxHint="Genero"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    Grid.Column="2"
-                                   Grid.Row="0"/>
+                                   Grid.Row="0"
+                                   ComboBoxSelectedIndex="0"
+        />
 
-        <input:TextFieldUserControl x:Name="BasicDataNamesTextBox"
+        <required:RequiredTextFieldUserControl x:Name="BasicDataNamesTextBox"
                                     TextFieldFloatingHint="Nombres"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="0"
-                                    Grid.Row="1"/>
+                                    Grid.Row="1"
+        />
 
-        <input:TextFieldUserControl x:Name="BasicDataLastNamesTextBox"
+        <required:RequiredTextFieldUserControl x:Name="BasicDataLastNamesTextBox"
                                     TextFieldFloatingHint="Apellidos"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="1"
-                                    Grid.Row="1"/>
+                                    Grid.Row="1"
+        />
 
-        <input:TextFieldUserControl x:Name="BasicDataChargeTextBox"
+        <required:RequiredTextFieldUserControl x:Name="BasicDataChargeTextBox"
                                     TextFieldFloatingHint="Ocupacion"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="2"
-                                    Grid.Row="1"/>
+                                    Grid.Row="1"
+        />
 
         <input:DatePickerUserControl x:Name="BasicDataBirthDayDatePicker"
                                      DatePickerHint="Fecha de nacimiento"
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"
                                      Grid.Column="0"
-                                     Grid.Row="2"/>
+                                     Grid.Row="2"
+        />
 
-        <input:TextFieldUserControl x:Name="BasicDataBirthPlaceTextBox"
-                                    TextFieldFloatingHint="Lugar de nacimiento"
+        <input:ComboBoxUserControl x:Name="BasicDataDepartmentComboBox"
+                                   ComboBoxHint="Departamento de origen"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="2"
+                                   ComboBoxSelectedIndex="11"
+        />
+
+        <input:ComboBoxUserControl x:Name="BasicDataBirthPlaceComboBox"
+                                    ComboBoxHint="Ciudad de origen"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Grid.Column="1"
-                                    Grid.Row="2"/>
+                                    Grid.Column="2"
+                                    Grid.Row="2"
+        />
 
         <buttons:ButtonUserControl x:Name="GoToNextPageButton"
                                    ButtonContent="Siguiente"
@@ -86,6 +104,7 @@
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Grid.Column="1"
-                                   Grid.Row="3"/>
+                                   Grid.Row="3"
+        />
     </Grid>
 </Page>
