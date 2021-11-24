@@ -1,23 +1,61 @@
 using System;
+using System.Security.Authentication;
+using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
+using MahApps.Metro.Controls.Dialogs;
+using Presentation.Services.Http;
+using Presentation.Utils;
 
 namespace Presentation.Windows
 {
     public partial class LoginWindow
     {
-        private readonly IServiceProvider _serviceProvider;
+        private readonly MainWindow            _mainWindow;
+        private readonly AuthenticationService _authentication;
 
-        public LoginWindow(IServiceProvider serviceProvider)
+        public LoginWindow(MainWindow mainWindow, AuthenticationService authentication)
         {
             InitializeComponent();
-            _serviceProvider = serviceProvider;
+            _mainWindow     = mainWindow;
+            _authentication = authentication;
         }
 
-        private void LogInButton_Click(object sender, EventArgs e)
+        private async void LogInButton_Click(object sender, EventArgs e)
         {
-            var window = _serviceProvider.GetRequiredService<MainWindow>();
-            window.Show();
+            if (ValidationControl.AreAllFieldsCompleted(UsernameField.Text,
+                GetPasswordField()))
+            {
+                await LoginUser();
+                return;
+            }
+
+            await this.ShowMessageAsync("Error al iniciar sesión", "Ingrese todos los datos");
+        }
+
+        private async Task LoginUser()
+        {
+            try
+            {
+                /*await _authentication.SendLoginRequest(UsernameField.Text, GetPasswordField(),
+                    App.CancellationToken);*/
+                OpenMainWindow();
+            }
+            catch (AuthenticationException a)
+            {
+                await this.ShowMessageAsync("Error al iniciar sesión", a.Message);
+            }
+        }
+
+        private string GetPasswordField()
+        {
+            return PasswordField.IsVisible
+                ? PasswordField.Password
+                : UnmaskedPasswordField.Text;
+        }
+
+        private void OpenMainWindow()
+        {
+            _mainWindow.Show();
             Hide();
         }
 

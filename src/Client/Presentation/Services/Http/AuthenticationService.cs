@@ -17,10 +17,11 @@ namespace Presentation.Services.Http
         }
 
         public async Task<AuthenticationResponse> SendLoginRequest(
-            LoginUserRequest loginRequest,
+            string usernameOrEmail, string password,
             CancellationToken cancellation)
         {
-            IRestRequest request = new RestRequest("/auth/users").AddJsonBody(loginRequest);
+            var          loginRequest = new LoginUserRequest(usernameOrEmail, password);
+            IRestRequest request = new RestRequest("/auth/sign-in").AddJsonBody(loginRequest);
             try
             {
                 return await _restComposer.Post<AuthenticationResponse>(request, cancellation);

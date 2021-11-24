@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Controls;
+using Domain.Users;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components.Atomic;
 using Presentation.Components.Dashboard;
@@ -9,6 +10,8 @@ namespace Presentation.Windows
     public partial class MainWindow
     {
         private readonly IServiceProvider _provider;
+
+        public User LoggedUser { get; set; }
 
         public MainWindow(IServiceProvider provider)
         {
@@ -37,6 +40,7 @@ namespace Presentation.Windows
 
         public void LogoutSession()
         {
+            LoggedUser = null;
             _provider.GetRequiredService<LoginWindow>().Show();
             Hide();
         }
