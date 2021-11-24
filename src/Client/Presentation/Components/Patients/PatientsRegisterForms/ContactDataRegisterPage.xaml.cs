@@ -33,19 +33,19 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private void GoBackToPageButton_Click(object sender, RoutedEventArgs e)
         {
             _registerPatient.NavigateTo(_lastPage);
-            _registerPatient.BasicDataItem.CurrentFormItemColors();
+            _registerPatient.ContactDataItemButton.DefaultFormItemColors();
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
             _registerPatient.NavigateTo(_nextPage);
-            _registerPatient.ContactDataItem.CompletedFormItemColors();
+            _registerPatient.ContactDataItemButton.CompletedFormItemColors();
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
         {
             PopulateSyncOptions();
-            _registerPatient.ContactDataItem.CurrentFormItemColors();
+            _registerPatient.ContactDataItemButton.CurrentFormItemColors();
         }
 
         private void PopulateSyncOptions()

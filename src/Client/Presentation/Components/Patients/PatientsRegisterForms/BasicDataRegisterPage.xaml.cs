@@ -40,13 +40,13 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
             _registerPatient.NavigateTo(_contactDataRegisterPage);
-            _registerPatient.BasicDataItem.CompletedFormItemColors();
+            _registerPatient.BasicDataItemButton.CompletedFormItemColors();
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
         {
             PopulateSyncOptions();
-            _registerPatient.BasicDataItem.CurrentFormItemColors();
+            _registerPatient.BasicDataItemButton.CurrentFormItemColors();
         }
 
         private void PopulateSyncOptions()

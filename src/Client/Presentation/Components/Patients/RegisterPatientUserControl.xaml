@@ -40,25 +40,44 @@
                       Margin="20,0,20,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="2.5*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                        <ColumnDefinition Width="2.1*"/>
+                        <ColumnDefinition Width="1.2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <atomic:ProgressBarItemUserControl x:Name="BasicDataItem"
-                                                       ProgressBarItemText="Informacion básica" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <buttons:ProgressBarButtonUserControl x:Name="BasicDataItemButton"
+                                                          ButtonContent="Informacion básica"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="200"
+                                                          Click="BasicDataItemButton_OnClick"
+                    />
 
-                    <atomic:ProgressBarItemUserControl x:Name="ContactDataItem"
-                                                       ProgressBarItemText="Informacion de contacto"
-                                                       Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <buttons:ProgressBarButtonUserControl x:Name="ContactDataItemButton"
+                                                          ButtonContent="Informacion de contacto"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="240"
+                                                          Grid.Column="1"
+                                                          Click="ContactDataItemButton_OnClick"
+                    />
 
-                    <atomic:ProgressBarItemUserControl x:Name="MedicalDataItem"
-                                                       ProgressBarItemText="Informacion medica"
-                                                       Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <buttons:ProgressBarButtonUserControl x:Name="MedicalDataItemButton"
+                                                          ButtonContent="Informacion medica"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="210"
+                                                          Grid.Column="2"
+                                                          Click="MedicalDataItemButton_OnClick"
+                    />
 
-                    <atomic:ProgressBarItemUserControl x:Name="FinishFormItem"
-                                                       ProgressBarItemText="Finalizar"
-                                                       Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <buttons:ProgressBarButtonUserControl x:Name="FinishFormItemButton"
+                                                          ButtonContent="Finalizar"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="120"
+                                                          Grid.Column="3"
+                    />
                 </Grid>
 
                 <Separator Grid.Row="1"
