@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Requests.Auth;
-using RestWrapper;
+using Requests.Responses;
+using RestSharp;
 
 namespace Api.Test
 {
@@ -25,16 +24,20 @@ namespace Api.Test
                 Password        = "secret"
             };
 
-            const string host = "https://e44a-186-169-44-106.ngrok.io";
-            var request = new RestRequest($"{host}/auth/sign-in", HttpMethod.POST,
-                "application/json");
-            RestResponse response =
-                await request.SendAsync(JsonConvert.SerializeObject(loginRequest));
-            if (response.StatusCode == 200)
+            const string host   = "https://e44a-186-169-44-106.ngrok.io";
+            var          client = new RestClient(host);
+            var request = new RestRequest("/auth/sign-in")
+                .AddJsonBody(loginRequest);
+
+            var response = await client.ExecuteAsync<AuthenticationResponse>(request, Method.POST);
+            if (!response.IsSuccessful)
             {
-                string token = response.DataFromJson<AuthenticationResponse>().Token;
-                Console.WriteLine($"Token: {token}");
+                Console.WriteLine(JsonConvert.DeserializeObject<ErrorResponse>(response.Content).Message);
             }
+
+            var client2  = new RestClient($"https://raw.githubusercontent.com/afgalvan/Tilia.Tunnel/main/tunnels.json");
+            var request2 = new RestRequest(Method.GET);
+            Console.WriteLine(client2.Get(request2).Content);
         }
     }
 }

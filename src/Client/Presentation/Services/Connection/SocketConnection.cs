@@ -4,12 +4,12 @@ using Presentation.Settings;
 
 namespace Presentation.Services.Connection
 {
-    public class ServerConnection
+    public class SocketConnection
     {
         private readonly ConnectionConfig     _config;
         private readonly HubConnectionBuilder _builder;
 
-        public ServerConnection(ConnectionConfig config, HubConnectionBuilder builder)
+        public SocketConnection(ConnectionConfig config, HubConnectionBuilder builder)
         {
             _config  = config;
             _builder = builder;

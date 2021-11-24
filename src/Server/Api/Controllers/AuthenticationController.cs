@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Requests.Auth;
+using Requests.Responses;
 using Requests.Users;
 
 namespace Api.Controllers
@@ -28,7 +29,7 @@ namespace Api.Controllers
 
         [Authorize]
         [HttpPost("sign-up")]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createRequest)
         {
@@ -42,13 +43,14 @@ namespace Api.Controllers
             }
             catch (DbUpdateException)
             {
-                ModelState.AddModelError("Usuario repetido", "Nombre de usuario o email repetido");
-                return BadRequest(ModelState);
+                return BadRequest(new ErrorResponse
+                    { Message = "Nombre de usuario o email repetido" }
+                );
             }
         }
 
         [HttpPost("sign-in")]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status201Created)]
         public async Task<IActionResult> Authenticate([FromBody] LoginUserRequest request)
         {
@@ -60,8 +62,7 @@ namespace Api.Controllers
             }
             catch (AuthenticationException e)
             {
-                ModelState.AddModelError("Error al iniciar sesión", e.Message);
-                return BadRequest(ModelState);
+                return BadRequest(new { e.Message });
             }
         }
     }

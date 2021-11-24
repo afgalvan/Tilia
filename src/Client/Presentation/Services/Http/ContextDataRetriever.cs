@@ -5,41 +5,39 @@ using System.Threading.Tasks;
 using Domain.Locations;
 using Domain.People;
 using Presentation.Filters;
-using Presentation.Settings;
-using RestWrapper;
+using Presentation.Services.Http.Utils;
 
 namespace Presentation.Services.Http
 {
     public class ContextDataRetriever
     {
-        private readonly ConnectionConfig _config;
+        private readonly RestComposer _restComposer;
 
-        public ContextDataRetriever(ConnectionConfig config)
+        public ContextDataRetriever(RestComposer restComposer)
         {
-            _config = config;
+            _restComposer = restComposer;
         }
 
-        [HandleUnconnected]
+        [HandleServerDown]
         public async Task<IEnumerable> GetIdTypes(CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/id-types")
-                .SendAsync(cancellation)).DataFromJson<IEnumerable<IdType>>();
+            const string endpoint = "/id-types";
+            return await _restComposer.Get<IEnumerable<IdType>>(endpoint, cancellation);
         }
 
-        [HandleUnconnected]
+        [HandleServerDown]
         public async Task<IEnumerable> GetDepartments(CancellationToken cancellation)
         {
-            return (await new RestRequest($"{_config.Host}/locations/departments")
-                .SendAsync(cancellation)).DataFromJson<IEnumerable<Department>>();
+            const string endpoint = "/locations/departments";
+            return await _restComposer.Get<IEnumerable<Department>>(endpoint, cancellation);
         }
 
-        [HandleUnconnected]
+        [HandleServerDown]
         public async Task<IEnumerable> GetCities(string departmentId,
             CancellationToken cancellation)
         {
-            return (await new RestRequest(
-                    $"{_config.Host}/locations/cities?departmentId={departmentId}")
-                .SendAsync(cancellation)).DataFromJson<IEnumerable<City>>();
+            var endpoint = $"/locations/cities?departmentId={departmentId}";
+            return await _restComposer.Get<IEnumerable<City>>(endpoint, cancellation);
         }
     }
 }

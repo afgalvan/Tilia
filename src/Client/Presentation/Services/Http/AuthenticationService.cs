@@ -1,46 +1,34 @@
-﻿using System.Net;
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Presentation.Settings;
+using Presentation.Services.Http.Utils;
 using Requests.Auth;
-using Requests.Responses;
-using RestWrapper;
+using RestSharp;
 
 namespace Presentation.Services.Http
 {
     public class AuthenticationService
     {
-        private readonly ConnectionConfig _config;
-        private const    string           ContentType = "application/json";
+        private readonly RestComposer _restComposer;
 
-        public AuthenticationService(ConnectionConfig config)
+        public AuthenticationService(RestComposer restComposer)
         {
-            _config = config;
+            _restComposer = restComposer;
         }
 
-        public async Task<string> LoginUser(LoginUserRequest loginRequest,
+        public async Task<AuthenticationResponse> SendLoginRequest(
+            LoginUserRequest loginRequest,
             CancellationToken cancellation)
         {
-            RestResponse response = await SendLoginRequest(loginRequest, cancellation);
-
-            if (response.StatusCode == (int)HttpStatusCode.OK)
+            IRestRequest request = new RestRequest("/auth/users").AddJsonBody(loginRequest);
+            try
             {
-                return response.DataFromJson<AuthenticationResponse>().Token;
+                return await _restComposer.Post<AuthenticationResponse>(request, cancellation);
             }
-
-            string message = response.DataFromJson<ErrorResponse>().Message;
-            throw new AuthenticationException(message);
-        }
-
-        private async Task<RestResponse> SendLoginRequest(LoginUserRequest loginRequest,
-            CancellationToken cancellation)
-        {
-            var    endpoint = $"{_config.Host}/auth/sign-in";
-            var    request  = new RestRequest(endpoint, HttpMethod.POST, ContentType);
-            string body     = JsonConvert.SerializeObject(loginRequest);
-            return await request.SendAsync(body, cancellation);
+            catch (HttpResponseException e)
+            {
+                throw new AuthenticationException(e.Message);
+            }
         }
     }
 }
