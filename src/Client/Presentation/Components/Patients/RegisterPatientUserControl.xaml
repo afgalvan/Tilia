@@ -6,10 +6,9 @@
              xmlns:local="clr-namespace:Presentation.Components.Patients"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+             xmlns:atomic="clr-namespace:Presentation.Components.Atomic"
              mc:Ignorable="d" 
              d:DesignHeight="546" d:DesignWidth="873" >
-
-
 
     <materialDesign:Card>
         <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
@@ -30,6 +29,42 @@
                            Grid.Row="0"
                            Grid.ColumnSpan="2"
                            Text="Registro de paciente"/>
+
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Top"
+                           Margin="20,0,20,0"
+                           Height="3"/>
+
+                <Grid x:Name="ProgressBarGrid"
+                      Grid.Row="1"
+                      Margin="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <atomic:ProgressBarItemUserControl x:Name="BasicDataItem"
+                                                       ProgressBarItemText="Informacion básica" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <atomic:ProgressBarItemUserControl x:Name="ContactDataItem"
+                                                       ProgressBarItemText="Informacion de contacto"
+                                                       Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <atomic:ProgressBarItemUserControl x:Name="MedicalDataItem"
+                                                       ProgressBarItemText="Informacion medica"
+                                                       Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <atomic:ProgressBarItemUserControl x:Name="FinishFormItem"
+                                                       ProgressBarItemText="Finalizar"
+                                                       Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Bottom"
+                           Margin="20,0,20,0"
+                           Height="3"/>
 
                 <Frame x:Name="FormsContentArea"
                     Grid.Row="2"
