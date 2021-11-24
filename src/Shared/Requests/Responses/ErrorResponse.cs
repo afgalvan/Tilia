@@ -1,14 +1,7 @@
 ﻿namespace Requests.Responses
 {
-    public class ErrorResponse<TContent> : Response<TContent>
+    public class ErrorResponse
     {
-        public ErrorResponse(string message) : base(message)
-        {
-            IsError = true;
-        }
-
-        public ErrorResponse() : this("")
-        {
-        }
+        public string Message { get; set; }
     }
 }

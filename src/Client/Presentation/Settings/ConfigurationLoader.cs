@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using RestWrapper;
+using Presentation.Services.Http.Utils;
 
 namespace Presentation.Settings
 {
@@ -11,8 +11,6 @@ namespace Presentation.Settings
                 .Build();
 
         public static ConnectionConfig Tunnel(IConfiguration configuration) =>
-            new RestRequest(configuration["Tunnel:ConfigUrl"])
-                .Send()
-                .DataFromJson<ConnectionConfig>();
+            RestComposer.FetchConnectionConfig(configuration["Tunnel:ConfigUrl"]);
     }
 }
