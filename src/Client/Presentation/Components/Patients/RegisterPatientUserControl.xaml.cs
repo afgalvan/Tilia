@@ -41,14 +41,29 @@ namespace Presentation.Components.Patients
             MedicalDataItemButton.DefaultFormItemColors();
         }
 
+        private bool IsPageInFrame(Page page)
+        {
+            return Equals(FormsContentArea.Content, page);
+        }
+
         private void BasicDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (IsPageInFrame(_basicDataRegister))
+            {
+                return;
+            }
+
             SetDefaultItemColors();
             NavigateTo(_basicDataRegister);
         }
 
         private void ContactDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (Equals(FormsContentArea.Content, _contactDataRegister))
+            {
+                return;
+            }
+
             SetDefaultItemColors();
             BasicDataItemButton.CompletedFormItemColors();
             NavigateTo(_contactDataRegister);
@@ -56,6 +71,11 @@ namespace Presentation.Components.Patients
 
         private void MedicalDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (Equals(FormsContentArea.Content, _medicalDataRegister))
+            {
+                return;
+            }
+
             BasicDataItemButton.CompletedFormItemColors();
             ContactDataItemButton.CompletedFormItemColors();
             NavigateTo(_medicalDataRegister);
