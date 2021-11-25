@@ -4,21 +4,18 @@ using Domain.Users;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components.Atomic;
 using Presentation.Components.Dashboard;
-using Presentation.Services.Http;
 
 namespace Presentation.Windows
 {
     public partial class MainWindow
     {
         private readonly IServiceProvider _provider;
-        private readonly UsersService     _usersService;
 
         public User LoggedUser { get; set; }
 
-        public MainWindow(IServiceProvider provider, UsersService usersService)
+        public MainWindow(IServiceProvider provider)
         {
             _provider     = provider;
-            _usersService = usersService;
             InitializeComponent();
             MainContentArea.Content    = new DashboardUserControl();
             HeaderContentArea.Content  = new HeaderUserControl(this);
