@@ -16,7 +16,7 @@ namespace Presentation.Services.Http.Connection
 
         public IRestComposer WithAuth(string token)
         {
-            _restFetcher.Authenticator = new JwtAuthenticator(token);
+            _restFetcher.SetAuthenticator(new JwtAuthenticator(token));
             return this;
         }
 

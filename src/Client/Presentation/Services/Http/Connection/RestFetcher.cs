@@ -17,9 +17,9 @@ namespace Presentation.Services.Http.Connection
             _client = client;
         }
 
-        public IAuthenticator Authenticator
+        public void SetAuthenticator(IAuthenticator authenticator)
         {
-            set => _client.Authenticator = value;
+            _client.Authenticator = authenticator;
         }
 
         public async Task<TExpectedResponse> Fetch<TExpectedResponse>(IRestRequest request,
@@ -29,9 +29,15 @@ namespace Presentation.Services.Http.Connection
                 .ExecuteAsync<TExpectedResponse>(request, method, cancellation);
             RestoreToken();
 
-            if (response.IsSuccessful) return response.Data;
+            if (response.IsSuccessful)
+            {
+                return response.Data;
+            }
             if (response.StatusCode == 0)
+            {
                 throw new ServerDownException("Sin conexión con el servidor.");
+            }
+            
             var error = JsonConvert.DeserializeObject<ErrorResponse>(response.Content);
             throw new HttpResponseException(error?.Message, response.StatusCode);
         }
