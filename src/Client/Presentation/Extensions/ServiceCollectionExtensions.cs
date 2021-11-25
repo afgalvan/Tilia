@@ -27,12 +27,12 @@ namespace Presentation.Extensions
         {
             IConfiguration   configuration    = ConfigurationLoader.Configuration;
             ConnectionConfig connectionConfig = ConfigurationLoader.Tunnel(configuration);
-            var              restClient       = new RestClient(connectionConfig.Host)
+            var restClient = new RestClient(connectionConfig.Host)
             {
                 ThrowOnAnyError = true
             };
             restClient.UseNewtonsoftJson();
-            services.AddSingleton(restClient);
+            services.AddSingleton<IRestClient>(restClient);
             services.AddSingleton(connectionConfig);
             services.AddSingleton(configuration);
             services.AddSingleton<HubConnectionBuilder>();
