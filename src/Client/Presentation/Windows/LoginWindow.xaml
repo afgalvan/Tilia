@@ -64,7 +64,7 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="User" Height="24" Width="24"
                                                      Margin="0, 0, 10, 0" />
-                            <TextBlock Text="Nombre de usuario" />
+                            <TextBlock Text="Usuario o email" />
                         </StackPanel>
                     </materialDesign:HintAssist.Hint>
                 </TextBox>
@@ -94,6 +94,7 @@
                         materialDesign:HintAssist.Foreground="DimGray"
                         FontSize="17"
                         Visibility="Collapsed"
+                        ToolTip="Ingrese su contraseña"
                         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource SecondaryColor}"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}">
                         <materialDesign:HintAssist.Hint>

@@ -117,4 +117,8 @@
     <ProjectReference Include="..\..\Shared\Requests\Requests.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Hubs" />
+  </ItemGroup>
+
 </Project>

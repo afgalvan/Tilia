@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ArxOne.MrAdvice.Advice;
 using Newtonsoft.Json;
-using Presentation.Services.Http.Utils;
+using Presentation.Services.Http.Exceptions;
 
 namespace Presentation.Filters
 {

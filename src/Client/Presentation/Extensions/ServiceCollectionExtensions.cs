@@ -2,9 +2,9 @@ using System.Windows.Media;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Services.Connection;
 using Presentation.Services.Http;
-using Presentation.Services.Http.Utils;
+using Presentation.Services.Http.Connection;
+using Presentation.Services.Hubs.Connection;
 using Presentation.Settings;
 using Presentation.Utils;
 using Presentation.Windows;
@@ -27,18 +27,20 @@ namespace Presentation.Extensions
         {
             IConfiguration   configuration    = ConfigurationLoader.Configuration;
             ConnectionConfig connectionConfig = ConfigurationLoader.Tunnel(configuration);
-            var              restClient       = new RestClient(connectionConfig.Host)
+            var restClient = new RestClient(connectionConfig.Host)
             {
                 ThrowOnAnyError = true
             };
             restClient.UseNewtonsoftJson();
-            services.AddSingleton(restClient);
+            services.AddSingleton<IRestClient>(restClient);
             services.AddSingleton(connectionConfig);
             services.AddSingleton(configuration);
             services.AddSingleton<HubConnectionBuilder>();
-            services.AddScoped<RestComposer>();
+            services.AddScoped<IRestComposer, RestComposer>();
+            services.AddScoped<RestFetcher>();
             services.AddScoped<AuthenticationService>();
             services.AddScoped<SocketConnection>();
+            services.AddScoped<UsersService>();
             services.AddScoped<ContextDataRetriever>();
         }
     }

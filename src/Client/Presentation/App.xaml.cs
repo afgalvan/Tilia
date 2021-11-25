@@ -1,4 +1,3 @@
-using System;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -14,6 +13,7 @@ namespace Presentation
     public partial class App
     {
         private readonly       ServiceProvider   _serviceProvider;
+        public static          string            AccessToken { get; set; }
         public static readonly CancellationToken CancellationToken = new(false);
 
         public App()
