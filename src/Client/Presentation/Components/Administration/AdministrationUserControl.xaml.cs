@@ -9,19 +9,19 @@ namespace Presentation.Components.Administration
     public partial class AdministrationUserControl : UserControl
     {
         private readonly MainWindow _mainWindow;
-        private readonly AddUserUserControl _addUser;
+        private readonly UsersPanelUserControl _usersPanelUser;
 
         public AdministrationUserControl(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
             var api = _mainWindow.GetComponent<UsersService>();
-            _addUser = new AddUserUserControl(_mainWindow, api);
+            _usersPanelUser = new UsersPanelUserControl(_mainWindow, api);
         }
 
         private void AdminUsersButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainWindow.ChangeMainContentArea(_addUser);
+            _mainWindow.ChangeMainContentArea(_usersPanelUser);
         }
     }
 }

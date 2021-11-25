@@ -17,7 +17,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="14*"/>
+                    <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
 
                 <buttons:GoBackButtonUserControl ToolTip="Volver a la seccion de pacientes"
@@ -32,8 +32,7 @@
 
                 <Separator Grid.Row="1"
                            VerticalAlignment="Top"
-                           Margin="20,0,20,0"
-                           Height="3"/>
+                           Margin="20,0,20,0"/>
 
                 <Grid x:Name="ProgressBarGrid"
                       Grid.Row="1"
@@ -82,8 +81,7 @@
 
                 <Separator Grid.Row="1"
                            VerticalAlignment="Bottom"
-                           Margin="20,0,20,0"
-                           Height="3"/>
+                           Margin="20,0,20,0" Height="3"/>
 
                 <Frame x:Name="FormsContentArea"
                     Grid.Row="2"
