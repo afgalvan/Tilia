@@ -83,7 +83,6 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private async void OnLoadedDepartmentsCombo(object sender, RoutedEventArgs e)
         {
             await PopulateDepartments();
-            await PopulateCities();
         }
     }
 }

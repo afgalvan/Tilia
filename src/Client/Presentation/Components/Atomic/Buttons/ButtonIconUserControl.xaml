@@ -8,14 +8,15 @@
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-    <Button Background="{StaticResource ButtonColor}"
+    <Button x:Name="ButtonUserControl"
+            Background="{StaticResource ButtonColor}"
             Click="ButtonOnClick"
             BorderBrush="{StaticResource ButtonColor}"
             ToolTip="{Binding ButtonToolTip}"
             Width="{Binding ButtonWidth}"
             Height="{Binding ButtonHeight}"
             materialDesign:ButtonAssist.CornerRadius="{Binding ButtonRadius}"
-            IsEnabled="{Binding ButtonIsEnabled}">
+            IsEnabled="{Binding ButtonIsEnabled}" Cursor="Hand">
         <Button.Content>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="{Binding ButtonIconName}"
