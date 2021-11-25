@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using RestSharp;
-using RestSharp.Authenticators;
 
 namespace Presentation.Services.Http.Connection
 {

@@ -29,7 +29,8 @@ namespace Presentation.Services.Http
         public async Task<IEnumerable> GetDepartments(CancellationToken cancellation)
         {
             const string endpoint = "/locations/departments";
-            return await _restComposer.GetAsync<IEnumerable<Department>>(endpoint, cancellation);
+            return await _restComposer.GetAsync<IEnumerable<Department>>(endpoint,
+                cancellation);
         }
 
         [HandleServerDown]
