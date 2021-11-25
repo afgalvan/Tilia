@@ -30,7 +30,6 @@ namespace Presentation.Settings
                 .Content);
         }
 
-
         public static ConnectionConfig Tunnel(IConfiguration configuration)
         {
             return configuration.HasRemoteConnection()

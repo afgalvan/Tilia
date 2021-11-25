@@ -36,7 +36,6 @@ namespace Presentation.Services.Http.Connection
             throw new HttpResponseException(error?.Message, response.StatusCode);
         }
 
-
         private void RestoreToken()
         {
             _client.Authenticator = null;
