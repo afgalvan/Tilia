@@ -1,12 +1,5 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentAssertions;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using Requests.Auth;
-using Requests.Responses;
-using RestSharp;
 
 namespace Api.Test
 {
@@ -18,7 +11,7 @@ namespace Api.Test
         }
 
         [Test]
-        public async Task LoginTest()
+        public void LoginTest()
         {
             var loginRequest = new LoginUserRequest
             {
@@ -26,7 +19,7 @@ namespace Api.Test
                 Password        = "secret"
             };
 
-            const string host   = "https://e44a-186-169-44-106.ngrok.io";
+            /*const string host   = "https://e44a-186-169-44-106.ngrok.io";
             var          client = new RestClient(host);
             var request = new RestRequest("/auth/sign-in")
                 .AddJsonBody(loginRequest);
@@ -35,11 +28,7 @@ namespace Api.Test
             if (!response.IsSuccessful)
             {
                 Console.WriteLine(JsonConvert.DeserializeObject<ErrorResponse>(response.Content).Message);
-            }
-
-            var client2  = new RestClient($"https://raw.githubusercontent.com/afgalvan/Tilia.Tunnel/main/tunnels.json");
-            var request2 = new RestRequest(Method.GET);
-            Console.WriteLine(client2.Get(request2).Content);
+            }*/
         }
     }
 }
