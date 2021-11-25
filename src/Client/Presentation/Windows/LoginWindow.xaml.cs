@@ -2,8 +2,10 @@ using System;
 using System.Security.Authentication;
 using System.Threading.Tasks;
 using System.Windows;
+using ControlzEx.Theming;
 using MahApps.Metro.Controls.Dialogs;
 using Presentation.Services.Http;
+using Presentation.Services.Http.Exceptions;
 using Presentation.Utils;
 
 namespace Presentation.Windows
@@ -22,8 +24,8 @@ namespace Presentation.Windows
 
         private async void LogInButton_Click(object sender, EventArgs e)
         {
-            if (ValidationControl.AreAllFieldsCompleted(UsernameField.Text,
-                GetPasswordField()))
+            if (Ensure.AreAllFieldsCompleted(UsernameField.Text,
+                GetPasswordValue()))
             {
                 await LoginUser();
                 return;
@@ -36,17 +38,22 @@ namespace Presentation.Windows
         {
             try
             {
-                /*await _authentication.SendLoginRequest(UsernameField.Text, GetPasswordField(),
-                    App.CancellationToken);*/
+                App.AccessToken = await RequestToken(UsernameField.Text, GetPasswordValue());
                 OpenMainWindow();
             }
-            catch (AuthenticationException a)
+            catch (Exception e) when (e is AuthenticationException or ServerDownException)
             {
-                await this.ShowMessageAsync("Error al iniciar sesión", a.Message);
+                await this.ShowMessageAsync("Error al iniciar sesión", e.Message);
             }
         }
 
-        private string GetPasswordField()
+        private async Task<string> RequestToken(string usernameOrEmail, string password)
+        {
+            return (await _authentication.SendLoginRequest(usernameOrEmail, password,
+                App.CancellationToken)).Token;
+        }
+
+        private string GetPasswordValue()
         {
             return PasswordField.IsVisible
                 ? PasswordField.Password

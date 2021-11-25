@@ -2,7 +2,7 @@
 
 namespace Presentation.Utils
 {
-    public static class ValidationControl
+    public static class Ensure
     {
         public static bool AreAllFieldsCompleted(params string[] fieldsText)
         {

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Domain.Locations;
 using Domain.People;
 using Presentation.Filters;
-using Presentation.Services.Http.Utils;
+using Presentation.Services.Http.Connection;
 
 namespace Presentation.Services.Http
 {
     public class ContextDataRetriever
     {
-        private readonly RestComposer _restComposer;
+        private readonly IRestComposer _restComposer;
 
-        public ContextDataRetriever(RestComposer restComposer)
+        public ContextDataRetriever(IRestComposer restComposer)
         {
             _restComposer = restComposer;
         }
@@ -22,14 +22,14 @@ namespace Presentation.Services.Http
         public async Task<IEnumerable> GetIdTypes(CancellationToken cancellation)
         {
             const string endpoint = "/id-types";
-            return await _restComposer.Get<IEnumerable<IdType>>(endpoint, cancellation);
+            return await _restComposer.GetAsync<IEnumerable<IdType>>(endpoint, cancellation);
         }
 
         [HandleServerDown]
         public async Task<IEnumerable> GetDepartments(CancellationToken cancellation)
         {
             const string endpoint = "/locations/departments";
-            return await _restComposer.Get<IEnumerable<Department>>(endpoint, cancellation);
+            return await _restComposer.GetAsync<IEnumerable<Department>>(endpoint, cancellation);
         }
 
         [HandleServerDown]
@@ -37,7 +37,7 @@ namespace Presentation.Services.Http
             CancellationToken cancellation)
         {
             var endpoint = $"/locations/cities?departmentId={departmentId}";
-            return await _restComposer.Get<IEnumerable<City>>(endpoint, cancellation);
+            return await _restComposer.GetAsync<IEnumerable<City>>(endpoint, cancellation);
         }
     }
 }

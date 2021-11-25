@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Settings;
 
-namespace Presentation.Services.Connection
+namespace Presentation.Services.Hubs.Connection
 {
     public class SocketConnection
     {

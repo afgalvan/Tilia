@@ -1,7 +1,8 @@
 ﻿using System.Security.Authentication;
 using System.Threading;
 using System.Threading.Tasks;
-using Presentation.Services.Http.Utils;
+using Presentation.Services.Http.Connection;
+using Presentation.Services.Http.Exceptions;
 using Requests.Auth;
 using RestSharp;
 
@@ -9,9 +10,9 @@ namespace Presentation.Services.Http
 {
     public class AuthenticationService
     {
-        private readonly RestComposer _restComposer;
+        private readonly IRestComposer _restComposer;
 
-        public AuthenticationService(RestComposer restComposer)
+        public AuthenticationService(IRestComposer restComposer)
         {
             _restComposer = restComposer;
         }

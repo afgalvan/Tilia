@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Presentation.Services.Http.Utils
+namespace Presentation.Services.Http.Exceptions
 {
     public class ServerDownException : Exception
     {
