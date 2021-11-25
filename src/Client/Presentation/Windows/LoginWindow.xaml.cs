@@ -24,7 +24,7 @@ namespace Presentation.Windows
 
         private async void LogInButton_Click(object sender, EventArgs e)
         {
-            if (Ensure.AreAllFieldsCompleted(UsernameField.Text,
+            /*if (Ensure.AreAllFieldsCompleted(UsernameField.Text,
                 GetPasswordValue()))
             {
                 await LoginUser();
@@ -32,6 +32,8 @@ namespace Presentation.Windows
             }
 
             await this.ShowMessageAsync("Error al iniciar sesión", "Ingrese todos los datos");
+            */
+            OpenMainWindow();
         }
 
         private async Task LoginUser()
