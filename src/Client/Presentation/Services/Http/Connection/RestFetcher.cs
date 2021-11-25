@@ -10,9 +10,9 @@ namespace Presentation.Services.Http.Connection
 {
     public class RestFetcher
     {
-        private readonly RestClient _client;
+        private readonly IRestClient _client;
 
-        public RestFetcher(RestClient client)
+        public RestFetcher(IRestClient client)
         {
             _client = client;
         }
@@ -37,7 +37,7 @@ namespace Presentation.Services.Http.Connection
             {
                 throw new ServerDownException("Sin conexión con el servidor.");
             }
-            
+
             var error = JsonConvert.DeserializeObject<ErrorResponse>(response.Content);
             throw new HttpResponseException(error?.Message, response.StatusCode);
         }
