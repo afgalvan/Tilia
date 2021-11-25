@@ -2,32 +2,25 @@ using System;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using Domain.Locations;
 using Presentation.Services.Http;
-using Presentation.Windows;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
-    public partial class BasicDataRegisterPage : Page
+    public partial class BasicDataRegisterPage
     {
-        private readonly MainWindow                 _mainWindow;
         private readonly ContextDataRetriever       _contextData;
         private readonly RegisterPatientUserControl _registerPatient;
-        private readonly ContactDataRegisterPage    _contactDataRegisterPage;
 
         private IEnumerable Departments { get; set; }
         private IEnumerable Cities      { get; set; }
         private IEnumerable IdTypes     { get; set; }
 
-        public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData,
+        public BasicDataRegisterPage(ContextDataRetriever contextData,
             RegisterPatientUserControl registerPatient)
         {
-            _mainWindow      = mainWindow;
-            _contextData     = contextData;
-            _registerPatient = registerPatient;
-            _contactDataRegisterPage =
-                new ContactDataRegisterPage(_registerPatient, _contextData, this);
+            _contextData             = contextData;
+            _registerPatient         = registerPatient;
             InitializeComponent();
             BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -39,7 +32,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _registerPatient.NavigateTo(_contactDataRegisterPage);
+            _registerPatient.NavigateTo(_registerPatient.ContactDataRegister);
             _registerPatient.BasicDataItemButton.CompletedFormItemColors();
         }
 

@@ -2,27 +2,22 @@ using Domain.Locations;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using Presentation.Services.Http;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
-    public partial class ContactDataRegisterPage : Page
+    public partial class ContactDataRegisterPage
     {
-        private readonly MedicalDataRegisterPage    _nextPage;
         private readonly RegisterPatientUserControl _registerPatient;
         private readonly ContextDataRetriever       _contextData;
-        private readonly BasicDataRegisterPage      _lastPage;
         private          IEnumerable                Departments { get; set; }
         private          IEnumerable                Cities      { get; set; }
 
         public ContactDataRegisterPage(RegisterPatientUserControl registerPatient,
-            ContextDataRetriever contextData, BasicDataRegisterPage lastPage)
+            ContextDataRetriever contextData)
         {
             _registerPatient = registerPatient;
             _contextData     = contextData;
-            _lastPage        = lastPage;
-            _nextPage        = new MedicalDataRegisterPage(registerPatient, this);
             InitializeComponent();
             ContactDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             ContactDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -32,13 +27,13 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoBackToPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _registerPatient.NavigateTo(_lastPage);
+            _registerPatient.NavigateTo(_registerPatient.BasicDataRegister);
             _registerPatient.ContactDataItemButton.DefaultFormItemColors();
         }
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _registerPatient.NavigateTo(_nextPage);
+            _registerPatient.NavigateTo(_registerPatient.MedicalDataRegister);
             _registerPatient.ContactDataItemButton.CompletedFormItemColors();
         }
 

@@ -6,22 +6,22 @@ using Presentation.Windows;
 
 namespace Presentation.Components.Patients
 {
-    public partial class RegisterPatientUserControl : UserControl
+    public partial class RegisterPatientUserControl
     {
-        private readonly MainWindow _mainWindow;
-        private readonly BasicDataRegisterPage _basicDataRegister;
-        private readonly ContactDataRegisterPage _contactDataRegister;
-        private readonly MedicalDataRegisterPage _medicalDataRegister;
+        private readonly MainWindow              _mainWindow;
+        public BasicDataRegisterPage   BasicDataRegister { get; set;}
+        public ContactDataRegisterPage ContactDataRegister {get; set;}
+        public MedicalDataRegisterPage MedicalDataRegister {get; set;}
 
         public RegisterPatientUserControl(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
             var api = _mainWindow.GetComponent<ContextDataRetriever>();
-            _basicDataRegister = new BasicDataRegisterPage(_mainWindow, api, this);
-            _contactDataRegister = new ContactDataRegisterPage(this, api, _basicDataRegister);
-            _medicalDataRegister = new MedicalDataRegisterPage(this, _contactDataRegister);
-            FormsContentArea.Content = _basicDataRegister;
+            BasicDataRegister = new BasicDataRegisterPage(api, this);
+            ContactDataRegister = new ContactDataRegisterPage(this, api);
+            MedicalDataRegister = new MedicalDataRegisterPage(this);
+            FormsContentArea.Content = BasicDataRegister;
         }
 
         private void GoBackButtonUserControl_Click(object sender, RoutedEventArgs e)
@@ -48,37 +48,37 @@ namespace Presentation.Components.Patients
 
         private void BasicDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (IsPageInFrame(_basicDataRegister))
+            if (IsPageInFrame(BasicDataRegister))
             {
                 return;
             }
 
             SetDefaultItemColors();
-            NavigateTo(_basicDataRegister);
+            NavigateTo(BasicDataRegister);
         }
 
         private void ContactDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Equals(FormsContentArea.Content, _contactDataRegister))
+            if (Equals(FormsContentArea.Content, ContactDataRegister))
             {
                 return;
             }
 
             SetDefaultItemColors();
             BasicDataItemButton.CompletedFormItemColors();
-            NavigateTo(_contactDataRegister);
+            NavigateTo(ContactDataRegister);
         }
 
         private void MedicalDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Equals(FormsContentArea.Content, _medicalDataRegister))
+            if (Equals(FormsContentArea.Content, MedicalDataRegister))
             {
                 return;
             }
 
             BasicDataItemButton.CompletedFormItemColors();
             ContactDataItemButton.CompletedFormItemColors();
-            NavigateTo(_medicalDataRegister);
+            NavigateTo(MedicalDataRegister);
         }
     }
 }
