@@ -2,25 +2,26 @@ using Presentation.Components.Administration.Users;
 using Presentation.Windows;
 using System.Windows;
 using System.Windows.Controls;
+using Presentation.Services.Http;
 
 namespace Presentation.Components.Administration
 {
-    /// <summary>
-    /// Interaction logic for AdministrationUserControl.xaml
-    /// </summary>
     public partial class AdministrationUserControl : UserControl
     {
         private readonly MainWindow _mainWindow;
+        private readonly AddUserUserControl _addUser;
 
         public AdministrationUserControl(MainWindow mainWindow)
         {
-            InitializeComponent();
             _mainWindow = mainWindow;
+            InitializeComponent();
+            var api = _mainWindow.GetComponent<UsersService>();
+            _addUser = new AddUserUserControl(_mainWindow, api);
         }
 
-        private void ManageUserButton_Click(object sender, RoutedEventArgs e)
+        private void AdminUsersButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainWindow.ChangeMainContentArea(new AddUserUserControl(_mainWindow));
+            _mainWindow.ChangeMainContentArea(_addUser);
         }
     }
 }

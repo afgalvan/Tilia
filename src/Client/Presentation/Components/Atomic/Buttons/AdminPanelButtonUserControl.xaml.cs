@@ -3,11 +3,11 @@ using System.Windows.Controls;
 
 namespace Presentation.Components.Atomic.Buttons
 {
-    public partial class ButtonIconUserControl : UserControl
+    public partial class AdminPanelButtonUserControl : UserControl
     {
         public event RoutedEventHandler Click;
 
-        public ButtonIconUserControl()
+        public AdminPanelButtonUserControl()
         {
             InitializeComponent();
         }
@@ -60,24 +60,24 @@ namespace Presentation.Components.Atomic.Buttons
         }
 
         public static readonly DependencyProperty ButtonContentProperty =
-            DependencyProperty.Register("ButtonContent", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonContent", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ButtonIconProperty =
-            DependencyProperty.Register("ButtonIconName", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonIconName", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ButtonToolTipProperty =
-            DependencyProperty.Register("ButtonToolTip", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonToolTip", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ButtonWidthProperty =
-            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata("130"));
+            DependencyProperty.Register("ButtonWidth", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata("200"));
 
         public static readonly DependencyProperty ButtonHeightProperty =
-            DependencyProperty.Register("ButtonHeight", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata("35"));
+            DependencyProperty.Register("ButtonHeight", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata("160"));
 
         public static readonly DependencyProperty ButtonRadiusProperty =
-            DependencyProperty.Register("ButtonRadius", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonRadius", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ButtonIsEnabledProperty =
-            DependencyProperty.Register("ButtonIsEnabled", typeof(string), typeof(ButtonIconUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ButtonIsEnabled", typeof(string), typeof(AdminPanelButtonUserControl), new PropertyMetadata(null));
     }
 }
