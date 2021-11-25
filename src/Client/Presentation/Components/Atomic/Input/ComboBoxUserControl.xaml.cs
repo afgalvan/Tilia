@@ -24,7 +24,7 @@ namespace Presentation.Components.Atomic.Input
             OnSelectionChangedAction?.Invoke();
         }
 
-        private void ComboBoxInput_OnDropDownClosed(object? sender, EventArgs e)
+        private void ComboBoxInput_OnDropDownClosed(object sender, EventArgs e)
         {
             OnDropDownClosedAction?.Invoke();
         }

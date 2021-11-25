@@ -11,6 +11,7 @@ using Requests.Users;
 
 namespace Api.Controllers
 {
+    [Authorize]
     [Route("users")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -22,7 +23,6 @@ namespace Api.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<UserResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
@@ -31,7 +31,6 @@ namespace Api.Controllers
             return Ok(response);
         }
 
-        [Authorize]
         [HttpGet("find")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> FindById([FromQuery] string id)

@@ -1,23 +1,68 @@
 using System;
+using System.Security.Authentication;
+using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
+using ControlzEx.Theming;
+using MahApps.Metro.Controls.Dialogs;
+using Presentation.Services.Http;
+using Presentation.Services.Http.Exceptions;
+using Presentation.Utils;
 
 namespace Presentation.Windows
 {
     public partial class LoginWindow
     {
-        private readonly IServiceProvider _serviceProvider;
+        private readonly MainWindow            _mainWindow;
+        private readonly AuthenticationService _authentication;
 
-        public LoginWindow(IServiceProvider serviceProvider)
+        public LoginWindow(MainWindow mainWindow, AuthenticationService authentication)
         {
             InitializeComponent();
-            _serviceProvider = serviceProvider;
+            _mainWindow     = mainWindow;
+            _authentication = authentication;
         }
 
-        private void LogInButton_Click(object sender, EventArgs e)
+        private async void LogInButton_Click(object sender, EventArgs e)
         {
-            var window = _serviceProvider.GetRequiredService<MainWindow>();
-            window.Show();
+            if (Ensure.AreAllFieldsCompleted(UsernameField.Text,
+                GetPasswordValue()))
+            {
+                await LoginUser();
+                return;
+            }
+
+            await this.ShowMessageAsync("Error al iniciar sesión", "Ingrese todos los datos");
+        }
+
+        private async Task LoginUser()
+        {
+            try
+            {
+                App.AccessToken = await RequestToken(UsernameField.Text, GetPasswordValue());
+                OpenMainWindow();
+            }
+            catch (Exception e) when (e is AuthenticationException or ServerDownException)
+            {
+                await this.ShowMessageAsync("Error al iniciar sesión", e.Message);
+            }
+        }
+
+        private async Task<string> RequestToken(string usernameOrEmail, string password)
+        {
+            return (await _authentication.SendLoginRequest(usernameOrEmail, password,
+                App.CancellationToken)).Token;
+        }
+
+        private string GetPasswordValue()
+        {
+            return PasswordField.IsVisible
+                ? PasswordField.Password
+                : UnmaskedPasswordField.Text;
+        }
+
+        private void OpenMainWindow()
+        {
+            _mainWindow.Show();
             Hide();
         }
 

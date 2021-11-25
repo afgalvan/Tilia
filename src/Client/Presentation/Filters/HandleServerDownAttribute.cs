@@ -2,11 +2,12 @@
 using System.Threading.Tasks;
 using ArxOne.MrAdvice.Advice;
 using Newtonsoft.Json;
+using Presentation.Services.Http.Exceptions;
 
 namespace Presentation.Filters
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class HandleUnconnectedAttribute : Attribute, IMethodAsyncAdvice
+    public class HandleServerDownAttribute : Attribute, IMethodAsyncAdvice
     {
         public async Task Advise(MethodAsyncAdviceContext context)
         {
@@ -14,9 +15,9 @@ namespace Presentation.Filters
             {
                 await context.ProceedAsync();
             }
-            catch (Exception e) when (e is JsonReaderException or InvalidOperationException)
+            catch (Exception e) when (e is JsonReaderException or ServerDownException or HttpResponseException)
             {
-                context.ReturnValue = Task.FromResult(new object[] {"Sin conexión con el servidor"});
+                context.ReturnValue = Task.FromResult(new object[] { "Sin conexión con el servidor" });
             }
         }
     }

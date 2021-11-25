@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Presentation.Controllers.Http;
+using Presentation.Services.Http;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
