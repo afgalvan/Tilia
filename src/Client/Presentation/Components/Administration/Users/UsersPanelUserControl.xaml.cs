@@ -17,14 +17,15 @@ namespace Presentation.Components.Administration.Users
             _mainWindow = mainWindow;
         }
 
-        private async void BackToAdminUserControlButton_Click(object sender, RoutedEventArgs e)
+        private void BackToAdminUserControlButton_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
         }
 
         private void AddUserButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _mainWindow.ChangeMainContentArea(
+                new AddNewUserFormUserControl(_mainWindow, _usersService));
         }
 
         private void RemoveUser_OnClick(object sender, RoutedEventArgs e)

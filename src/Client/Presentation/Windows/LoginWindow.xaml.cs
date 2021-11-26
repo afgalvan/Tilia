@@ -2,7 +2,6 @@ using System;
 using System.Security.Authentication;
 using System.Threading.Tasks;
 using System.Windows;
-using ControlzEx.Theming;
 using MahApps.Metro.Controls.Dialogs;
 using Presentation.Services.Http;
 using Presentation.Services.Http.Exceptions;
