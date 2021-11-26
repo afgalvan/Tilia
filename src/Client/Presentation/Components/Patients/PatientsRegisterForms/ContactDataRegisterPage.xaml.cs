@@ -3,6 +3,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Windows;
 using Presentation.Services.Http;
+using Convert = Presentation.Utils.Convert;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
@@ -33,7 +34,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _registerPatient.NavigateTo(_registerPatient.MedicalDataRegister);
+            _registerPatient.NavigateTo(_registerPatient.SportDataRegister);
             _registerPatient.ContactDataItemButton.CompletedFormItemColors();
         }
 
@@ -79,5 +80,20 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         {
             await PopulateDepartments();
         }
+
+        public string GetLivingCityCode() => ((City)ContactDataCityComboBox.ComboBoxSelectedItem).Id;
+
+        public int GetSelectedStratumNumber()
+        {
+            return Convert.StringToInt(ContactDataStratumComboBox.FieldText);
+        }
+
+        public string GetAddress() => ContactDataAddressTextBox.FieldText;
+
+        public string GetStudies() => ContactDataStudiesTextBox.FieldText;
+
+        public string GetLandLine() => ContactDataLandlineTextBox.FieldText;
+
+        public string GetPhoneNumber() => ContactDataPhoneNumberTextBox.FieldText;
     }
 }

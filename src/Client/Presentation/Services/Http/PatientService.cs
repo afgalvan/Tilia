@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Patients.Create;
 using Presentation.Services.Http.Connection;
+using Requests.Patients;
 using RestSharp;
 
 namespace Presentation.Services.Http
@@ -24,7 +24,7 @@ namespace Presentation.Services.Http
             string landline, CancellationToken cancellation)
         {
             const string endpoint = "/patients";
-            var userRequest = new CreatePatientRequest
+            var patientRequest = new CreatePatientRequest
             {
                 PersonId           = personId,
                 IdType             = idType,
@@ -48,7 +48,7 @@ namespace Presentation.Services.Http
                 PhoneNumber        = phoneNumber,
                 Landline           = landline,
             };
-            IRestRequest request = new RestRequest(endpoint).AddJsonBody(userRequest);
+            IRestRequest request = new RestRequest(endpoint).AddJsonBody(patientRequest);
             await _restComposer.Post<Unit>(request, cancellation);
         }
     }

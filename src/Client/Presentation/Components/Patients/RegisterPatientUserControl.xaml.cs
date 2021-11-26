@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Presentation.Components.Patients.PatientsRegisterForms;
@@ -8,19 +9,21 @@ namespace Presentation.Components.Patients
 {
     public partial class RegisterPatientUserControl
     {
+        private readonly PatientService          _patientService;
         private readonly MainWindow              _mainWindow;
-        public BasicDataRegisterPage   BasicDataRegister { get; set;}
-        public ContactDataRegisterPage ContactDataRegister {get; set;}
-        public MedicalDataRegisterPage MedicalDataRegister {get; set;}
+        public           BasicDataRegisterPage   BasicDataRegister   { get; set; }
+        public           ContactDataRegisterPage ContactDataRegister { get; set; }
+        public           SportDataRegisterPage   SportDataRegister   { get; set; }
 
-        public RegisterPatientUserControl(MainWindow mainWindow)
+        public RegisterPatientUserControl(MainWindow mainWindow, PatientService patientService)
         {
-            _mainWindow = mainWindow;
+            _mainWindow      = mainWindow;
+            _patientService = patientService;
             InitializeComponent();
             var api = _mainWindow.GetComponent<ContextDataRetriever>();
-            BasicDataRegister = new BasicDataRegisterPage(api, this);
-            ContactDataRegister = new ContactDataRegisterPage(this, api);
-            MedicalDataRegister = new MedicalDataRegisterPage(this);
+            BasicDataRegister        = new BasicDataRegisterPage(api, this);
+            ContactDataRegister      = new ContactDataRegisterPage(this, api);
+            SportDataRegister        = new SportDataRegisterPage(this, _mainWindow);
             FormsContentArea.Content = BasicDataRegister;
         }
 
@@ -71,14 +74,40 @@ namespace Presentation.Components.Patients
 
         private void MedicalDataItemButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (Equals(FormsContentArea.Content, MedicalDataRegister))
+            if (Equals(FormsContentArea.Content, SportDataRegister))
             {
                 return;
             }
 
             BasicDataItemButton.CompletedFormItemColors();
             ContactDataItemButton.CompletedFormItemColors();
-            NavigateTo(MedicalDataRegister);
+            NavigateTo(SportDataRegister);
+        }
+
+        public async Task CreatePatient()
+        {
+            await _patientService.RegisterPatient(BasicDataRegister.GetPersonId(),
+                BasicDataRegister.GetSelectedIdTypeNumber(),
+                BasicDataRegister.GetFirstName(),
+                BasicDataRegister.GetLastName(),
+                BasicDataRegister.GetSelectedGenreNumber(),
+                BasicDataRegister.GetCityCode(),
+                BasicDataRegister.GetBirthDate(),
+                BasicDataRegister.GetOccupation(),
+                ContactDataRegister.GetStudies(),
+                SportDataRegister.GetSport(),
+                SportDataRegister.GetModality(),
+                SportDataRegister.GetCoach(),
+                SportDataRegister.GetStartDate(),
+                SportDataRegister.GetContinuousTraining(),
+                SportDataRegister.GetTrainingPlan(),
+                SportDataRegister.GetSelectedDominanceNumber(),
+                ContactDataRegister.GetAddress(),
+                ContactDataRegister.GetLivingCityCode(),
+                ContactDataRegister.GetSelectedStratumNumber(),
+                ContactDataRegister.GetPhoneNumber(),
+                ContactDataRegister.GetLandLine(),
+                App.CancellationToken);
         }
     }
 }

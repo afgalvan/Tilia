@@ -1,13 +1,11 @@
 <UserControl x:Class="Presentation.Components.Patients.RegisterPatientUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Presentation.Components.Patients"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
-             xmlns:atomic="clr-namespace:Presentation.Components.Atomic"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="546" d:DesignWidth="873" >
 
     <materialDesign:Card>

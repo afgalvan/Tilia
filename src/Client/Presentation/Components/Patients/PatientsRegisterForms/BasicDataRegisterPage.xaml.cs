@@ -1,9 +1,13 @@
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
 using Domain.Locations;
+using Domain.People;
 using Presentation.Services.Http;
+using Presentation.Utils;
+using Convert = Presentation.Utils.Convert;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
@@ -19,8 +23,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         public BasicDataRegisterPage(ContextDataRetriever contextData,
             RegisterPatientUserControl registerPatient)
         {
-            _contextData             = contextData;
-            _registerPatient         = registerPatient;
+            _contextData     = contextData;
+            _registerPatient = registerPatient;
             InitializeComponent();
             BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -88,5 +92,33 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             BasicDataBirthPlaceComboBox.ComboBoxItemsSource = Cities;
             BasicDataBirthPlaceComboBox.ComboBoxSelectedIndex = "0";
         }
+
+        private IdType GetSelectedIdType() => (IdType)BasicDataDocTypeComboBox.ComboBoxSelectedItem;
+
+        public int GetSelectedIdTypeNumber()
+        {
+            var selectedId = GetSelectedIdType();
+            return selectedId.Id;
+        }
+
+        public string GetPersonId() => BasicDataDataNumberTextBox.FieldText;
+
+        public int GetSelectedGenreNumber()
+        {
+            return Convert.StringToInt(BasicDataGenreComboBox.ComboBoxSelectedIndex);
+        }
+
+        public string GetFirstName() => BasicDataNamesTextBox.FieldText;
+
+        public string GetLastName() => BasicDataLastNamesTextBox.FieldText;
+
+        public string GetOccupation() => BasicDataChargeTextBox.FieldText;
+
+        public DateTime GetBirthDate()
+        {
+            return Convert.StringToDateTime(BasicDataBirthDayDatePicker.FieldText);
+        }
+
+        public string GetCityCode() => ((City)BasicDataBirthPlaceComboBox.ComboBoxSelectedItem).Id;
     }
 }
