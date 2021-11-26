@@ -1,7 +1,6 @@
 ﻿using Domain.Employees;
 using Domain.Locations;
 using Domain.MedicalFiles;
-using Domain.MedicalFiles.Background;
 using Domain.MedicalFiles.MedicalNotes;
 using Domain.MedicalFiles.MedicalRecords;
 using Domain.Patients;
@@ -37,10 +36,6 @@ namespace SharedLib.Persistence
 
         // Medical Records
         public DbSet<MedicalRecord>  MedicalRecords  { get; set; }
-        public DbSet<BodyPartRecord> BodyPartRecords { get; set; }
-        public DbSet<PhysicalExam>   PhysicalExams   { get; set; }
-
-        public DbSet<MedicalBackground>       MedicalBackgrounds       { get; set; }
 
         public TiliaDbContext(DbContextOptions options) : base(options)
         {

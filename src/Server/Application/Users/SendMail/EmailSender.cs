@@ -15,7 +15,7 @@ namespace Application.Users.SendMail
             _fluentEmail = fluentEmail;
         }
 
-        /*public async Task SendMail(User user, CancellationToken cancellation)
+        public async Task SendMail(User user, CancellationToken cancellation)
         {
             await _fluentEmail
                 .To(user.Email)
@@ -24,6 +24,6 @@ namespace Application.Users.SendMail
                 .Body(
                     $"Sr/a {user.Employee?.FirstName} acaba de ser registrado como uno de nuestros empleados el dia {DateTime.Now.ToShortDateString()}")
                 .SendAsync(cancellation);
-        }*/
+        }
     }
 }
