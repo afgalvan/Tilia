@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Presentation.Services.Http.Connection;
@@ -51,5 +53,10 @@ namespace Presentation.Services.Http
             IRestRequest request = new RestRequest(endpoint).AddJsonBody(patientRequest);
             await _restComposer.Post<Unit>(request, cancellation);
         }
+
+        /*public async Task<IEnumerable> GetAllPatients(CancellationToken cancellation)
+        {
+            const string endpoint = "/patients";
+        }*/
     }
 }
