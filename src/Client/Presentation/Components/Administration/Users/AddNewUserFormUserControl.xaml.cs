@@ -23,7 +23,8 @@ namespace Presentation.Components.Administration.Users
 
         private void GoBackButtonUserControl_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainWindow.ChangeMainContentArea(new UsersPanelUserControl(_mainWindow, _usersService));
+            _mainWindow.ChangeMainContentArea(
+                new UsersPanelUserControl(_mainWindow, _usersService));
         }
 
         private async Task ShowMessageOnSuccess()
@@ -31,11 +32,21 @@ namespace Presentation.Components.Administration.Users
             await _mainWindow.ShowMessageAsync("Exito", "Usuario creado correctamente");
         }
 
+        private async Task ValidateEmail(string email)
+        {
+            if (!EmailValidator.EmailIsValid(email))
+            {
+                await _mainWindow.ShowMessageAsync("Error",
+                    "Email inválido, porfavor rectifique");
+            }
+        }
+
         private async void FinishButton_OnClick(object sender, RoutedEventArgs e)
         {
             if (Ensure.AreAllFieldsCompleted(UsernameTextField.FieldText,
                 EmailTextField.FieldText, PasswordTextField.GetPasswordValue()))
             {
+                await ValidateEmail(EmailTextField.FieldText);
                 await CreateUser();
                 return;
             }
@@ -53,7 +64,8 @@ namespace Presentation.Components.Administration.Users
                     App.CancellationToken);
                 ChangeColorsOnComplete();
                 await ShowMessageOnSuccess();
-                _mainWindow.ChangeMainContentArea(new UsersPanelUserControl(_mainWindow, _usersService));
+                _mainWindow.ChangeMainContentArea(
+                    new UsersPanelUserControl(_mainWindow, _usersService));
             }
             catch (Exception e)
             {
