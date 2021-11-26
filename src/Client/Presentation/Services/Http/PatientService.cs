@@ -54,9 +54,12 @@ namespace Presentation.Services.Http
             await _restComposer.Post<Unit>(request, cancellation);
         }
 
-        /*public async Task<IEnumerable> GetAllPatients(CancellationToken cancellation)
+        public async Task<IEnumerable<PatientResponse>> GetAllPatients(
+            CancellationToken cancellation)
         {
             const string endpoint = "/patients";
-        }*/
+            return await _restComposer.GetAsync<IEnumerable<PatientResponse>>(endpoint,
+                cancellation);
+        }
     }
 }
