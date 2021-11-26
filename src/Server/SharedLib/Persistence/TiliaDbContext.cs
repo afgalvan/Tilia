@@ -40,7 +40,6 @@ namespace SharedLib.Persistence
         public DbSet<BodyPartRecord> BodyPartRecords { get; set; }
         public DbSet<PhysicalExam>   PhysicalExams   { get; set; }
 
-        public DbSet<GynecologicalBackground> GynecologicalBackgrounds { get; set; }
         public DbSet<MedicalBackground>       MedicalBackgrounds       { get; set; }
 
         public TiliaDbContext(DbContextOptions options) : base(options)
