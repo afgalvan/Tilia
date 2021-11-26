@@ -66,7 +66,7 @@ namespace Api.Extensions
 
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
-            services.ConfigureHangFire();
+            // services.ConfigureHangFire();
             services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IMapper, ServiceMapper>();
             services.AddScoped<IUsersRepository, OracleUsersRepository>();
