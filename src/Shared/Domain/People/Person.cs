@@ -20,7 +20,7 @@ namespace Domain.People
         public City     City      { get; set; }
         public DateTime BirthDate { get; set; }
 
-        public int Age => (BirthDate - DateTime.Now).Days;
+        public int Age => DateTime.Now.Year - BirthDate.Year;
 
         public Person(string personId, string idType, string firstName, string lastName,
             Genre genre, string locationId, string city, Department department)

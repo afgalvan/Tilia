@@ -15,7 +15,7 @@ namespace Presentation.Components.Patients
             _mainWindow = mainWindow;
             InitializeComponent();
             var api = _mainWindow.GetComponent<ContextDataRetriever>();
-            FormsContentArea.Content = new BasicDataRegisterPage(_mainWindow, api, this);
+            FormsContentArea.Content = new BasicDataRegisterPage(api, this);
         }
 
         private void GoBackButtonUserControl_Click(object sender, RoutedEventArgs e)

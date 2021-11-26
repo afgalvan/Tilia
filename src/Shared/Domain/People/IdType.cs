@@ -18,6 +18,11 @@ namespace Domain.People
         {
         }
 
+        public IdType(int id)
+        {
+            Id = id;
+        }
+
         public override string ToString()
         {
             return Name;

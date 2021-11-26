@@ -5,15 +5,15 @@ namespace Api.Extensions.Settings
 {
     public static class DatabaseProvider
     {
-        private const string MigrationsAssembly = "Server";
+        private const string MigrationsAssembly = "Api";
 
         public static DbContextOptionsBuilder SetupDatabaseEngine(
             this DbContextOptionsBuilder options,
             DbConnectionConfig dbConnectionConfig) =>
             dbConnectionConfig.Provider.ToLower(CultureInfo.CurrentCulture) switch
             {
-                "oracle" => SetupOracle(options, dbConnectionConfig.Url),
-                _ => SetupMysql(options, dbConnectionConfig.Url)
+                "mysql" => SetupMysql(options, dbConnectionConfig.Url),
+                _ => SetupOracle(options, dbConnectionConfig.Url)
             };
 
         private static DbContextOptionsBuilder SetupMysql(DbContextOptionsBuilder options,

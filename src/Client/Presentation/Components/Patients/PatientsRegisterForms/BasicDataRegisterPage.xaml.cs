@@ -5,22 +5,19 @@ using System.Windows;
 using System.Windows.Controls;
 using Domain.Locations;
 using Presentation.Services.Http;
-using Presentation.Windows;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
     public partial class BasicDataRegisterPage : Page
     {
-        private readonly MainWindow                 _mainWindow;
         private readonly ContextDataRetriever       _contextData;
         private readonly RegisterPatientUserControl _registerPatient;
         private          IEnumerable                Departments { get; set; }
         private          IEnumerable                Cities      { get; set; }
 
-        public BasicDataRegisterPage(MainWindow mainWindow, ContextDataRetriever contextData,
+        public BasicDataRegisterPage(ContextDataRetriever contextData,
             RegisterPatientUserControl registerPatient)
         {
-            _mainWindow      = mainWindow;
             _contextData     = contextData;
             _registerPatient = registerPatient;
             InitializeComponent();
