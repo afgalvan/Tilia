@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Presentation.Services.Http;
 using Presentation.Utils;
 using Presentation.Windows;
 using Convert = Presentation.Utils.Convert;
@@ -13,12 +14,14 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
     {
         private readonly RegisterPatientUserControl _registerPatient;
         private readonly MainWindow                 _mainWindow;
+        private readonly PatientService             _patientService;
 
         public SportDataRegisterPage(RegisterPatientUserControl registerPatientUserControl,
-            MainWindow mainWindow)
+            MainWindow mainWindow, PatientService patientService)
         {
-            _registerPatient = registerPatientUserControl;
-            _mainWindow      = mainWindow;
+            _registerPatient     = registerPatientUserControl;
+            _mainWindow          = mainWindow;
+            _patientService = patientService;
             InitializeComponent();
             PopulateFormOptions();
             Loaded += OnLoadedPage;
@@ -48,7 +51,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
                 await _registerPatient.CreatePatient();
                 _registerPatient.FinishFormItemButton.CompletedFormItemColors();
                 await ShowMessageOnSuccess();
-                _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
+                _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow, _patientService));
             }
             catch (Exception e)
             {

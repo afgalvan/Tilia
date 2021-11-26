@@ -23,13 +23,13 @@ namespace Presentation.Components.Patients
             var api = _mainWindow.GetComponent<ContextDataRetriever>();
             BasicDataRegister        = new BasicDataRegisterPage(api, this, _mainWindow);
             ContactDataRegister      = new ContactDataRegisterPage(this, api, _mainWindow);
-            SportDataRegister        = new SportDataRegisterPage(this, _mainWindow);
+            SportDataRegister        = new SportDataRegisterPage(this, _mainWindow, _patientService);
             FormsContentArea.Content = BasicDataRegister;
         }
 
         private void GoBackButtonUserControl_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
+            _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow, _patientService));
         }
 
         public void NavigateTo(Page page)

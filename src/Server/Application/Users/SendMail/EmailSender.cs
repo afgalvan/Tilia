@@ -14,7 +14,7 @@ namespace Application.Users.SendMail
             _fluentEmail = fluentEmail;
         }
 
-        public async Task SendMail(User user, CancellationToken cancellation)
+        /*public async Task SendMail(User user, CancellationToken cancellation)
         {
             await _fluentEmail
                 .SetFrom("andresgalfajar@gmail.com", "Tilia")
@@ -23,6 +23,6 @@ namespace Application.Users.SendMail
                 .Subject("Verificar cuenta de Tilia.")
                 .Body()
                 .SendAsync(cancellation);
-        }
+        }*/
     }
 }
