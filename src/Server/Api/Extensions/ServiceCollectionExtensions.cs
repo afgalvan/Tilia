@@ -71,15 +71,9 @@ namespace Api.Extensions
             IConfiguration configuration)
         {
             // services.ConfigureHangFire();
-            var smtp = new SmtpClient(configuration["Smtp:Host"],
-                int.Parse(configuration["Smtp:Port"]));
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials =
-                new NetworkCredential(configuration["Smtp:Username"],
-                    configuration["Smtp:Password"]);
-            smtp.EnableSsl = true;
+
             services.AddFluentEmail(configuration["Smtp:Username"], "Tilia")
-                .AddSmtpSender(smtp);
+                .AddSmtpSender(CreateClient(configuration));
             services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IMapper, ServiceMapper>();
             services.AddScoped<IUsersRepository, OracleUsersRepository>();
@@ -97,6 +91,19 @@ namespace Api.Extensions
                 .UseSQLiteStorage()
             );
             services.AddHangfireServer();
+        }
+
+        private static SmtpClient CreateClient(IConfiguration configuration)
+        {
+            var smtpClient = new SmtpClient(configuration["Smtp:Host"],
+                int.Parse(configuration["Smtp:Port"])
+            );
+            string username = configuration["Smtp:Username"];
+            string password = configuration["Smtp:Password"];
+            smtpClient.Credentials           = new NetworkCredential(username, password);
+            smtpClient.EnableSsl             = true;
+            smtpClient.UseDefaultCredentials = false;
+            return smtpClient;
         }
 
         private static TypeAdapterConfig GetTypeAdapterConfig()

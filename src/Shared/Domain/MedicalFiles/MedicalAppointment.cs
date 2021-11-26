@@ -33,9 +33,6 @@ namespace Domain.MedicalFiles
         [ForeignKey("doctor_id")]
         public SanitaryEmployee DoctorCaring { get; set; }
 
-        [ForeignKey("scheduler_id")]
-        public Employee Scheduler { get; set; }
-
         public IList<MedicalBackground> MedicalBackgrounds { get; set; }
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
