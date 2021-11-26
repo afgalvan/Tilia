@@ -68,20 +68,20 @@
                                     Grid.Row="1"
         />
 
-        <required:RequiredTextFieldUserControl x:Name="ContactDataMotherNameTextBox"
-                                    TextFieldFloatingHint="Nombre de la madre"
+        <required:RequiredTextFieldUserControl x:Name="ContactDataStudiesTextBox"
+                                    TextFieldFloatingHint="Estudios"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="2"
                                     Grid.Row="1"
         />
 
-        <required:RequiredTextFieldUserControl x:Name="ContactDataFatherNameTextBox"
-                                    TextFieldFloatingHint="Nombre del padre"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Grid.Column="0"
-                                    Grid.Row="2"
+        <required:RequiredNumericTextFieldUserControl x:Name="ContactDataLandlineTextBox"
+                                                      TextFieldFloatingHint="Telefono fijo"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Grid.Column="0"
+                                                      Grid.Row="2"
         />
 
         <required:RequiredNumericTextFieldUserControl x:Name="ContactDataPhoneNumberTextBox"

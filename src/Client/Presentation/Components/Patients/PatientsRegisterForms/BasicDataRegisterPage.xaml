@@ -49,7 +49,7 @@
         />
 
         <required:RequiredTextFieldUserControl x:Name="BasicDataNamesTextBox"
-                                    TextFieldFloatingHint="Nombres"
+                                    TextFieldFloatingHint="Nombre"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="0"
@@ -57,7 +57,7 @@
         />
 
         <required:RequiredTextFieldUserControl x:Name="BasicDataLastNamesTextBox"
-                                    TextFieldFloatingHint="Apellidos"
+                                    TextFieldFloatingHint="Apellido"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="1"

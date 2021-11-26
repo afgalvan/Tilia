@@ -21,6 +21,11 @@ namespace Presentation.Components.Administration.Users
             RegisterProgressBarItem.CurrentFormItemColors();
         }
 
+        private void GoBackButtonUserControl_OnClick(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.ChangeMainContentArea(new UsersPanelUserControl(_mainWindow, _usersService));
+        }
+
         private async Task ShowMessageOnSuccess()
         {
             await _mainWindow.ShowMessageAsync("Exito", "Usuario creado correctamente");

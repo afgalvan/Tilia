@@ -1,4 +1,5 @@
 using System.Windows;
+using Presentation.Components.Atomic.Input;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
@@ -32,7 +33,15 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private void PopulateFormOptions()
         {
+            var hasOptions = new [] { "Tiene", "No tiene" };
             MedicalDataDominanceComboBox.ComboBoxItemsSource = new[] { "Diestro", "Zurdo" };
+            MedicalTrainingPlanComboBox.ComboBoxItemsSource = hasOptions;
+            MedicalContinuousTrainingComboBox.ComboBoxItemsSource = hasOptions;
+        }
+
+        private bool GetBooleanOptions(ComboBoxUserControl comboBox)
+        {
+            return comboBox.FieldText.Equals("Tiene");
         }
     }
 }

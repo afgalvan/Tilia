@@ -20,6 +20,7 @@
         <buttons:GoBackButtonUserControl
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
+            Click="GoBackButtonUserControl_OnClick"
         />
 
         <TextBlock Style="{StaticResource TitleText}"
