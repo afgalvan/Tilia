@@ -24,7 +24,7 @@ namespace Api
             services.AddSignalR().AddMessagePackProtocol();
             services.ConfigureDbContext(Configuration);
             services.AddApplicationServices();
-            services.AddInfrastructureServices();
+            services.AddInfrastructureServices(Configuration);
             services.AddControllers();
             services.AddSwagger();
         }

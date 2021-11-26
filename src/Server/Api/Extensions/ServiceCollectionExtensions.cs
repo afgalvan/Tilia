@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection;
-using Api.Controllers;
 using Api.Extensions.Settings;
 using Application.Patients.Create;
 using Application.Patients.FindById;
@@ -10,6 +11,7 @@ using Application.Users.Create;
 using Application.Users.FindById;
 using Application.Users.GenerateJwt;
 using Application.Users.GetAll;
+using Application.Users.SendMail;
 using Domain.Locations;
 using Domain.Locations.Repositories;
 using Domain.Patients;
@@ -29,7 +31,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Requests.Auth;
 using Requests.Patients;
@@ -56,6 +57,7 @@ namespace Api.Extensions
             services.AddScoped<SecurityTokenHandler, JwtSecurityTokenHandler>();
             services.AddScoped<JwtGenerator>();
             services.AddScoped<UserCreator>();
+            services.AddScoped<EmailSender>();
             services.AddScoped<UsersRetriever>();
             services.AddScoped<UserFinder>();
             services.AddScoped<UserAuthenticator>();
@@ -65,11 +67,19 @@ namespace Api.Extensions
             services.AddMediatR(Assembly.Load("Application"));
         }
 
-        public static void AddInfrastructureServices(this IServiceCollection services)
+        public static void AddInfrastructureServices(this IServiceCollection services,
+            IConfiguration configuration)
         {
             // services.ConfigureHangFire();
-            services.AddFluentEmail("andresgalfajar@gmail.com")
-                .AddSmtpSender("localhost", 25);
+            var smtp = new SmtpClient(configuration["Smtp:Host"],
+                int.Parse(configuration["Smtp:Port"]));
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials =
+                new NetworkCredential(configuration["Smtp:Username"],
+                    configuration["Smtp:Password"]);
+            smtp.EnableSsl = true;
+            services.AddFluentEmail(configuration["Smtp:Username"], "Tilia")
+                .AddSmtpSender(smtp);
             services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IMapper, ServiceMapper>();
             services.AddScoped<IUsersRepository, OracleUsersRepository>();
@@ -100,16 +110,20 @@ namespace Api.Extensions
             configuration.NewConfig<CreatePatientCommand, Patient>()
                 .Map(patient => patient.ContactData.Address, command => command.Address)
                 .Map(patient => patient.ContactData.Landline, command => command.Landline)
-                .Map(patient => patient.ContactData.LivingCity, command => new City(command.LivingCity))
-                .Map(patient => patient.ContactData.PhoneNumber, command => command.PhoneNumber)
+                .Map(patient => patient.ContactData.LivingCity,
+                    command => new City(command.LivingCity))
+                .Map(patient => patient.ContactData.PhoneNumber,
+                    command => command.PhoneNumber)
                 .Map(patient => patient.ContactData.Stratum, command => command.Stratum)
                 .Map(patient => patient.SportsData.Coach, command => command.Coach)
                 .Map(patient => patient.SportsData.Dominance, command => command.Dominance)
                 .Map(patient => patient.SportsData.Modality, command => command.Modality)
                 .Map(patient => patient.SportsData.Sport, command => command.Sport)
-                .Map(patient => patient.SportsData.ContinuousTraining, command => command.ContinuousTraining)
+                .Map(patient => patient.SportsData.ContinuousTraining,
+                    command => command.ContinuousTraining)
                 .Map(patient => patient.SportsData.StartDate, command => command.StartDate)
-                .Map(patient => patient.SportsData.TrainingPlan, command => command.TrainingPlan)
+                .Map(patient => patient.SportsData.TrainingPlan,
+                    command => command.TrainingPlan)
                 .Map(patient => patient.Genre, command => command.Genre)
                 .Map(patient => patient.IdType, command => new IdType(command.IdType))
                 .Map(patient => patient.City, command => new City(command.City));
