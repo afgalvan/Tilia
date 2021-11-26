@@ -1,7 +1,6 @@
 using Api.Extensions;
 using Api.Extensions.Jwt;
 using Api.Extensions.Swagger;
-using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -35,7 +34,7 @@ namespace Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseHangfireDashboard();
+                // app.UseHangfireDashboard();
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
