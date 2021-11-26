@@ -19,5 +19,9 @@ namespace Domain.Patients
             StartDate = startDate;
             Dominance = dominance;
         }
+
+        public SportsData()
+        {
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Domain.Patients
         public string Address { get; set; }
 
         [ForeignKey("city_id")]
-        public City City { get; set; }
+        public City LivingCity { get; set; }
 
         public int    Stratum     { get; set; }
         public string PhoneNumber { get; set; }

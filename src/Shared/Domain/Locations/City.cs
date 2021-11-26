@@ -24,6 +24,11 @@ namespace Domain.Locations
         {
         }
 
+        public City(string id)
+        {
+            Id = id;
+        }
+
         public override string ToString()
         {
             return Name;

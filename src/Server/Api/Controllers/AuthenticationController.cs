@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Oracle.ManagedDataAccess.Client;
 using Requests.Auth;
 using Requests.Responses;
 using Requests.Users;
@@ -27,10 +28,9 @@ namespace Api.Controllers
             _mapper   = mapper;
         }
 
-        [Authorize]
         [HttpPost("sign-up")]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(AuthenticationResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createRequest)
         {
             var createUserCommand =
@@ -41,11 +41,9 @@ namespace Api.Controllers
                 string token = await _mediator.Send(createUserCommand);
                 return Created("", new AuthenticationResponse(token));
             }
-            catch (DbUpdateException)
+            catch (OracleException)
             {
-                return BadRequest(new ErrorResponse
-                    { Message = "Nombre de usuario o email repetido" }
-                );
+                return BadRequest(new { Message = "Nombre de usuario o email repetido" });
             }
         }
 

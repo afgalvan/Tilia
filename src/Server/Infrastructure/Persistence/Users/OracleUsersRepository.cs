@@ -23,7 +23,7 @@ namespace Infrastructure.Persistence.Users
         public async Task Save(User entity, CancellationToken cancellation)
         {
             await _dbContext.Database.ExecuteSqlInterpolatedAsync(
-                $"CALL pkg_users.create_user({entity.Id}, {entity.Name}, {entity.Password}, {entity.Email});",
+                $"INSERT INTO \"users\" (\"id\", \"name\", \"password\", \"email\") VALUES ({entity.Id}, {entity.Name}, {entity.Password}, {entity.Email});",
                 cancellation);
             await _dbContext.SaveChangesAsync(cancellation);
         }
