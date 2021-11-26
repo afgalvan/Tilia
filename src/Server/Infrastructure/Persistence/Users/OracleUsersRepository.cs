@@ -41,15 +41,32 @@ namespace Infrastructure.Persistence.Users
                 .SingleAsync(cancellation);
         }
 
-        public Task CreateRole(AccessRole accessRole, CancellationToken cancellation)
+        public async Task CreateRole(AccessRole accessRole, CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            await _dbContext.Database
+                .ExecuteSqlInterpolatedAsync(
+                    $"INSERT INTO \"access_roles\" (\"id\", \"name\") VALUES ({accessRole.Id}, {accessRole.Name})",
+                    cancellation
+                );
+            await _dbContext.SaveChangesAsync(cancellation);
         }
 
-        public Task SetUserRole(User user, AccessRole accessRole,
+        public async Task SetUserRole(User user, AccessRole accessRole,
             CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            await _dbContext.Database
+                .ExecuteSqlInterpolatedAsync(
+                    $"UPDATE \"users\" SET \"access_role_id\" = {accessRole.Id} WHERE \"id\" = {user.Id}",
+                    cancellation
+                );
+            await _dbContext.SaveChangesAsync(cancellation);
+        }
+
+        public async Task<IEnumerable<AccessRole>> GetRoles(CancellationToken cancellation)
+        {
+            return await _dbContext.AccessRoles
+                .FromSqlRaw("SELECT * FROM \"acess_roles\"")
+                .ToListAsync(cancellation);
         }
 
 #nullable enable

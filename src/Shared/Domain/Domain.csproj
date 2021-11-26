@@ -5,7 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="MedicalFiles\Repositories" />
+      <Folder Include="MedicalFiles\Repositories\Background" />
+      <Folder Include="MedicalFiles\Repositories\MedicalNotes" />
+      <Folder Include="MedicalFiles\Repositories\MedicalRecords" />
     </ItemGroup>
 
 </Project>
