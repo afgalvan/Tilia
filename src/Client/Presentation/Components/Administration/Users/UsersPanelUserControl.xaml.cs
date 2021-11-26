@@ -14,7 +14,8 @@ namespace Presentation.Components.Administration.Users
         {
             _usersService = usersService;
             InitializeComponent();
-            _mainWindow = mainWindow;
+            _mainWindow          =  mainWindow;
+            UsersDataGrid.Loaded += LoadTableInformation;
         }
 
         private void BackToAdminUserControlButton_Click(object sender, RoutedEventArgs e)
@@ -31,6 +32,12 @@ namespace Presentation.Components.Administration.Users
         private void RemoveUser_OnClick(object sender, RoutedEventArgs e)
         {
             throw new System.NotImplementedException();
+        }
+
+        private async void LoadTableInformation(object sender, RoutedEventArgs e)
+        {
+            UsersDataGrid.ItemsSource =
+                await _usersService.GetUsers(App.CancellationToken, App.AccessToken);
         }
     }
 }
