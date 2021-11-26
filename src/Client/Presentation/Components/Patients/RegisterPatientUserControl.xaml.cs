@@ -17,12 +17,12 @@ namespace Presentation.Components.Patients
 
         public RegisterPatientUserControl(MainWindow mainWindow, PatientService patientService)
         {
-            _mainWindow      = mainWindow;
+            _mainWindow     = mainWindow;
             _patientService = patientService;
             InitializeComponent();
             var api = _mainWindow.GetComponent<ContextDataRetriever>();
-            BasicDataRegister        = new BasicDataRegisterPage(api, this);
-            ContactDataRegister      = new ContactDataRegisterPage(this, api);
+            BasicDataRegister        = new BasicDataRegisterPage(api, this, _mainWindow);
+            ContactDataRegister      = new ContactDataRegisterPage(this, api, _mainWindow);
             SportDataRegister        = new SportDataRegisterPage(this, _mainWindow);
             FormsContentArea.Content = BasicDataRegister;
         }

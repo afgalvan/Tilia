@@ -2,7 +2,10 @@ using Domain.Locations;
 using System.Collections;
 using System.Threading.Tasks;
 using System.Windows;
+using MahApps.Metro.Controls.Dialogs;
 using Presentation.Services.Http;
+using Presentation.Utils;
+using Presentation.Windows;
 using Convert = Presentation.Utils.Convert;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
@@ -11,14 +14,16 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
     {
         private readonly RegisterPatientUserControl _registerPatient;
         private readonly ContextDataRetriever       _contextData;
+        private readonly MainWindow                 _mainWindow;
         private          IEnumerable                Departments { get; set; }
         private          IEnumerable                Cities      { get; set; }
 
         public ContactDataRegisterPage(RegisterPatientUserControl registerPatient,
-            ContextDataRetriever contextData)
+            ContextDataRetriever contextData, MainWindow mainWindow)
         {
             _registerPatient = registerPatient;
             _contextData     = contextData;
+            _mainWindow = mainWindow;
             InitializeComponent();
             ContactDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             ContactDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -26,16 +31,26 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             ContactDataDepartmentComboBox.Loaded                   += OnLoadedDepartmentsCombo;
         }
 
+        private async void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Ensure.AreAllFieldsCompleted(ContactDataAddressTextBox.FieldText,
+                ContactDataLocationTextBox.FieldText,
+                ContactDataStudiesTextBox.FieldText,
+                ContactDataLandlineTextBox.FieldText,
+                ContactDataPhoneNumberTextBox.FieldText))
+            {
+                _registerPatient.NavigateTo(_registerPatient.SportDataRegister);
+                _registerPatient.ContactDataItemButton.CompletedFormItemColors();
+                return;
+            }
+
+            await _mainWindow.ShowMessageAsync("Error", "Llene todos los campos");
+        }
+
         private void GoBackToPageButton_Click(object sender, RoutedEventArgs e)
         {
             _registerPatient.NavigateTo(_registerPatient.BasicDataRegister);
             _registerPatient.ContactDataItemButton.DefaultFormItemColors();
-        }
-
-        private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
-        {
-            _registerPatient.NavigateTo(_registerPatient.SportDataRegister);
-            _registerPatient.ContactDataItemButton.CompletedFormItemColors();
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)

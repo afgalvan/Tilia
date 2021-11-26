@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using Presentation.Services.Http;
 using Presentation.Utils;
 using Presentation.Windows;
 using Convert = Presentation.Utils.Convert;
@@ -23,6 +22,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             InitializeComponent();
             PopulateFormOptions();
             Loaded += OnLoadedPage;
+            SportDataStartDateDatePicker.EndDate = DateTime.Now;
         }
 
         private void ChangeContentOnComplete(UserControl userControl)
@@ -47,8 +47,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             {
                 await _registerPatient.CreatePatient();
                 _registerPatient.FinishFormItemButton.CompletedFormItemColors();
-                _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
                 await ShowMessageOnSuccess();
+                _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
             }
             catch (Exception e)
             {

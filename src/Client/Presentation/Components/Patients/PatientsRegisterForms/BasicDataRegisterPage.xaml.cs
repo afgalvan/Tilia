@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using Domain.Locations;
 using Domain.People;
+using MahApps.Metro.Controls.Dialogs;
 using Presentation.Services.Http;
 using Presentation.Utils;
+using Presentation.Windows;
 using Convert = Presentation.Utils.Convert;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
@@ -15,16 +17,18 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
     {
         private readonly ContextDataRetriever       _contextData;
         private readonly RegisterPatientUserControl _registerPatient;
+        private readonly MainWindow                 _mainWindow;
 
         private IEnumerable Departments { get; set; }
         private IEnumerable Cities      { get; set; }
         private IEnumerable IdTypes     { get; set; }
 
         public BasicDataRegisterPage(ContextDataRetriever contextData,
-            RegisterPatientUserControl registerPatient)
+            RegisterPatientUserControl registerPatient, MainWindow mainWindow)
         {
             _contextData     = contextData;
             _registerPatient = registerPatient;
+            _mainWindow      = mainWindow;
             InitializeComponent();
             BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -34,10 +38,20 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             BasicDataBirthDayDatePicker.EndDate                  =  DateTime.Now;
         }
 
-        private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _registerPatient.NavigateTo(_registerPatient.ContactDataRegister);
-            _registerPatient.BasicDataItemButton.CompletedFormItemColors();
+            if (Ensure.AreAllFieldsCompleted(BasicDataDataNumberTextBox.FieldText,
+                BasicDataNamesTextBox.FieldText,
+                BasicDataLastNamesTextBox.FieldText,
+                BasicDataChargeTextBox.FieldText,
+                BasicDataBirthDayDatePicker.FieldText))
+            {
+                _registerPatient.NavigateTo(_registerPatient.ContactDataRegister);
+                _registerPatient.BasicDataItemButton.CompletedFormItemColors();
+                return;
+            }
+
+            await _mainWindow.ShowMessageAsync("Error", "Llene todos los campos");
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
@@ -93,7 +107,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             BasicDataBirthPlaceComboBox.ComboBoxSelectedIndex = "0";
         }
 
-        private IdType GetSelectedIdType() => (IdType)BasicDataDocTypeComboBox.ComboBoxSelectedItem;
+        private IdType GetSelectedIdType() =>
+            (IdType)BasicDataDocTypeComboBox.ComboBoxSelectedItem;
 
         public int GetSelectedIdTypeNumber()
         {
@@ -119,6 +134,7 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             return Convert.StringToDateTime(BasicDataBirthDayDatePicker.FieldText);
         }
 
-        public string GetCityCode() => ((City)BasicDataBirthPlaceComboBox.ComboBoxSelectedItem).Id;
+        public string GetCityCode() =>
+            ((City)BasicDataBirthPlaceComboBox.ComboBoxSelectedItem).Id;
     }
 }
