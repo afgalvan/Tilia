@@ -25,9 +25,11 @@ namespace Infrastructure.Persistence.MedicalFiles
             return await _dbContext.MedicalAppointments.ToListAsync(cancellation);
         }
 
-        public async Task Save(MedicalAppointment entity, CancellationToken cancellation)
+        public async Task Save(string id, MedicalAppointment appointment,
+            CancellationToken cancellation)
         {
-            await _dbContext.MedicalAppointments.AddAsync(entity, cancellation);
+            await _dbContext.MedicalAppointments.AddAsync(appointment, cancellation);
+            await _dbContext.SaveChangesAsync(cancellation);
         }
 
         public async Task<MedicalAppointment> FindById(Guid id, CancellationToken cancellation)
@@ -59,6 +61,12 @@ namespace Infrastructure.Persistence.MedicalFiles
                 .AsNoTracking()
                 .Where(appointment => appointment.Patient.PersonId == patientId)
                 .ToListAsync(cancellation);
+        }
+
+        public async Task Save(MedicalAppointment entity, CancellationToken cancellation)
+        {
+            await _dbContext.MedicalAppointments.AddAsync(entity, cancellation);
+            await _dbContext.SaveChangesAsync(cancellation);
         }
     }
 }

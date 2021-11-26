@@ -35,4 +35,8 @@
       <None Remove="Shared\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Patients\Delete" />
+    </ItemGroup>
+
 </Project>

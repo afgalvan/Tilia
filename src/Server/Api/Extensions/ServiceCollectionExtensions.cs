@@ -3,6 +3,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using Api.Extensions.Settings;
+using Application.MedicalFiles.Create;
+using Application.MedicalFiles.Filter;
 using Application.MedicalFiles.FindById;
 using Application.MedicalFiles.GetAll;
 using Application.Patients.Create;
@@ -16,6 +18,7 @@ using Application.Users.GetAll;
 using Application.Users.SendMail;
 using Domain.Locations;
 using Domain.Locations.Repositories;
+using Domain.MedicalFiles.Repositories;
 using Domain.Patients;
 using Domain.Patients.Repositories;
 using Domain.People;
@@ -25,6 +28,7 @@ using Hangfire;
 using Hangfire.Storage.SQLite;
 using Infrastructure.Persistence.IdTypes;
 using Infrastructure.Persistence.Locations;
+using Infrastructure.Persistence.MedicalFiles;
 using Infrastructure.Persistence.Patients;
 using Infrastructure.Persistence.Users;
 using Mapster;
@@ -67,7 +71,9 @@ namespace Api.Extensions
             services.AddScoped<PatientsRetriever>();
             services.AddScoped<PatientsFinder>();
             services.AddScoped<AppointmentFinder>();
+            services.AddScoped<AppointmentCreator>();
             services.AddScoped<AppointmentsRetriever>();
+            services.AddScoped<AppointmentFilter>();
             services.AddMediatR(Assembly.Load("Application"));
         }
 
@@ -84,6 +90,7 @@ namespace Api.Extensions
             services.AddScoped<IIdTypesRepository, OracleIdTypesRepository>();
             services.AddScoped<ILocationsRepository, OracleLocationsRepository>();
             services.AddScoped<IPatientsRepository, OraclePatientsRepository>();
+            services.AddScoped<IMedicalAppointmentRepository, OracleMedicalAppointmentRepository>();
         }
 
         private static void ConfigureHangFire(this IServiceCollection services)
