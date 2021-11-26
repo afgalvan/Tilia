@@ -47,10 +47,10 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Patient>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<PatientResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetPatients(CancellationToken cancellation)
         {
-            IEnumerable<Patient> patients =
+            IEnumerable<PatientResponse> patients =
                 await _mediator.Send(new GetAllPatientsQuery(), cancellation);
             return Ok(patients);
         }

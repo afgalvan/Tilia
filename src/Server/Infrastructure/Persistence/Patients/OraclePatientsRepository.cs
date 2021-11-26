@@ -22,6 +22,7 @@ namespace Infrastructure.Persistence.Patients
         {
             return await _dbContext.Patients
                 .AsNoTracking()
+                .Include(patient => patient.IdType)
                 .ToListAsync(cancellation);
         }
 

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Domain.Patients;
+using Requests.Patients;
 using SharedLib.Domain.Bus.Query;
 
 namespace Application.Patients.GetAll
 {
-    public class GetAllPatientsQuery : IQuery<IEnumerable<Patient>>
+    public class GetAllPatientsQuery : IQuery<IEnumerable<PatientResponse>>
     {
     }
 }

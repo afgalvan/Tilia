@@ -32,6 +32,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Requests.Auth;
+using Requests.Patients;
 using Requests.Users;
 using SharedLib.Persistence;
 
@@ -67,6 +68,8 @@ namespace Api.Extensions
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             // services.ConfigureHangFire();
+            services.AddFluentEmail("andresgalfajar@gmail.com")
+                .AddSmtpSender("localhost", 25);
             services.AddSingleton(GetTypeAdapterConfig());
             services.AddScoped<IMapper, ServiceMapper>();
             services.AddScoped<IUsersRepository, OracleUsersRepository>();
@@ -91,6 +94,9 @@ namespace Api.Extensions
             var configuration = new TypeAdapterConfig();
             configuration.NewConfig<CreateUserRequest, CreateUserCommand>();
             configuration.NewConfig<LoginUserRequest, AuthenticateCommand>();
+            configuration.NewConfig<Patient, PatientResponse>()
+                .Map(response => response.Sport, patient => patient.SportsData.Sport)
+                .Map(response => response.IdType, patient => patient.IdType.Name);
             configuration.NewConfig<CreatePatientCommand, Patient>()
                 .Map(patient => patient.ContactData.Address, command => command.Address)
                 .Map(patient => patient.ContactData.Landline, command => command.Landline)
