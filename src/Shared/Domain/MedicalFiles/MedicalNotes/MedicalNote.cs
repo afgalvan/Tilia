@@ -8,7 +8,7 @@ namespace Domain.MedicalFiles.MedicalNotes
     public class MedicalNote
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public IList<Diagnosis> Diagnostics { get; set; }
 

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using SharedLib.Persistence;
@@ -9,9 +10,10 @@ using SharedLib.Persistence;
 namespace Server.Migrations
 {
     [DbContext(typeof(TiliaDbContext))]
-    partial class TiliaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211126112046_RedesignEntities")]
+    partial class RedesignEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,10 +119,6 @@ namespace Server.Migrations
                         .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("disease_history");
 
-                    b.Property<int?>("anamnesis_id")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("anamnesis_id");
-
                     b.Property<string>("doctor_id")
                         .HasColumnType("NVARCHAR2(450)")
                         .HasColumnName("doctor_id");
@@ -128,6 +126,10 @@ namespace Server.Migrations
                     b.Property<Guid?>("medical_note_id")
                         .HasColumnType("RAW(16)")
                         .HasColumnName("medical_note_id");
+
+                    b.Property<Guid?>("medical_record_id")
+                        .HasColumnType("RAW(16)")
+                        .HasColumnName("medical_record_id");
 
                     b.Property<string>("patient_id")
                         .HasColumnType("NVARCHAR2(450)")
@@ -141,6 +143,9 @@ namespace Server.Migrations
 
                     b.HasIndex("medical_note_id")
                         .HasDatabaseName("ix_medical_appointments_medical_note_id");
+
+                    b.HasIndex("medical_record_id")
+                        .HasDatabaseName("ix_medical_appointments_medical_record_id");
 
                     b.HasIndex("patient_id")
                         .HasDatabaseName("ix_medical_appointments_patient_id");
@@ -263,6 +268,19 @@ namespace Server.Migrations
                         .HasDatabaseName("ix_referrals_medical_note_id");
 
                     b.ToTable("referrals");
+                });
+
+            modelBuilder.Entity("Domain.MedicalFiles.MedicalRecords.MedicalRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("RAW(16)")
+                        .HasColumnName("id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_medical_records");
+
+                    b.ToTable("medical_records");
                 });
 
             modelBuilder.Entity("Domain.People.IdType", b =>
@@ -491,36 +509,21 @@ namespace Server.Migrations
                         .HasForeignKey("medical_note_id")
                         .HasConstraintName("fk_medical_appointments_medical_notes_medical_note_id");
 
+                    b.HasOne("Domain.MedicalFiles.MedicalRecords.MedicalRecord", "MedicalRecord")
+                        .WithMany()
+                        .HasForeignKey("medical_record_id")
+                        .HasConstraintName("fk_medical_appointments_medical_records_medical_record_id");
+
                     b.HasOne("Domain.Patients.Patient", "Patient")
                         .WithMany()
                         .HasForeignKey("patient_id")
                         .HasConstraintName("fk_medical_appointments_patients_patient_id");
 
-                    b.OwnsOne("Domain.MedicalFiles.MedicalRecords.Anamnesis", "Anamnesis", b1 =>
-                        {
-                            b1.Property<Guid>("MedicalAppointmentAppointmentId")
-                                .HasColumnType("RAW(16)")
-                                .HasColumnName("appointment_id");
-
-                            b1.Property<string>("Description")
-                                .HasColumnType("NVARCHAR2(2000)")
-                                .HasColumnName("anamnesis_description");
-
-                            b1.HasKey("MedicalAppointmentAppointmentId")
-                                .HasName("pk_medical_appointments");
-
-                            b1.ToTable("medical_appointments");
-
-                            b1.WithOwner()
-                                .HasForeignKey("MedicalAppointmentAppointmentId")
-                                .HasConstraintName("fk_medical_appointments_medical_appointments_appointment_id");
-                        });
-
-                    b.Navigation("Anamnesis");
-
                     b.Navigation("DoctorCaring");
 
                     b.Navigation("MedicalNote");
+
+                    b.Navigation("MedicalRecord");
 
                     b.Navigation("Patient");
                 });
@@ -556,6 +559,31 @@ namespace Server.Migrations
                         .WithMany("Referrals")
                         .HasForeignKey("MedicalNoteId")
                         .HasConstraintName("fk_referrals_medical_notes_medical_note_id");
+                });
+
+            modelBuilder.Entity("Domain.MedicalFiles.MedicalRecords.MedicalRecord", b =>
+                {
+                    b.OwnsOne("Domain.MedicalFiles.MedicalRecords.Anamnesis", "Anamnesis", b1 =>
+                        {
+                            b1.Property<Guid>("MedicalRecordId")
+                                .HasColumnType("RAW(16)")
+                                .HasColumnName("id");
+
+                            b1.Property<string>("Description")
+                                .HasColumnType("NVARCHAR2(2000)")
+                                .HasColumnName("anamnesis_description");
+
+                            b1.HasKey("MedicalRecordId")
+                                .HasName("pk_medical_records");
+
+                            b1.ToTable("medical_records");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MedicalRecordId")
+                                .HasConstraintName("fk_medical_records_medical_records_id");
+                        });
+
+                    b.Navigation("Anamnesis");
                 });
 
             modelBuilder.Entity("Domain.People.Person", b =>

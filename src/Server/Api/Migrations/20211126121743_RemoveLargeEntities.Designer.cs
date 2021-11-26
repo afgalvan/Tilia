@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using SharedLib.Persistence;
@@ -9,9 +10,10 @@ using SharedLib.Persistence;
 namespace Server.Migrations
 {
     [DbContext(typeof(TiliaDbContext))]
-    partial class TiliaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211126121743_RemoveLargeEntities")]
+    partial class RemoveLargeEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
