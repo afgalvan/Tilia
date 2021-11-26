@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Presentation.Components.Medical;
 using Presentation.Components.Patients;
 using Presentation.Services.Http;
 
@@ -39,6 +40,8 @@ namespace Presentation.Components.Atomic
 
         private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
+            ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
+            _mainWindow.ChangeMainContentArea(new MedicalAppointmentUserControl());
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
