@@ -118,7 +118,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\Medical" />
     <Folder Include="Services\Hubs" />
   </ItemGroup>
 
