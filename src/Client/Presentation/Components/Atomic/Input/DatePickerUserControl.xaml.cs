@@ -21,18 +21,10 @@ namespace Presentation.Components.Atomic.Input
             InitializeComponent();
         }
 
-        public string Text
+        public string FieldText
         {
-            get => DatePickerInput.Text;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                DatePickerInput.Text = Text;
-            }
+            get => (string)GetValue(FieldTextProperty);
+            set => SetValue(FieldTextProperty, value);
         }
 
         public string DatePickerHint
@@ -52,6 +44,10 @@ namespace Presentation.Components.Atomic.Input
             get => (string)GetValue(DatePickerFontSizeProperty);
             set => SetValue(DatePickerFontSizeProperty, value);
         }
+
+        public static readonly DependencyProperty FieldTextProperty =
+            DependencyProperty.Register("FieldText", typeof(string),
+                typeof(DatePickerUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty DatePickerHintProperty =
             DependencyProperty.Register("DatePickerHint", typeof(string),

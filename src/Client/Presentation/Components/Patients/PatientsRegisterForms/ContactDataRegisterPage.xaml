@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
       xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+      xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
       mc:Ignorable="d"
       d:DesignHeight="384" d:DesignWidth="833"
       Title="ContactDataRegisterPage">
@@ -38,6 +39,7 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="1"
                                    Grid.Row="0"
+                                   ComboBoxSelectedIndex="0"
         />
 
         <input:ComboBoxUserControl x:Name="ContactDataStratumComboBox"
@@ -49,7 +51,8 @@
                                    ComboBoxSelectedIndex="0"
         />
 
-        <input:TextFieldUserControl x:Name="ContactDataAddressTextBox"
+
+        <required:RequiredTextFieldUserControl x:Name="ContactDataAddressTextBox"
                                     TextFieldFloatingHint="Direccion"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -57,7 +60,7 @@
                                     Grid.Row="1"
         />
 
-        <input:TextFieldUserControl x:Name="ContactDataLocationTextBox"
+        <required:RequiredTextFieldUserControl x:Name="ContactDataLocationTextBox"
                                     TextFieldFloatingHint="Localidad"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -65,23 +68,23 @@
                                     Grid.Row="1"
         />
 
-        <input:TextFieldUserControl x:Name="ContactDataMotherNameTextBox"
-                                    TextFieldFloatingHint="Nombre de la madre"
+        <required:RequiredTextFieldUserControl x:Name="ContactDataStudiesTextBox"
+                                    TextFieldFloatingHint="Estudios"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Grid.Column="2"
                                     Grid.Row="1"
         />
 
-        <input:TextFieldUserControl x:Name="ContactDataFatherNameTextBox"
-                                    TextFieldFloatingHint="Nombre del padre"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Grid.Column="0"
-                                    Grid.Row="2"
+        <required:RequiredNumericTextFieldUserControl x:Name="ContactDataLandlineTextBox"
+                                                      TextFieldFloatingHint="Telefono fijo"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Grid.Column="0"
+                                                      Grid.Row="2"
         />
 
-        <input:NumericTextFieldUserControl x:Name="ContactDataPhoneNumberTextBox"
+        <required:RequiredNumericTextFieldUserControl x:Name="ContactDataPhoneNumberTextBox"
                                     TextFieldFloatingHint="Celular"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"

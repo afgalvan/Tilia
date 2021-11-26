@@ -1,4 +1,3 @@
-using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,18 +10,10 @@ namespace Presentation.Components.Atomic.Input.Required
             InitializeComponent();
         }
 
-        public string Text
+        public string FieldText
         {
-            get => RequiredTextField.Text;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                RequiredTextField.Text = Text;
-            }
+            get => (string)GetValue(FieldTextProperty);
+            set => SetValue(FieldTextProperty, value);
         }
 
         public string TextFieldFloatingHint
@@ -42,6 +33,9 @@ namespace Presentation.Components.Atomic.Input.Required
             get => (string)GetValue(TextFieldFontSizeProperty);
             set => SetValue(TextFieldFontSizeProperty, value);
         }
+
+        public static readonly DependencyProperty FieldTextProperty =
+            DependencyProperty.Register("FieldText", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TextFieldFloatingHintProperty =
             DependencyProperty.Register("TextFieldFloatingHint", typeof(string), typeof(RequiredTextFieldUserControl), new PropertyMetadata(""));

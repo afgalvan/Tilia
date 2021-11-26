@@ -1,15 +1,12 @@
 <UserControl x:Class="Presentation.Components.Patients.RegisterPatientUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Presentation.Components.Patients"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="546" d:DesignWidth="873" >
-
-
 
     <materialDesign:Card>
         <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
@@ -18,7 +15,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="14*"/>
+                    <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
 
                 <buttons:GoBackButtonUserControl ToolTip="Volver a la seccion de pacientes"
@@ -30,6 +27,59 @@
                            Grid.Row="0"
                            Grid.ColumnSpan="2"
                            Text="Registro de paciente"/>
+
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Top"
+                           Margin="20,0,20,0"/>
+
+                <Grid x:Name="ProgressBarGrid"
+                      Grid.Row="1"
+                      Margin="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2.4*"/>
+                        <ColumnDefinition Width="2.1*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <buttons:ProgressBarButtonUserControl x:Name="BasicDataItemButton"
+                                                          ButtonContent="Informacion básica"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="200"
+                                                          Click="BasicDataItemButton_OnClick"
+                    />
+
+                    <buttons:ProgressBarButtonUserControl x:Name="ContactDataItemButton"
+                                                          ButtonContent="Informacion de contacto"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="240"
+                                                          Grid.Column="1"
+                                                          Click="ContactDataItemButton_OnClick"
+                    />
+
+                    <buttons:ProgressBarButtonUserControl x:Name="MedicalDataItemButton"
+                                                          ButtonContent="Informacion medica"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="210"
+                                                          Grid.Column="2"
+                                                          Click="MedicalDataItemButton_OnClick"
+                    />
+
+                    <buttons:ProgressBarButtonUserControl x:Name="FinishFormItemButton"
+                                                          ButtonContent="Finalizar"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="120"
+                                                          Grid.Column="3"
+                    />
+                </Grid>
+
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Bottom"
+                           Margin="20,0,20,0" Height="3"/>
 
                 <Frame x:Name="FormsContentArea"
                     Grid.Row="2"

@@ -38,18 +38,10 @@ namespace Presentation.Components.Atomic.Input
             _ = ComboBoxInput.SetBinding(ItemsControl.ItemsSourceProperty, binding);
         }
 
-        public string Text
+        public string FieldText
         {
-            get => ComboBoxInput.Text;
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                ComboBoxInput.Text = Text;
-            }
+            get => (string)GetValue(FieldTextHintProperty);
+            set => SetValue(FieldTextHintProperty, value);
         }
 
         public string ComboBoxHint
@@ -93,6 +85,9 @@ namespace Presentation.Components.Atomic.Input
             get => (string)GetValue(ComboBoxSelectedIndexProperty);
             set => SetValue(ComboBoxSelectedIndexProperty, value);
         }
+
+        public static readonly DependencyProperty FieldTextHintProperty =
+            DependencyProperty.Register("FieldText", typeof(string), typeof(ComboBoxUserControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ComboBoxHintProperty =
             DependencyProperty.Register("ComboBoxHint", typeof(string),

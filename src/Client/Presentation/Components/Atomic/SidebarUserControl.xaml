@@ -4,14 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
              mc:Ignorable="d"
              d:DesignHeight="546.4" d:DesignWidth="223.283185840708">
     <materialDesign:Card x:Name="ButtonsCard"
                          Background="White">
 
         <StackPanel x:Name="ButtonStack" Orientation="Vertical">
-
-            <!-- Dashboard button -->
             <Button x:Name="DashboardButton"
                     Height="45"
                     Cursor="Hand"
@@ -84,48 +83,7 @@
 
                         Pacientes
                     </TextBlock>
-
                 </StackPanel>
-
-            </Button>
-
-            <!-- Medical Appointments button -->
-            <Button x:Name="MedicalAppointmentsButton"
-                    Height="45"
-                    Cursor="Hand"
-                    Background="{x:Null}"
-                    BorderBrush="{x:Null}"
-                    Foreground="{x:Null}"
-                    Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                    Width="205"
-                    Click="MedicalAppointments_Click"
-                    Margin="0,15,0,0">
-
-                <StackPanel x:Name="MedicalAppointmentsStackPanel"
-                            Orientation="Horizontal"
-                            Width="180">
-
-                    <materialDesign:PackIcon x:Name="MedicalAppointmentsIcon"
-                                             Kind="BookOpenPageVariantOutline"
-                                             Width="24"
-                                             Height="24"
-                                             Margin="10,0,0,0"
-                                             Foreground="{StaticResource Gray}" />
-
-                    <TextBlock x:Name="MedicalAppointmentsTextBlock"
-                               FontSize="15"
-                               FontFamily="DM Sans"
-                               Foreground="{StaticResource Gray}"
-                               Margin="10,3,48,0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Stretch"
-                               FontWeight="Normal">
-
-                        Citas médicas
-                    </TextBlock>
-
-                </StackPanel>
-
             </Button>
 
             <!-- Medical meeting button -->
@@ -206,7 +164,7 @@
             </Button>
 
 
-            <Separator Margin="0,150,0,10" Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <Separator Margin="0,200,0,10" Style="{StaticResource MaterialDesignDarkSeparator}" />
             
             <!-- Log out button -->
             <Button x:Name="LogoutButton"

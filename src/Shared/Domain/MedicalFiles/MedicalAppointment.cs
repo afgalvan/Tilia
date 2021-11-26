@@ -37,10 +37,6 @@ namespace Domain.MedicalFiles
         public Employee Scheduler { get; set; }
 
         public IList<MedicalBackground> MedicalBackgrounds { get; set; }
-#nullable enable
-        [ForeignKey("gynecological_background_id")]
-        public GynecologicalBackground? GynecologicalBackground { get; private set; }
-#nullable disable
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
             DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote)
@@ -63,15 +59,6 @@ namespace Domain.MedicalFiles
         {
             var medicalBackground = new MedicalBackground(name, state, observation);
             MedicalBackgrounds.Add(medicalBackground);
-        }
-
-        public void AddGynecologicalBackground(DateTime menarchy, int cycle, bool isRegular,
-            bool hasDysmenorrhea, bool hasAmenorrhea, DateTime lastMenstrualPeriod,
-            DateTime estimatedDateConfinement, bool hasPlanning, string method)
-        {
-            GynecologicalBackground = new GynecologicalBackground(menarchy, cycle,
-                isRegular, hasDysmenorrhea, hasAmenorrhea, lastMenstrualPeriod,
-                estimatedDateConfinement, hasPlanning, method);
         }
 
         public bool IsBetweenDates(DateTime initialDate, DateTime limitDate)

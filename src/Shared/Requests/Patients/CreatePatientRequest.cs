@@ -1,16 +1,10 @@
 ﻿using System;
+using Requests.People;
 
 namespace Requests.Patients
 {
-    public class PatientsResponse
+    public class CreatePatientRequest : PersonDto
     {
-        public string   PersonId           { get; set; }
-        public int      IdType             { get; set; }
-        public string   FirstName          { get; set; }
-        public string   LastName           { get; set; }
-        public int      Genre              { get; set; }
-        public string   City               { get; set; }
-        public DateTime BirthDate          { get; set; }
         public string   Occupation         { get; set; }
         public string   Studies            { get; set; }
         public string   Sport              { get; set; }

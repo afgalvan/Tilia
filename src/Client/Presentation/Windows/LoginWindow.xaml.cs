@@ -37,7 +37,8 @@ namespace Presentation.Windows
         {
             try
             {
-                // App.AccessToken = await RequestToken(UsernameField.Text, GetPasswordValue());
+                App.AccessToken = await RequestToken(UsernameField.Text, GetPasswordValue());
+                //App.AccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDIwZTQ5Ni0xNTdlLTRiZjMtYWQzZi00YTRmMDIzOWQ1N2IiLCJuYmYiOjE2Mzc4NzY4OTYsImV4cCI6MTYzODQ4MTY5NiwiaWF0IjoxNjM3ODc2ODk2fQ.4n59CFzStwai8W31KaXiLkD29sb1KD1RifkRwgCSrlY";
                 OpenMainWindow();
             }
             catch (Exception e) when (e is AuthenticationException or ServerDownException)

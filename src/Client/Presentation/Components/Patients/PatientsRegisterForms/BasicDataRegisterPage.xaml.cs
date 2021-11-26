@@ -1,25 +1,34 @@
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using Domain.Locations;
+using Domain.People;
+using MahApps.Metro.Controls.Dialogs;
 using Presentation.Services.Http;
+using Presentation.Utils;
+using Presentation.Windows;
+using Convert = Presentation.Utils.Convert;
 
 namespace Presentation.Components.Patients.PatientsRegisterForms
 {
-    public partial class BasicDataRegisterPage : Page
+    public partial class BasicDataRegisterPage
     {
         private readonly ContextDataRetriever       _contextData;
         private readonly RegisterPatientUserControl _registerPatient;
-        private          IEnumerable                Departments { get; set; }
-        private          IEnumerable                Cities      { get; set; }
+        private readonly MainWindow                 _mainWindow;
+
+        private IEnumerable Departments { get; set; }
+        private IEnumerable Cities      { get; set; }
+        private IEnumerable IdTypes     { get; set; }
 
         public BasicDataRegisterPage(ContextDataRetriever contextData,
-            RegisterPatientUserControl registerPatient)
+            RegisterPatientUserControl registerPatient, MainWindow mainWindow)
         {
             _contextData     = contextData;
             _registerPatient = registerPatient;
+            _mainWindow      = mainWindow;
             InitializeComponent();
             BasicDataDepartmentComboBox.OnSelectionChangedAction =  PopulateCities;
             BasicDataDepartmentComboBox.OnDropDownClosedAction   =  PopulateCities;
@@ -29,15 +38,26 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             BasicDataBirthDayDatePicker.EndDate                  =  DateTime.Now;
         }
 
-        private void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            var nextPage = new ContactDataRegisterPage(_registerPatient, _contextData, this);
-            _registerPatient.NavigateTo(nextPage);
+            if (Ensure.AreAllFieldsCompleted(BasicDataDataNumberTextBox.FieldText,
+                BasicDataNamesTextBox.FieldText,
+                BasicDataLastNamesTextBox.FieldText,
+                BasicDataChargeTextBox.FieldText,
+                BasicDataBirthDayDatePicker.FieldText))
+            {
+                _registerPatient.NavigateTo(_registerPatient.ContactDataRegister);
+                _registerPatient.BasicDataItemButton.CompletedFormItemColors();
+                return;
+            }
+
+            await _mainWindow.ShowMessageAsync("Error", "Llene todos los campos");
         }
 
         private void OnLoadedPage(object sender, RoutedEventArgs e)
         {
             PopulateSyncOptions();
+            _registerPatient.BasicDataItemButton.CurrentFormItemColors();
         }
 
         private void PopulateSyncOptions()
@@ -47,8 +67,8 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
 
         private async Task PopulateIdTypes()
         {
-            BasicDataDocTypeComboBox.ComboBoxItemsSource =
-                await _contextData.GetIdTypes(App.CancellationToken);
+            IdTypes ??= await _contextData.GetIdTypes(App.CancellationToken);
+            BasicDataDocTypeComboBox.ComboBoxItemsSource = IdTypes;
         }
 
         private async void OnLoadedIdCombo(object sender, RoutedEventArgs e)
@@ -70,7 +90,6 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
         private async void OnLoadedDepartmentsCombo(object sender, RoutedEventArgs e)
         {
             await PopulateDepartments();
-            await PopulateCities();
         }
 
         private async Task PopulateCities()
@@ -87,5 +106,35 @@ namespace Presentation.Components.Patients.PatientsRegisterForms
             BasicDataBirthPlaceComboBox.ComboBoxItemsSource = Cities;
             BasicDataBirthPlaceComboBox.ComboBoxSelectedIndex = "0";
         }
+
+        private IdType GetSelectedIdType() =>
+            (IdType)BasicDataDocTypeComboBox.ComboBoxSelectedItem;
+
+        public int GetSelectedIdTypeNumber()
+        {
+            var selectedId = GetSelectedIdType();
+            return selectedId.Id;
+        }
+
+        public string GetPersonId() => BasicDataDataNumberTextBox.FieldText;
+
+        public int GetSelectedGenreNumber()
+        {
+            return Convert.StringToInt(BasicDataGenreComboBox.ComboBoxSelectedIndex);
+        }
+
+        public string GetFirstName() => BasicDataNamesTextBox.FieldText;
+
+        public string GetLastName() => BasicDataLastNamesTextBox.FieldText;
+
+        public string GetOccupation() => BasicDataChargeTextBox.FieldText;
+
+        public DateTime GetBirthDate()
+        {
+            return Convert.StringToDateTime(BasicDataBirthDayDatePicker.FieldText);
+        }
+
+        public string GetCityCode() =>
+            ((City)BasicDataBirthPlaceComboBox.ComboBoxSelectedItem).Id;
     }
 }

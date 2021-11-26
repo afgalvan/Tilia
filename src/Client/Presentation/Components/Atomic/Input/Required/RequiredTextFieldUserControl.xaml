@@ -19,7 +19,7 @@
 
         <TextBox.Text>
             <Binding
-                Path="Style"
+                Path="FieldText"
                 UpdateSourceTrigger="PropertyChanged">
                 <Binding.ValidationRules>
                     <utils:NotEmptyValidationRule

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Presentation.Components.MedicalOrders
+namespace Presentation.Components.Medical
 {
     /// <summary>
-    /// Lógica de interacción para MedicalOrderUserControl.xaml
+    /// Lógica de interacción para MedicalAppointmentUserControl.xaml
     /// </summary>
-    public partial class MedicalOrderUserControl : UserControl
+    public partial class MedicalAppointmentUserControl : UserControl
     {
-        public MedicalOrderUserControl()
+        public MedicalAppointmentUserControl()
         {
             InitializeComponent();
         }

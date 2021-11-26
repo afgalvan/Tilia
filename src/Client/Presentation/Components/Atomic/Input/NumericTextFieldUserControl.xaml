@@ -16,5 +16,6 @@
              BorderBrush="Gray"
              FontSize="{Binding TextFieldFontSize}"
              TextWrapping="Wrap"
-             PreviewTextInput="TextField_OnPreviewTextInput"/>
+             PreviewTextInput="TextField_OnPreviewTextInput"
+             Text="{Binding FieldText}"/>
 </UserControl>

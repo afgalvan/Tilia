@@ -2,7 +2,7 @@
 {
     public enum Dominance
     {
-        Left,
+        Left = 0,
         Right
     }
 }

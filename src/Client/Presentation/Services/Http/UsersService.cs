@@ -1,10 +1,11 @@
-﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Presentation.Filters;
 using Presentation.Services.Http.Connection;
+using Requests.Auth;
 using Requests.Users;
+using RestSharp;
 
 namespace Presentation.Services.Http
 {
@@ -18,7 +19,8 @@ namespace Presentation.Services.Http
         }
 
         [WithJwtToken]
-        public async Task<IEnumerable<UserResponse>> GetUsers(CancellationToken cancellation, string token = default)
+        public async Task<IEnumerable<UserResponse>> GetUsers(CancellationToken cancellation,
+            string token)
         {
             const string endpoint = "/users";
             return await _restComposer.WithAuth(token)
@@ -32,6 +34,23 @@ namespace Presentation.Services.Http
             var endpoint = $"/users/find?id={userId}";
             return await _restComposer.WithAuth(token)
                 .GetAsync<UserResponse>(endpoint, cancellation);
+        }
+
+        [WithJwtToken]
+        public async Task CreateUser(string username,
+            string email, string password, CancellationToken cancellation,
+            string token = default)
+        {
+            const string endpoint = "/auth/sign-up";
+            var userRequest = new CreateUserRequest
+            {
+                Username = username,
+                Email    = email,
+                Password = password
+            };
+            IRestRequest request = new RestRequest(endpoint).AddJsonBody(userRequest);
+            // Put Auth
+            await _restComposer.Post<AuthenticationResponse>(request, cancellation);
         }
     }
 }

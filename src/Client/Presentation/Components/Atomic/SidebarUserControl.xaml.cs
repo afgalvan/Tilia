@@ -1,8 +1,6 @@
-using System;
 using MaterialDesignThemes.Wpf;
 using Presentation.Components.Administration;
 using Presentation.Components.Dashboard;
-using Presentation.Components.MedicalNotes;
 using Presentation.Utils;
 using Presentation.Windows;
 using System.Collections.Generic;
@@ -10,17 +8,21 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Presentation.Components.Patients;
+using Presentation.Services.Http;
 
 namespace Presentation.Components.Atomic
 {
     public partial class SidebarUserControl
     {
-        private readonly MainWindow _mainWindow;
+        private readonly MainWindow          _mainWindow;
+        private readonly PatientsUserControl _patientsUserControl;
 
         public SidebarUserControl(MainWindow mainWindow)
         {
-            InitializeComponent();
             _mainWindow = mainWindow;
+            InitializeComponent();
+            var api = _mainWindow.GetComponent<PatientService>();
+            _patientsUserControl = new PatientsUserControl(_mainWindow, api);
         }
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
@@ -32,13 +34,7 @@ namespace Presentation.Components.Atomic
         private void PatientsButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, PatientsTextBlock, PatientsIcon);
-            _mainWindow.ChangeMainContentArea(new PatientsUserControl(_mainWindow));
-        }
-
-        private void MedicalAppointments_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButtonColor(sender, MedicalAppointmentsTextBlock, MedicalAppointmentsIcon);
-            _mainWindow.ChangeMainContentArea(new MedicalNotesUserControl());
+            _mainWindow.ChangeMainContentArea(_patientsUserControl);
         }
 
         private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
@@ -75,7 +71,7 @@ namespace Presentation.Components.Atomic
             return new[]
             {
                 DashboardTextBlock, PatientsTextBlock,
-                MedicalAppointmentsTextBlock, AdminTextBlock,
+                AdminTextBlock,
                 MedicalMeetingTextBlock,
                 LogoutTextBlock
             };
@@ -86,7 +82,7 @@ namespace Presentation.Components.Atomic
             return new[]
             {
                 DashboardIcon, PatientsIcon,
-                MedicalAppointmentsIcon, MedicalMeetingIcon, AdminIcon,
+                MedicalMeetingIcon, AdminIcon,
                 LogoutIcon
             };
         }

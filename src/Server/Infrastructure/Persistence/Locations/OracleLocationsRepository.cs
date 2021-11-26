@@ -19,7 +19,7 @@ namespace Infrastructure.Persistence.Locations
 
         public async Task<IEnumerable<Department>> GetAll(CancellationToken cancellation)
         {
-            return await _dbContext.Departments.FromSqlRaw("SELECT * FROM \"departments\"")
+            return await _dbContext.Departments.FromSqlRaw("SELECT * FROM \"departments\" ORDER BY \"name\"")
                 .ToListAsync(cancellation);
         }
 
@@ -27,7 +27,7 @@ namespace Infrastructure.Persistence.Locations
             CancellationToken cancellation)
         {
             return await _dbContext.Cities
-                .FromSqlInterpolated($"SELECT * FROM \"cities\" WHERE \"department_id\" = {departmentId}")
+                .FromSqlInterpolated($"SELECT * FROM \"cities\" WHERE \"department_id\" = {departmentId} ORDER BY \"name\"")
                 .ToListAsync(cancellation);
         }
     }

@@ -15,5 +15,6 @@
               Width="{Binding TextFieldWidth}"
               BorderBrush="Gray"
               FontSize="{Binding TextFieldFontSize}"
-              TextWrapping="Wrap"/>
+              TextWrapping="Wrap"
+              Text="{Binding FieldText}"/>
 </UserControl>
