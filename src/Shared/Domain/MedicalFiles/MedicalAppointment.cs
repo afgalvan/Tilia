@@ -11,14 +11,14 @@ namespace Domain.MedicalFiles
     public class MedicalAppointment
     {
         [Key]
-        public Guid AppointmentId { get; set; }
+        public Guid AppointmentId { get; set; } = Guid.NewGuid();
 
         public string   AppointmentReason { get; set; }
         public string   DiseaseHistory    { get; set; }
         public DateTime AppointmentDate   { get; set; }
 
-        [ForeignKey("medical_record_id")]
-        public MedicalRecord MedicalRecord { get; set; }
+        [ForeignKey("anamnesis_id")]
+        public Anamnesis Anamnesis { get; set; }
 
         [ForeignKey("medical_note_id")]
         public MedicalNote MedicalNote { get; set; }
@@ -32,13 +32,12 @@ namespace Domain.MedicalFiles
         public SanitaryEmployee DoctorCaring { get; set; }
 
         public MedicalAppointment(string appointmentReason, string diseaseHistory,
-            DateTime appointmentDate, MedicalRecord medicalRecord, MedicalNote medicalNote)
+            DateTime appointmentDate, MedicalNote medicalNote)
         {
-            AppointmentReason  = appointmentReason;
-            DiseaseHistory     = diseaseHistory;
-            AppointmentDate    = appointmentDate;
-            MedicalRecord      = medicalRecord;
-            MedicalNote        = medicalNote;
+            AppointmentReason = appointmentReason;
+            DiseaseHistory    = diseaseHistory;
+            AppointmentDate   = appointmentDate;
+            MedicalNote       = medicalNote;
         }
 
         public MedicalAppointment()

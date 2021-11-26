@@ -31,11 +31,7 @@ namespace SharedLib.Persistence
         public DbSet<Diagnosis>      Diagnostics     { get; set; }
         public DbSet<EvolutionSheet> EvolutionSheets { get; set; }
         public DbSet<ManagementPlan> ManagementPlans { get; set; }
-
         public DbSet<Referral> Referrals { get; set; }
-
-        // Medical Records
-        public DbSet<MedicalRecord>  MedicalRecords  { get; set; }
 
         public TiliaDbContext(DbContextOptions options) : base(options)
         {

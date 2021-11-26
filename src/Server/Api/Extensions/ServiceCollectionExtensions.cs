@@ -3,6 +3,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using Api.Extensions.Settings;
+using Application.MedicalFiles.FindById;
+using Application.MedicalFiles.GetAll;
 using Application.Patients.Create;
 using Application.Patients.FindById;
 using Application.Patients.GetAll;
@@ -64,6 +66,8 @@ namespace Api.Extensions
             services.AddScoped<PatientCreator>();
             services.AddScoped<PatientsRetriever>();
             services.AddScoped<PatientsFinder>();
+            services.AddScoped<AppointmentFinder>();
+            services.AddScoped<AppointmentsRetriever>();
             services.AddMediatR(Assembly.Load("Application"));
         }
 

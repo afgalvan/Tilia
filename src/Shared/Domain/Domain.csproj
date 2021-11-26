@@ -5,9 +5,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="MedicalFiles\Repositories\Background" />
-      <Folder Include="MedicalFiles\Repositories\MedicalNotes" />
-      <Folder Include="MedicalFiles\Repositories\MedicalRecords" />
+      <Compile Remove="MedicalFiles\Repositories\Background\**" />
+      <Compile Remove="MedicalFiles\Repositories\MedicalNotes\**" />
+      <Compile Remove="MedicalFiles\Repositories\MedicalRecords\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="MedicalFiles\Repositories\Background\**" />
+      <EmbeddedResource Remove="MedicalFiles\Repositories\MedicalNotes\**" />
+      <EmbeddedResource Remove="MedicalFiles\Repositories\MedicalRecords\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="MedicalFiles\Repositories\Background\**" />
+      <None Remove="MedicalFiles\Repositories\MedicalNotes\**" />
+      <None Remove="MedicalFiles\Repositories\MedicalRecords\**" />
     </ItemGroup>
 
 </Project>

@@ -43,9 +43,14 @@ namespace Infrastructure.Persistence.Patients
                 .FirstOrDefaultAsync(patient => patient.PersonId == id, cancellation);
         }
 
-        public Task RemoveById(string id, CancellationToken cancellation)
+        public async Task RemoveById(string id, CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            Patient found =
+                await _dbContext.Patients.FirstOrDefaultAsync(
+                    patient => patient.PersonId == id, cancellation
+                    );
+            _dbContext.Remove(found);
+            await _dbContext.SaveChangesAsync(cancellation);
         }
     }
 }
