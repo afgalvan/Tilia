@@ -25,10 +25,21 @@ namespace Infrastructure.Persistence.MedicalFiles
             return await _dbContext.MedicalAppointments.ToListAsync(cancellation);
         }
 
-        public async Task Save(string id, MedicalAppointment appointment,
+        public async Task Save(string patientId, string doctorId, MedicalAppointment appointment,
             CancellationToken cancellation)
         {
             await _dbContext.MedicalAppointments.AddAsync(appointment, cancellation);
+            await _dbContext.SaveChangesAsync(cancellation);
+            await LinkPeople(patientId, doctorId, appointment.AppointmentId, cancellation);
+        }
+
+        private async Task LinkPeople(string patientId, string doctorId, Guid appointmentId,
+            CancellationToken cancellation)
+        {
+            await _dbContext.Database.ExecuteSqlInterpolatedAsync(
+                $"UPDATE \"medical_appointments\" SET \"patient_id\" = {patientId}, \"doctor_id\" = {doctorId} WHERE \"appointment_id\" = {appointmentId}",
+                cancellation
+            );
             await _dbContext.SaveChangesAsync(cancellation);
         }
 

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Users.GenerateJwt;
-using Application.Users.SendMail;
+using Domain.SharedLib.Email;
 using Encryptor = BCrypt.Net.BCrypt;
 using Domain.Users;
 using Domain.Users.Repositories;
@@ -10,12 +10,12 @@ namespace Application.Users.Create
 {
     public class UserCreator
     {
-        private readonly JwtGenerator     _jwtGenerator;
-        private readonly EmailSender      _emailSender;
-        private readonly IUsersRepository _usersRepository;
+        private readonly JwtGenerator       _jwtGenerator;
+        private readonly IEmailSender<User> _emailSender;
+        private readonly IUsersRepository   _usersRepository;
 
         public UserCreator(JwtGenerator jwtGenerator, IUsersRepository usersRepository,
-            EmailSender emailSender)
+            IEmailSender<User> emailSender)
         {
             _jwtGenerator    = jwtGenerator;
             _usersRepository = usersRepository;

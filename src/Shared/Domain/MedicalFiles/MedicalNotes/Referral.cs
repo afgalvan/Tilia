@@ -6,7 +6,7 @@ namespace Domain.MedicalFiles.MedicalNotes
     public class Referral
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string Department  { get; set; }
         public string Description { get; set; }

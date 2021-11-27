@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Domain.MedicalFiles;
 using Domain.MedicalFiles.Repositories;
@@ -15,10 +14,11 @@ namespace Application.MedicalFiles.Create
             _repository = repository;
         }
 
-        public async Task CreateAppointment(MedicalAppointment medicalAppointment,
+        public async Task CreateAppointment(string patientId, string doctorId,
+            MedicalAppointment medicalAppointment,
             CancellationToken cancellation)
         {
-            await _repository.Save(medicalAppointment, cancellation);
+            await _repository.Save(patientId, doctorId, medicalAppointment, cancellation);
         }
     }
 }

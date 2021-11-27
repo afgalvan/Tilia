@@ -15,17 +15,24 @@ using Application.Users.Create;
 using Application.Users.FindById;
 using Application.Users.GenerateJwt;
 using Application.Users.GetAll;
-using Application.Users.SendMail;
+using Domain.Employees.Repositories;
 using Domain.Locations;
 using Domain.Locations.Repositories;
+using Domain.MedicalFiles;
+using Domain.MedicalFiles.MedicalNotes;
+using Domain.MedicalFiles.MedicalRecords;
 using Domain.MedicalFiles.Repositories;
 using Domain.Patients;
 using Domain.Patients.Repositories;
 using Domain.People;
 using Domain.People.Repositories;
+using Domain.SharedLib.Email;
+using Domain.Users;
 using Domain.Users.Repositories;
 using Hangfire;
 using Hangfire.Storage.SQLite;
+using Infrastructure.Email;
+using Infrastructure.Persistence.Employees;
 using Infrastructure.Persistence.IdTypes;
 using Infrastructure.Persistence.Locations;
 using Infrastructure.Persistence.MedicalFiles;
@@ -38,6 +45,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Requests.Appointments;
+using Requests.Appointments.MedicalNotes;
 using Requests.Auth;
 using Requests.Patients;
 using Requests.Users;
@@ -63,7 +72,7 @@ namespace Api.Extensions
             services.AddScoped<SecurityTokenHandler, JwtSecurityTokenHandler>();
             services.AddScoped<JwtGenerator>();
             services.AddScoped<UserCreator>();
-            services.AddScoped<EmailSender>();
+            services.AddScoped<IEmailSender<User>, UserEmailSender>();
             services.AddScoped<UsersRetriever>();
             services.AddScoped<UserFinder>();
             services.AddScoped<UserAuthenticator>();
@@ -90,7 +99,10 @@ namespace Api.Extensions
             services.AddScoped<IIdTypesRepository, OracleIdTypesRepository>();
             services.AddScoped<ILocationsRepository, OracleLocationsRepository>();
             services.AddScoped<IPatientsRepository, OraclePatientsRepository>();
-            services.AddScoped<IMedicalAppointmentRepository, OracleMedicalAppointmentRepository>();
+            services.AddScoped<ISanitaryRolesRepository, OracleSanitaryRolesRepository>();
+            services
+                .AddScoped<IMedicalAppointmentRepository,
+                    OracleMedicalAppointmentRepository>();
         }
 
         private static void ConfigureHangFire(this IServiceCollection services)
@@ -122,9 +134,32 @@ namespace Api.Extensions
             var configuration = new TypeAdapterConfig();
             configuration.NewConfig<CreateUserRequest, CreateUserCommand>();
             configuration.NewConfig<LoginUserRequest, AuthenticateCommand>();
+            configuration.NewConfig<DiagnosisDto, Diagnosis>();
+            configuration.NewConfig<ReferralDto, Referral>();
+
+            configuration.NewConfig<MedicalNoteDto, MedicalNote>()
+                .Map(note => note.EvolutionSheet,
+                    dto => new EvolutionSheet(dto.EvolutionSheet))
+                .Map(note => note.ManagementPlan,
+                    dto => new ManagementPlan(dto.ManagementPlan));
+
+            configuration.NewConfig<CreateMedicalAppointmentRequest, MedicalAppointment>()
+                .Map(appointment => appointment.Anamnesis,
+                    request => new Anamnesis(request.AnamnesisDescription))
+                .Map(appointment => appointment.MedicalNote, request => request.MedicalNote);
+
+            configuration.NewConfig<MedicalAppointment, MedicalAppointmentResponse>()
+                .Map(response => response.Doctor,
+                    appointment =>
+                        $"{appointment.DoctorCaring.FirstName} {appointment.DoctorCaring.LastName}")
+                .Map(response => response.Patient,
+                    appointment =>
+                        $"{appointment.Patient.FirstName} {appointment.Patient.LastName}");
+
             configuration.NewConfig<Patient, PatientResponse>()
                 .Map(response => response.Sport, patient => patient.SportsData.Sport)
                 .Map(response => response.IdType, patient => patient.IdType.Name);
+
             configuration.NewConfig<CreatePatientCommand, Patient>()
                 .Map(patient => patient.ContactData.Address, command => command.Address)
                 .Map(patient => patient.ContactData.Landline, command => command.Landline)

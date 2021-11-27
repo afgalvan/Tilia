@@ -15,7 +15,7 @@ namespace Application.MedicalFiles.Filter
             _repository = repository;
         }
 
-        public async Task<IEnumerable<MedicalAppointment>> FilterByPatientId(string id,
+        public async Task<IReadOnlyList<MedicalAppointment>> FilterByPatientId(string id,
             CancellationToken cancellation)
         {
             return await _repository.GetByPatientId(id, cancellation);

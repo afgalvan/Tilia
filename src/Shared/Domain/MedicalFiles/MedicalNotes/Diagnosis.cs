@@ -6,7 +6,7 @@ namespace Domain.MedicalFiles.MedicalNotes
     public class Diagnosis
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string CIE10      { get; set; }
         public string Functional { get; set; }

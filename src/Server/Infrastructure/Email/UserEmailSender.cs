@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Domain.SharedLib.Email;
 using Domain.Users;
 using FluentEmail.Core;
 
-namespace Application.Users.SendMail
+namespace Infrastructure.Email
 {
-    public class EmailSender
+    public class UserEmailSender : IEmailSender<User>
     {
         private readonly IFluentEmail _fluentEmail;
 
-        public EmailSender(IFluentEmail fluentEmail)
+        public UserEmailSender(IFluentEmail fluentEmail)
         {
             _fluentEmail = fluentEmail;
         }
 
-        public async Task SendMail(User user, CancellationToken cancellation)
+        public async Task SendMail(User entity, CancellationToken cancellation)
         {
             await _fluentEmail
-                .To(user.Email)
+                .To(entity.Email)
                 .HighPriority()
                 .Subject("Bienvenido a Tilia.")
                 .Body(
-                    $"Sr/a {user.Employee?.FirstName} acaba de ser registrado como uno de nuestros empleados el dia {DateTime.Now.ToShortDateString()}")
+                    $"Sr/a {entity.Employee?.FirstName} acaba de ser registrado como uno de nuestros empleados el dia {DateTime.Now.ToShortDateString()}")
                 .SendAsync(cancellation);
         }
     }
