@@ -41,6 +41,7 @@ namespace Presentation.Extensions
             services.AddScoped<AuthenticationService>();
             services.AddScoped<SocketConnection>();
             services.AddScoped<UsersService>();
+            services.AddScoped<AppointmentsService>();
             services.AddScoped<PatientService>();
             services.AddScoped<ContextDataRetriever>();
         }
