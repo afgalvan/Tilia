@@ -17,7 +17,6 @@ namespace Domain.MedicalFiles
         public string   DiseaseHistory    { get; set; }
         public DateTime AppointmentDate   { get; set; }
 
-        [ForeignKey("anamnesis_id")]
         public Anamnesis Anamnesis { get; set; }
 
         [ForeignKey("medical_note_id")]
