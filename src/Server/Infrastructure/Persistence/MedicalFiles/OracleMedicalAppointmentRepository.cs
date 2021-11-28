@@ -22,7 +22,10 @@ namespace Infrastructure.Persistence.MedicalFiles
         public async Task<IEnumerable<MedicalAppointment>> GetAll(
             CancellationToken cancellation)
         {
-            return await _dbContext.MedicalAppointments.ToListAsync(cancellation);
+            return await _dbContext.MedicalAppointments
+                .Include(appointment => appointment.Patient)
+                .Include(appointment => appointment.DoctorCaring)
+                .ToListAsync(cancellation);
         }
 
         public async Task Save(string patientId, string doctorId, MedicalAppointment appointment,
@@ -68,6 +71,7 @@ namespace Infrastructure.Persistence.MedicalFiles
             CancellationToken cancellation)
         {
             return await _dbContext.MedicalAppointments
+                .Include(appointment => appointment.Patient)
                 .Include(appointment => appointment.Patient)
                 .AsNoTracking()
                 .Where(appointment => appointment.Patient.PersonId == patientId)

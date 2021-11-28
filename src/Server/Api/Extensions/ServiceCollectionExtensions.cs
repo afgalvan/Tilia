@@ -15,6 +15,7 @@ using Application.Users.Create;
 using Application.Users.FindById;
 using Application.Users.GenerateJwt;
 using Application.Users.GetAll;
+using Domain.Employees;
 using Domain.Employees.Repositories;
 using Domain.Locations;
 using Domain.Locations.Repositories;
@@ -48,7 +49,9 @@ using Microsoft.IdentityModel.Tokens;
 using Requests.Appointments;
 using Requests.Appointments.MedicalNotes;
 using Requests.Auth;
+using Requests.Employees;
 using Requests.Patients;
+using Requests.People;
 using Requests.Users;
 using SharedLib.Persistence;
 
@@ -101,6 +104,8 @@ namespace Api.Extensions
             services.AddScoped<IPatientsRepository, OraclePatientsRepository>();
             services.AddScoped<ISanitaryRolesRepository, OracleSanitaryRolesRepository>();
             services
+                .AddScoped<ISanitaryEmployeesRepository, OracleSanitaryEmployeesRepository>();
+            services
                 .AddScoped<IMedicalAppointmentRepository,
                     OracleMedicalAppointmentRepository>();
         }
@@ -137,6 +142,9 @@ namespace Api.Extensions
             configuration.NewConfig<DiagnosisDto, Diagnosis>();
             configuration.NewConfig<ReferralDto, Referral>();
 
+            configuration.NewConfig<CreateEmployeeRequest, SanitaryEmployee>()
+                .Map(employee => employee.City, request => new City(request.City));
+
             configuration.NewConfig<MedicalNoteDto, MedicalNote>()
                 .Map(note => note.EvolutionSheet,
                     dto => new EvolutionSheet(dto.EvolutionSheet))
@@ -150,11 +158,9 @@ namespace Api.Extensions
 
             configuration.NewConfig<MedicalAppointment, MedicalAppointmentResponse>()
                 .Map(response => response.Doctor,
-                    appointment =>
-                        $"{appointment.DoctorCaring.FirstName} {appointment.DoctorCaring.LastName}")
+                    appointment => $"{appointment.DoctorCaring.FirstName} {appointment.DoctorCaring.LastName}")
                 .Map(response => response.Patient,
-                    appointment =>
-                        $"{appointment.Patient.FirstName} {appointment.Patient.LastName}");
+                    appointment => $"{appointment.Patient.FirstName} {appointment.Patient.LastName}");
 
             configuration.NewConfig<Patient, PatientResponse>()
                 .Map(response => response.Sport, patient => patient.SportsData.Sport)

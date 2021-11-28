@@ -8,6 +8,7 @@ using Application.MedicalFiles.Filter;
 using Application.MedicalFiles.FindById;
 using Application.MedicalFiles.GetAll;
 using Domain.MedicalFiles;
+using EnumerableExtensions;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -60,21 +61,33 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<MedicalAppointmentResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<MedicalAppointmentResponse>),
+            StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAppointments(
             CancellationToken cancellation)
         {
-            IEnumerable<MedicalAppointment> appointments = await _appointmentsRetriever.GetAllAppointments(cancellation);
-            return Ok(_mapper.From(appointments).AdaptToType<IEnumerable<MedicalAppointmentResponse>>());
+            IEnumerable<MedicalAppointment> appointments =
+                await _appointmentsRetriever.GetAllAppointments(cancellation);
+            return Respond(appointments);
         }
 
         [HttpGet("patient")]
-        [ProducesResponseType(typeof(IEnumerable<MedicalAppointmentResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<MedicalAppointmentResponse>),
+            StatusCodes.Status200OK)]
         public async Task<IActionResult> FilterAppointmentsByPatient([FromQuery] string id,
             CancellationToken cancellation)
         {
-            IEnumerable<MedicalAppointment> appointments = await _appointmentFilter.FilterByPatientId(id, cancellation);
-            return Ok(_mapper.From(appointments).AdaptToType<IEnumerable<MedicalAppointmentResponse>>());
+            IEnumerable<MedicalAppointment> appointments =
+                await _appointmentFilter.FilterByPatientId(id, cancellation);
+            return Respond(appointments);
+        }
+
+        private IActionResult Respond(IEnumerable<MedicalAppointment> appointments)
+        {
+            var response = _mapper.From(appointments)
+                .AdaptToType<IEnumerable<MedicalAppointmentResponse>>();
+            response.ForEach((appointment, index) => appointment.Index = index + 1);
+            return Ok(response);
         }
 
         [HttpGet("find")]
