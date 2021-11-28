@@ -26,7 +26,7 @@ namespace Presentation.Components.Atomic
             var api = _mainWindow.GetComponent<PatientService>();
             var appointmentsService = _mainWindow.GetComponent<AppointmentsService>();
             _patientsUserControl = new PatientsUserControl(_mainWindow, api);
-            _appointmentsUserControl = new MedicalAppointmentMainPanelUserControl(appointmentsService);
+            _appointmentsUserControl = new MedicalAppointmentMainPanelUserControl(appointmentsService, _mainWindow);
         }
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)

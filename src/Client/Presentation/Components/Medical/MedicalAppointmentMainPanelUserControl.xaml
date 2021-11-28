@@ -41,7 +41,8 @@
                                                HorizontalAlignment="Center"
                                                Grid.Column="0"
                                                ButtonWidth="150"
-                                               VerticalAlignment="Center" />
+                                               VerticalAlignment="Center"
+                                               Click="AddAppointmentButton_OnClick"/>
 
                 <buttons:ButtonIconUserControl x:Name="UpdateAppointmentButton"
                                                ButtonIconName="NoteEditOutline"
@@ -73,7 +74,15 @@
             <materialDesign:Card Grid.Row="2" Margin="10,0,10,10">
                 <DataGrid x:Name="AppointmentsDataGrid"
                           IsReadOnly="True"
-                          AutoGenerateColumns="False">
+                          AutoGenerateColumns="False"
+                          Background="White"
+                          GridLinesVisibility="None">
+
+                    <DataGrid.Resources>
+                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#FFFAFAFA" />
+                        </Style>
+                    </DataGrid.Resources>
 
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn
@@ -101,7 +110,7 @@
                                             Binding="{Binding AppointmentDate}" />
 
                         <DataGridTextColumn Header="Paciente"
-                                            Width="2*"
+                                            Width="2.5*"
                                             Binding="{Binding Patient}"/>
                             
                         <DataGridTextColumn Header="Doctor"
