@@ -62,9 +62,10 @@ namespace Infrastructure.Persistence.MedicalFiles
                 );
         }
 
-        public Task RemoveById(Guid id, CancellationToken cancellation)
+        public async Task RemoveById(Guid id, CancellationToken cancellation)
         {
-            throw new NotImplementedException();
+            _dbContext.MedicalAppointments.Remove(await FindById(id, cancellation));
+            await _dbContext.SaveChangesAsync(cancellation);
         }
 
         public async Task<List<MedicalAppointment>> GetByPatientId(string patientId,
@@ -72,7 +73,7 @@ namespace Infrastructure.Persistence.MedicalFiles
         {
             return await _dbContext.MedicalAppointments
                 .Include(appointment => appointment.Patient)
-                .Include(appointment => appointment.Patient)
+                .Include(appointment => appointment.DoctorCaring)
                 .AsNoTracking()
                 .Where(appointment => appointment.Patient.PersonId == patientId)
                 .ToListAsync(cancellation);

@@ -15,19 +15,16 @@ namespace Domain.MedicalFiles.MedicalNotes
         [ForeignKey("evolution_sheet_id")]
         public EvolutionSheet EvolutionSheet { get; set; }
 
-        [ForeignKey("management_plan_id")]
-        public ManagementPlan ManagementPlan { get; set; }
-
-        public IList<Referral> Referrals { get; set; }
+        public IList<ManagementPlan> ManagementPlan { get; set; }
+        public IList<Referral>       Referrals      { get; set; }
 
         public MedicalNote(string cie10, string functionalDiagnosis,
-            string evolutionSheetDescription,
-            string managementPlanDescription)
+            string evolutionSheetDescription)
         {
             Diagnostics = new List<Diagnosis>();
             AddDiagnosis(cie10, functionalDiagnosis);
             EvolutionSheet = new EvolutionSheet(evolutionSheetDescription);
-            ManagementPlan = new ManagementPlan(managementPlanDescription);
+            ManagementPlan = new List<ManagementPlan>();
             Referrals      = new List<Referral>();
         }
 
