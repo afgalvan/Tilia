@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Api.Extensions;
 using Application.MedicalFiles.Create;
 using Application.MedicalFiles.Filter;
 using Application.MedicalFiles.FindById;
 using Application.MedicalFiles.GetAll;
+using Application.MedicalFiles.Remove;
 using Domain.MedicalFiles;
-using EnumerableExtensions;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,17 +25,20 @@ namespace Api.Controllers
         private readonly AppointmentsRetriever _appointmentsRetriever;
         private readonly AppointmentFilter     _appointmentFilter;
         private readonly AppointmentFinder     _appointmentFinder;
+        private readonly AppointmentRemover    _appointmentRemover;
         private readonly IMapper               _mapper;
 
         public AppointmentController(AppointmentCreator appointmentCreator,
             AppointmentsRetriever appointmentsRetriever, AppointmentFilter appointmentFilter,
-            AppointmentFinder appointmentFinder, IMapper mapper)
+            AppointmentFinder appointmentFinder, IMapper mapper,
+            AppointmentRemover appointmentRemover)
         {
             _appointmentCreator    = appointmentCreator;
             _appointmentsRetriever = appointmentsRetriever;
             _appointmentFilter     = appointmentFilter;
             _appointmentFinder     = appointmentFinder;
             _mapper                = mapper;
+            _appointmentRemover    = appointmentRemover;
         }
 
         [HttpPost]
@@ -96,6 +99,21 @@ namespace Api.Controllers
             CancellationToken cancellation)
         {
             return Ok(await _appointmentFinder.FindAppointmentById(id, cancellation));
+        }
+
+        [HttpDelete("{id:alpha}")]
+        public async Task<IActionResult> DeleteAppointmentById([FromRoute] string id,
+            CancellationToken cancellation)
+        {
+            try
+            {
+                await _appointmentRemover.RemoveAppointment(id, cancellation);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
     }
 }

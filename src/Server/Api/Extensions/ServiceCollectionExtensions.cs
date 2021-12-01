@@ -7,6 +7,7 @@ using Application.MedicalFiles.Create;
 using Application.MedicalFiles.Filter;
 using Application.MedicalFiles.FindById;
 using Application.MedicalFiles.GetAll;
+using Application.MedicalFiles.Remove;
 using Application.Patients.Create;
 using Application.Patients.FindById;
 using Application.Patients.GetAll;
@@ -51,7 +52,6 @@ using Requests.Appointments.MedicalNotes;
 using Requests.Auth;
 using Requests.Employees;
 using Requests.Patients;
-using Requests.People;
 using Requests.Users;
 using SharedLib.Persistence;
 
@@ -86,6 +86,7 @@ namespace Api.Extensions
             services.AddScoped<AppointmentCreator>();
             services.AddScoped<AppointmentsRetriever>();
             services.AddScoped<AppointmentFilter>();
+            services.AddScoped<AppointmentRemover>();
             services.AddMediatR(Assembly.Load("Application"));
         }
 
@@ -141,15 +142,14 @@ namespace Api.Extensions
             configuration.NewConfig<LoginUserRequest, AuthenticateCommand>();
             configuration.NewConfig<DiagnosisDto, Diagnosis>();
             configuration.NewConfig<ReferralDto, Referral>();
+            configuration.NewConfig<ManagementPlanDto, ManagementPlan>();
 
             configuration.NewConfig<CreateEmployeeRequest, SanitaryEmployee>()
                 .Map(employee => employee.City, request => new City(request.City));
 
             configuration.NewConfig<MedicalNoteDto, MedicalNote>()
                 .Map(note => note.EvolutionSheet,
-                    dto => new EvolutionSheet(dto.EvolutionSheet))
-                .Map(note => note.ManagementPlan,
-                    dto => new ManagementPlan(dto.ManagementPlan));
+                    dto => new EvolutionSheet(dto.EvolutionSheet));
 
             configuration.NewConfig<CreateMedicalAppointmentRequest, MedicalAppointment>()
                 .Map(appointment => appointment.Anamnesis,
@@ -158,9 +158,11 @@ namespace Api.Extensions
 
             configuration.NewConfig<MedicalAppointment, MedicalAppointmentResponse>()
                 .Map(response => response.Doctor,
-                    appointment => $"{appointment.DoctorCaring.FirstName} {appointment.DoctorCaring.LastName}")
+                    appointment =>
+                        $"{appointment.DoctorCaring.FirstName} {appointment.DoctorCaring.LastName}")
                 .Map(response => response.Patient,
-                    appointment => $"{appointment.Patient.FirstName} {appointment.Patient.LastName}");
+                    appointment =>
+                        $"{appointment.Patient.FirstName} {appointment.Patient.LastName}");
 
             configuration.NewConfig<Patient, PatientResponse>()
                 .Map(response => response.Sport, patient => patient.SportsData.Sport)
