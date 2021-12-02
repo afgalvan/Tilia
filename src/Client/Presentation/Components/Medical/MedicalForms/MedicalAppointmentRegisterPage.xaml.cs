@@ -11,12 +11,18 @@ namespace Presentation.Components.Medical.MedicalForms
         {
             _registerMedicalAppointment = registerMedicalAppointment;
             InitializeComponent();
+            Loaded += OnLoadedPage;
         }
 
+        private void OnLoadedPage(object sender, RoutedEventArgs e)
+        {
+            _registerMedicalAppointment.MedicalAppointmentItemButton.CurrentFormItemColors();
+        }
 
         private void GoToNextPageButton_OnClick(object sender, RoutedEventArgs e)
         {
             _registerMedicalAppointment.NavigateTo(_registerMedicalAppointment.MedicalNoteRegisterPage);
+            _registerMedicalAppointment.MedicalAppointmentItemButton.CompletedFormItemColors();
         }
     }
 }

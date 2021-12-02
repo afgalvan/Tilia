@@ -22,7 +22,8 @@
 
                 <buttons:GoBackButtonUserControl ToolTip="Volver a la seccion de consultas"
                                                  HorizontalAlignment="Left"
-                                                 VerticalAlignment="Center"/>
+                                                 VerticalAlignment="Center"
+                                                 Click="GoBackButtonUserControl_OnClick"/>
 
                 <TextBlock Style="{StaticResource TitleText}"
                            Grid.Row="0"
@@ -48,6 +49,7 @@
                                                           HorizontalAlignment="Center"
                                                           VerticalAlignment="Center"
                                                           ButtonWidth="190"
+                                                          Click="MedicalAppointmentItemButton_OnClick"
                     />
 
                     <buttons:ProgressBarButtonUserControl x:Name="MedicalNotesItemButton"
@@ -56,6 +58,7 @@
                                                           VerticalAlignment="Center"
                                                           ButtonWidth="190"
                                                           Grid.Column="1"
+                                                          Click="MedicalNotesItemButton_OnClick"
                     />
 
                     <buttons:ProgressBarButtonUserControl x:Name="MedicalOrderItemButton"
@@ -64,6 +67,7 @@
                                                           VerticalAlignment="Center"
                                                           ButtonWidth="190"
                                                           Grid.Column="2"
+                                                          Click="MedicalOrderItemButton_OnClick"
                     />
 
                     <buttons:ProgressBarButtonUserControl x:Name="FinishFormItemButton"

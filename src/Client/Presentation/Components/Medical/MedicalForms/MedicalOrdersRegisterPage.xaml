@@ -54,12 +54,24 @@
                         </DataGrid.Resources>
 
                         <DataGrid.Columns>
+                            <DataGridCheckBoxColumn
+                                Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+
+                                <DataGridCheckBoxColumn.Header>
+                                    <Border Background="Transparent">
+                                        <CheckBox IsChecked="{Binding Data.IsAllItems1Selected}" />
+                                    </Border>
+                                </DataGridCheckBoxColumn.Header>
+                            </DataGridCheckBoxColumn>
+
                             <DataGridTextColumn Header="CIE10"
-                                                Width="Auto"
+                                                Width="0.7*"
                                                 Binding="{Binding Index}"/>
 
                             <DataGridTextColumn Header="Funcional"
-                                                Width="Auto"
+                                                Width="1*"
                                                 Binding="{Binding AppointmentReason}" />
                         </DataGrid.Columns>
                     </DataGrid>
@@ -90,12 +102,24 @@
                         </DataGrid.Resources>
 
                         <DataGrid.Columns>
+                            <DataGridCheckBoxColumn
+                                Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+
+                                <DataGridCheckBoxColumn.Header>
+                                    <Border Background="Transparent">
+                                        <CheckBox IsChecked="{Binding Data.IsAllItems1Selected}" />
+                                    </Border>
+                                </DataGridCheckBoxColumn.Header>
+                            </DataGridCheckBoxColumn>
+
                             <DataGridTextColumn Header="Departamento"
-                                                Width="Auto"
+                                                Width="1*"
                                                 Binding="{Binding Index}"/>
 
                             <DataGridTextColumn Header="Descripcion"
-                                                Width="Auto"
+                                                Width="1*"
                                                 Binding="{Binding AppointmentReason}" />
                         </DataGrid.Columns>
                     </DataGrid>
@@ -110,6 +134,7 @@
                                    HorizontalAlignment="Center"
                                    Grid.Column="2"
                                    Grid.Row="2"
+                                   Click="FinishPageButton_OnClick"
         />
 
         <buttons:ButtonUserControl x:Name="GoBackToPageButton"
@@ -119,6 +144,7 @@
                                    HorizontalAlignment="Center"
                                    Grid.Column="0"
                                    Grid.Row="2"
+                                   Click="GoBackToPageButton_OnClick"
         />
     </Grid>
 </Page>

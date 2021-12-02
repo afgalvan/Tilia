@@ -7,6 +7,7 @@
       xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
       xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
       xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="281" d:DesignWidth="760"
       Title="MedicalAppointmentRegisterPage">
@@ -48,32 +49,40 @@
                                                 Grid.Row="0"
         />
 
-        <input:TextFieldUserControl x:Name="AppointmentReasonTextBox"
-                                               TextFieldFloatingHint="Razon de la consulta"
-                                               Height="110"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               Grid.Column="0"
-                                               Grid.Row="1"
-        />
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="20,5,20,5">
+            <input:TextFieldUserControl x:Name="AppointmentReasonTextBox"
+                                        TextFieldFloatingHint="Razon de la consulta"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        Margin="0,0,0,5"
+            />
+        </materialDesign:Card>
 
-        <input:TextFieldUserControl x:Name="DiseaseHistoryTextBox"
-                                    TextFieldFloatingHint="Historia de enfermedad"
-                                    Height="110"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-        />
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="20,5,20,5">
+            <input:TextFieldUserControl x:Name="DiseaseHistoryTextBox"
+                                        TextFieldFloatingHint="Historia de enfermedad"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        Margin="0,0,0,5"
+            />
+        </materialDesign:Card>
 
-        <input:TextFieldUserControl x:Name="AnamnesisTextBox"
-                                    TextFieldFloatingHint="Anamnesis"
-                                    Height="110"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Grid.Column="2"
-                                    Grid.Row="1"
-        />
+
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="2"
+                             Margin="20,5,20,5">
+            <input:TextFieldUserControl x:Name="AnamnesisTextBox"
+                                        TextFieldFloatingHint="Anamnesis"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        Margin="0,0,0,5"
+            />
+        </materialDesign:Card>
+        
 
         <buttons:ButtonUserControl x:Name="GoToNextPageButton"
                                    ButtonContent="Siguiente"
