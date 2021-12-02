@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
@@ -125,7 +126,7 @@ namespace Api.Extensions
         private static SmtpClient CreateClient(IConfiguration configuration)
         {
             var smtpClient = new SmtpClient(configuration["Smtp:Host"],
-                int.Parse(configuration["Smtp:Port"])
+                int.Parse(configuration["Smtp:Port"], CultureInfo.CurrentCulture)
             );
             string username = configuration["Smtp:Username"];
             string password = configuration["Smtp:Password"];

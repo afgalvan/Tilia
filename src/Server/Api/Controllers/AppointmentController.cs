@@ -89,8 +89,7 @@ namespace Api.Controllers
         {
             var response = _mapper.From(appointments)
                 .AdaptToType<IEnumerable<MedicalAppointmentResponse>>();
-            response.ForEach((appointment, index) => appointment.Index = index + 1);
-            return Ok(response);
+            return Ok(response.ForEach((appointment, index) => appointment.Index = index + 1));
         }
 
         [HttpGet("find")]
@@ -101,8 +100,8 @@ namespace Api.Controllers
             return Ok(await _appointmentFinder.FindAppointmentById(id, cancellation));
         }
 
-        [HttpDelete("{id:alpha}")]
-        public async Task<IActionResult> DeleteAppointmentById([FromRoute] string id,
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAppointmentById([FromQuery] string id,
             CancellationToken cancellation)
         {
             try

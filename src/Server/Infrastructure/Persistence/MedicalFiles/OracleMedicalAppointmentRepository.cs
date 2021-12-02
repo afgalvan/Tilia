@@ -28,7 +28,8 @@ namespace Infrastructure.Persistence.MedicalFiles
                 .ToListAsync(cancellation);
         }
 
-        public async Task Save(string patientId, string doctorId, MedicalAppointment appointment,
+        public async Task Save(string patientId, string doctorId,
+            MedicalAppointment appointment,
             CancellationToken cancellation)
         {
             await _dbContext.MedicalAppointments.AddAsync(appointment, cancellation);
@@ -64,7 +65,9 @@ namespace Infrastructure.Persistence.MedicalFiles
 
         public async Task RemoveById(Guid id, CancellationToken cancellation)
         {
-            _dbContext.MedicalAppointments.Remove(await FindById(id, cancellation));
+            MedicalAppointment appointment = await FindById(id, cancellation);
+            _dbContext.RemoveRange(appointment, appointment.MedicalNote, appointment.Anamnesis,
+                appointment.MedicalNote.EvolutionSheet);
             await _dbContext.SaveChangesAsync(cancellation);
         }
 
