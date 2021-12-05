@@ -23,6 +23,7 @@ namespace Infrastructure.Persistence.MedicalFiles
             CancellationToken cancellation)
         {
             return await _dbContext.MedicalAppointments
+                .Where(appointment => appointment.IsActive)
                 .Include(appointment => appointment.Patient)
                 .Include(appointment => appointment.DoctorCaring)
                 .ToListAsync(cancellation);
