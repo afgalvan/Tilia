@@ -1,12 +1,9 @@
-﻿namespace Requests.Patients
+﻿using Requests.People;
+
+namespace Requests.Patients
 {
-    public class PatientResponse
+    public class PatientResponse : PersonResponse
     {
-        public string IdType    { get; set; }
-        public string PersonId  { get; set; }
-        public string FirstName { get; set; }
-        public string LastName  { get; set; }
-        public int    Age       { get; set; }
-        public string Sport     { get; set; }
+        public string Sport { get; set; }
     }
 }

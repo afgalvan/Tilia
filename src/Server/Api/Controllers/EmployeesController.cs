@@ -1,9 +1,11 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Domain.Employees;
 using Domain.Employees.Repositories;
 using Mapster;
 using MapsterMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Requests.Employees;
 
@@ -30,6 +32,14 @@ namespace Api.Controllers
             await _employeeRepository.Save(_mapper.Map<SanitaryEmployee>(request),
                 cancellation);
             return Ok();
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(EmployeeResponse), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetEmployees(CancellationToken cancellation)
+        {
+            IEnumerable<SanitaryEmployee> employees = await _employeeRepository.GetAll(cancellation);
+            return Ok(_mapper.From(employees).AdaptToType<IEnumerable<EmployeeResponse>>());
         }
     }
 }
