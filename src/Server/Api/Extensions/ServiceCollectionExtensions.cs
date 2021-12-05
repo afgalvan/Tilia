@@ -170,6 +170,10 @@ namespace Api.Extensions
                     appointment =>
                         $"{appointment.Patient.FirstName} {appointment.Patient.LastName}");
 
+            configuration.NewConfig<SanitaryEmployee, EmployeeResponse>()
+                .Map(response => response.IdType, patient => patient.IdType.Name)
+                .Map(response => response.RoleName, patient => patient.SanitaryRole.Name);
+
             configuration.NewConfig<Patient, PatientResponse>()
                 .Map(response => response.Sport, patient => patient.SportsData.Sport)
                 .Map(response => response.IdType, patient => patient.IdType.Name);

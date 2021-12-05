@@ -17,14 +17,18 @@ namespace Infrastructure.Persistence.Employees
             _dbContext = dbContext;
         }
 
-        public Task<IEnumerable<SanitaryEmployee>> GetAll(CancellationToken cancellation)
+        public async Task<IEnumerable<SanitaryEmployee>> GetAll(CancellationToken cancellation)
         {
-            throw new System.NotImplementedException();
+            return await _dbContext.SanitaryEmployees
+                .AsNoTracking()
+                .Include(patient => patient.IdType)
+                .Include(patient => patient.SanitaryRole)
+                .ToListAsync(cancellation);
         }
 
         public async Task Save(SanitaryEmployee entity, CancellationToken cancellation)
         {
-            _dbContext.Entry(entity).State             = EntityState.Added;
+            _dbContext.Entry(entity).State = EntityState.Added;
             await _dbContext.SaveChangesAsync(cancellation);
         }
 
