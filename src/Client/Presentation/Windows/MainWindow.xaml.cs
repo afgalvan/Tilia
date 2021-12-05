@@ -4,6 +4,7 @@ using Domain.Users;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Components.Atomic;
 using Presentation.Components.Dashboard;
+using Presentation.Services.Http;
 
 namespace Presentation.Windows
 {
@@ -17,7 +18,7 @@ namespace Presentation.Windows
         {
             _provider     = provider;
             InitializeComponent();
-            MainContentArea.Content    = new DashboardUserControl();
+            MainContentArea.Content    = new DashboardUserControl(_provider.GetRequiredService<DashboardService>());
             HeaderContentArea.Content  = new HeaderUserControl(this);
             SideBarContentArea.Content = new SidebarUserControl(this);
         }
@@ -26,7 +27,7 @@ namespace Presentation.Windows
         {
             if (content == null)
             {
-                MainContentArea.Content = new DashboardUserControl();
+                MainContentArea.Content = new DashboardUserControl(GetComponent<DashboardService>());
                 return;
             }
 

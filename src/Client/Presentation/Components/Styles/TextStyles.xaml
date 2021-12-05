@@ -22,6 +22,13 @@
         <Setter Property="Foreground" Value="DimGray"/>
     </Style>
 
+    <Style x:Key="TableText" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="DimGray"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
     <Style x:Key="TitleText" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
         <Setter Property="FontSize" Value="25"/>
         <Setter Property="VerticalAlignment" Value="Center"/>

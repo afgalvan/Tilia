@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Patients;
@@ -51,6 +50,11 @@ namespace Infrastructure.Persistence.Patients
                     );
             _dbContext.Remove(found);
             await _dbContext.SaveChangesAsync(cancellation);
+        }
+
+        public async Task<int> CountPatients(CancellationToken cancellation)
+        {
+            return await _dbContext.Patients.CountAsync(cancellation);
         }
     }
 }

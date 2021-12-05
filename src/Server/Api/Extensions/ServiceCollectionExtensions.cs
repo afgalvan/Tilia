@@ -1,13 +1,16 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using Api.Extensions.Settings;
+using Application.Dashboard.GetAll;
 using Application.MedicalFiles.Create;
 using Application.MedicalFiles.Filter;
 using Application.MedicalFiles.FindById;
 using Application.MedicalFiles.GetAll;
 using Application.MedicalFiles.Remove;
+using Application.MedicalFiles.Toggle;
 using Application.Patients.Create;
 using Application.Patients.FindById;
 using Application.Patients.GetAll;
@@ -86,7 +89,9 @@ namespace Api.Extensions
             services.AddScoped<AppointmentCreator>();
             services.AddScoped<AppointmentsRetriever>();
             services.AddScoped<AppointmentFilter>();
+            services.AddScoped<AppointmentToggler>();
             services.AddScoped<AppointmentRemover>();
+            services.AddScoped<StatisticsRetriever>();
             services.AddMediatR(Assembly.Load("Application"));
         }
 
@@ -103,6 +108,7 @@ namespace Api.Extensions
             services.AddScoped<IIdTypesRepository, OracleIdTypesRepository>();
             services.AddScoped<ILocationsRepository, OracleLocationsRepository>();
             services.AddScoped<IPatientsRepository, OraclePatientsRepository>();
+            services.AddScoped<IAttentionHistoryRepository, OracleAttentionHistoryRepository>();
             services.AddScoped<ISanitaryRolesRepository, OracleSanitaryRolesRepository>();
             services
                 .AddScoped<ISanitaryEmployeesRepository, OracleSanitaryEmployeesRepository>();
@@ -125,7 +131,7 @@ namespace Api.Extensions
         private static SmtpClient CreateClient(IConfiguration configuration)
         {
             var smtpClient = new SmtpClient(configuration["Smtp:Host"],
-                int.Parse(configuration["Smtp:Port"])
+                int.Parse(configuration["Smtp:Port"], CultureInfo.CurrentCulture)
             );
             string username = configuration["Smtp:Username"];
             string password = configuration["Smtp:Password"];

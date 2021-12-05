@@ -32,7 +32,7 @@ namespace Presentation.Components.Atomic
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, DashboardTextBlock, DashboardIcon);
-            _mainWindow.ChangeMainContentArea(new DashboardUserControl());
+            _mainWindow.ChangeMainContentArea(new DashboardUserControl(_mainWindow.GetComponent<DashboardService>()));
         }
 
         private void PatientsButton_Click(object sender, RoutedEventArgs e)

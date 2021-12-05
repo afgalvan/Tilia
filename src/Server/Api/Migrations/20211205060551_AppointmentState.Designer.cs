@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using SharedLib.Persistence;
@@ -9,9 +10,10 @@ using SharedLib.Persistence;
 namespace Server.Migrations
 {
     [DbContext(typeof(TiliaDbContext))]
-    partial class TiliaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211205060551_AppointmentState")]
+    partial class AppointmentState
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,35 +94,6 @@ namespace Server.Migrations
                         .HasName("pk_departments");
 
                     b.ToTable("departments");
-                });
-
-            modelBuilder.Entity("Domain.MedicalFiles.AttentionHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("id")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<Guid>("AppointmentId")
-                        .HasColumnType("RAW(16)")
-                        .HasColumnName("appointment_id");
-
-                    b.Property<int>("Attendants")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("attendants");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("date");
-
-                    b.HasKey("Id")
-                        .HasName("pk_attention_history");
-
-                    b.HasIndex("AppointmentId")
-                        .HasDatabaseName("ix_attention_history_appointment_id");
-
-                    b.ToTable("attention_history");
                 });
 
             modelBuilder.Entity("Domain.MedicalFiles.MedicalAppointment", b =>
@@ -506,16 +479,6 @@ namespace Server.Migrations
                         .HasConstraintName("fk_cities_departments_department_id");
 
                     b.Navigation("Department");
-                });
-
-            modelBuilder.Entity("Domain.MedicalFiles.AttentionHistory", b =>
-                {
-                    b.HasOne("Domain.MedicalFiles.MedicalAppointment", null)
-                        .WithMany()
-                        .HasForeignKey("AppointmentId")
-                        .HasConstraintName("fk_attention_history_medical_appointments_medical_appointment_appointment_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.MedicalFiles.MedicalAppointment", b =>

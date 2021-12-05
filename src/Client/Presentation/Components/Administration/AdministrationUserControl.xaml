@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Presentation.Components.Administration"
              xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -58,6 +58,7 @@
                                              ButtonContent="Roles"
                                              ButtonIconName="AccountLockOutline"
                                              Margin="0, 0, 50, 0"
+                                             Click="AdminRolesButton_OnClick"
         />
 
         <buttons:AdminPanelButtonUserControl x:Name="AdminConfigButton"

@@ -16,6 +16,7 @@ namespace Domain.MedicalFiles
         public string   AppointmentReason { get; set; }
         public string   DiseaseHistory    { get; set; }
         public DateTime AppointmentDate   { get; set; }
+        public bool     IsActive          { get; set; } = true;
 
         public Anamnesis Anamnesis { get; set; }
 

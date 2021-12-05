@@ -23,12 +23,14 @@ namespace Infrastructure.Persistence.MedicalFiles
             CancellationToken cancellation)
         {
             return await _dbContext.MedicalAppointments
+                .Where(appointment => appointment.IsActive)
                 .Include(appointment => appointment.Patient)
                 .Include(appointment => appointment.DoctorCaring)
                 .ToListAsync(cancellation);
         }
 
-        public async Task Save(string patientId, string doctorId, MedicalAppointment appointment,
+        public async Task Save(string patientId, string doctorId,
+            MedicalAppointment appointment,
             CancellationToken cancellation)
         {
             await _dbContext.MedicalAppointments.AddAsync(appointment, cancellation);
@@ -64,7 +66,9 @@ namespace Infrastructure.Persistence.MedicalFiles
 
         public async Task RemoveById(Guid id, CancellationToken cancellation)
         {
-            _dbContext.MedicalAppointments.Remove(await FindById(id, cancellation));
+            MedicalAppointment appointment = await FindById(id, cancellation);
+            _dbContext.RemoveRange(appointment, appointment.MedicalNote, appointment.Anamnesis,
+                appointment.MedicalNote.EvolutionSheet);
             await _dbContext.SaveChangesAsync(cancellation);
         }
 
@@ -77,6 +81,16 @@ namespace Infrastructure.Persistence.MedicalFiles
                 .AsNoTracking()
                 .Where(appointment => appointment.Patient.PersonId == patientId)
                 .ToListAsync(cancellation);
+        }
+
+        public async Task ToggleAppointmentState(Guid appointmentId, CancellationToken cancellation)
+        {
+            MedicalAppointment found = await _dbContext.MedicalAppointments
+                .SingleOrDefaultAsync(
+                    appointment => appointment.AppointmentId == appointmentId,
+                    cancellation);
+            found.IsActive = !found.IsActive;
+            await _dbContext.SaveChangesAsync(cancellation);
         }
 
         public async Task Save(MedicalAppointment entity, CancellationToken cancellation)
