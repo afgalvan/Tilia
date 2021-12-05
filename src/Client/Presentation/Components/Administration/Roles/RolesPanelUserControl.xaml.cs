@@ -22,5 +22,10 @@ namespace Presentation.Components.Administration.Roles
         {
             SaniryRoleDataGrid.ItemsSource = await _rolesService.GetSanitaryRoles(App.CancellationToken);
         }
+
+        private void GoBackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.ChangeMainContentArea(new AdministrationUserControl(_mainWindow));
+        }
     }
 }

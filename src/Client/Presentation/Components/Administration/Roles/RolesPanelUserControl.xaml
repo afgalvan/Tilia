@@ -25,7 +25,8 @@
 
             <buttons:GoBackButtonUserControl x:Name="GoBackButton"
                                          HorizontalAlignment="Left"
-                                         VerticalAlignment="Center" />
+                                         VerticalAlignment="Center"
+                                         Click="GoBackButton_OnClick"/>
 
             <TextBlock Text="Roles"
                    Style="{StaticResource TitleText}" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>

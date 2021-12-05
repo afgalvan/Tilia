@@ -8,28 +8,31 @@
              xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
-            <ColumnDefinition Width="5*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
-        </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource TitleText}"
+    <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
+                                         OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource TitleText}"
                    Text="Panel de administracion"
                    Grid.ColumnSpan="2"/>
 
-        <Separator Grid.Column="0"
+            <Separator Grid.Column="0"
                    Grid.ColumnSpan="2"
                    Grid.Row="0"
                    VerticalAlignment="Bottom"
                    Margin="100, 0, 100, 0"/>
 
-        <buttons:AdminPanelButtonUserControl x:Name="AdminUsersButton"
+            <buttons:AdminPanelButtonUserControl x:Name="AdminUsersButton"
                                              Grid.Row="1"
                                              Grid.Column="0"
                                              HorizontalAlignment="Right"
@@ -40,7 +43,7 @@
                                              Click="AdminUsersButton_OnClick"
         />
 
-        <buttons:AdminPanelButtonUserControl x:Name="AdminEmployeesButton"
+            <buttons:AdminPanelButtonUserControl x:Name="AdminEmployeesButton"
                                              Grid.Row="1"
                                              Grid.Column="1"
                                              HorizontalAlignment="Left"
@@ -48,9 +51,10 @@
                                              ButtonContent="Empleados"
                                              ButtonIconName="BriefcaseAccountOutline"
                                              Margin="50, 0, 0, 0"
+                                             Click="AdminEmployeesButton_OnClick"
         />
 
-        <buttons:AdminPanelButtonUserControl x:Name="AdminRolesButton"
+            <buttons:AdminPanelButtonUserControl x:Name="AdminRolesButton"
                                              Grid.Row="2"
                                              Grid.Column="0"
                                              HorizontalAlignment="Right"
@@ -61,7 +65,7 @@
                                              Click="AdminRolesButton_OnClick"
         />
 
-        <buttons:AdminPanelButtonUserControl x:Name="AdminConfigButton"
+            <buttons:AdminPanelButtonUserControl x:Name="AdminConfigButton"
                                              Grid.Row="2"
                                              Grid.Column="1"
                                              HorizontalAlignment="Left"
@@ -70,5 +74,6 @@
                                              ButtonIconName="CogOutline"
                                              Margin="50, 0, 0, 0"
         />
-    </Grid>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </UserControl>
