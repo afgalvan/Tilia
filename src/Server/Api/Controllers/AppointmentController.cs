@@ -8,6 +8,7 @@ using Application.MedicalFiles.Filter;
 using Application.MedicalFiles.FindById;
 using Application.MedicalFiles.GetAll;
 using Application.MedicalFiles.Remove;
+using Application.MedicalFiles.Toggle;
 using Domain.MedicalFiles;
 using MapsterMapper;
 using Microsoft.AspNetCore.Http;
@@ -26,12 +27,13 @@ namespace Api.Controllers
         private readonly AppointmentFilter     _appointmentFilter;
         private readonly AppointmentFinder     _appointmentFinder;
         private readonly AppointmentRemover    _appointmentRemover;
+        private readonly AppointmentToggler    _appointmentToggler;
         private readonly IMapper               _mapper;
 
         public AppointmentController(AppointmentCreator appointmentCreator,
             AppointmentsRetriever appointmentsRetriever, AppointmentFilter appointmentFilter,
             AppointmentFinder appointmentFinder, IMapper mapper,
-            AppointmentRemover appointmentRemover)
+            AppointmentRemover appointmentRemover, AppointmentToggler appointmentToggler)
         {
             _appointmentCreator    = appointmentCreator;
             _appointmentsRetriever = appointmentsRetriever;
@@ -39,6 +41,7 @@ namespace Api.Controllers
             _appointmentFinder     = appointmentFinder;
             _mapper                = mapper;
             _appointmentRemover    = appointmentRemover;
+            _appointmentToggler    = appointmentToggler;
         }
 
         [HttpPost]
@@ -113,6 +116,14 @@ namespace Api.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpPatch("toggle")]
+        public async Task<IActionResult> ToggleAppointmentState([FromQuery] string id,
+            CancellationToken cancellation)
+        {
+            await _appointmentToggler.ToggleAppointmentState(id, cancellation);
+            return Ok();
         }
     }
 }

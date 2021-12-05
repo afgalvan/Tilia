@@ -24,6 +24,8 @@ namespace SharedLib.Persistence
         public DbSet<AccessRole>       AccessRoles       { get; set; }
         public DbSet<Privilege>        Privileges        { get; set; }
 
+        public DbSet<AttentionHistory> AttentionHistory { get; set; }
+
         public DbSet<MedicalAppointment> MedicalAppointments { get; set; }
 
         // Medical Notes
@@ -31,7 +33,7 @@ namespace SharedLib.Persistence
         public DbSet<Diagnosis>      Diagnostics     { get; set; }
         public DbSet<EvolutionSheet> EvolutionSheets { get; set; }
         public DbSet<ManagementPlan> ManagementPlans { get; set; }
-        public DbSet<Referral> Referrals { get; set; }
+        public DbSet<Referral>       Referrals       { get; set; }
 
         public TiliaDbContext(DbContextOptions options) : base(options)
         {
@@ -45,6 +47,10 @@ namespace SharedLib.Persistence
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TiliaDbContext).Assembly);
+            modelBuilder.Entity<AttentionHistory>()
+                .HasOne<MedicalAppointment>()
+                .WithMany()
+                .HasForeignKey(history => history.AppointmentId);
             modelBuilder.Entity<AccessRole>()
                 .HasMany(role => role.Privileges)
                 .WithMany(privilege => privilege.AccessRoles);

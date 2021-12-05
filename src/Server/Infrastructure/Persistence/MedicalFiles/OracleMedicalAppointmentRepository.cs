@@ -82,6 +82,16 @@ namespace Infrastructure.Persistence.MedicalFiles
                 .ToListAsync(cancellation);
         }
 
+        public async Task ToggleAppointmentState(Guid appointmentId, CancellationToken cancellation)
+        {
+            MedicalAppointment found = await _dbContext.MedicalAppointments
+                .SingleOrDefaultAsync(
+                    appointment => appointment.AppointmentId == appointmentId,
+                    cancellation);
+            found.IsActive = !found.IsActive;
+            await _dbContext.SaveChangesAsync(cancellation);
+        }
+
         public async Task Save(MedicalAppointment entity, CancellationToken cancellation)
         {
             await _dbContext.MedicalAppointments.AddAsync(entity, cancellation);
