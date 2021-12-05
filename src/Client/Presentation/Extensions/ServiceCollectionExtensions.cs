@@ -1,4 +1,5 @@
 using System.Windows.Media;
+using LiveChartsCore;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,7 @@ namespace Presentation.Extensions
             services.AddScoped<AuthenticationService>();
             services.AddScoped<SocketConnection>();
             services.AddScoped<UsersService>();
+            services.AddScoped<DashboardService>();
             services.AddScoped<PatientService>();
             services.AddScoped<ContextDataRetriever>();
         }

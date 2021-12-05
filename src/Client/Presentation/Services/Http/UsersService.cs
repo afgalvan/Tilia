@@ -20,7 +20,7 @@ namespace Presentation.Services.Http
 
         [WithJwtToken]
         public async Task<IEnumerable<UserResponse>> GetUsers(CancellationToken cancellation,
-            string token)
+            string token = default)
         {
             const string endpoint = "/users";
             return await _restComposer.WithAuth(token)

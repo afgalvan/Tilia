@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Presentation.Components.Dashboard"
-             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Presentation.Components.Dashboard.DashboardUserControl"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             x:Class="Presentation.Components.Dashboard.DashboardUserControl"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d"
              d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
 
@@ -39,6 +41,7 @@
                         <ComboBoxItem
                         Content="2" />
                     </ComboBox>
+                    <lvc:CartesianChart x:Name="AttentionsHistoryChart" Grid.Row="1"></lvc:CartesianChart>
                 </Grid>
             </materialDesign:Card>
 
