@@ -56,6 +56,7 @@
                     </Grid.RowDefinitions>
 
                     <Label x:Name="SatisfactionCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Width="114" HorizontalAlignment="Left" Margin="28,0,0,0" Foreground="#FFA3AED0" Height="25" Content="Satisfacción"/>
+                    <lvc:PieChart Grid.Row="2"> </lvc:PieChart>
                 </Grid>
             </materialDesign:Card>
 
@@ -64,7 +65,7 @@
                 <Grid>
                     <materialDesign:PackIcon Kind="AccountSupervisorCircle" Foreground="#FF6AB9B4" Width="56" Height="56" VerticalAlignment="Center" Margin="17,0,0,0" />
                     <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal" Width="80" Height="30" VerticalAlignment="Top" Margin="78,15,53,0" FontSize="15" Content="Pacientes"/>
-                    <TextBlock Width="50" Height="24" VerticalAlignment="Top" Margin="83,37,78,0"><Run Text="..."/></TextBlock>
+                    <TextBlock Width="50" Height="24" VerticalAlignment="Top" Margin="83,37,78,0"><Run x:Name="PatientsAmountText" Text="..."/></TextBlock>
                 </Grid>
             </materialDesign:Card>
 

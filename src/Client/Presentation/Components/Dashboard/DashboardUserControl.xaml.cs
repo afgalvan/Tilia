@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Presentation.Services.Http;
 using System.Windows;
 using LiveChartsCore.SkiaSharpView;
@@ -27,11 +28,22 @@ namespace Presentation.Components.Dashboard
         {
             DashboardInformationResponse response =
                 await _dashboardService.GetStatistics(App.CancellationToken);
+            LoadAttentions(response);
+            LoadPatients(response.PatientsAmount);
+        }
+
+        private void LoadPatients(int patientsAmount)
+        {
+            PatientsAmountText.Text = $"{patientsAmount}";
+        }
+
+        private void LoadAttentions(DashboardInformationResponse response)
+        {
             var line = new LineSeries<double>
             {
                 Values         = response.AttentionHistoric.Select(d => (double)d),
                 Fill           = null,
-                LineSmoothness = 1,
+                LineSmoothness = 0.5,
                 Stroke         = new SolidColorPaint(SKColor.Parse("#FF6AB9B4"), 4),
                 GeometrySize   = 10,
                 GeometryStroke = new SolidColorPaint(SKColor.Parse("#FF6AB9B4"), 4),
