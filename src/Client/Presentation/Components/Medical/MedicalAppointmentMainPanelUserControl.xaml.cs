@@ -8,12 +8,13 @@ namespace Presentation.Components.Medical
     public partial class MedicalAppointmentMainPanelUserControl : UserControl
     {
         private readonly AppointmentsService _appointmentsService;
-        private readonly MainWindow _mainWindow;
+        private readonly MainWindow          _mainWindow;
 
-        public MedicalAppointmentMainPanelUserControl(AppointmentsService appointmentsService, MainWindow mainWindow)
+        public MedicalAppointmentMainPanelUserControl(AppointmentsService appointmentsService,
+            MainWindow mainWindow)
         {
             _appointmentsService = appointmentsService;
-            _mainWindow = mainWindow;
+            _mainWindow          = mainWindow;
             InitializeComponent();
             AppointmentsDataGrid.Loaded += LoadTableInformation;
         }
@@ -26,7 +27,8 @@ namespace Presentation.Components.Medical
 
         private void AddAppointmentButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _mainWindow.ChangeMainContentArea(new RegisterMedicalAppointmentUserControl(_mainWindow));
+            _mainWindow.ChangeMainContentArea(
+                new RegisterMedicalAppointmentUserControl(_mainWindow, _appointmentsService));
         }
     }
 }

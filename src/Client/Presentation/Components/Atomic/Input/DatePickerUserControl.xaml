@@ -15,5 +15,5 @@
                 Foreground="DimGray"
                 BorderBrush="Gray"
                 FontSize="{Binding DatePickerFontSize}"
-                Text="{Binding FieldText}"/>
+                SelectedDate="{Binding FieldText}"/>
 </UserControl>
