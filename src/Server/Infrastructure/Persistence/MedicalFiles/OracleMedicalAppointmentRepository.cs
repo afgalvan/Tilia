@@ -22,8 +22,16 @@ namespace Infrastructure.Persistence.MedicalFiles
         public async Task<IEnumerable<MedicalAppointment>> GetAll(
             CancellationToken cancellation)
         {
-            return await _dbContext.MedicalAppointments
-                .Where(appointment => appointment.IsActive)
+            return await GetAll(cancellation, true);
+        }
+
+        public async Task<IEnumerable<MedicalAppointment>> GetAll(
+            CancellationToken cancellation, bool withFilter)
+        {
+            DbSet<MedicalAppointment> dbSet = _dbContext.MedicalAppointments;
+            IQueryable<MedicalAppointment> query =
+                withFilter ? dbSet.Where(appointment => appointment.IsActive) : dbSet;
+            return await query
                 .OrderBy(appointment => appointment.AppointmentDate)
                 .Include(appointment => appointment.Patient)
                 .Include(appointment => appointment.DoctorCaring)
@@ -84,7 +92,8 @@ namespace Infrastructure.Persistence.MedicalFiles
                 .ToListAsync(cancellation);
         }
 
-        public async Task ToggleAppointmentState(Guid appointmentId, CancellationToken cancellation)
+        public async Task ToggleAppointmentState(Guid appointmentId,
+            CancellationToken cancellation)
         {
             MedicalAppointment found = await _dbContext.MedicalAppointments
                 .SingleOrDefaultAsync(

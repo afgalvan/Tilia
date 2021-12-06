@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using LiveChartsCore.Defaults;
+using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using Presentation.Utils;
@@ -26,7 +28,7 @@ namespace Presentation.Components.Dashboard
         public DashboardUserControl(DashboardService dashboardService)
         {
             InitializeComponent();
-            _dashboardService         =  dashboardService;
+            _dashboardService = dashboardService;
             int limit = DateTime.Now.DayOfWeek.ToString().Length + 5;
             ScheduleCardLabel.Content =  DateTime.Now.ToLongDateString()[..limit];
             Loaded                    += OnLoaded;
@@ -39,6 +41,7 @@ namespace Presentation.Components.Dashboard
             LoadAttentions(response);
             LoadPatients(response.PatientsAmount);
             LoadAppointments(response.RecentAppointments);
+            LoadMappedAptitude(response.AptitudeCertificatesMap);
         }
 
         private void LoadAppointments(
@@ -51,7 +54,7 @@ namespace Presentation.Components.Dashboard
                 );
         }
 
-        private Button AppointmentComponent(MedicalAppointmentResponse response)
+        private static Button AppointmentComponent(MedicalAppointmentResponse response)
         {
             var reasonText = new TextBlock { Text = response.AppointmentReason };
             var dateText = new TextBlock
@@ -67,9 +70,9 @@ namespace Presentation.Components.Dashboard
 
             return new Button
             {
-                Content = panel,
-                Cursor = Cursors.Hand,
-                Background = Brushes.White,
+                Content         = panel,
+                Cursor          = Cursors.Hand,
+                Background      = Brushes.White,
                 BorderThickness = new Thickness(0)
             };
         }
@@ -92,6 +95,32 @@ namespace Presentation.Components.Dashboard
                 Name           = "Atención de historias"
             };
             AttentionsHistoryChart.Series = new[] { line };
+        }
+
+        private void LoadMappedAptitude(IDictionary<string, double> certificatesMap)
+        {
+            CertificatePieChart.Series = BuildCertificatesSeries(certificatesMap);
+            CertificatePieChart.Total  = certificatesMap.Max(d => d.Value);
+        }
+
+        private static IEnumerable<PieSeries<ObservableValue>> BuildCertificatesSeries(
+            IDictionary<string, double> certificateMap)
+        {
+            var builder = new GaugeBuilder
+            {
+                LabelFormatter = point => point.PrimaryValue + " " + point.Context.Series.Name,
+                LabelsSize = 15,
+                LabelsPosition = PolarLabelsPosition.Start,
+                InnerRadius = 20,
+                OffsetRadius = 8,
+                BackgroundInnerRadius = 20
+            };
+
+            foreach ((string key, double value) in certificateMap)
+            {
+                builder.AddValue(new ObservableValue(value), key);
+            }
+            return builder.BuildSeries();
         }
     }
 }

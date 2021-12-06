@@ -34,10 +34,12 @@ namespace Application.Dashboard.GetAll
             Task<int> getPatientsTask = _patientsRepository.CountPatients(cancellation);
             Task<IEnumerable<AttentionHistory>> attentionsTask = _attentionHistoryRepository
                 .GetAll(cancellation);
-            Task<IEnumerable<MedicalAppointment>> appointmentsTask = _appointmentRepository
+            Task<IEnumerable<MedicalAppointment>> filteredAppointmentsTask = _appointmentRepository
                 .GetAll(cancellation);
+            Task<IEnumerable<MedicalAppointment>> appointmentsTask = _appointmentRepository
+                .GetAll(cancellation, withFilter: false);
 
-            await Task.WhenAll(getPatientsTask, attentionsTask, appointmentsTask);
+            await Task.WhenAll(getPatientsTask, attentionsTask, filteredAppointmentsTask, appointmentsTask);
             int[] historic = (await attentionsTask).Select(history => history.Attendants)
                 .ToArray();
 
@@ -46,8 +48,9 @@ namespace Application.Dashboard.GetAll
                 PatientsAmount    = await getPatientsTask,
                 AttentionHistoric = historic,
                 GrowPercent       = ComputeGrowthPercentage(historic[^1], historic[^2]),
-                RecentAppointments = _mapper.From((await appointmentsTask).Take(3))
-                    .AdaptToType<IEnumerable<MedicalAppointmentResponse>>()
+                RecentAppointments = _mapper.From((await filteredAppointmentsTask).Take(3))
+                    .AdaptToType<IEnumerable<MedicalAppointmentResponse>>(),
+                AptitudeCertificatesMap = MapPatientsAptitudes(await appointmentsTask)
             };
         }
 
@@ -56,6 +59,13 @@ namespace Application.Dashboard.GetAll
             double growth = (newValue - original) / (double)original * 100.0;
             char   sign   = growth > 0 ? '+' : ' ';
             return $"{sign}{growth}%";
+        }
+
+        private static IDictionary<string, double> MapPatientsAptitudes(
+            IEnumerable<MedicalAppointment> appointments)
+        {
+            return appointments.GroupBy(appointment => appointment.AptitudeCertificate)
+                .ToDictionary(g => g.Key.AsString(), g => (double)g.Count());
         }
     }
 }

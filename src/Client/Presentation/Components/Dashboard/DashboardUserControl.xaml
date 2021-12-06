@@ -58,15 +58,14 @@
                 <Grid x:Name="SatisfactionCardGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*" />
-                        <RowDefinition Height="5*" />
                         <RowDefinition Height="8*" />
                     </Grid.RowDefinitions>
 
                     <Label x:Name="SatisfactionCardLabel" FontFamily="DM Sans"
                            FontWeight="Bold" FontSize="14" VerticalAlignment="Center"
                            Width="114" HorizontalAlignment="Left" Margin="28,0,0,0"
-                           Foreground="#FFA3AED0" Height="25" Content="Satisfacción" />
-                    <lvc:PieChart Grid.Row="2" />
+                           Foreground="#FFA3AED0" Height="25" Content="Certificados del aptitud" />
+                    <lvc:PieChart Grid.Row="1" x:Name="CertificatePieChart" />
                 </Grid>
             </materialDesign:Card>
 
