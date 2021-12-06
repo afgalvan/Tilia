@@ -140,7 +140,6 @@ namespace Presentation.Components.Medical
             await _mainWindow.ShowMessageAsync(title, text);
         }
 
-
         private async Task ShowMessageOnSuccess()
         {
             await ShowCustomMessage("Exito",
