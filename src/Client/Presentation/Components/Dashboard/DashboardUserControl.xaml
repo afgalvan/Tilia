@@ -1,15 +1,15 @@
 <UserControl
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:Presentation.Components.Dashboard"
-             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             x:Class="Presentation.Components.Dashboard.DashboardUserControl"
-             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
-             mc:Ignorable="d"
-             d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:Presentation.Components.Dashboard"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    x:Class="Presentation.Components.Dashboard.DashboardUserControl"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    mc:Ignorable="d"
+    d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
                                          OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
@@ -17,31 +17,38 @@
         <Grid x:Name="MainGrid">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
 
             <!-- Graphic card -->
-            <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="2" Margin="40,40,0,0" Background="White">
+            <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="2" Margin="40,40,0,0"
+                                 Background="White">
                 <Grid x:Name="GraphicCardGrid" Background="White">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="9*"/>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="9*" />
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="GraphicCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Width="150" HorizontalAlignment="Left" Margin="31,0,0,0" Content="Atención" Foreground="#FFA3AED0"/>
+                    <Label x:Name="GraphicCardLabel" FontFamily="DM Sans" FontWeight="Bold"
+                           FontSize="20" VerticalAlignment="Center" Width="150"
+                           HorizontalAlignment="Left" Margin="31,0,0,0" Content="Atención"
+                           Foreground="#FFA3AED0" />
                     <ComboBox Grid.Row="0" x:Name="GraphicCardComboBox"
-                              materialDesign:HintAssist.Hint="Mensual" Width="100.2" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFA3AED0" Margin="0,0,30,0" FontFamily="DM Sans">
+                              materialDesign:HintAssist.Hint="Mensual" Width="100.2"
+                              Height="24" Background="{x:Null}" BorderBrush="{x:Null}"
+                              HorizontalAlignment="Right" VerticalAlignment="Center"
+                              Foreground="#FFA3AED0" Margin="0,0,30,0" FontFamily="DM Sans">
                         <ComboBoxItem
-                        Content="2" />
+                            Content="2" />
                     </ComboBox>
-                    <lvc:CartesianChart x:Name="AttentionsHistoryChart" Grid.Row="1"></lvc:CartesianChart>
+                    <lvc:CartesianChart x:Name="AttentionsHistoryChart" Grid.Row="1" />
                 </Grid>
             </materialDesign:Card>
 
@@ -50,37 +57,49 @@
                                  Margin="40,40,0,40" Background="White">
                 <Grid x:Name="SatisfactionCardGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="5*"/>
-                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="8*" />
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="SatisfactionCardLabel" FontFamily="DM Sans" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Width="114" HorizontalAlignment="Left" Margin="28,0,0,0" Foreground="#FFA3AED0" Height="25" Content="Satisfacción"/>
-                    <lvc:PieChart Grid.Row="2"> </lvc:PieChart>
+                    <Label x:Name="SatisfactionCardLabel" FontFamily="DM Sans"
+                           FontWeight="Bold" FontSize="14" VerticalAlignment="Center"
+                           Width="114" HorizontalAlignment="Left" Margin="28,0,0,0"
+                           Foreground="#FFA3AED0" Height="25" Content="Satisfacción" />
+                    <lvc:PieChart Grid.Row="2" />
                 </Grid>
             </materialDesign:Card>
 
             <!-- Total patients card -->
-            <materialDesign:Card x:Name="TotalPatientsCard" Grid.Row="1" Grid.Column="1" Margin="40,40,40,150" Background="White">
+            <materialDesign:Card x:Name="TotalPatientsCard" Grid.Row="1" Grid.Column="1"
+                                 Margin="40,40,40,150" Background="White">
                 <Grid>
-                    <materialDesign:PackIcon Kind="AccountSupervisorCircle" Foreground="#FF6AB9B4" Width="56" Height="56" VerticalAlignment="Center" Margin="17,0,0,0" />
-                    <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal" Width="80" Height="30" VerticalAlignment="Top" Margin="78,15,53,0" FontSize="15" Content="Pacientes"/>
-                    <TextBlock Width="50" Height="24" VerticalAlignment="Top" Margin="83,37,78,0"><Run x:Name="PatientsAmountText" Text="..."/></TextBlock>
+                    <materialDesign:PackIcon Kind="AccountSupervisorCircle"
+                                             Foreground="#FF6AB9B4" Width="56" Height="56"
+                                             VerticalAlignment="Center" Margin="17,0,0,0" />
+                    <Label Foreground="#FFA3AED0" FontFamily="DM Sans" FontWeight="Normal"
+                           Width="80" Height="30" VerticalAlignment="Top" Margin="78,15,53,0"
+                           FontSize="15" Content="Pacientes" />
+                    <TextBlock Width="50" Height="24" VerticalAlignment="Top"
+                               Margin="83,37,78,0">
+                        <Run x:Name="PatientsAmountText" Text="..." />
+                    </TextBlock>
                 </Grid>
             </materialDesign:Card>
 
-            <!-- Schedule card -->
-            <materialDesign:Card x:Name="ScheduleCard" Grid.Row="0" Grid.Column="2" Margin="40,40,40,0" Background="White">
-                <Grid x:Name="ScheduleCardGrid" >
+            <!-- Appointments card -->
+            <materialDesign:Card x:Name="ScheduleCard" Grid.Row="0" Grid.Column="2"
+                                 Margin="40,40,40,0" Background="White">
+                <Grid x:Name="ScheduleCardGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="8*"/>
-                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="4*" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
                     </Grid.ColumnDefinitions>
 
                     <Label x:Name="ScheduleCardLabel"
@@ -89,15 +108,17 @@
                            FontWeight="Normal"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           Content="15 de septiembre"
                            Foreground="#FFA3AED0"
-                           Grid.ColumnSpan="2"/>
+                           Grid.ColumnSpan="2" />
+
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0"
+                                x:Name="AppointmentsPanel" />
 
                     <Button x:Name="ScheduleCardButton"
-                                Background="{x:Null}"
-                                BorderBrush="{x:Null}"
-                                Grid.Row="2"
-                                Grid.Column="1">
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Grid.Row="2"
+                            Grid.Column="1">
 
                         <StackPanel HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
@@ -107,16 +128,16 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Stretch"
                                        Foreground="#FF6AB9B4">
-                                    <Run Text="Ver más"/>
+                                <Run Text="Ver más" />
                             </TextBlock>
 
                             <materialDesign:PackIcon Kind="ArrowRight"
-                                                         HorizontalAlignment="Right"
-                                                         VerticalAlignment="Center"
-                                                         Width="20"
-                                                         Height="20"
-                                                         Margin="0,3,0,0"
-                                                         Foreground="#FF6AB9B4" />
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     Width="20"
+                                                     Height="20"
+                                                     Margin="0,3,0,0"
+                                                     Foreground="#FF6AB9B4" />
                         </StackPanel>
                     </Button>
                 </Grid>

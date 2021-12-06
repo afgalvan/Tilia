@@ -24,6 +24,7 @@ namespace Infrastructure.Persistence.MedicalFiles
         {
             return await _dbContext.MedicalAppointments
                 .Where(appointment => appointment.IsActive)
+                .OrderBy(appointment => appointment.AppointmentDate)
                 .Include(appointment => appointment.Patient)
                 .Include(appointment => appointment.DoctorCaring)
                 .ToListAsync(cancellation);

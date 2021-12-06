@@ -47,7 +47,7 @@ namespace Infrastructure.Persistence.Patients
             Patient found =
                 await _dbContext.Patients.FirstOrDefaultAsync(
                     patient => patient.PersonId == id, cancellation
-                    );
+                );
             _dbContext.Remove(found);
             await _dbContext.SaveChangesAsync(cancellation);
         }
