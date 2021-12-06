@@ -32,7 +32,7 @@ namespace Presentation.Components.Atomic
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, DashboardTextBlock, DashboardIcon);
-            _mainWindow.ChangeMainContentArea(new DashboardUserControl(_mainWindow.GetComponent<DashboardService>()));
+            _mainWindow.ChangeMainContentArea(new DashboardUserControl(_mainWindow.GetComponent<DashboardService>(), _mainWindow));
         }
 
         private void PatientsButton_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,7 @@ namespace Presentation.Components.Atomic
             _mainWindow.ChangeMainContentArea(_patientsUserControl);
         }
 
-        private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
+        public void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
             _mainWindow.ChangeMainContentArea(_appointmentsUserControl);

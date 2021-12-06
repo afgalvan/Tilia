@@ -1,25 +1,31 @@
+using System;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using Presentation.Services.Http;
 using System.Windows;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
-using Presentation.Utils;
+using Presentation.Components.Atomic;
+using Presentation.Components.Medical;
+using Presentation.Windows;
 using Requests.Dashboard;
 using SkiaSharp;
 
 namespace Presentation.Components.Dashboard
 {
-    /// <summary>
-    /// Interaction logic for DashboardUserControl.xaml
-    /// </summary>
     public partial class DashboardUserControl
     {
         private readonly DashboardService _dashboardService;
+        private readonly MainWindow _mainWindow;
+        private readonly MedicalAppointmentMainPanelUserControl _appointmentMainPanel;
 
-        public DashboardUserControl(DashboardService dashboardService)
+        public DashboardUserControl(DashboardService dashboardService, MainWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             InitializeComponent();
+            var api = _mainWindow.GetComponent<AppointmentsService>();
+            _appointmentMainPanel =
+                new MedicalAppointmentMainPanelUserControl(api, _mainWindow);
             _dashboardService =  dashboardService;
             Loaded            += OnLoaded;
         }
@@ -30,11 +36,17 @@ namespace Presentation.Components.Dashboard
                 await _dashboardService.GetStatistics(App.CancellationToken);
             LoadAttentions(response);
             LoadPatients(response.PatientsAmount);
+            ActualDateText.Text = GetActualDate();
         }
 
         private void LoadPatients(int patientsAmount)
         {
             PatientsAmountText.Text = $"{patientsAmount}";
+        }
+
+        private string GetActualDate()
+        {
+            return DateTime.Now.ToString("ddd, dd MMM yyyy");
         }
 
         private void LoadAttentions(DashboardInformationResponse response)
@@ -50,6 +62,11 @@ namespace Presentation.Components.Dashboard
                 Name           = "Atención de historias"
             };
             AttentionsHistoryChart.Series = new[] { line };
+        }
+
+        private void ScheduleCardButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.ChangeMainContentArea(_appointmentMainPanel);
         }
     }
 }

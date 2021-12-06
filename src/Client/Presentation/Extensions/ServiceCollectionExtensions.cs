@@ -3,6 +3,7 @@ using LiveChartsCore;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Components.Atomic;
 using Presentation.Services;
 using Presentation.Services.Http;
 using Presentation.Services.Http.Connection;

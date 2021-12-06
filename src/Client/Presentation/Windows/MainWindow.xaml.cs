@@ -18,7 +18,7 @@ namespace Presentation.Windows
         {
             _provider     = provider;
             InitializeComponent();
-            MainContentArea.Content    = new DashboardUserControl(_provider.GetRequiredService<DashboardService>());
+            MainContentArea.Content    = new DashboardUserControl(_provider.GetRequiredService<DashboardService>(), this);
             HeaderContentArea.Content  = new HeaderUserControl(this);
             SideBarContentArea.Content = new SidebarUserControl(this);
         }
@@ -27,7 +27,7 @@ namespace Presentation.Windows
         {
             if (content == null)
             {
-                MainContentArea.Content = new DashboardUserControl(GetComponent<DashboardService>());
+                MainContentArea.Content = new DashboardUserControl(GetComponent<DashboardService>(), this);
                 return;
             }
 

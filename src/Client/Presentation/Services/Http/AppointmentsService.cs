@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.MedicalFiles;
 using Presentation.Services.Http.Connection;
 using Requests.Appointments;
+using RestSharp;
 
 namespace Presentation.Services.Http
 {
@@ -25,9 +26,11 @@ namespace Presentation.Services.Http
                 endpoint, cancellation);
         }
 
-        public async Task RegisterAppointment(CreateMedicalAppointmentRequest medicalAppointment)
+        public async Task RegisterAppointment(CreateMedicalAppointmentRequest medicalAppointment, CancellationToken cancellation)
         {
             const string endpoint = "/appointments";
+            IRestRequest request = new RestRequest(endpoint).AddJsonBody(medicalAppointment);
+            await _restComposer.Post<Unit>(request, cancellation);
         }
     }
 }

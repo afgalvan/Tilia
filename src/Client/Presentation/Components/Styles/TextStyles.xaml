@@ -22,6 +22,18 @@
         <Setter Property="Foreground" Value="DimGray"/>
     </Style>
 
+    <Style x:Key="SatisfactionText" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="DimGray"/>
+    </Style>
+
+    <Style x:Key="DashboardText" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
+        <Setter Property="FontSize" Value="23"/>
+        <Setter Property="Foreground" Value="DimGray"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
     <Style x:Key="TableText" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlock}">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Foreground" Value="DimGray"/>
