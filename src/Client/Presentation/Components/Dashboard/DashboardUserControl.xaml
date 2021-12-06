@@ -1,15 +1,15 @@
 <UserControl
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:Presentation.Components.Dashboard"
-             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             x:Class="Presentation.Components.Dashboard.DashboardUserControl"
-             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
-             mc:Ignorable="d"
-             d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:Presentation.Components.Dashboard"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    x:Class="Presentation.Components.Dashboard.DashboardUserControl"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    mc:Ignorable="d"
+    d:DesignHeight="546.4" d:DesignWidth="873.716814159292">
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide"
                                          OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
@@ -17,33 +17,37 @@
         <Grid x:Name="MainGrid">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
 
             <!-- Graphic card -->
-            <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="3" Margin="20,40,20,0" Background="White">
+            <materialDesign:Card x:Name="GraphicCard" Grid.ColumnSpan="3" Margin="20,40,20,0"
+                                 Background="White">
                 <Grid x:Name="GraphicCardGrid" Background="White">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="9*"/>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="9*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Style="{StaticResource TableText}"
-                               Text="Atención" Margin="0,0,20,0"/>
+                               Text="Atención" Margin="0,0,20,0" />
 
                     <ComboBox Grid.Row="0" x:Name="GraphicCardComboBox"
-                              materialDesign:HintAssist.Hint="Mensual" Width="100.2" Height="24" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFA3AED0" Margin="0,0,30,0" FontFamily="DM Sans">
+                              materialDesign:HintAssist.Hint="Mensual" Width="100.2"
+                              Height="24" Background="{x:Null}" BorderBrush="{x:Null}"
+                              HorizontalAlignment="Right" VerticalAlignment="Center"
+                              Foreground="#FFA3AED0" Margin="0,0,30,0" FontFamily="DM Sans">
                         <ComboBoxItem
-                        Content="2" />
+                            Content="2" />
                     </ComboBox>
-                    <lvc:CartesianChart x:Name="AttentionsHistoryChart" Grid.Row="1"></lvc:CartesianChart>
+                    <lvc:CartesianChart x:Name="AttentionsHistoryChart" Grid.Row="1" />
                 </Grid>
             </materialDesign:Card>
 
@@ -52,17 +56,17 @@
                                  Margin="20" Background="White">
                 <Grid x:Name="SatisfactionCardGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="8*"/>
-                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="4*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Style="{StaticResource SatisfactionText}"
-                               Text="Satisfacción"
+                               Text="Certificados de aptitud"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"/>
+                               HorizontalAlignment="Center" />
 
-                    <lvc:PieChart Grid.Row="1" Grid.RowSpan="2"></lvc:PieChart>
+                    <lvc:PieChart x:Name="CertificatePieChart" Grid.Row="1" Grid.RowSpan="2" />
                 </Grid>
             </materialDesign:Card>
 
@@ -76,12 +80,12 @@
                                  Margin="30,80,30,80">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
 
                     <materialDesign:PackIcon Kind="AccountSupervisorCircle"
@@ -90,20 +94,21 @@
                                              Height="Auto"
                                              VerticalAlignment="Center"
                                              Grid.Column="0"
-                                             Grid.RowSpan="2" HorizontalAlignment="Center"/>
+                                             Grid.RowSpan="2" HorizontalAlignment="Center" />
 
                     <TextBlock Style="{StaticResource TableText}"
                                Text="Pacientes"
                                Grid.Column="1"
                                Margin="10,0,0,0" />
 
-                    <Separator Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="20,0,20,-3" Height="5"/>
+                    <Separator Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom"
+                               Margin="20,0,20,-3" Height="5" />
 
                     <TextBlock x:Name="PatientsAmountText"
                                Style="{StaticResource DashboardText}"
                                Grid.Row="1"
                                Grid.Column="1"
-                               Margin="10,0,0,0"/>
+                               Margin="10,0,0,0" />
                 </Grid>
             </materialDesign:Card>
 
@@ -116,28 +121,31 @@
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Stretch">
 
-                <Grid x:Name="ScheduleCardGrid" >
+                <Grid x:Name="ScheduleCardGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="8*"/>
-                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="4*" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
                     </Grid.ColumnDefinitions>
 
                     <TextBlock x:Name="ActualDateText"
                                Style="{StaticResource SatisfactionText}"
-                               Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                               Grid.ColumnSpan="2" HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+
+                    <StackPanel x:Name="AppointmentsPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
 
                     <Button x:Name="ScheduleCardButton"
-                                Background="{x:Null}"
-                                BorderBrush="{x:Null}"
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                Click="ScheduleCardButton_OnClick">
+                            Background="{x:Null}"
+                            BorderBrush="{x:Null}"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Click="ScheduleCardButton_OnClick">
 
                         <StackPanel HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
@@ -147,16 +155,16 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Stretch"
                                        Foreground="#FF6AB9B4">
-                                    <Run Text="Ver más"/>
+                                <Run Text="Ver más" />
                             </TextBlock>
 
                             <materialDesign:PackIcon Kind="ArrowRight"
-                                                         HorizontalAlignment="Right"
-                                                         VerticalAlignment="Center"
-                                                         Width="20"
-                                                         Height="20"
-                                                         Margin="0,3,0,0"
-                                                         Foreground="#FF6AB9B4" />
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     Width="20"
+                                                     Height="20"
+                                                     Margin="0,3,0,0"
+                                                     Foreground="#FF6AB9B4" />
                         </StackPanel>
                     </Button>
                 </Grid>

@@ -11,5 +11,8 @@ namespace Domain.MedicalFiles.Repositories
         Task Save(string patientId, string doctorId, MedicalAppointment appointment, CancellationToken cancellation);
         Task<List<MedicalAppointment>> GetByPatientId(string patientId, CancellationToken cancellation);
         Task ToggleAppointmentState(Guid appointmentId, CancellationToken cancellation);
+
+        Task<IEnumerable<MedicalAppointment>> GetAll(CancellationToken cancellation,
+            bool withFilter);
     }
 }
