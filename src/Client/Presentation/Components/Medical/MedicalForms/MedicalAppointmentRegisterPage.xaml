@@ -1,0 +1,89 @@
+<Page x:Class="Presentation.Components.Medical.MedicalForms.MedicalAppointmentRegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Presentation.Components.Medical.MedicalForms"
+      xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
+      xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
+      xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      d:DesignHeight="281" d:DesignWidth="760"
+      Title="MedicalAppointmentRegisterPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1.5*" />
+        </Grid.RowDefinitions>
+
+        <input:NumericTextFieldUserControl x:Name="PatientIdNumberTextBox"
+                                           TextFieldFloatingHint="Id del paciente"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Grid.Column="0"
+                                           Grid.Row="0" />
+
+        <input:NumericTextFieldUserControl x:Name="DoctorIdNumberTextBox"
+                                           TextFieldFloatingHint="Id del doctor"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Grid.Column="1"
+                                           Grid.Row="0" />
+
+        <input:DatePickerUserControl x:Name="AppointmentDatePicker"
+                                     DatePickerHint="Fecha de consulta"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Grid.Column="2"
+                                     Grid.Row="0" />
+
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="20,5,20,5">
+            <input:TextFieldUserControl x:Name="AppointmentReasonTextBox"
+                                        TextFieldFloatingHint="Razon de la consulta"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        Margin="0,0,0,5" />
+        </materialDesign:Card>
+
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="20,5,20,5">
+            <input:TextFieldUserControl x:Name="DiseaseHistoryTextBox"
+                                        TextFieldFloatingHint="Historia de enfermedad"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        Margin="0,0,0,5" />
+        </materialDesign:Card>
+
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="2"
+                             Margin="20,5,20,5">
+            <input:TextFieldUserControl x:Name="AnamnesisTextBox"
+                                        TextFieldFloatingHint="Anamnesis"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        Margin="0,0,0,5" />
+        </materialDesign:Card>
+
+
+        <buttons:ButtonUserControl x:Name="GoToNextPageButton"
+                                   ButtonContent="Siguiente"
+                                   ButtonToolTip="Ir a la siguiente seccion"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Grid.Column="2"
+                                   Grid.Row="2"
+                                   Click="GoToNextPageButton_OnClick" />
+    </Grid>
+</Page>

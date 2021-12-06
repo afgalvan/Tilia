@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Locations;
 using Domain.People;
 
@@ -20,6 +20,11 @@ namespace Domain.Employees
         public SanitaryEmployee()
         {
             // For EF
+        }
+
+        public override string ToString()
+        {
+            return FirstName + LastName;
         }
     }
 }

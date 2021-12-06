@@ -17,13 +17,16 @@ namespace Presentation.Components.Atomic
     {
         private readonly MainWindow          _mainWindow;
         private readonly PatientsUserControl _patientsUserControl;
+        private readonly MedicalAppointmentMainPanelUserControl _appointmentsUserControl;
 
         public SidebarUserControl(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
             var api = _mainWindow.GetComponent<PatientService>();
+            var appointmentsService = _mainWindow.GetComponent<AppointmentsService>();
             _patientsUserControl = new PatientsUserControl(_mainWindow, api);
+            _appointmentsUserControl = new MedicalAppointmentMainPanelUserControl(appointmentsService, _mainWindow);
         }
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
@@ -41,7 +44,7 @@ namespace Presentation.Components.Atomic
         private void MedicalMeetingButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButtonColor(sender, MedicalMeetingTextBlock, MedicalMeetingIcon);
-            _mainWindow.ChangeMainContentArea(new MedicalAppointmentUserControl());
+            _mainWindow.ChangeMainContentArea(_appointmentsUserControl);
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)

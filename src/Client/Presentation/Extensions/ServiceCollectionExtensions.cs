@@ -3,6 +3,7 @@ using LiveChartsCore;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.Services;
 using Presentation.Services.Http;
 using Presentation.Services.Http.Connection;
 using Presentation.Services.Hubs.Connection;
@@ -42,6 +43,9 @@ namespace Presentation.Extensions
             services.AddScoped<AuthenticationService>();
             services.AddScoped<SocketConnection>();
             services.AddScoped<UsersService>();
+            services.AddScoped<RolesService>();
+            services.AddScoped<AppointmentsService>();
+            services.AddScoped<EmployeesService>();
             services.AddScoped<DashboardService>();
             services.AddScoped<PatientService>();
             services.AddScoped<ContextDataRetriever>();

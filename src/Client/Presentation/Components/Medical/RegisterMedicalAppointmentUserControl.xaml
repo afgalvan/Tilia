@@ -1,0 +1,94 @@
+<UserControl x:Class="Presentation.Components.Medical.RegisterMedicalAppointmentUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Presentation.Components.Medical"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
+             xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+
+    <materialDesign:Card>
+        <materialDesign:TransitioningContent x:Name="TransitioningContentSlide"
+                                                 OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.2}">
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+
+                <buttons:GoBackButtonUserControl ToolTip="Volver a la seccion de consultas"
+                                                 HorizontalAlignment="Left"
+                                                 VerticalAlignment="Center"
+                                                 Click="GoBackButtonUserControl_OnClick"/>
+
+                <TextBlock Style="{StaticResource TitleText}"
+                           Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Text="Registro de consultas medicas"/>
+
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Top"
+                           Margin="20,0,20,0"/>
+
+                <Grid x:Name="ProgressBarGrid"
+                      Grid.Row="1"
+                      Margin="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.5*"/> 
+                    </Grid.ColumnDefinitions>
+
+                    <buttons:ProgressBarButtonUserControl x:Name="MedicalAppointmentItemButton"
+                                                          ButtonContent="Consulta medica"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="190"
+                                                          Click="MedicalAppointmentItemButton_OnClick"
+                    />
+
+                    <buttons:ProgressBarButtonUserControl x:Name="MedicalNotesItemButton"
+                                                          ButtonContent="Notas medicas"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="190"
+                                                          Grid.Column="1"
+                                                          Click="MedicalNotesItemButton_OnClick"
+                    />
+
+                    <buttons:ProgressBarButtonUserControl x:Name="MedicalOrderItemButton"
+                                                          ButtonContent="Ordenes medicas"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="190"
+                                                          Grid.Column="2"
+                                                          Click="MedicalOrderItemButton_OnClick"
+                    />
+
+                    <buttons:ProgressBarButtonUserControl x:Name="FinishFormItemButton"
+                                                          ButtonContent="Finalizar"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          ButtonWidth="120"
+                                                          Grid.Column="3"
+                    />
+                </Grid>
+
+                <Separator Grid.Row="1"
+                           VerticalAlignment="Bottom"
+                           Margin="20,0,20,0" Height="3"/>
+
+                <Frame x:Name="FormsContentArea"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Margin="20"
+                    NavigationUIVisibility="Hidden"/>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </materialDesign:Card>
+</UserControl>
