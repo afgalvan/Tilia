@@ -6,6 +6,7 @@
              xmlns:buttons="clr-namespace:Presentation.Components.Atomic.Buttons"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:required="clr-namespace:Presentation.Components.Atomic.Input.Required"
+             xmlns:input="clr-namespace:Presentation.Components.Atomic.Input"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
@@ -52,9 +53,10 @@
                    Margin="20,0,20,0"
                    Height="3"/>
 
-        <materialDesign:Card Grid.Row="2" Margin="200,10,200,10">
+        <materialDesign:Card Grid.Row="2" Margin="200,10,200,5">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
@@ -81,10 +83,17 @@
                                                        VerticalAlignment="Center"
                                                        Grid.Row="2"/>
 
+                <input:ComboBoxUserControl x:Name="EmployeesComboBox"
+                                           Grid.Row="3"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           ComboBoxHint="Empleado asignado"
+                                           ComboBoxWidth="250"/>
+
                 <buttons:ButtonUserControl x:Name="FinishButton"
                                            ButtonContent="Finalizar"
                                            ButtonToolTip="Finalizar registro"
-                                           Grid.Row="3"
+                                           Grid.Row="4"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            Click="FinishButton_OnClick"/>

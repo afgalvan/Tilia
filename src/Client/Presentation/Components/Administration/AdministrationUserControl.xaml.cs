@@ -24,7 +24,7 @@ namespace Presentation.Components.Administration
             var api = _mainWindow.GetComponent<UsersService>();
             var rolesService = _mainWindow.GetComponent<RolesService>();
             var employeesService = _mainWindow.GetComponent<EmployeesService>();
-            _usersPanelUser = new UsersPanelUserControl(_mainWindow, api);
+            _usersPanelUser = new UsersPanelUserControl(_mainWindow, api, employeesService);
             _rolesPanel = new RolesPanelUserControl(_mainWindow, rolesService);
             _employeesPanel = new EmployeesUserControl(_mainWindow, employeesService);
         }

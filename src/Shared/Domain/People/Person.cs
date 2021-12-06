@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Locations;
@@ -36,6 +36,11 @@ namespace Domain.People
         public Person()
         {
             // For EF
+        }
+
+        public override string ToString()
+        {
+            return FirstName;
         }
     }
 }

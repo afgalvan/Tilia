@@ -1,6 +1,7 @@
 using Presentation.Windows;
 using System.Windows;
 using System.Windows.Controls;
+using Presentation.Services;
 using Presentation.Services.Http;
 
 namespace Presentation.Components.Administration.Users
@@ -9,10 +10,12 @@ namespace Presentation.Components.Administration.Users
     {
         private readonly MainWindow   _mainWindow;
         private readonly UsersService _usersService;
+        private readonly EmployeesService _employeesService;
 
-        public UsersPanelUserControl(MainWindow mainWindow, UsersService usersService)
+        public UsersPanelUserControl(MainWindow mainWindow, UsersService usersService, EmployeesService employeesService)
         {
             _usersService = usersService;
+            _employeesService = employeesService;
             InitializeComponent();
             _mainWindow          =  mainWindow;
             UsersDataGrid.Loaded += LoadTableInformation;
@@ -26,7 +29,7 @@ namespace Presentation.Components.Administration.Users
         private void AddUserButton_OnClick(object sender, RoutedEventArgs e)
         {
             _mainWindow.ChangeMainContentArea(
-                new AddNewUserFormUserControl(_mainWindow, _usersService));
+                new AddNewUserFormUserControl(_mainWindow, _usersService, _employeesService));
         }
 
         private void RemoveUser_OnClick(object sender, RoutedEventArgs e)
