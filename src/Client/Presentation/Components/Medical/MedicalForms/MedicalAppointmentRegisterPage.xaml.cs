@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using Convert = Presentation.Utils.Convert;
@@ -31,17 +32,19 @@ namespace Presentation.Components.Medical.MedicalForms
         }
 
         // ATTRIBUTES SECTION
-        public int GetPatientId() => Convert.StringToInt(PatientIdNumberTextBox.FieldText);
+        public string GetPatientId() => PatientIdNumberTextBox.FieldText;
 
-        public int GetDoctorId() => Convert.StringToInt(DoctorIdNumberTextBox.FieldText);
+        public string GetDoctorId() => DoctorIdNumberTextBox.FieldText;
 
         public DateTime GetAppointmentDate()
         {
-            return Convert.StringToDateTime(AppointmentDatePicker.FieldText);
+            return DateTime.Parse(AppointmentDatePicker.FieldText, CultureInfo.CurrentCulture);
         }
 
         public string GetAppointmentReason() => AppointmentReasonTextBox.FieldText;
 
         public string GetDiseaseHistory() => DiseaseHistoryTextBox.FieldText;
+
+        public string GetAnamnesis() => AnamnesisTextBox.FieldText;
     }
 }
